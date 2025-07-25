@@ -1,16 +1,20 @@
 import customtkinter as ctk
+from login import create_login_frame
 
 
+class hauptpage:
+    def __init__(self):
+        self.app = ctk.CTk()
+        self.app.title = ("hauptpage")
+        self.app.geometry = ("800x400")
+   
+        
+        
+        self.neue_frame = ctk.CTkFrame(self.app, width=500, height=400)
+        self.neue_frame.pack(expand=True, padx=20, pady=50)
+        self.login_frame = create_login_frame(self.neue_frame)
+        self.login_frame.pack()
+        self.app.mainloop()
+    
 
-# Daschboard
-app = ctk.CTk()
-app.title("Lernportal Dashboard")
-app.geometry("800x600")
-
-y_frame = ctk.CTkFrame(app, corner_radius=20, fg_color="#333", width=app.winfo_screenwidth() // 6, height=app.winfo_screenheight())
-y_frame.pack(fill="y", side="left", pady=10)
-
-x_frame = ctk.CTkFrame(app, corner_radius=20, fg_color="#333", width=app.winfo_screenwidth()- (app.winfo_screenwidth() // 6), height=app.winfo_screenheight())
-x_frame.pack(pady=10, padx=10)
-
-app.mainloop()
+hauptpage()

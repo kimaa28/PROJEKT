@@ -2,7 +2,7 @@ import customtkinter as ctk
 
 app = ctk.CTk()
 
-app.title("Login Window")
+app.title("register Window")
 
 
 # Create a custom title bar
@@ -58,5 +58,8 @@ create_account_label.grid(row=0, column=0, pady=10)
 #create a create account button
 create_account_button = ctk.CTkButton(create_account_frame, text="Login", command=lambda: print("Login clicked"), fg_color="#333", text_color="#19C")
 create_account_button.grid(row=0, column=1)
+neue_label = ctk.CTkLabel(app, text="je suis un con")
+neue_label.pack()
 
-app.mainloop()
+if __name__ == "__main__":
+    app.mainloop()
