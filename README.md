@@ -43,3 +43,4 @@ lernportal/
 
 I'm student at a germany university so i can't speak englisch very good. I already learn Html, css and python so i try to make an app and a learn plattform like a site web but all the progress would be save on the app with mein python. people can just acces to the 
 lewrn platform with the app.
+i choice to add something like tabview, this is bether than tkraise if you already login. in my daschboard i use some button with specifics tabview changer to show some frame.
