@@ -5,7 +5,7 @@ import customtkinter as ctk
 
 app = ctk.CTk()
 
-app.title("Login Window")
+app.title("Login Windo")
 
 
 
