@@ -1,9 +1,9 @@
 import customtkinter as ctk
 
 app = ctk.CTk()
-app.geometry("400x300")
+
 app.title("Login Window")
-app.geometry("700x500")  # Set initial size
+
 
 # Create a custom title bar
 
@@ -39,7 +39,7 @@ email_entry.grid(row=3, column=1, padx=10, pady=20)
 #sex field
 sex_text = ctk.CTkLabel(userpasswoert_frame, text="Sex:", text_color="white", font=("Arial", 20))
 sex_text.grid(row=4, column=0, padx=10, pady=10)
-sex_combo = ctk.CTkComboBox(userpasswoert_frame, values=["male", "female", "other"], width=300, height=30, corner_radius=10, dropdown_font=("Arial", 20))
+sex_combo = ctk.CTkOptionMenu(userpasswoert_frame, values=["male", "female", "other"], width=300, height=30, corner_radius=10, dropdown_font=("Arial", 20), fg_color=email_entry.cget("fg_color"))
 sex_combo.grid(row=4, column=1, padx=10, pady=20)
 #secret code field
 secret_code_label = ctk.CTkLabel(userpasswoert_frame, text="Secret Code:", text_color="white", font=("Arial", 20))
