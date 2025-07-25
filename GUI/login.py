@@ -5,7 +5,7 @@ import customtkinter as ctk
 
 app = ctk.CTk()
 
-app.title("Login Windo")
+app.title("Login Window")
 
 
 
@@ -41,5 +41,6 @@ create_account_label.grid(row=0, column=0, pady=10)
 create_account_button = ctk.CTkButton(create_account_frame, text="Neue Account", command=lambda: print("Create Account clicked"), fg_color="#333", text_color="#19C")
 create_account_button.grid(row=0, column=1)
 
+if __name__ == "__main__":
+    app.mainloop()
 
-app.mainloop()
