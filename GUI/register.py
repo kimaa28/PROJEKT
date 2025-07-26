@@ -54,12 +54,15 @@ def create_register_frame(parent):
     create_account_button = ctk.CTkButton(create_account_frame, text="Login", command=lambda: print("Login clicked"), fg_color="#333", text_color="#19C")
     create_account_button.grid(row=0, column=1)
     
-    return register_frame
+    return {
+        "register_frame": register_frame,
+        "create_account_button": create_account_button
+    }
 
 if __name__ == "__main__":
     app = ctk.CTk()
     app.title("register Window")
 
     frame = create_register_frame(app)
-    frame.pack(expand=True, padx=20, pady=20)
+    frame["register_frame"].pack(expand=True, padx=20, pady=20)
     app.mainloop()

@@ -2,6 +2,7 @@ import customtkinter as ctk
 from login import create_login_frame
 from register import create_register_frame
 from reset import create_reset_frame 
+from login import create_login_frame
 import hashlib, os, json
 
 def hashed_passwort(passwort):
@@ -21,23 +22,41 @@ class hauptpage:
     def __init__(self):
         self.app = ctk.CTk()
         self.app.title("hauptpage")
-        self.app.geometry = ("800x400")
-        self.gehashed_passwort = hashed_passwort("1234")
-        self.load_passwort = load_passwort("passlib.json")
-        self.save_passwort = save_passwort("passlib.json", self.gehashed_passwort)
-        
-        
-        self.neue_frame = ctk.CTkFrame(self.app, width=500, height=400)
-        self.neue_frame.pack(expand=True, padx=20, pady=50)
-        
-        self.register_frame = create_register_frame(self.neue_frame)
-        self.register_frame.grid(row=0, column=0, sticky="nsew")
-        self.login_frame = create_login_frame(self.neue_frame)
-        self.login_frame.grid(row=0, column=0, sticky="nsew")
-        self.reset = create_reset_frame(self.neue_frame, lambda: print("erfolgreich gespeichert"))
-        self.reset["reset_frame"].grid(row=0, column=0, sticky="nsew")
+        self.app.geometry("800x400")
+        self.neue_frame = ctk.CTkFrame(self.app)
+        self.neue_frame.pack(pady=20, padx=20, expand= True)
+        self.register = create_register_frame(self.neue_frame)
+        self.reset = create_reset_frame(self.neue_frame, lambda: print("hello"))
+        self.login = create_login_frame(self.neue_frame)
+
+        self._choice_frame(self.login["login_frame"])
+        self._set_frame()
         
         self.app.mainloop()
+
+    def _variables(self):
+        self.uservar = ctk.StringVar()
+        self.passwort = ctk.StringVar()
+        self.email = ctk.StringVar()
+        self.sex = ctk.StringVar()
+        self.secret_code = ctk.StringVar()
+
+    def _choice_frame(self, frame):
+        frame.tkraise
+
+    def _set_frame(self):
+        
+        for frame in (self.register["register_frame"], self.reset["reset_frame"], self.login["login_frame"]):
+            frame.grid(row=0, column=0, sticky="nsew")
+        
+    
+      
+        
+        
+
+
+
+    
     
 
 hauptpage()
