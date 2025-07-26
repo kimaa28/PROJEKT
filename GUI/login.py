@@ -3,7 +3,7 @@ import customtkinter as ctk
 
 import customtkinter as ctk
 
-def create_login_frame(parent, uservar, passvar):
+def create_login_frame(parent, uservar, passvar, forgot, neue_account):
     login_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=600, height=600)
 
     welcome_label = ctk.CTkLabel(login_frame, text="Welcome to the Login Page", text_color="white", font=("Arial", 30))
@@ -24,7 +24,7 @@ def create_login_frame(parent, uservar, passvar):
     password_entry = ctk.CTkEntry(userpasswoert_frame, width=200, height=30, corner_radius=10, show="*", textvariable=passvar)
     password_entry.grid(row=1, column=1, padx=10, pady=10)
 
-    forgot_password_button = ctk.CTkButton(userpasswoert_frame, text="Forgot Password?", command=lambda: print("Forgo Password clicked"), text_color="#19C", fg_color="#333")
+    forgot_password_button = ctk.CTkButton(userpasswoert_frame, text="Forgot Password?", command= forgot, text_color="#19C", fg_color="#333")
     forgot_password_button.grid(row=2, columnspan=2, sticky="e")
 
     login_button = ctk.CTkButton(login_frame, text="Login", command=lambda: print(uservar.get(), passvar.get()), width=100, height=40, corner_radius=10)
@@ -36,11 +36,12 @@ def create_login_frame(parent, uservar, passvar):
     create_account_label = ctk.CTkLabel(create_account_frame, text="Noch keinen Account?", text_color="white", font=("Arial", 13))
     create_account_label.grid(row=0, column=0, pady=10)
 
-    create_account_button = ctk.CTkButton(create_account_frame, text="Neue Account", command=lambda: print("Create Account clicked"), fg_color="#333", text_color="#19C")
+    create_account_button = ctk.CTkButton(create_account_frame, text="Neue Account", command= neue_account, fg_color="#333", text_color="#19C")
     create_account_button.grid(row=0, column=1)
 
     return {
-        "login_frame": login_frame
+        "login_frame": login_frame, 
+        "register_button": create_account_button
 
     }
 
@@ -50,7 +51,7 @@ if __name__ == "__main__":
     app.geometry("800x600")
     uservar = ctk.StringVar()
     passvar = ctk.StringVar()
-    frame = create_login_frame(app, uservar, passvar)
+    frame = create_login_frame(app, uservar, passvar, lambda:  print("hello"), lambda: print("hi"))
     frame["login_frame"].pack(expand=True, padx=20, pady=20)
 
     app.mainloop()

@@ -22,27 +22,27 @@ class hauptpage:
     def __init__(self):
         self.app = ctk.CTk()
         self.app.title("hauptpage")
-        self.app.geometry("800x400")
+    
+        self._variables()
         self.neue_frame = ctk.CTkFrame(self.app)
         self.neue_frame.pack(pady=20, padx=20, expand= True)
-        self.register = create_register_frame(self.neue_frame)
-        self.reset = create_reset_frame(self.neue_frame, lambda: print("hello"))
-        self.login = create_login_frame(self.neue_frame)
+        self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.sexvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]))
+        self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]), lambda: self._choice_frame(self.register["register_frame"]), lambda: print("already checked"))
+        self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]),lambda: self._choice_frame(self.register["register_frame"]))        
 
-        self._choice_frame(self.login["login_frame"])
         self._set_frame()
-        
+
         self.app.mainloop()
 
     def _variables(self):
         self.uservar = ctk.StringVar()
-        self.passwort = ctk.StringVar()
-        self.email = ctk.StringVar()
-        self.sex = ctk.StringVar()
+        self.passvar = ctk.StringVar()
+        self.emailvar = ctk.StringVar()
+        self.sexvar = ctk.StringVar()
         self.secret_code = ctk.StringVar()
 
     def _choice_frame(self, frame):
-        frame.tkraise
+        frame.tkraise()
 
     def _set_frame(self):
         
