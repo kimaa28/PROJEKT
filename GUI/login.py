@@ -24,7 +24,7 @@ def create_login_frame(parent):
     password_entry = ctk.CTkEntry(userpasswoert_frame, width=200, height=30, corner_radius=10, show="*")
     password_entry.grid(row=1, column=1, padx=10, pady=10)
 
-    forgot_password_button = ctk.CTkButton(userpasswoert_frame, text="Forgot Password?", command=lambda: print("Forgot Password clicked"), text_color="#19C", fg_color="#333")
+    forgot_password_button = ctk.CTkButton(userpasswoert_frame, text="Forgot Password?", command=lambda: print("Forgo Password clicked"), text_color="#19C", fg_color="#333")
     forgot_password_button.grid(row=2, columnspan=2, sticky="e")
 
     login_button = ctk.CTkButton(login_frame, text="Login", command=lambda: print("Login clicked"), width=100, height=40, corner_radius=10)
