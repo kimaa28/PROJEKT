@@ -19,7 +19,7 @@ def lo():
         
 
 
-def create_register_frame(parent, uservar, passvar, emailvar, sex, secret_code, login, register):
+def create_register_frame(parent, uservar, passvar, second_pass, emailvar, sex, secret_code, login, register):
     register_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=600, height=600)
 
     welcome_label = ctk.CTkLabel(register_frame, text="Welcome to the Register Page", text_color="white", font=("Arial", 35))
@@ -41,7 +41,7 @@ def create_register_frame(parent, uservar, passvar, emailvar, sex, secret_code, 
     #password wiederholen field
     repeat_password_label = ctk.CTkLabel(userpasswort_frame, text="Confirm Password:", text_color="white", font=("Arial", 20))
     repeat_password_label.grid(row=2, column=0, padx=10, pady=10)
-    repeat_password_entry = ctk.CTkEntry(userpasswort_frame, width=300, height=30, corner_radius=10, show="*", textvariable=passvar)
+    repeat_password_entry = ctk.CTkEntry(userpasswort_frame, width=300, height=30, corner_radius=10, show="*", textvariable=second_pass)
     repeat_password_entry.grid(row=2, column=1, padx=10, pady=20)
     #email field
     email_label = ctk.CTkLabel(userpasswort_frame, text="Email:", text_color="white", font=("Arial", 20))
@@ -96,8 +96,9 @@ if __name__ == "__main__":
     emailvar = ctk.StringVar()
     sex = ctk.StringVar()
     secretvar = ctk.StringVar()
+    second_pass = ctk.StringVar()
 
 
-    frame = create_register_frame(app, uservar, passvar, emailvar, sex, secretvar, lambda: print("alles gut", sex.get()), lo)
+    frame = create_register_frame(app, uservar, passvar,second_pass, emailvar, sex, secretvar, lambda: print("alles gut", sex.get()), lo)
     frame["register_frame"].pack(expand=True, padx=20, pady=20)
     app.mainloop()

@@ -18,7 +18,7 @@ def lo():
 
         
 
-def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, register, check_legibility, reset_b):
+def create_reset_frame(parent, uservar,passwar,second_pass, emailvar, secretvar, login, register, check_legibility, reset_b):
     reset_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=400, height=400)
     
     forgot_label = ctk.CTkLabel(reset_frame, text="Reset Password", text_color="white", font=("verdana", 30))
@@ -60,7 +60,7 @@ def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, regi
     # passwort widerholen
     passwort_wieder_label = ctk.CTkLabel(email_frame, text="Passwort wiederholen:", font=("Arial", 20))
     passwort_wieder_label.grid(row=4, column=0, padx=10, pady=10)
-    passwort_wieder_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=passwar, state="disabled")
+    passwort_wieder_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=second_pass, state="disabled")
     passwort_wieder_entry.grid(row=4, column=1, padx=10, pady=20)
 
     # raise msg field
@@ -113,9 +113,9 @@ if __name__ == "__main__":
     passvar = ctk.StringVar()
     emailvar = ctk.StringVar()
     secretvar = ctk.StringVar()
+    second_pass = ctk.StringVar()
 
-
-    frame = create_reset_frame(app, uservar,passvar, emailvar, secretvar, lambda: print("hello"), lambda: print("hi"), lambda: print("hello1"), lo)
+    frame = create_reset_frame(app, uservar,passvar,second_pass, emailvar, secretvar, lambda: print("hello"), lambda: print("hi"), lambda: print("hello1"), lo)
     frame["reset_frame"].pack(expand=True, padx=20, pady=20)
 
 
