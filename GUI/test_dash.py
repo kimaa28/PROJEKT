@@ -24,12 +24,12 @@ class hauptpage:
         self.app.title("hauptpage")
     
         self._variables()
-        self.neue_frame = ctk.CTkFrame(self.app)
+        self.neue_frame = ctk.CTkFrame(self.app, fg_color=self.app.cget("fg_color"))
         self.neue_frame.pack(pady=20, padx=20, expand= True)
-        self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.sexvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]))
-        self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]), lambda: self._choice_frame(self.register["register_frame"]), lambda: print("already checked"))
-        self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]),lambda: self._choice_frame(self.register["register_frame"]))        
-
+        self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.sexvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]),lambda: print("hello worrld"))
+        self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.emailvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]), lambda: self._choice_frame(self.register["register_frame"]), lambda: print("already checked"), lambda: print("hello darliun"))
+        self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]),lambda: self._choice_frame(self.register["register_frame"]), self.lo)        
+        
         self._set_frame()
 
         self.app.mainloop()
@@ -49,6 +49,8 @@ class hauptpage:
         for frame in (self.register["register_frame"], self.reset["reset_frame"], self.login["login_frame"]):
             frame.grid(row=0, column=0, sticky="nsew")
         
+    def lo(self):
+        self.login["bar"].start()
     
       
         

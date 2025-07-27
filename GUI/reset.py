@@ -1,6 +1,24 @@
 import customtkinter as ctk
 
-def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, register, check_legibility):
+def lo():
+    frame["raise_msg"].configure(text="")
+
+    if len(uservar.get()) > 2:
+        frame["bar"].start()  # Starte den Ladebalken
+
+        def check_user():
+            frame["bar"].stop()  # Stoppe den Ladebalken
+            if uservar.get() == "lolo":
+                frame["raise_msg"].configure(text="Erfolgreich angemeldet", text_color="green")
+            else:
+                frame["raise_msg"].configure(text="Benutzername falsch", text_color="red")
+
+        app.after(5000, check_user)  # Führe die Prüfung nach 5 Sekunden aus
+
+
+        
+
+def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, register, check_legibility, reset_b):
     reset_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=400, height=400)
     
     forgot_label = ctk.CTkLabel(reset_frame, text="Reset Password", text_color="white", font=("verdana", 30))
@@ -45,13 +63,19 @@ def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, regi
     passwort_wieder_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=passwar, state="disabled")
     passwort_wieder_entry.grid(row=4, column=1, padx=10, pady=20)
 
+    # raise msg field
+    raise_msg_label = ctk.CTkLabel(email_frame, text="", font=("Arial", 10))
+    raise_msg_label.grid(row=5, column=1, sticky="w", padx=10)
 
+    # progress bar field
+    bar = ctk.CTkProgressBar(email_frame, orientation="horizontal", mode="determinate", determinate_speed=2, progress_color="#ABC", width=200, height=3)
+    bar.grid(row=5, column=0, padx=10)
     #chek button
     check_button = ctk.CTkButton(email_frame, width=50, height=20, text="check", command=check_legibility)
     check_button.grid(row=5, column=1, sticky="e", padx=10)
 
     #button to reset password
-    reset_button = ctk.CTkButton(reset_frame, text="Reset Password", command= lambda: print("reset button clicked"), width=150, height=40, corner_radius=10)   
+    reset_button = ctk.CTkButton(reset_frame, text="Reset Password", command= reset_b, width=150, height=40, corner_radius=10)   
     reset_button.pack(fill="x", padx=20, pady=20) 
 
 
@@ -74,6 +98,8 @@ def create_reset_frame(parent, uservar,passwar, emailvar, secretvar, login, regi
     return {
         "reset_frame": reset_frame,
         "reset_button": reset_button,
+        "raise_msg": raise_msg_label,
+        "bar": bar
         
     
     }
@@ -89,7 +115,7 @@ if __name__ == "__main__":
     secretvar = ctk.StringVar()
 
 
-    frame = create_reset_frame(app, uservar,passvar, emailvar, secretvar, lambda: print("hello"), lambda: print("hi"), lambda: print("hello1"))
+    frame = create_reset_frame(app, uservar,passvar, emailvar, secretvar, lambda: print("hello"), lambda: print("hi"), lambda: print("hello1"), lo)
     frame["reset_frame"].pack(expand=True, padx=20, pady=20)
 
 
