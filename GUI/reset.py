@@ -54,13 +54,13 @@ def create_reset_frame(parent, uservar,passwar,second_pass, emailvar, secretvar,
 
     neue_passwort_label = ctk.CTkLabel(email_frame, text="Neue passwort:", font=("Arial", 20))
     neue_passwort_label.grid(row=3, column=0, padx=10, pady=10)
-    neue_passwort_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=passwar, state="disabled")
+    neue_passwort_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=passwar)
     neue_passwort_entry.grid(row=3, column=1, padx=10, pady=20)
     
     # passwort widerholen
     passwort_wieder_label = ctk.CTkLabel(email_frame, text="Passwort wiederholen:", font=("Arial", 20))
     passwort_wieder_label.grid(row=4, column=0, padx=10, pady=10)
-    passwort_wieder_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=second_pass, state="disabled")
+    passwort_wieder_entry= ctk.CTkEntry(email_frame, width=300, height=30, corner_radius=10, textvariable=second_pass)
     passwort_wieder_entry.grid(row=4, column=1, padx=10, pady=20)
 
     # raise msg field
@@ -75,7 +75,7 @@ def create_reset_frame(parent, uservar,passwar,second_pass, emailvar, secretvar,
     check_button.grid(row=5, column=1, sticky="e", padx=10)
 
     #button to reset password
-    reset_button = ctk.CTkButton(reset_frame, text="Reset Password", command= reset_b, width=150, height=40, corner_radius=10)   
+    reset_button = ctk.CTkButton(reset_frame, text="Reset Password", command= reset_b, width=150, height=40, corner_radius=10, state="disabled")   
     reset_button.pack(fill="x", padx=20, pady=20) 
 
 
@@ -99,7 +99,14 @@ def create_reset_frame(parent, uservar,passwar,second_pass, emailvar, secretvar,
         "reset_frame": reset_frame,
         "reset_button": reset_button,
         "raise_msg": raise_msg_label,
-        "bar": bar
+        "bar": bar, 
+        "neue_passwort": neue_passwort_entry,
+        "passwort_w": passwort_wieder_entry,
+        "username": username_entry,
+        "email": email_entry,
+        "secret_code": secret_code_entry,
+        "reset": reset_button,
+        "check": check_button
         
     
     }

@@ -10,5 +10,11 @@
         "email": "jordan.@",
         "sex": "male",
         "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
+    },
+    "jordan": {
+        "passwort": "b4212b26bf87cfb10a77081ccfaa582f66b9f6923e60a8c23eba46d60885db86",
+        "email": "jordan@.com",
+        "sex": "male",
+        "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4"
     }
 }

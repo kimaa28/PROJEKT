@@ -83,8 +83,10 @@ def create_register_frame(parent, uservar, passvar, second_pass, emailvar, sex, 
         "raise_msg": raise_msg_label, 
         "user_entry": username_entry,
         "passwort_entry": password_entry,
+        "passwort_w": repeat_password_entry,
         "secret_code": secret_code_entry,
-        "bar": bar
+        "bar": bar, 
+        "email_entry": email_entry 
     }
 
 if __name__ == "__main__":
