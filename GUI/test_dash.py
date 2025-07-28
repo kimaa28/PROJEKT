@@ -22,7 +22,7 @@ class hauptpage:
     def __init__(self):
         self.app = ctk.CTk()
         self.app.title("hauptpage")
-        self.path = "passlib.json"
+        self.path = "Passlib.json"
         self.passlib = load_passwort(self.path)
         self.passwort_list = ["123456","password", "123456789","12345678","12345", "1234567", "admin","qwerty","abc123","password1", "111111", "123123", "000000", "iloveyou", "welcome", "monkey","dragon","sunshine","letmein", "football", "princess", "login", "passw0rd", "master", "hello", "freedom","whatever","qazwsx", "trustno1","starwars"]
     
@@ -38,6 +38,7 @@ class hauptpage:
         
         self._set_frame()
 
+        
         self.app.mainloop()
 
     def _variables(self):
@@ -89,6 +90,8 @@ class hauptpage:
         emailvar = self.emailvar.get()
         sexvar = self.sexvar.get()
         secret_codevar = self.secret_code.get()
+        for value in self.passlib.values():
+            self.value = value["email"]
 
         self.register["bar"].stop()
         if not all([uservar, passvar, emailvar, sexvar, secret_codevar]):
@@ -98,20 +101,20 @@ class hauptpage:
         elif uservar in self.passlib:
             self.register["raise_msg"].configure(text="Username bereit existiert", text_color="red")
         else:
-            for key in self.passlib:
-                if emailvar == key["email"] or  all(["@", "."]) not in emailvar:
-                    self.register["raise_msg"].configure(text="Email beriet vergeben oder ungültig", text_color="red")
-                elif len(passvar) < 5 or passvar in self.passwort_list:
-                    self.register["raise_msg"].configure(text="Passwort zu kurz oder unsicher", text_color="red")
-                elif passvar != second_pass:
-                    self.register["raise_msg"].configure(text="Passwort unterschiedlich", text_color="red")
+            if emailvar in self.value  or not ("@" in emailvar or "." in emailvar):
+                self.register["raise_msg"].configure(text="Email beriet vergeben oder ungültig", text_color="red")
+                
+            elif len(passvar) < 5 or passvar in self.passwort_list:
+                self.register["raise_msg"].configure(text="Passwort zu kurz oder unsicher", text_color="red")
+            elif passvar != second_pass:
+                self.register["raise_msg"].configure(text="Passwort unterschiedlich", text_color="red")
 
-                else:
-                    self.passlib[uservar] = {"passwort": hashed_passwort(passvar), "email": emailvar, "sex": sexvar, "secret_code": hashed_passwort(secret_codevar)}
-                    save_passwort(self.path, self.passlib)
-                    self.register["raise_msg"].configure(text="Erfolgreich registriert", text_color="red")
-
-            
+            else:
+                self.passlib[uservar] = {"passwort": hashed_passwort(passvar), "email": emailvar, "sex": sexvar, "secret_code": hashed_passwort(secret_codevar)}
+                save_passwort(self.path, self.passlib)
+                self.register["raise_msg"].configure(text="Erfolgreich registriert", text_color="green")
+        
+        
         
 
         

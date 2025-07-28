@@ -1,0 +1,14 @@
+{
+    "user": {
+        "passwort": "passwort",
+        "email": "user@gmail.com",
+        "sex": "sex",
+        "secret_code": "secret_code"
+    },
+    "kitio": {
+        "passwort": "bb7fbebc5cf6dce938d62c446870b65e48606fc8f9dbc542fd0e68d0a2d8b4ae",
+        "email": "jordan.@",
+        "sex": "male",
+        "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
+    }
+}
