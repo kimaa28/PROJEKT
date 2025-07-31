@@ -10,7 +10,9 @@ if __name__== "__main__":
 
     app = CTk()
 
-    frame = dasch(app)
-    frame.pack(expand=True)
+
+
+    bar  = CTkFrame(app, height=500, width=2, fg_color="#ABC")
+    bar.pack(expand=True)
 
     app.mainloop()

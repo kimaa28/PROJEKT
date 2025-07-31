@@ -62,7 +62,7 @@ class hauptpage:
         user_entry = self.login["user_entry"]
         passwort_entry = self.login["passwort_entry"]
         for entry in [user_entry, passwort_entry]:
-            entry.delete(0, "end")
+            entry.delete(0, "end") # TODO: eventuel die deletefunktion in einer klasse bauen, sodass ich es nicht 100% mal definiere
     def _lo(self):
         self.login["raise_msg"].configure(text="")
         self.login["bar"].start()
