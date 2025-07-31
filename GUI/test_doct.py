@@ -58,4 +58,7 @@ def html_file(id):
      return f"user{id}.html"
 
 for ele in les:
-     create_html_file("html", html_file(ele.id), html(ele.value1, ele.id))
+    if ele.id == 3:
+        create_html_file("html", html_file(ele.id), html(ele.value1, ele.id -2))
+    else:
+        create_html_file("html", html_file(ele.id), html(ele.value1, ele.id))

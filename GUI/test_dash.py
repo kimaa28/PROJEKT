@@ -145,7 +145,7 @@ class hauptpage:
         
     def _delete_re(self):
         user_entry = self.reset["username"]
-        passwort_entry = self.reset["neue_passwort_entry"]
+        passwort_entry = self.reset["neue_passwort"]
         passwort_w = self.reset["passwort_w"]
         email_entry = self.reset["email"]
         secret_entry = self.reset["secret_code"]
