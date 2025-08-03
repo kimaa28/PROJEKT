@@ -22,7 +22,7 @@ def lo():
 
 
 def create_login_frame(parent, uservar, passvar, forgot, neue_account, check_passwort):
-    login_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=600, height=600)
+    login_frame = ctk.CTkFrame(parent, fg_color="#333", width=600, height=600)
 
     welcome_label = ctk.CTkLabel(login_frame, text="Welcome to the Login Page", text_color="white", font=("Arial", 30))
     welcome_label.pack(padx=20, pady=20)

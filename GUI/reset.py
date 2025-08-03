@@ -19,7 +19,7 @@ def lo():
         
 
 def create_reset_frame(parent, uservar,passwar,second_pass, emailvar, secretvar, login, register, check_legibility, reset_b):
-    reset_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=400, height=400)
+    reset_frame = ctk.CTkFrame(parent, fg_color="#333", width=400, height=400)
     
     forgot_label = ctk.CTkLabel(reset_frame, text="Reset Password", text_color="white", font=("verdana", 30))
     forgot_label.pack(padx=20, pady=20)

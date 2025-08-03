@@ -41,7 +41,7 @@ Der &#x3C;head&#x3E;-Teil enthält den Titel der Seite (sichtbar im Browser-Tab)
 und im &#x3C;body&#x3E; steht alles, was der Benutzer direkt sieht. Jede HTML-Seite sollte mit &#x3C;!DOCTYPE html&#x3E; starten,
 um dem Browser zu sagen, dass es sich um ein HTML5-Dokument handelt.
     """,
-    "code1.png",
+    ("code1.png", "screen1.png"),
     "In der nächsten Lektion geht es um den Aufbau einer HTML-Seite.",
     "Zurück zur Startseite",
     "Weiter zu Lektion 2",
@@ -77,7 +77,7 @@ Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
 Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
 Der viewport-Tag ist besonders wichtig für mobile Geräte.
     """,
-    "code2.png",
+    ("code2.png", "screen2.png"),
     "Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.",
     "Zurück zu Lektion 1",
     "Weiter zu Lektion 3",
@@ -120,7 +120,7 @@ H2 für Hauptkapitel, H3 für Unterkapitel usw.
 Niemals sollte eine Überschriftenebene übersprungen werden (z.B. von H2 direkt zu H4).
 Jeder Absatz behandelt idealerweise nur einen Gedanken oder eine Idee.
     """,
-    "code3.png",
+    ("code3.png", "screen3.png"),
     "In der nächsten Lektion lernst du verschiedene Textformatierungen kennen.",  
     "Zurück zu Lektion 2",
     "Weiter zu Lektion 4",
@@ -166,7 +166,7 @@ Die semantischen Tags sind wichtig für Screenreader und Suchmaschinen.
 &#x3C;del&#x3E; und &#x3C;ins&#x3E; zeigen Änderungen in Dokumenten an.
 Diese Tags können auch kombiniert werden für komplexere Formatierungen.
     """,
-    "code4.png",
+    ("code4.png", "screen4.png"),
     "Als Nächstes erfährst du, wie Links und Navigation funktionieren.",
     "Zurück zu Lektion 3", 
     "Weiter zu Lektion 5",
@@ -220,7 +220,7 @@ Anker-Links (#) springen zu Elementen mit entsprechender ID auf derselben Seite.
 mailto: und tel: Links öffnen E-Mail-Programme bzw. Telefon-Apps.
 Relative Links sind praktisch für interne Seitenstrukturen.
     """,
-    "code5.png",
+    ("code5.png", "screen5.png"),
     "In der nächsten Lektion lernst du, wie Bilder in Webseiten eingebunden werden.",
     "Zurück zu Lektion 4",
     "Weiter zu Lektion 6", 
@@ -273,7 +273,7 @@ Das &#x3C;picture&#x3E;-Element lädt je nach Bildschirmgröße unterschiedliche
 srcset ermöglicht die Bereitstellung verschiedener Bildauflösungen.
 Bilder in Links werden automatisch mit einem blauen Rahmen versehen (kann per CSS entfernt werden).
     """,
-    "code6.png",
+    ("code6.png", "screen6.png"),
     "Als Nächstes lernst du, wie Listen zur Strukturierung von Inhalten verwendet werden.",
     "Zurück zu Lektion 5",
     "Weiter zu Lektion 7",
@@ -349,7 +349,7 @@ Verschachtelte Listen erstellen Hierarchien durch Listen innerhalb von &#x3C;li&
 &#x3C;dl&#x3E;, &#x3C;dt&#x3E; und &#x3C;dd&#x3E; sind perfekt f&#xFC;r Glossare und Definitionen.
 Listen k&#xF6;nnen mit CSS-Eigenschaften wie list-style-type angepasst werden.
     """,
-    "code7.png",
+    ("code7.png", "screen7.png"),
     "In der nächsten Lektion lernst du die Grundlagen von CSS kennen.",
     "Zurück zu Lektion 6",
     "Weiter zu Lektion 8",
@@ -432,7 +432,7 @@ Internal CSS steht im &#x3C;style&#x3E;-Tag im <head>, External CSS in separaten
 Inline-CSS hat die höchste Priorität, sollte aber sparsam verwendet werden.
 Die Kaskadierung löst Konflikte zwischen verschiedenen CSS-Regeln.
     """,
-    "code8.png",
+    ("code8.png", "screen8.png"),
     "In der nächsten Lektion vertiefst du dein Wissen über CSS-Selektoren.",
     "Zurück zu Lektion 7",
     "Weiter zu Lektion 9",
@@ -540,7 +540,7 @@ Pseudo-Selektoren wie :hover reagieren auf Benutzerinteraktionen.
 Kombinatoren wie > (direktes Kind) und Leerzeichen (Nachfahre) ermöglichen präzise Auswahlen.
 Spezifität: inline > ID > Klasse > Element.
     """,
-    "code9.png",
+    ("code9.png", "screen9.png"),
     "In der nächsten Lektion lernst du das CSS Box-Model kennen.",
     "Zurück zu Lektion 8",
     "Weiter zu Lektion 10",
@@ -679,7 +679,7 @@ display: block nimmt die ganze Breite ein, display: inline nur den benötigten P
 margin: auto zentriert Block-Elemente horizontal.
 gap-Eigenschaft erstellt Abstände zwischen Flex- oder Grid-Items.
     """,
-    "code10.png",
+    ("code10.png", "screen10.png"),
     "In der letzten Lektion lernst du responsive Design und erweiterte CSS-Techniken.",
     "Zurück zu Lektion 9",
     "Weiter zu Lektion 11",
@@ -937,7 +937,7 @@ prefers-color-scheme erkennt die Systemeinstellung für helle/dunkle Themes.
 Intersection Observer API lädt Animationen nur bei Bedarf für bessere Performance.
 Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit JavaScript.
     """,
-    "code11.png",
+    ("code11.png", "screen11.png"),
     "Herzlichen Glückwunsch! Du hast alle HTML- und CSS-Grundlagen erfolgreich durchlaufen.",
     "Zurück zu Lektion 10",
     "Zurück zur Startseite",

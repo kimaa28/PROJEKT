@@ -31,7 +31,7 @@ class hauptpage:
     
         self._variables()
         self.neue_frame = ctk.CTkFrame(self.app, fg_color=self.app.cget("fg_color"))
-        self.neue_frame.pack(pady=20, padx=20, expand= True)
+        self.neue_frame.pack(pady=1, padx=1, expand= True)
         self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar,self.second_pass, self.emailvar, self.sexvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]), self._registrierung)
         self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.second_pass, self.emailvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]), lambda: self._choice_frame(self.register["register_frame"]), self._reset, self._load_check)
         self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]),lambda: self._choice_frame(self.register["register_frame"]), self._lo)        
@@ -184,12 +184,7 @@ class hauptpage:
     def _check_passwort(self):
         bar = self.reset["bar"]
         bar.stop()
-        user_entry = self.reset["username"]
-        email_entry = self.reset["email"]
-        secret_entry = self.reset["secret_code"]
-        uservar = self.uservar.get()
-        neue_entry = self.reset["neue_passwort"]
-        passwort_w = self.reset["passwort_w"]
+        uservar = self.uservar.get()    
         raise_msg = self.reset["raise_msg"]
         passvar = self.passvar.get()
         second_pass = self.second_pass.get()

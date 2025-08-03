@@ -20,7 +20,7 @@ def lo():
 
 
 def create_register_frame(parent, uservar, passvar, second_pass, emailvar, sex, secret_code, login, register):
-    register_frame = ctk.CTkFrame(parent, corner_radius=20, fg_color="#333", width=600, height=600)
+    register_frame = ctk.CTkFrame(parent, fg_color="#333", width=600, height=600)
 
     welcome_label = ctk.CTkLabel(register_frame, text="Welcome to the Register Page", text_color="white", font=("Arial", 35))
     welcome_label.pack(padx=50, pady=20)
