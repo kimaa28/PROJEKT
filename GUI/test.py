@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from tkinter import PhotoImage, Canvas
-
+from PIL import Image
 
 
 
@@ -31,6 +31,8 @@ class Daschboard:
         self._rframe_menu()
         self._create_canvas()
         
+        
+        
 
         self.app.mainloop()
 
@@ -40,7 +42,16 @@ class Daschboard:
         self.profil = PhotoImage(file="profil.png")
         self.setting = PhotoImage(file="setting.png")
         self.logout = PhotoImage(file="logout.png")
+        # this is just for image path to combinated with pil
+        self.first = "screen.png"
+        self.second = "second.jpeg"
+        self.third = "third.jpeg"
+        self.image_list = [self.first, self.second, self.third]
+        self.image_index = 0
 
+           
+
+   
 
     def _set_frame_width(self):
         height_app = self.app.winfo_height()
@@ -102,18 +113,35 @@ class Daschboard:
 
         # i don't really no how  i can name this frame i choice random frame it isn't a really random image we just  have 3 image there can automatically switch after a set time, i think switch image is more interssting but we are talking about a  frame
 
-        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color="#D6D4D4", corner_radius=20, border_width=2)
+        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color="#D6D4D4", corner_radius=20, border_width=4)
         self.custom_frame.pack(fill="x", padx=20, pady=40)
 
         ctk.CTkLabel(self.custom_frame, text="Your Learning Journey", font=("PT serif", 20), text_color=self.color).pack(pady=20, padx=20)
 
 
         # this second frame is for the random frame 
-        self.random_image = ctk.CTkFrame(self.custom_frame, width=300, height=200, border_width=0, fg_color=None )
-        self.random_image.pack(fill="x", pady=10, padx=50)
+        self.random_image_frame= ctk.CTkFrame(self.custom_frame, width=300, height=200, border_width=0, fg_color=None )
+        self.random_image_frame.pack( pady=10, padx=50)
+        self._load_image(self.first)
+        self._start_image_loop()
 
+        # frame for learning statistics
+
+        self.learn_stat_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20, border_width=4, fg_color= self.custom_frame.cget("fg_color"))
+        self.learn_stat_frame.pack(pady=20, padx=20)
+
+        # title from this frame
+        ctk.CTkLabel(self.learn_stat_frame, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.learn_stat_frame.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
+        self.frame_list = ["learn Time", "Total course", "Progress", "Friend", "Coin", "Level"]
+
+        for i, text in enumerate(self.frame_list):
+            ctk.CTkLabel(self.learn_stat_frame, width=200,height=100, corner_radius=20, fg_color="#949494", text=text, text_color=self.color).grid(row=1, column=i, padx=20, pady=10)
+
+        #  frame forquick access to course
+
+        self.quick_access_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20,fg_color=self.custom_frame.cget("fg_color"), border_width=4)
+        self.quick_access_frame.pack(pady=20, padx=20, fill="x")
         
-
 
     def _create_canvas(self):
         # canva for dashboard image
@@ -136,22 +164,22 @@ class Daschboard:
         self.logout_canva = Canvas(self.lframe_two, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
         self.logout_canva.grid(row=0, column=0, sticky="w")
         self.logout_canva.create_image(self.W/2, self.H/2, image= self.logout)
-       
-        class my_random_canva:
-            def __init__(self, parent,  image):
-                self.Wid = 500
-                self.hei = 300
-                self.image = image
-                self.random_canva = Canvas(parent, width= self.Wid, height= self.hei, bd=0)
-                
-                self.random_canva.pack()
+    
+       # i create all image as pil image and the set funktion
+    def _load_image(self, path):
+        pil_img = Image.open(path).resize((700, 300))
+        self.ctk_img = ctk.CTkImage(light_image=pil_img, size=(500, 300))
+        if hasattr(self, "image_label"):
+            self.image_label.configure(image=self.ctk_img)
+        else:
+            self.image_label = ctk.CTkLabel(self.random_image_frame, image=self.ctk_img, text="", corner_radius=20)
+            self.image_label.pack()
 
-            def _get_image(self):
-                return self.image
-            
-            def _set_image(self, neue_image):
-                self.image = neue_image
-                self.random_canva.itemconfig(self.image_id, image=self.image)
+    def _start_image_loop(self):
+        self.image_index = (self.image_index + 1) % len(self.image_list)
+        self._load_image(self.image_list[self.image_index])
+        self.app.after(4000, self._start_image_loop)
 
+   
             
 Daschboard()
