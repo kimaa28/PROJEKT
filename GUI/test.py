@@ -48,6 +48,10 @@ class Daschboard:
         self.third = "third.jpeg"
         self.image_list = [self.first, self.second, self.third]
         self.image_index = 0
+        self.categories_img = [ ctk.CTkImage(light_image=Image.open(img), size=(40, 40)) for img in ["coding.png", "command.png", "data.png", "linux.png", "commit.png", "security.png"]
+]
+
+
 
            
 
@@ -78,14 +82,14 @@ class Daschboard:
         self.profil_button = ctk.CTkButton(self.lframe_one, text="Profil", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("profilbbuttoncliked"), text_color= self.color)
         self.profil_button.grid(row=2, column=1, sticky="w", pady=17)
         #profil button for profil tabview
-        self.settings_button = ctk.CTkButton(self.lframe_one, text="settings", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("settingsbbuttoncliked"), text_color=self.color)
+        self.settings_button = ctk.CTkButton(self.lframe_one, text="settings", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= lambda: self.tabs_menu.set("tab-1"), text_color=self.color)
         self.settings_button.grid(row=3, column=1, sticky="w", pady=17)
         
         #frame for logout and profil photo
         self.lframe_two = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
         self.lframe_two.pack(side="bottom", pady=20, padx=25, fill="x")
         # button for logout
-        self.logout_button = ctk.CTkButton(self.lframe_two, text="logout", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("logoutbbuttoncliked"), text_color=self.color)
+        self.logout_button = ctk.CTkButton(self.lframe_two, text="logout", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= self.app.quit, text_color=self.color)
         self.logout_button.grid(row=0, column=0, sticky="e", pady=17)
         
        
@@ -108,40 +112,67 @@ class Daschboard:
         self.tab1_frame = ctk.CTkFrame(self.tab_1, fg_color= self.tab_1.cget("fg_color"))
         self.tab1_frame.pack(fill="both", expand="true")
 
-        self.welcome_label = ctk.CTkLabel(self.tab1_frame, text="Willkommen zurück, jordan!", text_color=self.color, font=("PT serif", 35))
-        self.welcome_label.pack()
-
+       
         # i don't really no how  i can name this frame i choice random frame it isn't a really random image we just  have 3 image there can automatically switch after a set time, i think switch image is more interssting but we are talking about a  frame
 
-        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color="#D6D4D4", corner_radius=20, border_width=4)
-        self.custom_frame.pack(fill="x", padx=20, pady=40)
+        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20, border_width=4,)
+        self.custom_frame.pack(fill="x", padx=50, pady=40)
 
-        ctk.CTkLabel(self.custom_frame, text="Your Learning Journey", font=("PT serif", 20), text_color=self.color).pack(pady=20, padx=20)
+
+
+        self.welcome_label = ctk.CTkLabel(self.custom_frame, text="Willkommen zurück, jordan!", text_color=self.color, font=("PT serif", 35))
+        self.welcome_label.grid(row=0, column=0, pady=20, padx=20, sticky="w")
+
 
 
         # this second frame is for the random frame 
-        self.random_image_frame= ctk.CTkFrame(self.custom_frame, width=300, height=200, border_width=0, fg_color=None )
-        self.random_image_frame.pack( pady=10, padx=50)
-        self._load_image(self.first)
-        self._start_image_loop()
-
+        self.random_image_frame= ctk.CTkFrame(self.custom_frame, border_width=4, width=600, height=500 , fg_color= "#CDCDCD", corner_radius= 30)
+        self.random_image_frame.grid(row=1, column=0, padx=30, pady=20)
+        
         # frame for learning statistics
+        self.scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color=self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350)
+        self.scroll.grid(row=1, column=1, padx=40)
+        self.mittel_scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color= self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350)
+        self.mittel_scroll.grid(row=1, column=2, padx=40)
 
-        self.learn_stat_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20, border_width=4, fg_color= self.custom_frame.cget("fg_color"))
-        self.learn_stat_frame.pack(pady=20, padx=20)
+        
 
         # title from this frame
-        ctk.CTkLabel(self.learn_stat_frame, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.learn_stat_frame.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
-        self.frame_list = ["learn Time", "Total course", "Progress", "Friend", "Coin", "Level"]
+        ctk.CTkLabel(self.scroll, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.scroll.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
+        self.frame_list = ["120h\nlearn Time", "23\nTotal course", "30%\nProgress", "Friend", "Coin", "Level"]
 
-        for i, text in enumerate(self.frame_list):
-            ctk.CTkLabel(self.learn_stat_frame, width=200,height=100, corner_radius=20, fg_color="#949494", text=text, text_color=self.color).grid(row=1, column=i, padx=20, pady=10)
+        for i, text in enumerate(self.frame_list, start=1):
+            ctk.CTkLabel(self.scroll, width=200,height=70, corner_radius=20, fg_color="#949494", text=text, text_color=self.color).grid(row=i, column=0, padx=20, pady=10)
 
         #  frame forquick access to course
 
-        self.quick_access_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20,fg_color=self.custom_frame.cget("fg_color"), border_width=4)
-        self.quick_access_frame.pack(pady=20, padx=20, fill="x")
+        self.course_type_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20,fg_color=self.custom_frame.cget("fg_color"), border_width=4)
+        self.course_type_frame.pack(pady=10, padx=50, fill="x")
+
+        ctk.CTkLabel(self.course_type_frame, fg_color=self.course_type_frame.cget("fg_color"), font=("verdana", 20), text="Courses categories").grid(row=0, column=0, sticky="w", pady=20, padx=20)
+
+        self.label_categories = ["Web Development\n11 courses", "Programming\n8 courses", "Backend & Database\n 5 courses", "Operating System\n 5 courses", "Version control\n3 courses", "Cybersecurity Basis\n 4 courses"]
+        for index, (img, label_text) in enumerate(zip(self.categories_img, self.label_categories)):
+          
+            frame = ctk.CTkFrame(self.course_type_frame, corner_radius=25, width=225, height=100, fg_color="#949494")
+            frame.grid(row=1, column=index, padx=30, pady=20)
+
+            label = ctk.CTkLabel(frame, text=label_text)
+            label.pack(side="right", pady=20, padx=10)
+
+            image_label = ctk.CTkLabel(frame, image=img, text="")
+            image_label.pack(side="left", padx=10, pady=20)
+
+
+            
         
+        # for index, (img, label) in enumerate
+
+
+
+        self._load_image(self.first)
+        self._start_image_loop()
+
 
     def _create_canvas(self):
         # canva for dashboard image
@@ -164,16 +195,20 @@ class Daschboard:
         self.logout_canva = Canvas(self.lframe_two, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
         self.logout_canva.grid(row=0, column=0, sticky="w")
         self.logout_canva.create_image(self.W/2, self.H/2, image= self.logout)
+        for i in enumerate(self.categories_img):
+            pass
+
+        # canva for course categories
     
        # i create all image as pil image and the set funktion
     def _load_image(self, path):
-        pil_img = Image.open(path).resize((700, 300))
-        self.ctk_img = ctk.CTkImage(light_image=pil_img, size=(500, 300))
+        pil_img = Image.open(path).resize((500, 350))
+        self.ctk_img = ctk.CTkImage(light_image=pil_img, size=(500, 350))
         if hasattr(self, "image_label"):
             self.image_label.configure(image=self.ctk_img)
         else:
-            self.image_label = ctk.CTkLabel(self.random_image_frame, image=self.ctk_img, text="", corner_radius=20)
-            self.image_label.pack()
+            self.image_label = ctk.CTkLabel(self.random_image_frame, image=self.ctk_img, text="")
+            self.image_label.pack(pady=20, padx=50)
 
     def _start_image_loop(self):
         self.image_index = (self.image_index + 1) % len(self.image_list)
