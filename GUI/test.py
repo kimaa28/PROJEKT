@@ -73,16 +73,16 @@ class Daschboard:
         self.lframe_one = ctk.CTkFrame(self.left_frame, fg_color= self.left_frame.cget("fg_color"))
         self.lframe_one.pack(pady=50, fill="x", padx=15)
         #dash button for dashboard tabview pov: i'm tired
-        self.dash_button = ctk.CTkButton(self.lframe_one, text="Dashboard", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("dashboard cliked"), text_color= self.color)
+        self.dash_button = ctk.CTkButton(self.lframe_one, text="Dashboard", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= lambda: self.tabs_menu.set("tab-1"), text_color= self.color)
         self.dash_button.grid(row=0, column=1, sticky="w", pady=17)
         # course button for course tabview
-        self.course_button = ctk.CTkButton(self.lframe_one, text="Course", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("coursebbuttoncliked"), text_color= self.color)
+        self.course_button = ctk.CTkButton(self.lframe_one, text="Course", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: self.tabs_menu.set("tab-2"), text_color= self.color)
         self.course_button.grid(row=1, column=1, sticky="w", pady=17)
         #profil button for profil tabview
         self.profil_button = ctk.CTkButton(self.lframe_one, text="Profil", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command=lambda: print("profilbbuttoncliked"), text_color= self.color)
         self.profil_button.grid(row=2, column=1, sticky="w", pady=17)
         #profil button for profil tabview
-        self.settings_button = ctk.CTkButton(self.lframe_one, text="settings", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= lambda: self.tabs_menu.set("tab-1"), text_color=self.color)
+        self.settings_button = ctk.CTkButton(self.lframe_one, text="settings", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), text_color=self.color)
         self.settings_button.grid(row=3, column=1, sticky="w", pady=17)
         
         #frame for logout and profil photo
@@ -102,9 +102,10 @@ class Daschboard:
         self.tabs_menu.set("tab-1")
 
         self._widget_dash()
+        self._widget_courses()
         ctk.CTkLabel(self.right_frame, text="© 2025 by jordan kitio zangio", font=("Arial", 15), text_color= self.color).pack()
 
-    # create all widget for my dashboard i choice the funktion this is better andmy code caan be beautifull
+    # create all widget for my dashboard i choice the funktion this is better andmy code can be beautifull
 
     def _widget_dash(self):
         # it is difficult to display some informations in a tabview so i need zu mke a firs frame who take the fill = "both" and i can normaly displaying
@@ -149,7 +150,7 @@ class Daschboard:
         self.course_type_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20,fg_color=self.custom_frame.cget("fg_color"), border_width=4)
         self.course_type_frame.pack(pady=10, padx=50, fill="x")
 
-        ctk.CTkLabel(self.course_type_frame, fg_color=self.course_type_frame.cget("fg_color"), font=("verdana", 20), text="Courses categories").grid(row=0, column=0, sticky="w", pady=20, padx=20)
+        ctk.CTkLabel(self.course_type_frame, fg_color=self.course_type_frame.cget("fg_color"), font=("verdana", 20), text="Courses categories").grid(row=0, column=0, sticky="w", pady=20, padx=30)
 
         self.label_categories = ["Web Development\n11 courses", "Programming\n8 courses", "Backend & Database\n 5 courses", "Operating System\n 5 courses", "Version control\n3 courses", "Cybersecurity Basis\n 4 courses"]
         for index, (img, label_text) in enumerate(zip(self.categories_img, self.label_categories)):
@@ -163,15 +164,28 @@ class Daschboard:
             image_label = ctk.CTkLabel(frame, image=img, text="")
             image_label.pack(side="left", padx=10, pady=20)
 
-
-            
-        
-        # for index, (img, label) in enumerate
-
-
-
         self._load_image(self.first)
         self._start_image_loop()
+           
+    # all widget on my course tab as a funktion
+    def _widget_courses(self):
+
+        self.tab2_frame = ctk.CTkFrame(self.tab_2, fg_color= self.tab1_frame.cget("fg_color"))
+        self.tab2_frame.pack(fill="both", expand="true")
+
+        ctk.CTkLabel(self.tab2_frame, text="Courses", font=("Verdana", 40), text_color=self.color).pack()
+
+        self.frame_liste = ctk.CTkFrame(self.tab2_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20, border_width=3, border_color="black")
+        self.frame_liste.pack(fill="both",expand="true", padx=30, pady=30)
+
+        self.image_courses = [ctk.CTkImage(light_image=Image.open(img), size=(200, 200)) for img in ["linux.png", "python.webp"]]
+
+        for index, ele in enumerate(self.image_courses):
+           self.label_img = ctk.CTkLabel(self.frame_liste, image=ele, text="")
+           self.label_img.grid(row=0, column=index)
+
+
+        
 
 
     def _create_canvas(self):
