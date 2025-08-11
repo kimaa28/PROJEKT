@@ -38,7 +38,7 @@ class Daschboard:
         self.app.mainloop()
 
     def _create_image(self):
-        self.canva_liste = [ PhotoImage(file=img) for img in ["dash_logo.png","profil.png", "setting.png", "logout.png"]]
+        self.canva_liste = [ PhotoImage(file=img) for img in ["dash_logo.png","course.png", "profil.png", "setting.png", "logout.png"]]
         # this is just for image path to combinated with pil
         self.first = "screen.png"
         self.second = "second.jpeg"
@@ -69,7 +69,7 @@ class Daschboard:
         self.lframe_one = ctk.CTkFrame(self.left_frame, fg_color= self.left_frame.cget("fg_color"))
         self.lframe_one.pack(pady=50, fill="x", padx=15)
         self.menu_list = ["Dashboard", "Courses", "Profil", "Settings"]
-        self.button_cmd = [lambda: self.tabs_menu.set("tab-1"), lambda: self.tabs_menu.set("tab-2"), lambda: print("hallo"), lambda: print("je suisun gros con")]
+        self.button_cmd = [lambda: self.tabs_menu.set("tab-1"), lambda: self.tabs_menu.set("tab-2"), lambda: self.tabs_menu.set("tab-3"), lambda: print("je suisun gros con")]
 
         for index, (label, cmd) in enumerate(zip(self.menu_list, self.button_cmd)):
             Button = ctk.CTkButton(self.lframe_one, text=label, command=cmd, hover_color="#005f73", corner_radius=20, fg_color=self.left_frame.cget("fg_color"), font=("PT serif", 23), anchor="w", text_color=self.color)
@@ -110,10 +110,12 @@ class Daschboard:
         self.tabs_menu.pack(fill="both", expand="true")
         self.tab_1 = self.tabs_menu.add("tab-1")
         self.tab_2 = self.tabs_menu.add("tab-2")
+        self.tab_3 = self.tabs_menu.add("tab-3")
         self.tabs_menu.set("tab-1")
 
         self._widget_dash()
         self._widget_courses()
+        self._widget_profil()
         ctk.CTkLabel(self.right_frame, text="© 2025 by jordan kitio zangio", font=("Arial", 15), text_color= self.color).pack()
 
     # create all widget for my dashboard i choice the funktion this is better andmy code can be beautifull
@@ -226,20 +228,22 @@ class Daschboard:
             button_start = ctk.CTkButton(frame2, text="Start Course", text_color="white", fg_color="#005f73")
             button_start.pack(fill="x")
 
-            
+    def _widget_profil(self):
+        self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color="blue")
+        self.tab3_frame.pack(fill="both", expand="true")        
             
 
     def _create_canvas(self):
 
         for index, img in enumerate(self.canva_liste):
-            canva = Canvas(self.lframe_one, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
-            canva.create_image(self.W/2, self.H/2, image=img)
-            canva.grid(row=index, column=0, sticky="e", padx=10)
-            if index == 3:
+            if index == 4:
                 self.logout_canva = Canvas(self.lframe_two, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
                 self.logout_canva.grid(row=0, column=0, sticky="w")
                 self.logout_canva.create_image(self.W/2, self.H/2, image= img)
-
+            else:
+                canva = Canvas(self.lframe_one, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
+                canva.create_image(self.W/2, self.H/2, image=img)
+                canva.grid(row=index, column=0, sticky="e", padx=10)
 
         # # canva for dashboard image
         # self.dash_canva = Canvas(self.lframe_one, width=self.W, height= self.H , bg= self.lframe_one.cget("fg_color"), bd=0, highlightthickness=0)
