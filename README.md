@@ -34,12 +34,12 @@ lernportal/
 
 | Task                              | Description                                                    | Estimated Time |
 | --------------------------------- | -------------------------------------------------------------- | -------------- |
-| ✅ **1. Connect GUI with modules** | Button click → open HTML page and save progress                | 1–2 days       |
+| ✅ **1. Connect GUI with modules** | Button click → open HTML page and save progress                | 10 days       |
 | ✅ **2. Create HTML pages**        | Content per module (intro, text formatting, lists, etc.)       | 2–3 days       |
 | ✅ **3. Integrate CGI scripts**    | Send and save progress via HTML form                           | 1–2 days       |
 | ✅ **4. Improve JSON handling**    | Check progress, avoid duplicates, optionally include timestamp | 1 day          |
-| ✅ **5. Dashboard view**           | Show module progress in GUI (green checkmarks, etc.)           | 1–2 days       |
-| ✅ **6. Testing & optimization**   | Check for bugs, clean up design                                | 1 day          |
+| ✅ **5. Dashboard view**           | Show module progress in GUI (green checkmarks, etc.)           | 10 days       |
+| ✅ **6. Testing & optimization**   | Check for bugs, clean up design                                | 6 day          |
 
 I'm student at a germany university so i can't speak englisch very good. I already learn Html, css and python so i try to make an app and a learn plattform like a site web but all the progress would be save on the app with mein python. people can just acces to the 
 lewrn platform with the app.
