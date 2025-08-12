@@ -186,7 +186,7 @@ class Daschboard:
         self.tab2_frame = ctk.CTkFrame(self.tab_2, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab2_frame.pack(fill="both", expand="true")
 
-        ctk.CTkLabel(self.tab2_frame, text="Courses", font=("Verdana", 40), text_color=self.color).pack()
+        ctk.CTkLabel(self.tab2_frame, text="Courses", font=("Verdana", 40, "bold"), text_color=self.color).pack()
 
         self.frame_liste = ctk.CTkFrame(self.tab2_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20, border_color="black", width=800, height=600)
         self.frame_liste.pack(fill="both",expand="true", pady=30)
@@ -229,8 +229,14 @@ class Daschboard:
             button_start.pack(fill="x")
 
     def _widget_profil(self):
-        self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color="blue")
-        self.tab3_frame.pack(fill="both", expand="true")        
+        self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color= self.tab1_frame.cget("fg_color"))
+        self.tab3_frame.pack(fill="both", expand="true")   
+
+        ctk.CTkLabel(self.tab3_frame, text="Profil", text_color=self.color, font=("PT sereif", 35, "bold"), bg_color=self.tab3_frame.cget("fg_color") ).grid(row=0, column=0, sticky="nsew", pady= 40, padx=30) 
+        ctk.CTkLabel(self.tab3_frame, text="Profil", text_color=self.color, font=("PT sereif", 35, "bold"), bg_color=self.tab3_frame.cget("fg_color") ).grid(row=0, column=1, sticky="nsew", pady= 40, padx=30) 
+
+        self.profil_img_frm = ctk.CTkFrame(self.tab3_frame, border_color="red", border_width=2)
+        self.profil_img_frm.grid(row=1, column=0, sticky="nsew", pady=20, padx=30, columnspan= 10)   
             
 
     def _create_canvas(self):

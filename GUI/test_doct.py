@@ -17,7 +17,6 @@ lektion3 = my_class("lektion 3", "je ne sia pas encore ce qui vas dans cette cas
 les = [lektion1, lektion2, lektion3]
 liste = {key: wert for key, wert in enumerate(les, start=1)}
 
-import os
 
 def create_html_file(directory, filename, content):
     # Stelle sicher, dass der Ordner existiert

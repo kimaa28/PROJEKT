@@ -1,6 +1,4 @@
-from asyncio import run
 import customtkinter as ctk
-import time
 
 def lo():
     frame["raise_msg"].configure(text="")
