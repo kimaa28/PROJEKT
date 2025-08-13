@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from tkinter import PhotoImage, Canvas
 from PIL import Image, ImageDraw
+import random as rd
 
 
 
@@ -8,28 +9,23 @@ ctk.set_appearance_mode("light")
 class Daschboard:
     def __init__(self):
         self.app = ctk.CTk()
-        self.W = 21
-        self.H = 25
-       
+        self.color = ("black", "white")
+        self.app.title("Devlearn")
 
-       # windows widh and frame setting
         
-        # left frame for Menu and info
+         # left frame for Menu and info
         self.left_frame = ctk.CTkFrame(self.app, corner_radius=0, border_width=1, fg_color="#99c0b3")
         self.left_frame.pack(fill="both", side="left")
 
         # right frame for all tab and specifics information 
         self.right_frame = ctk.CTkFrame(self.app, fg_color="#99c0b3", corner_radius=0)
         self.right_frame.pack(fill="both", side="right", expand="true")
-        self.color = ("black", "white")
-        # letf frame menu funktion 
         
-        # app width setter
+
         self.app.after(100, self._set_frame_width)
         self._create_image()
         self._rframe_menu()
         self._lframe_menu()
-
         self._create_canvas()
         
         
@@ -37,23 +33,26 @@ class Daschboard:
 
         self.app.mainloop()
 
+
+
+    # i create all image on this funktion or fast all, we have some image the are local managed
     def _create_image(self):
-        self.canva_liste = [ PhotoImage(file=img) for img in ["dash_logo.png","course.png", "profil.png", "setting.png", "logout.png"]]
+        # width ans height for canva
+        self.W = 25
+        self.H = 25
+        self.canva_liste = [ PhotoImage(file=img) for img in ["dash_logo.png","course.png", "profil.png", "settings.png", "logout.png"]]
         # this is just for image path to combinated with pil
-        self.first = "screen.png"
-        self.second = "second.jpeg"
-        self.third = "third.jpeg"
-        self.image_list = [self.first, self.second, self.third]
-        self.image_index = 0
-        self.categories_img = [ ctk.CTkImage(light_image=Image.open(img), size=(40, 40)) for img in ["coding.png", "command.png", "data.png", "linux.png", "commit.png", "security.png"]
-]
+        self.first = "first.jpeg"
+        self.second = "second.webp"
+        self.third = "third.webp"
+        self.fourth = "fourth.jpg"
+        self.image_list = [self.first, self.second, self.third, self.fourth]
+        self.image_index = rd.randrange(len(self.image_list))
+        self.categories_img = [ ctk.CTkImage(light_image=Image.open(img), size=(40, 40)) for img in ["coding.png", "command.png", "data.png", "linux.png", "commit.png", "security.png"] ]
+        self.titel_img = ctk.CTkImage(light_image=Image.open("dev.png"), size=(30, 30))
 
 
-
-           
-
-   
-
+    # set the widht of my tho frame 
     def _set_frame_width(self):
         height_app = self.app.winfo_height()
         width_app= self.app.winfo_width()
@@ -62,23 +61,38 @@ class Daschboard:
         self.left_frame.configure(width=width_l, height=height_app)
         self.right_frame.configure(width=width_r, height=height_app)
 
+
+    # create the left frame or frame menu for the legend
     def _lframe_menu(self):
-        self.titel_label = ctk.CTkLabel(self.left_frame, text="<> DEVLEARN", font=("PT serif", 30), text_color= self.color)
-        self.titel_label.pack(padx=15, pady=30)
+        frame = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
+        frame.pack(pady=10, padx=20, fill="x")
+        self.label_img =  ctk.CTkLabel(frame, image=self.titel_img, text="", anchor="s")
+        self.label_img.grid(row=0, column=0, pady=10, sticky="s")
+        self.titel_label = ctk.CTkLabel(frame, text="DevLearn", font=("DM Sans", 20), text_color= self.color, anchor="s")
+        self.titel_label.grid(row=0, column=1, padx=10)
 
+        # TODO: i would make an image from users with his name on this frame
+        self.img_frame = ctk.CTkFrame(self.left_frame, fg_color="#CBA", height=100, corner_radius=20)
+        self.img_frame.pack(fill="x", padx=20, pady=10)
+
+        # the left frame for all button to another tabs
         self.lframe_one = ctk.CTkFrame(self.left_frame, fg_color= self.left_frame.cget("fg_color"))
-        self.lframe_one.pack(pady=50, fill="x", padx=15)
-        self.menu_list = ["Dashboard", "Courses", "Profil", "Settings"]
-        self.button_cmd = [lambda: self.tabs_menu.set("tab-1"), lambda: self.tabs_menu.set("tab-2"), lambda: self.tabs_menu.set("tab-3"), lambda: print("je suisun gros con")]
+        self.lframe_one.pack(pady=30, fill="x", padx=15)
 
+        #list of label from button
+        # TODO: i would make a better settings tab, this can include many parameter like color setter, notifications enable and disable or text_ height
+        self.menu_list = ["Dashboard", "Courses", "Profil", "Settings"]
+
+        # list of command button
+        self.button_cmd = [lambda: self.tabs_menu.set("tab-1"), lambda: self.tabs_menu.set("tab-2"), lambda: self.tabs_menu.set("tab-3"), lambda: print("not yet available")]
+
+        # Button creation
+        # this small commbination from enumerate and zip make the same think like 10 code line or more
         for index, (label, cmd) in enumerate(zip(self.menu_list, self.button_cmd)):
-            Button = ctk.CTkButton(self.lframe_one, text=label, command=cmd, hover_color="#005f73", corner_radius=20, fg_color=self.left_frame.cget("fg_color"), font=("PT serif", 23), anchor="w", text_color=self.color)
+            Button = ctk.CTkButton(self.lframe_one, text=label, command=cmd, hover_color="#005f73", corner_radius=20, fg_color=self.left_frame.cget("fg_color"), font=("DM Sans", 18), anchor="w", text_color=self.color)
             Button.grid(row=index, column=1, sticky="w", pady=17)
 
-
         
-
-        # # left frame  button menu
         
         # #dash button for dashboard tabview pov: i'm tired
         # self.dash_button = ctk.CTkButton(self.lframe_one, text="Dashboard", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= lambda: self.tabs_menu.set("tab-1"), text_color= self.color)
@@ -95,18 +109,18 @@ class Daschboard:
         
 
 
-
-        #frame for logout and profil photo
+        #frame for logout
         self.lframe_two = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
         self.lframe_two.pack(side="bottom", pady=20, padx=25, fill="x")
         # button for logout
-        self.logout_button = ctk.CTkButton(self.lframe_two, text="logout", font=("PT serif", 23), fg_color= self.lframe_one.cget("fg_color"), command= self.app.quit, text_color=self.color)
-        self.logout_button.grid(row=0, column=1, sticky="e", pady=17)
+        self.logout_button = ctk.CTkButton(self.lframe_two, text="Logout", font=("DM Sans", 18), fg_color= self.lframe_one.cget("fg_color"), command= self.app.quit, text_color=self.color)
+        self.logout_button.grid(row=0, column=1, sticky="e", pady=10)
         
        
-
+    # create all tabs for all menu 
     def _rframe_menu(self):
-        self.tabs_menu = ctk.CTkTabview(master=self.right_frame, anchor="new", corner_radius=0)
+        
+        self.tabs_menu = ctk.CTkTabview(master=self.right_frame, anchor="nsew", corner_radius=0)
         self.tabs_menu.pack(fill="both", expand="true")
         self.tab_1 = self.tabs_menu.add("tab-1")
         self.tab_2 = self.tabs_menu.add("tab-2")
@@ -116,42 +130,38 @@ class Daschboard:
         self._widget_dash()
         self._widget_courses()
         self._widget_profil()
+
         ctk.CTkLabel(self.right_frame, text="© 2025 by jordan kitio zangio", font=("Arial", 15), text_color= self.color).pack()
 
-    # create all widget for my dashboard i choice the funktion this is better andmy code can be beautifull
 
+    # dashboard tab
     def _widget_dash(self):
-        # it is difficult to display some informations in a tabview so i need zu mke a firs frame who take the fill = "both" and i can normaly displaying
-
+        
+        # it is difficult to display some informations in a tabview so i need zu make a firt frame who take the fill = "both" and i can normaly displaying
         self.tab1_frame = ctk.CTkFrame(self.tab_1, fg_color= self.tab_1.cget("fg_color"))
         self.tab1_frame.pack(fill="both", expand="true")
-
-       
-        # i don't really no how  i can name this frame i choice random frame it isn't a really random image we just  have 3 image there can automatically switch after a set time, i think switch image is more interssting but we are talking about a  frame
-
-        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20, border_width=4)
-        self.custom_frame.pack(fill="x", padx=50, pady=40)
-
-
+        
+        # frame 
+        self.custom_frame = ctk.CTkFrame(self.tab1_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20)
+        self.custom_frame.pack(fill="x", padx=20, pady=20)
 
         self.welcome_label = ctk.CTkLabel(self.custom_frame, text="Willkommen zurück, jordan!", text_color=self.color, font=("PT serif", 35))
         self.welcome_label.grid(row=0, column=0, pady=20, padx=20, sticky="w")
 
-
-
-        # this second frame is for the random frame 
+        # this second frame is for the random image
         self.random_image_frame= ctk.CTkFrame(self.custom_frame, border_width=4, width=600, height=500 , fg_color= self.tab1_frame.cget("fg_color"), corner_radius= 30)
-        self.random_image_frame.grid(row=1, column=0, padx=30, pady=20)
+        self.random_image_frame.grid(row=1, column=0, padx=20, pady=20)
         
         # frame for learning statistics
-        self.scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color=self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350)
+        # TODO: make a responsive relation with label and information from this learnings statistics to the webseite
+        self.scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color=self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350, border_width=2, )
         self.scroll.grid(row=1, column=1, padx=40)
-        self.mittel_scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color= self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350)
+        # frame for todo or focus of the learning or next journey
+        self.mittel_scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color= self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350, border_width=3)
         self.mittel_scroll.grid(row=1, column=2, padx=40)
 
-        
-
         # title from this frame
+        # TODO: an explicite description from every quick accec course and a button 
         ctk.CTkLabel(self.scroll, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.scroll.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
         self.frame_list = ["120h\nlearn Time", "23\nTotal course", "30%\nProgress", "Friend", "Coin", "Level"]
 
@@ -159,7 +169,6 @@ class Daschboard:
             ctk.CTkLabel(self.scroll, width=200,height=70, corner_radius=20, fg_color="#949494", text=text, text_color=self.color).grid(row=i, column=0, padx=20, pady=10)
 
         #  frame forquick access to course
-
         self.course_type_frame = ctk.CTkFrame(self.tab1_frame, corner_radius=20,fg_color=self.custom_frame.cget("fg_color"), border_width=4)
         self.course_type_frame.pack(pady=10, padx=50, fill="x")
 
@@ -177,12 +186,14 @@ class Daschboard:
             image_label = ctk.CTkLabel(frame, image=img, text="")
             image_label.pack(side="left", padx=10, pady=20)
 
-        self._load_image(self.first)
+        self._load_image(rd.choice(self.image_list))
         self._start_image_loop()
+        
            
-    # all widget on my course tab as a funktion
+    
     def _widget_courses(self):
-
+        # all widget from my course tab
+        # TODO: make the name of tutor like a button to the webpage from this one
         self.tab2_frame = ctk.CTkFrame(self.tab_2, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab2_frame.pack(fill="both", expand="true")
 
@@ -227,8 +238,12 @@ class Daschboard:
             label_tutor.grid(row=0, column=1, padx=5)
             button_start = ctk.CTkButton(frame2, text="Start Course", text_color="white", fg_color="#005f73")
             button_start.pack(fill="x")
+            
 
+    
     def _widget_profil(self):
+        # tab for course 
+        #TODO: creste a neu tab to modified some personal information and more this can be trhought the click on edit be done, and add some variable to schwith button whose can hve consequenses
         self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab3_frame.pack(fill="both", expand="true")   
 
@@ -254,9 +269,7 @@ class Daschboard:
             label = ctk.CTkLabel(frame, text=ele, text_color=self.color, font=("verdana", 10), fg_color=frame.cget("fg_color"))
             label.pack(side="left", padx=10, pady=10)
 
-
         # notifications frame
-
         self.notif_list = ["Email notification", "In-app notifications", "App uptdate"]
         self.notification_frame = ctk.CTkFrame(self.tab3_frame, fg_color=self.tab1_frame.cget("fg_color"), border_color=self.photo_frame.cget("border_color"), border_width=2, corner_radius=20)
         self.notification_frame.pack(fill="x", padx=20, pady=20)
@@ -269,10 +282,16 @@ class Daschboard:
             frame.pack(fill="x", padx=20, pady=10)
             label = ctk.CTkLabel(frame, text=ele, text_color=self.color, font=("verdana", 10), fg_color=frame.cget("fg_color"))
             label.pack(side="left", padx=10, pady=10)
+            if index ==  0 or index == 1:
 
+                switch =ctk.CTkSwitch(frame, onvalue="on", offvalue="off", text="", width=45, height=35, switch_width=35, progress_color=self.right_frame.cget("fg_color"), button_color="#5C8790", button_hover_color="#343232", fg_color="#343232")
+                switch.pack(side="right", padx=10, pady=10)
 
             
-
+            else:
+                pass
+   
+    # crestion of canva 
     def _create_canvas(self):
 
         for index, img in enumerate(self.canva_liste):
