@@ -232,11 +232,45 @@ class Daschboard:
         self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab3_frame.pack(fill="both", expand="true")   
 
-        ctk.CTkLabel(self.tab3_frame, text="Profil", text_color=self.color, font=("PT sereif", 35, "bold"), bg_color=self.tab3_frame.cget("fg_color") ).grid(row=0, column=0, sticky="nsew", pady= 40, padx=30) 
-        ctk.CTkLabel(self.tab3_frame, text="Profil", text_color=self.color, font=("PT sereif", 35, "bold"), bg_color=self.tab3_frame.cget("fg_color") ).grid(row=0, column=1, sticky="nsew", pady= 40, padx=30) 
+        self.titel_frame = ctk.CTkFrame(self.tab3_frame, fg_color=self.tab1_frame.cget("fg_color"))
+        self.titel_frame.pack(fill="x", padx=20, pady=10)
 
-        self.profil_img_frm = ctk.CTkFrame(self.tab3_frame, border_color="red", border_width=2)
-        self.profil_img_frm.grid(row=1, column=0, sticky="nsew", pady=20, padx=30, columnspan= 10)   
+        ctk.CTkLabel(self.titel_frame, text="Profil", text_color=self.color, font=("PT sereif", 35), bg_color=self.tab3_frame.cget("fg_color") ).grid(row=0, column=0, sticky="nsew", pady= 10) 
+
+        self.photo_frame = ctk.CTkFrame(self.tab3_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=20, height=250, border_width=2, border_color= "#8F8484")
+        self.photo_frame.pack(fill="x", padx=20, pady=20)
+        ctk.CTkLabel(self.photo_frame, text="i put the user image on this frame later").pack(padx=20, pady=100)
+        self.account_settings = ["Edit profile", "Change passwort", "Delete Account"]
+
+        self.account_frame = ctk.CTkFrame(self.tab3_frame, fg_color=self.tab1_frame.cget("fg_color"), border_color=self.photo_frame.cget("border_color"), border_width=2, corner_radius=20)
+        self.account_frame.pack(fill="x", padx=20, pady=20)
+        self.titel_account = ctk.CTkFrame(self.account_frame, fg_color=self.tab1_frame.cget("fg_color"))
+        self.titel_account.pack(fill="x", padx=10, pady=10)
+        ctk.CTkLabel(self.titel_account, text="Account settings", text_color=self.color, font=("Arial",  15, "bold")).pack(side="left", padx=10, pady=10)
+
+        for index, ele in enumerate(self.account_settings, start=1):
+            frame = ctk.CTkFrame(self.account_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=10, border_color=self.photo_frame.cget("border_color"), border_width=1)
+            frame.pack(fill="x", padx=20, pady=10)
+            label = ctk.CTkLabel(frame, text=ele, text_color=self.color, font=("verdana", 10), fg_color=frame.cget("fg_color"))
+            label.pack(side="left", padx=10, pady=10)
+
+
+        # notifications frame
+
+        self.notif_list = ["Email notification", "In-app notifications", "App uptdate"]
+        self.notification_frame = ctk.CTkFrame(self.tab3_frame, fg_color=self.tab1_frame.cget("fg_color"), border_color=self.photo_frame.cget("border_color"), border_width=2, corner_radius=20)
+        self.notification_frame.pack(fill="x", padx=20, pady=20)
+        self.titel_notif = ctk.CTkFrame(self.notification_frame, fg_color=self.tab1_frame.cget("fg_color"))
+        self.titel_notif.pack(fill="x", padx=10, pady=10)
+        ctk.CTkLabel(self.titel_notif, text="Notifications Preferences", text_color=self.color, font=("Arial",  15, "bold")).pack(side="left", padx=10, pady=10)
+
+        for index, ele in enumerate(self.notif_list):
+            frame = ctk.CTkFrame(self.notification_frame, fg_color=self.tab1_frame.cget("fg_color"), corner_radius=10, border_color=self.photo_frame.cget("border_color"), border_width=1)
+            frame.pack(fill="x", padx=20, pady=10)
+            label = ctk.CTkLabel(frame, text=ele, text_color=self.color, font=("verdana", 10), fg_color=frame.cget("fg_color"))
+            label.pack(side="left", padx=10, pady=10)
+
+
             
 
     def _create_canvas(self):
