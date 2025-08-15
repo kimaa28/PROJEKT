@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 7: Listen erstellen</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 7: Listen erstellen</h1>
+                <p>
+HTML bietet drei Haupttypen von Listen: geordnete Listen (&#x3C;ol&#x3E;), ungeordnete Listen (&#x3C;ul&#x3E;) 
+und Beschreibungslisten (&#x3C;dl&#x3E;).
+Geordnete Listen verwenden Nummerierung, ungeordnete Listen verwenden Aufz&#xE4;hlungszeichen.
+Jeder Listeneintrag wird mit &#x3C;li&#x3E; erstellt.
+Listen k&#xF6;nnen verschachtelt werden f&#xFC;r hierarchische Strukturen.
+Beschreibungslisten bestehen aus Begriffen (&#x3C;dt&#x3E;) und Beschreibungen (&#x3C;dd&#x3E;).
+Listen sind semantisch wichtig und helfen bei der Strukturierung von Inhalten.
+CSS kann das Aussehen von Listen vollst&#xE4;ndig anpassen.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Listen in HTML&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Verschiedene Listentypen&#x3C;/h1&#x3E;
+    
+    &#x3C;h2&#x3E;Ungeordnete Liste (Aufz&#xE4;hlung)&#x3C;/h2&#x3E;
+    &#x3C;ul&#x3E;
+        &#x3C;li&#x3E;&#xC4;pfel&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;Bananen&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;Orangen&#x3C;/li&#x3E;
+    &#x3C;/ul&#x3E;
+    
+    &#x3C;h2&#x3E;Geordnete Liste (Nummerierung)&#x3C;/h2&#x3E;
+    &#x3C;ol&#x3E;
+        &#x3C;li&#x3E;HTML lernen&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;CSS verstehen&#x3C;/li&#x3E;
+        &#x3C;li&#x3E;JavaScript &#xFC;ben&#x3C;/li&#x3E;
+    &#x3C;/ol&#x3E;
+    
+    &#x3C;h2&#x3E;Verschachtelte Liste&#x3C;/h2&#x3E;
+    &#x3C;ul&#x3E;
+        &#x3C;li&#x3E;Frontend-Technologien
+            &#x3C;ul&#x3E;
+                &#x3C;li&#x3E;HTML&#x3C;/li&#x3E;
+                &#x3C;li&#x3E;CSS&#x3C;/li&#x3E;
+                &#x3C;li&#x3E;JavaScript&#x3C;/li&#x3E;
+            &#x3C;/ul&#x3E;
+        &#x3C;/li&#x3E;
+        &#x3C;li&#x3E;Backend-Technologien
+            &#x3C;ol&#x3E;
+                &#x3C;li&#x3E;PHP&#x3C;/li&#x3E;
+                &#x3C;li&#x3E;Python&#x3C;/li&#x3E;
+                &#x3C;li&#x3E;Node.js&#x3C;/li&#x3E;
+            &#x3C;/ol&#x3E;
+        &#x3C;/li&#x3E;
+    &#x3C;/ul&#x3E;
+    
+    &#x3C;h2&#x3E;Beschreibungsliste&#x3C;/h2&#x3E;
+    &#x3C;dl&#x3E;
+        &#x3C;dt&#x3E;HTML&#x3C;/dt&#x3E;
+        &#x3C;dd&#x3E;Hypertext Markup Language - strukturiert Webinhalte&#x3C;/dd&#x3E;
+        
+        &#x3C;dt&#x3E;CSS&#x3C;/dt&#x3E;
+        &#x3C;dd&#x3E;Cascading Style Sheets - gestaltet das Aussehen&#x3C;/dd&#x3E;
+    &#x3C;/dl&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+&#x3C;ul&#x3E; f&#xFC;r Listen ohne bestimmte Reihenfolge (Shopping-Listen, Features).
+&#x3C;ol&#x3E; f&#xFC;r Listen mit wichtiger Reihenfolge (Anleitungen, Rankings).
+Verschachtelte Listen erstellen Hierarchien durch Listen innerhalb von &#x3C;li&#x3E;-Elementen.
+&#x3C;dl&#x3E;, &#x3C;dt&#x3E; und &#x3C;dd&#x3E; sind perfekt f&#xFC;r Glossare und Definitionen.
+Listen k&#xF6;nnen mit CSS-Eigenschaften wie list-style-type angepasst werden.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code7.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen7.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du die Grundlagen von CSS kennen.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion6">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion8">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

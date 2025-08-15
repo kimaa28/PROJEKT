@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 8: Einführung in CSS</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 8: Einführung in CSS</h1>
+                <p>
+CSS (Cascading Style Sheets) ist die Sprache, die das Aussehen von HTML-Elementen bestimmt.
+Während HTML die Struktur definiert, definiert CSS das Design: Farben, Schriftarten,
+Abstände, Layout und Animationen.
+CSS folgt dem Prinzip der Trennung von Inhalt und Darstellung.
+Es gibt drei Möglichkeiten, CSS einzubinden: inline, internal oder external.
+CSS-Regeln bestehen aus Selektoren und Deklarationsblöcken.
+Das Cascading-Prinzip bestimmt, welche Stile bei Konflikten angewendet werden.
+CSS macht Webseiten erst richtig schön und benutzerfreundlich.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;CSS Grundlagen&#x3C;/title&#x3E;
+    &#x3C;style&#x3E;
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .highlight {
+            background-color: #f39c12;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        #special-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    &#x3C;/style&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Willkommen zu CSS!&#x3C;/h1&#x3E;
+    
+    &#x3C;p&#x3E;Dies ist ein normaler Absatz.&#x3C;/p&#x3E;
+    
+    &#x3C;p class=&#x22;highlight&#x22;&#x3E;Dieser Text hat eine besondere Hervorhebung.&#x3C;/p&#x3E;
+    
+    &#x3C;p id=&#x22;special-text&#x22;&#x3E;Dieser Text hat eine eindeutige ID.&#x3C;/p&#x3E;
+    
+    &#x3C;p style=&#x22;color: green; font-style: italic;&#x22;&#x3E;
+        Dieser Text verwendet Inline-CSS.
+    &#x3C;/p&#x3E;
+    
+    &#x3C;div&#x3E;
+        &#x3C;h2&#x3E;CSS-Eigenschaften&#x3C;/h2&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;Farben (color, background-color)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Schriftarten (font-family, font-size)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Abst&#xE4;nde (margin, padding)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Rahmen (border)&#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Selektoren bestimmen, welche Elemente gestylt werden: Elementname (h1), Klasse (.highlight), ID (#special-text).
+Deklarationen bestehen aus Eigenschaft und Wert, getrennt durch einen Doppelpunkt.
+Internal CSS steht im &#x3C;style&#x3E;-Tag im <head>, External CSS in separaten .css-Dateien.
+Inline-CSS hat die höchste Priorität, sollte aber sparsam verwendet werden.
+Die Kaskadierung löst Konflikte zwischen verschiedenen CSS-Regeln.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion vertiefst du dein Wissen über CSS-Selektoren.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion7">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion9">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 1: Was ist HTML?</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 1: Was ist HTML?</h1>
+                <p>
+HTML steht für Hypertext Markup Language und bildet das Grundgerüst jeder Webseite.
+Es beschreibt, wie Inhalte strukturiert werden sollen. HTML ist keine Programmiersprache, 
+sondern eine textbasierte Sprache, die es ermöglicht, Text, Bilder, Links, Tabellen und mehr
+auf Webseiten darzustellen.
+HTML wurde in den 1990ern entwickelt, um wissenschaftliche Dokumente im Internet verlinkbar zu machen.
+Heute ist es ein zentraler Bestandteil des World Wide Web und wird weltweit verwendet.
+Jede HTML-Seite besteht aus sogenannten Tags (z. B. &#x3C;p&#x3E;, &#x3C;h1&#x3E;, &#x3C;img&#x3E;), die Inhalte strukturieren.
+Das Ziel von HTML ist es, die Bedeutung und Funktion des Inhalts zu definieren, nicht sein Aussehen.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;html&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Meine erste HTML-Seite&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Willkommen!&#x3C;/h1&#x3E;
+    &#x3C;p&#x3E;Dies ist ein einfacher Absatz.&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+In diesem Beispiel beginnt die Datei mit einem &#x3C;html&#x3E;-Element, das alles umfasst.
+Der &#x3C;head&#x3E;-Teil enthält den Titel der Seite (sichtbar im Browser-Tab),
+und im &#x3C;body&#x3E; steht alles, was der Benutzer direkt sieht. Jede HTML-Seite sollte mit &#x3C;!DOCTYPE html&#x3E; starten,
+um dem Browser zu sagen, dass es sich um ein HTML5-Dokument handelt.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion geht es um den Aufbau einer HTML-Seite.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion0">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion2">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

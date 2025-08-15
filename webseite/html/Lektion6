@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 6: Bilder einbinden</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 6: Bilder einbinden</h1>
+                <p>
+Bilder werden mit dem &#x3C;img&#x3E;-Tag eingebunden und sind selbstschließende Elemente.
+Das src-Attribut gibt den Pfad zum Bild an, alt-Attribut beschreibt das Bild für Screenreader.
+Immer ein alt-Attribut verwenden - es ist essentiell für die Barrierefreiheit!
+width und height können die Bildgröße kontrollieren, aber CSS ist dafür besser geeignet.
+Das title-Attribut zeigt einen Tooltip beim Hovern an.
+Moderne Webseiten nutzen oft das <picture>-Element für responsive Bilder.
+Bildformate wie WebP bieten bessere Kompression als klassische JPG/PNG.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Bilder einbinden&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Verschiedene Arten der Bildeinbindung&#x3C;/h1&#x3E;
+    
+    &#x3C;h2&#x3E;Einfaches Bild&#x3C;/h2&#x3E;
+    &#x3C;img src=&#x22;landschaft.jpg&#x22; alt=&#x22;Sch&#xF6;ne Berglandschaft bei Sonnenuntergang&#x22; 
+         title=&#x22;Foto aus den Alpen&#x22;&#x3E;
+    
+    &#x3C;h2&#x3E;Bild mit Gr&#xF6;&#xDF;enangabe&#x3C;/h2&#x3E;
+    &#x3C;img src=&#x22;logo.png&#x22; alt=&#x22;Firmenlogo&#x22; width=&#x22;200&#x22; height=&#x22;100&#x22;&#x3E;
+    
+    &#x3C;h2&#x3E;Responsive Bild mit Picture-Element&#x3C;/h2&#x3E;
+    &#x3C;picture&#x3E;
+        &#x3C;source srcset=&#x22;bild-gross.webp&#x22; media=&#x22;(min-width: 800px)&#x22;&#x3E;
+        &#x3C;source srcset=&#x22;bild-mittel.webp&#x22; media=&#x22;(min-width: 400px)&#x22;&#x3E;
+        &#x3C;img src=&#x22;bild-klein.jpg&#x22; alt=&#x22;Produktfoto eines Smartphones&#x22;&#x3E;
+    &#x3C;/picture&#x3E;
+    
+    &#x3C;h2&#x3E;Bild als Link&#x3C;/h2&#x3E;
+    &#x3C;a href=&#x22;grosses-bild.jpg&#x22;&#x3E;
+        &#x3C;img src=&#x22;thumbnail.jpg&#x22; alt=&#x22;Klicken f&#xFC;r gr&#xF6;&#xDF;ere Ansicht&#x22;&#x3E;
+    &#x3C;/a&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Das alt-Attribut ist nicht optional - es macht Bilder für sehbehinderte Menschen zugänglich.
+Bei dekorativen Bildern kann alt="" (leer) verwendet werden.
+Das &#x3C;picture&#x3E;-Element lädt je nach Bildschirmgröße unterschiedliche Bilder.
+srcset ermöglicht die Bereitstellung verschiedener Bildauflösungen.
+Bilder in Links werden automatisch mit einem blauen Rahmen versehen (kann per CSS entfernt werden).
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Als Nächstes lernst du, wie Listen zur Strukturierung von Inhalten verwendet werden.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion5">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion7">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

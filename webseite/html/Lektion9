@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 9: CSS-Selektoren und Eigenschaften</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 9: CSS-Selektoren und Eigenschaften</h1>
+                <p>
+CSS-Selektoren sind das Herzstück von CSS - sie bestimmen, welche HTML-Elemente gestylt werden.
+Es gibt verschiedene Arten: Element-Selektoren, Klassen-Selektoren, ID-Selektoren,
+Attribut-Selektoren und Pseudo-Selektoren.
+Kombinatoren ermöglichen komplexe Auswahlen: Nachfahren, Kinder, Geschwister.
+Wichtige CSS-Eigenschaften umfassen Farben, Typografie, Box-Model und Positionierung.
+Die Spezifität bestimmt, welche Regeln bei Konflikten angewendet werden.
+Moderne CSS bietet auch erweiterte Selektoren wie :nth-child() und :not().
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;CSS-Selektoren&#x3C;/title&#x3E;
+    &#x3C;style&#x3E;
+        /* Element-Selektor */
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Klassen-Selektor */
+        .info-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        /* ID-Selektor */
+        #main-title {
+            color: #1976D2;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Nachfahren-Selektor */
+        .article p {
+            text-indent: 20px;
+        }
+        
+        /* Pseudo-Selektoren */
+        a:hover {
+            color: #FF5722;
+            text-decoration: underline;
+        }
+        
+        li:first-child {
+            font-weight: bold;
+        }
+        
+        /* Attribut-Selektor */
+        input[type=&#x22;text&#x22;] {
+            border: 2px solid #4CAF50;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        /* Kombinator - direktes Kind */
+        nav &#x3E; ul {
+            list-style: none;
+            padding: 0;
+        }
+    &#x3C;/style&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1 id=&#x22;main-title&#x22;&#x3E;CSS-Selektoren Demo&#x3C;/h1&#x3E;
+    
+    &#x3C;div class=&#x22;info-box&#x22;&#x3E;
+        &#x3C;p&#x3E;Diese Box verwendet den Klassen-Selektor .info-box&#x3C;/p&#x3E;
+    &#x3C;/div&#x3E;
+    
+    &#x3C;nav&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#home&#x22;&#x3E;Startseite&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#about&#x22;&#x3E;&#xDC;ber uns&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;&#x3C;a href=&#x22;#contact&#x22;&#x3E;Kontakt&#x3C;/a&#x3E;&#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+    &#x3C;/nav&#x3E;
+    
+    &#x3C;article class=&#x22;article&#x22;&#x3E;
+        &#x3C;h2&#x3E;Artikel mit spezieller Formatierung&#x3C;/h2&#x3E;
+        &#x3C;p&#x3E;Dieser Absatz hat einen Einzug durch den Nachfahren-Selektor.&#x3C;/p&#x3E;
+        &#x3C;p&#x3E;Auch dieser Absatz ist betroffen.&#x3C;/p&#x3E;
+    &#x3C;/article&#x3E;
+    
+    &#x3C;form&#x3E;
+        &#x3C;label&#x3E;Name: &#x3C;input type=&#x22;text&#x22; placeholder=&#x22;Ihr Name&#x22;&#x3E;&#x3C;/label&#x3E;
+        &#x3C;label&#x3E;E-Mail: &#x3C;input type=&#x22;email&#x22; placeholder=&#x22;ihre@email.de&#x22;&#x3E;&#x3C;/label&#x3E;
+    &#x3C;/form&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Element-Selektoren stylen alle Elemente eines Typs (p, h1, div).
+Klassen-Selektoren (.klassenname) können mehrfach verwendet werden.
+ID-Selektoren (#idname) sollten nur einmal pro Seite verwendet werden.
+Pseudo-Selektoren wie :hover reagieren auf Benutzerinteraktionen.
+Kombinatoren wie > (direktes Kind) und Leerzeichen (Nachfahre) ermöglichen präzise Auswahlen.
+Spezifität: inline > ID > Klasse > Element.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code9.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen9.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du das CSS Box-Model kennen.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion8">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion10">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

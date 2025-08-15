@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 11: Responsive Design und erweiterte CSS-Techniken</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 11: Responsive Design und erweiterte CSS-Techniken</h1>
+                <p>
+Responsive Design sorgt dafür, dass Webseiten auf allen Geräten gut aussehen und funktionieren.  
+Media Queries ermöglichen verschiedene CSS-Regeln für verschiedene Bildschirmgrößen.
+Mobile-First Ansatz: Zuerst für kleine Bildschirme designen, dann für größere erweitern.
+Relative Einheiten wie %, em, rem und vw/vh passen sich an verschiedene Bildschirmgrößen an.
+CSS-Variablen (Custom Properties) machen Stylesheets wartbarer und konsistenter.
+Moderne CSS-Features wie Transitions, Transforms und Animationen verbessern die Benutzererfahrung.
+Flexbox und Grid sind die Grundlagen für responsive Layouts.
+Progressive Enhancement: Grundfunktionalität für alle, erweiterte Features für moderne Browser.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
+    &#x3C;title&#x3E;Responsive Design&#x3C;/title&#x3E;
+    &#x3C;style&#x3E;
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --bg-color: #ecf0f1;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: &#x27;Segoe UI&#x27;, Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .responsive-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .button:hover {
+            background: #c0392b;
+        }
+        
+        /* Mobile First - Standard Styles f&#xFC;r mobile Ger&#xE4;te */
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        /* Tablet Styles */
+        @media screen and (min-width: 768px) {
+            .flex-container {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .container {
+                padding: 0 40px;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media screen and (min-width: 1024px) {
+            body {
+                font-size: 1.1rem;
+            }
+            
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Large Desktop */
+        @media screen and (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --text-color: #ecf0f1;
+                --bg-color: #2c3e50;
+            }
+            
+            .card {
+                background: #34495e;
+                color: #ecf0f1;
+            }
+        }
+    &#x3C;/style&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;header&#x3E;
+        &#x3C;div class=&#x22;container&#x22;&#x3E;
+            &#x3C;h1 class=&#x22;animate&#x22;&#x3E;Responsive Webdesign&#x3C;/h1&#x3E;
+            &#x3C;p&#x3E;Eine Webseite f&#xFC;r alle alle G &#x3C;/p&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/header&#x3E;
+    
+    &#x3C;main class=&#x22;container&#x22;&#x3E;
+        &#x3C;section class=&#x22;flex-container animate&#x22;&#x3E;
+            &#x3C;div&#x3E;
+                &#x3C;h2&#x3E;Mobile First Ansatz&#x3C;/h2&#x3E;
+                &#x3C;p&#x3E;Diese Seite wurde zuerst f&#xFC;r mobile Ger&#xE4;te entwickelt und dann f&#xFC;r gr&#xF6;&#xDF;ere Bildschirme erweitert.&#x3C;/p&#x3E;
+                &#x3C;a href=&#x22;#&#x22; class=&#x22;button&#x22;&#x3E;Mehr erfahren&#x3C;/a&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div&#x3E;
+                &#x3C;img src=&#x22;https://picsum.photos/400/300&#x22; alt=&#x22;Responsive Design Beispiel&#x22; class=&#x22;responsive-image&#x22;&#x3E;
+            &#x3C;/div&#x3E;
+        &#x3C;/section&#x3E;
+        
+        &#x3C;section class=&#x22;grid&#x22;&#x3E;
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;Media Queries&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;Verschiedene CSS-Regeln f&#xFC;r verschiedene Bildschirmgr&#xF6;&#xDF;en. Ab 768px wird das Layout zweispaltig, ab 1024px dreispaltig.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;Flexible Einheiten&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;Verwendung von %, em, rem und Viewport-Einheiten (vw, vh) statt festen Pixelwerten f&#xFC;r bessere Skalierbarkeit.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;CSS-Variablen&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;Custom Properties erm&#xF6;glichen konsistente Farben und Werte im gesamten Stylesheet und einfache Wartung.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;Grid &#x26; Flexbox&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;Moderne Layout-Methoden, die automatisch responsive Verhalten bieten ohne komplexe Media Queries.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;Animationen&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;CSS-Transitions und Keyframe-Animationen verbessern die Benutzererfahrung ohne JavaScript.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+            
+            &#x3C;div class=&#x22;card animate&#x22;&#x3E;
+                &#x3C;h3&#x3E;Dark Mode&#x3C;/h3&#x3E;
+                &#x3C;p&#x3E;Unterst&#xFC;tzung f&#xFC;r das System-Farbschema des Benutzers mit prefers-color-scheme Media Query.&#x3C;/p&#x3E;
+            &#x3C;/div&#x3E;
+        &#x3C;/section&#x3E;
+    &#x3C;/main&#x3E;
+    
+    &#x3C;script&#x3E;
+        // Progressive Enhancement: Animation nur wenn JavaScript verf&#xFC;gbar
+        document.addEventListener(&#x27;DOMContentLoaded&#x27;, function() {
+            const cards = document.querySelectorAll(&#x27;.card&#x27;);
+            
+            const observer = new IntersectionObserver((entries) =&#x3E; {
+                entries.forEach(entry =&#x3E; {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = Math.random() * 0.3 + &#x27;s&#x27;;
+                        entry.target.classList.add(&#x27;animate&#x27;);
+                    }
+                });
+            });
+            
+            cards.forEach(card =&#x3E; observer.observe(card));
+        });
+    &#x3C;/script&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Mobile-First bedeutet: Basis-Styling für mobile Geräte, dann Media Queries für größere Bildschirme.
+clamp(min, preferred, max) ermöglicht flüssige Typografie zwischen verschiedenen Bildschirmgrößen.
+CSS-Variablen (--variable-name) können mit var(--variable-name) verwendet werden.
+auto-fit und minmax() in CSS Grid erstellen automatisch responsive Spalten.
+prefers-color-scheme erkennt die Systemeinstellung für helle/dunkle Themes.
+Intersection Observer API lädt Animationen nur bei Bedarf für bessere Performance.
+Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit JavaScript.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code11.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen11.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Herzlichen Glückwunsch! Du hast alle HTML- und CSS-Grundlagen erfolgreich durchlaufen.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion10">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion12">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 3: Überschriften und Absätze</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 3: Überschriften und Absätze</h1>
+                <p>
+HTML bietet sechs verschiedene Überschriftenebenen von &#x3C;h1&#x3E; bis &#x3C;h6&#x3E;.
+&#x3C;h1&#x3E; ist die wichtigste Überschrift, &#x3C;h6&#x3E; die unwichtigste.
+Diese Hierarchie hilft nicht nur bei der visuellen Gliederung, sondern auch bei der
+Suchmaschinenoptimierung und der Barrierefreiheit.
+Absätze werden mit &#x3C;p&#x3E;-Tags erstellt und sollten thematisch zusammengehörige Inhalte gruppieren.
+Zwischen Absätzen entstehen automatisch Abstände, die das Lesen erleichtern.
+Eine gute Überschriftenstruktur ist wie ein Inhaltsverzeichnis - sie zeigt die Hierarchie des Inhalts.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;&#xDC;berschriften und Abs&#xE4;tze&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Hauptthema der Seite&#x3C;/h1&#x3E;
+    &#x3C;p&#x3E;Dies ist ein einleitender Absatz zum Hauptthema.&#x3C;/p&#x3E;
+    
+    &#x3C;h2&#x3E;Erstes Unterthema&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Hier wird das erste Unterthema behandelt.&#x3C;/p&#x3E;
+    
+    &#x3C;h3&#x3E;Detailpunkt&#x3C;/h3&#x3E;
+    &#x3C;p&#x3E;Spezifische Details zu diesem Punkt.&#x3C;/p&#x3E;
+    
+    &#x3C;h2&#x3E;Zweites Unterthema&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Ein weiterer wichtiger Bereich wird hier besprochen.&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Die Überschriften bilden eine logische Hierarchie: H1 für den Haupttitel,
+H2 für Hauptkapitel, H3 für Unterkapitel usw.
+Niemals sollte eine Überschriftenebene übersprungen werden (z.B. von H2 direkt zu H4).
+Jeder Absatz behandelt idealerweise nur einen Gedanken oder eine Idee.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du verschiedene Textformatierungen kennen.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion2">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion4">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

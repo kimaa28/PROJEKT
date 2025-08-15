@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 2: Grundstruktur von HTML</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 2: Grundstruktur von HTML</h1>
+                <p>
+Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
+Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
+Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
+Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
+Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
+Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
+Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
+    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
+    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
+    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
+Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
+Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
+Der viewport-Tag ist besonders wichtig für mobile Geräte.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 4: Textformatierung</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 4: Textformatierung</h1>
+                <p>
+HTML bietet verschiedene Tags zur Textformatierung, die sowohl visuelle als auch semantische Bedeutung haben.
+&#x3C;strong&#x3E; macht Text fett und betont seine Wichtigkeit, während &#x3C;em&#x3E; Text kursiv macht und Betonung anzeigt.
+&#x3C;b&#x3E; und &#x3C;i&#x3E; sind rein visuelle Tags ohne semantische Bedeutung.
+Weitere nützliche Tags sind &#x3C;mark&#x3E; für Hervorhebungen, &#x3C;small&#x3E; für Kleingedrucktes,
+&#x3C;del&#x3E;für durchgestrichenen Text und &#x3C;ins&#x3E; für eingefügten Text.
+Die semantischen Tags sind wichtig für Screenreader und Suchmaschinen.
+    </p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Textformatierung&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Verschiedene Textformatierungen&#x3C;/h1&#x3E;
+    
+    &#x3C;p&#x3E;Dieser Text enth&#xE4;lt &#x3C;strong&#x3E;wichtige Informationen&#x3C;/strong&#x3E; und 
+    &#x3C;em&#x3E;betonte Passagen&#x3C;/em&#x3E;.&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;Hier ist &#x3C;mark&#x3E;hervorgehobener Text&#x3C;/mark&#x3E; zu sehen.&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;&#x3C;small&#x3E;Dies ist kleingedruckter Text f&#xFC;r Zusatzinformationen.&#x3C;/small&#x3E;&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;Der alte Preis war &#x3C;del&#x3E;50&#x20AC;&#x3C;/del&#x3E;, jetzt nur &#x3C;ins&#x3E;35&#x20AC;&#x3C;/ins&#x3E;!&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;Die chemische Formel f&#xFC;r Wasser ist H&#x3C;sub&#x3E;2&#x3C;/sub&#x3E;O.&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;Einstein&#x27;s ber&#xFC;hmte Formel: E=mc&#x3C;sup&#x3E;2&#x3C;/sup&#x3E;&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>
+&#x3C;strong&#x3E; und &#x3C;em&#x3E; haben semantische Bedeutung und werden von Screenreadern unterschiedlich vorgelesen.
+&#x3C;mark&#x3E; hebt Text hervor, als wäre er mit einem Textmarker markiert.
+&#x3C;sub&#x3E; und &#x3C;sup&#x3E; erstellen tiefgestellten bzw. hochgestellten Text für Formeln.
+&#x3C;del&#x3E; und &#x3C;ins&#x3E; zeigen Änderungen in Dokumenten an.
+Diese Tags können auch kombiniert werden für komplexere Formatierungen.
+    </p>
+        </div>
+        <div id="img">
+            <img src="../asset/image/code4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Als Nächstes erfährst du, wie Links und Navigation funktionieren.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lektion3">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lektion5">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>
