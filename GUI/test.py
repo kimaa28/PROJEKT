@@ -160,8 +160,9 @@ class Daschboard:
         self.mittel_scroll = ctk.CTkScrollableFrame(self.custom_frame, corner_radius=20, fg_color= self.random_image_frame.cget("fg_color"), width=300, label_anchor="center", height=350, border_width=3)
         self.mittel_scroll.grid(row=1, column=2, padx=40)
 
-        # title from this frame
+        
         # TODO: an explicite description from every quick accec course and a button 
+        # title from this frame
         ctk.CTkLabel(self.scroll, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.scroll.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
         self.frame_list = ["120h\nlearn Time", "23\nTotal course", "30%\nProgress", "Friend", "Coin", "Level"]
 
@@ -190,9 +191,9 @@ class Daschboard:
         self._start_image_loop()
         
            
-    
+    # all widget from my course tab
     def _widget_courses(self):
-        # all widget from my course tab
+
         # TODO: make the name of tutor like a button to the webpage from this one
         self.tab2_frame = ctk.CTkFrame(self.tab_2, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab2_frame.pack(fill="both", expand="true")
@@ -240,9 +241,9 @@ class Daschboard:
             button_start.pack(fill="x")
             
 
-    
+    # tab for course
     def _widget_profil(self):
-        # tab for course 
+         
         #TODO: creste a neu tab to modified some personal information and more this can be trhought the click on edit be done, and add some variable to schwith button whose can hve consequenses
         self.tab3_frame = ctk.CTkFrame(self.tab_3, fg_color= self.tab1_frame.cget("fg_color"))
         self.tab3_frame.pack(fill="both", expand="true")   

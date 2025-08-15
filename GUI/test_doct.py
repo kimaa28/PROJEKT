@@ -1,4 +1,4 @@
-
+from html_class import html_list
 import os
 
 
@@ -15,7 +15,7 @@ lektion1 = my_class("Lektion1", "je suis un con qui ne sait pas coder et utilise
 lektion2 = my_class("Lektion2", "je sais coder et je n'utilise l'IA que pour des fonctions repetitives specifiques", 2)
 lektion3 = my_class("lektion 3", "je ne sia pas encore ce qui vas dans cette case ou frame mais bon ca m'es egal bitch", 3)
 les = [lektion1, lektion2, lektion3]
-liste = {key: wert for key, wert in enumerate(les, start=1)}
+
 
 
 def create_html_file(directory, filename, content):
@@ -24,6 +24,7 @@ def create_html_file(directory, filename, content):
 
     # Erstelle den vollständigen Pfad zur Datei
     filepath = os.path.join(directory, filename)
+    
 
     # Schreibe den Inhalt in die HTML-Datei
     with open(filepath, 'w', encoding='utf-8') as f:
@@ -31,33 +32,162 @@ def create_html_file(directory, filename, content):
 
     return filepath  # Optional, falls du den Pfad später brauchst
 
-html_content = """
-<!DOCTYPE html>
-<html>
-<head><title>Meine Seite</title></head>
-<body>
-<h1>Willkomme!</h1>
-<p>Dies ist eine automatisch erstellte HTML-Datei.</p>
-</body>
-</html>
-"""
-def html(titel, id):
-    return f"""
-<!DOCTYPE html>
-<html>
-<head>{titel}</title></head>
-<body>
-<h1> {titel}</h1>
-<p>Dies ist eine automatisch erstellte HTML-Datei.</p>
-<p> je <a href="user{id-1}.html">suis</a> un <a href="user{id+1}.html"> con</a> </p>
-</body>
-</html>
-"""
-def html_file(id):
-     return f"user{id}.html"
 
-for ele in les:
-    if ele.id == 3:
-        create_html_file("html", html_file(ele.id), html(ele.value1, ele.id -2))
-    else:
-        create_html_file("html", html_file(ele.id), html(ele.value1, ele.id))
+   
+def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview, next):
+    return f"""
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{titel}</title>
+    <style>
+        body {{
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }}
+
+        #back_to {{
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }}
+
+        #Zurück{{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }}
+        #Zurück:hover {{
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }}
+        #content {{
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }}
+        #section1 {{
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }}
+        #content1 {{
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */
+
+
+
+
+           
+            
+
+        }}
+        #img {{
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }}
+        .anw {{
+            margin-left: 20px;
+            padding: 10px;
+        
+        }}
+        #buttons {{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }}
+        #display1 {{
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }}
+        #display1:hover {{
+            color: #111513;
+            background-color: #e0e0e0;
+        }}
+        #display2 {{
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }}
+        #display2:hover {{
+            color: #ffffff;
+            background-color: #2a72b6;
+        }}
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>{haupttitel}</h1>
+                <p>{body}</p>
+        </div>
+
+        <div id="content1">
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">{code}</pre>
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p>{beschreibung}</p>
+        </div>
+        <div id="img">
+            <img src="{img_1}" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="{img_2}" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>{anw}</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="{preview}">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="{next}">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>
+"""
+titel_list = [titel.titel_lesson for titel in html_list]
+
+def site_name(id):
+    return f"""Lektion{id}"""
+
+for index, (titel, ele) in enumerate(zip(titel_list, html_list)):
+    create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, site_name(ele.index-1), site_name(ele.index+1) ))
+

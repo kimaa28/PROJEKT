@@ -1,10 +1,10 @@
 
 class my_class:
-    def __init__(self, titel_lesson, text1, code, beschreibung, img, next_anw, btn_lst, btn_nxt, index):
+    def __init__(self, titel_lesson, body, code, beschreibung, img, next_anw, btn_lst, btn_nxt, index):
         self.titel_lesson = titel_lesson
-        self.text1 = text1
+        self.body = body
         self.code = code
-        self.beacreibung = beschreibung
+        self.beschreibung = beschreibung
         self.img = img
         self.next_anw = next_anw
         self.btn_lst = btn_lst
@@ -14,7 +14,7 @@ class my_class:
 
 
 
-my_class(
+lektion1 = my_class(
     "Lektion 1: Was ist HTML?",
     """
 HTML steht für Hypertext Markup Language und bildet das Grundgerüst jeder Webseite.
@@ -41,17 +41,17 @@ Der &#x3C;head&#x3E;-Teil enthält den Titel der Seite (sichtbar im Browser-Tab)
 und im &#x3C;body&#x3E; steht alles, was der Benutzer direkt sieht. Jede HTML-Seite sollte mit &#x3C;!DOCTYPE html&#x3E; starten,
 um dem Browser zu sagen, dass es sich um ein HTML5-Dokument handelt.
     """,
-    ("code1.png", "screen1.png"),
+    ("../asset/image/code1.png", "../asset/image/screen1.png"),
     "In der nächsten Lektion geht es um den Aufbau einer HTML-Seite.",
     "Zurück zur Startseite",
     "Weiter zu Lektion 2",
     1
-),
+)
 
-my_class(
+lektion2 = my_class(
     "Lektion 2: Grundstruktur von HTML",
-    """
-Die Grundstruktur jeder HTML-Seite beginnt mit <!DOCTYPE html>, gefolgt von einem <html>-Element.
+"""
+Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
 Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
 Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
 Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
@@ -77,18 +77,18 @@ Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
 Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
 Der viewport-Tag ist besonders wichtig für mobile Geräte.
     """,
-    ("code2.png", "screen2.png"),
+    ("../asset/image/code2.png", "../asset/image/screen2.png"),
     "Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.",
     "Zurück zu Lektion 1",
     "Weiter zu Lektion 3",
     2
-),
+)
 
-my_class(
+lektion3 = my_class(
     "Lektion 3: Überschriften und Absätze",
     """
 HTML bietet sechs verschiedene Überschriftenebenen von &#x3C;h1&#x3E; bis &#x3C;h6&#x3E;.
-<h1> ist die wichtigste Überschrift, &#x3C;h6&#x3E; die unwichtigste.
+&#x3C;h1&#x3E; ist die wichtigste Überschrift, &#x3C;h6&#x3E; die unwichtigste.
 Diese Hierarchie hilft nicht nur bei der visuellen Gliederung, sondern auch bei der
 Suchmaschinenoptimierung und der Barrierefreiheit.
 Absätze werden mit &#x3C;p&#x3E;-Tags erstellt und sollten thematisch zusammengehörige Inhalte gruppieren.
@@ -120,16 +120,16 @@ H2 für Hauptkapitel, H3 für Unterkapitel usw.
 Niemals sollte eine Überschriftenebene übersprungen werden (z.B. von H2 direkt zu H4).
 Jeder Absatz behandelt idealerweise nur einen Gedanken oder eine Idee.
     """,
-    ("code3.png", "screen3.png"),
+    ("../asset/image/code3.png", "../asset/image/screen3.png"),
     "In der nächsten Lektion lernst du verschiedene Textformatierungen kennen.",  
     "Zurück zu Lektion 2",
     "Weiter zu Lektion 4",
     3
-),
+)
 
-my_class(
+lektion4 = my_class(
     "Lektion 4: Textformatierung",
-    """
+"""
 HTML bietet verschiedene Tags zur Textformatierung, die sowohl visuelle als auch semantische Bedeutung haben.
 &#x3C;strong&#x3E; macht Text fett und betont seine Wichtigkeit, während &#x3C;em&#x3E; Text kursiv macht und Betonung anzeigt.
 &#x3C;b&#x3E; und &#x3C;i&#x3E; sind rein visuelle Tags ohne semantische Bedeutung.
@@ -160,20 +160,20 @@ Die semantischen Tags sind wichtig für Screenreader und Suchmaschinen.
 &#x3C;/body&#x3E;
 &#x3C;/html&#x3E;""",
     """
-<strong> und &#x3C;em&#x3E; haben semantische Bedeutung und werden von Screenreadern unterschiedlich vorgelesen.
-<mark> hebt Text hervor, als wäre er mit einem Textmarker markiert.
-<sub> und &#x3C;sup&#x3E; erstellen tiefgestellten bzw. hochgestellten Text für Formeln.
+&#x3C;strong&#x3E; und &#x3C;em&#x3E; haben semantische Bedeutung und werden von Screenreadern unterschiedlich vorgelesen.
+&#x3C;mark&#x3E; hebt Text hervor, als wäre er mit einem Textmarker markiert.
+&#x3C;sub&#x3E; und &#x3C;sup&#x3E; erstellen tiefgestellten bzw. hochgestellten Text für Formeln.
 &#x3C;del&#x3E; und &#x3C;ins&#x3E; zeigen Änderungen in Dokumenten an.
 Diese Tags können auch kombiniert werden für komplexere Formatierungen.
     """,
-    ("code4.png", "screen4.png"),
+    ("../asset/image/code4.png", "../asset/image/screen4.png"),
     "Als Nächstes erfährst du, wie Links und Navigation funktionieren.",
     "Zurück zu Lektion 3", 
     "Weiter zu Lektion 5",
     4
-),
+)
 
-my_class(
+lektion5 = my_class(
     "Lektion 5: Links und Navigation",
     """
 Links sind das Herzstück des World Wide Web und werden mit dem &#x3C;a&#x3E;-Tag erstellt.
@@ -220,14 +220,14 @@ Anker-Links (#) springen zu Elementen mit entsprechender ID auf derselben Seite.
 mailto: und tel: Links öffnen E-Mail-Programme bzw. Telefon-Apps.
 Relative Links sind praktisch für interne Seitenstrukturen.
     """,
-    ("code5.png", "screen5.png"),
+    ("../asset/image/code5.png", "../asset/image/screen5.png"),
     "In der nächsten Lektion lernst du, wie Bilder in Webseiten eingebunden werden.",
     "Zurück zu Lektion 4",
     "Weiter zu Lektion 6", 
     5
-),
+)
 
-my_class(
+lektion6 = my_class(
     "Lektion 6: Bilder einbinden",
     """
 Bilder werden mit dem &#x3C;img&#x3E;-Tag eingebunden und sind selbstschließende Elemente.
@@ -273,14 +273,14 @@ Das &#x3C;picture&#x3E;-Element lädt je nach Bildschirmgröße unterschiedliche
 srcset ermöglicht die Bereitstellung verschiedener Bildauflösungen.
 Bilder in Links werden automatisch mit einem blauen Rahmen versehen (kann per CSS entfernt werden).
     """,
-    ("code6.png", "screen6.png"),
+    ("../asset/image/code6.png", "../asset/image/screen6.png"),
     "Als Nächstes lernst du, wie Listen zur Strukturierung von Inhalten verwendet werden.",
     "Zurück zu Lektion 5",
     "Weiter zu Lektion 7",
     6
-),
+)
 
-my_class(
+lektion7 = my_class(
     "Lektion 7: Listen erstellen",
     """
 HTML bietet drei Haupttypen von Listen: geordnete Listen (&#x3C;ol&#x3E;), ungeordnete Listen (&#x3C;ul&#x3E;) 
@@ -349,14 +349,14 @@ Verschachtelte Listen erstellen Hierarchien durch Listen innerhalb von &#x3C;li&
 &#x3C;dl&#x3E;, &#x3C;dt&#x3E; und &#x3C;dd&#x3E; sind perfekt f&#xFC;r Glossare und Definitionen.
 Listen k&#xF6;nnen mit CSS-Eigenschaften wie list-style-type angepasst werden.
     """,
-    ("code7.png", "screen7.png"),
+    ("../asset/image/code7.png", "../asset/image/screen7.png"),
     "In der nächsten Lektion lernst du die Grundlagen von CSS kennen.",
     "Zurück zu Lektion 6",
     "Weiter zu Lektion 8",
     7
-),
+)
 
-my_class(
+lektion8 = my_class(
     "Lektion 8: Einführung in CSS",
     """
 CSS (Cascading Style Sheets) ist die Sprache, die das Aussehen von HTML-Elementen bestimmt.
@@ -432,14 +432,14 @@ Internal CSS steht im &#x3C;style&#x3E;-Tag im <head>, External CSS in separaten
 Inline-CSS hat die höchste Priorität, sollte aber sparsam verwendet werden.
 Die Kaskadierung löst Konflikte zwischen verschiedenen CSS-Regeln.
     """,
-    ("code8.png", "screen8.png"),
+    ("../asset/image/code8.png", "../asset/image/screen8.png"),
     "In der nächsten Lektion vertiefst du dein Wissen über CSS-Selektoren.",
     "Zurück zu Lektion 7",
     "Weiter zu Lektion 9",
     8
-),
+)
 
-my_class(
+lektion9 = my_class(
     "Lektion 9: CSS-Selektoren und Eigenschaften",
     """
 CSS-Selektoren sind das Herzstück von CSS - sie bestimmen, welche HTML-Elemente gestylt werden.
@@ -540,14 +540,14 @@ Pseudo-Selektoren wie :hover reagieren auf Benutzerinteraktionen.
 Kombinatoren wie > (direktes Kind) und Leerzeichen (Nachfahre) ermöglichen präzise Auswahlen.
 Spezifität: inline > ID > Klasse > Element.
     """,
-    ("code9.png", "screen9.png"),
+    ("../asset/image/code9.png", "../asset/image/screen9.png"),
     "In der nächsten Lektion lernst du das CSS Box-Model kennen.",
     "Zurück zu Lektion 8",
     "Weiter zu Lektion 10",
     9
-),
+)
 
-my_class(
+lektion10 = my_class(
     "Lektion 10: CSS Box-Model und Layout",
     """
 Das CSS Box-Model ist fundamental für das Verständnis von Layout und Spacing.
@@ -679,14 +679,14 @@ display: block nimmt die ganze Breite ein, display: inline nur den benötigten P
 margin: auto zentriert Block-Elemente horizontal.
 gap-Eigenschaft erstellt Abstände zwischen Flex- oder Grid-Items.
     """,
-    ("code10.png", "screen10.png"),
+    ("../asset/image/code10.png", "../asset/image/screen10.png"),
     "In der letzten Lektion lernst du responsive Design und erweiterte CSS-Techniken.",
     "Zurück zu Lektion 9",
     "Weiter zu Lektion 11",
     10
-),
+)
 
-my_class(
+lektion11 = my_class(
     "Lektion 11: Responsive Design und erweiterte CSS-Techniken",
     """
 Responsive Design sorgt dafür, dass Webseiten auf allen Geräten gut aussehen und funktionieren.  
@@ -860,7 +860,7 @@ Progressive Enhancement: Grundfunktionalität für alle, erweiterte Features fü
     &#x3C;header&#x3E;
         &#x3C;div class=&#x22;container&#x22;&#x3E;
             &#x3C;h1 class=&#x22;animate&#x22;&#x3E;Responsive Webdesign&#x3C;/h1&#x3E;
-            &#x3C;p&#x3E;Eine Webseite f&#xFC;r alle Ger&#xE4;te&#x3C;/p&#x3E;
+            &#x3C;p&#x3E;Eine Webseite f&#xFC;r alle alle G &#x3C;/p&#x3E;
         &#x3C;/div&#x3E;
     &#x3C;/header&#x3E;
     
@@ -937,9 +937,11 @@ prefers-color-scheme erkennt die Systemeinstellung für helle/dunkle Themes.
 Intersection Observer API lädt Animationen nur bei Bedarf für bessere Performance.
 Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit JavaScript.
     """,
-    ("code11.png", "screen11.png"),
+    ("../asset/image/code11.png", "../asset/image/screen11.png"),
     "Herzlichen Glückwunsch! Du hast alle HTML- und CSS-Grundlagen erfolgreich durchlaufen.",
     "Zurück zu Lektion 10",
     "Zurück zur Startseite",
     11
 )
+
+html_list = [lektion1, lektion2, lektion3, lektion4, lektion5, lektion6, lektion7, lektion8, lektion9, lektion10, lektion11]
