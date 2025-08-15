@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 6: Schleifen (for und while)</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,82 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 6: Schleifen (for und while)</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+Schleifen ermöglichen es, Code mehrfach auszuführen. Python bietet zwei Haupttypen:
+for-Schleifen und while-Schleifen.
+
+For-Schleifen verwendest du, wenn du weißt, wie oft der Code ausgeführt werden soll.
+Die range()-Funktion erzeugt eine Zahlenfolge:
+- range(5): 0, 1, 2, 3, 4
+- range(1, 6): 1, 2, 3, 4, 5  
+- range(0, 10, 2): 0, 2, 4, 6, 8 (mit Schrittweite)
+
+While-Schleifen laufen, solange eine Bedingung True ist. Achte darauf, dass sich die
+Bedingung irgendwann ändert, sonst entsteht eine Endlosschleife!
+
+Nützliche Schleifenbefehle:
+- break: beendet die Schleife sofort
+- continue: überspringt den Rest der aktuellen Iteration
+- else bei Schleifen: wird ausgeführt, wenn die Schleife normal beendet wurde (nicht mit break)
+
+Verschachtelte Schleifen sind Schleifen innerhalb von Schleifen - nützlich für
+Tabellen oder komplexere Muster.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># For-Schleife mit range()
+print("Zählen von 1 bis 5:")
+for i in range(1, 6):
+    print(f"Zahl: {i}")
+
+# For-Schleife über Strings
+wort = "Python"
+for buchstabe in wort:
+    print(f"Buchstabe: {buchstabe}")
+
+# While-Schleife
+zahl = 1
+print("
+While-Schleife - Verdopplung:")
+while zahl <= 100:
+    print(zahl)
+    zahl = zahl * 2
+
+# Benutzereingabe mit while
+while True:
+    eingabe = input("Gib 'quit' ein zum Beenden: ")
+    if eingabe.lower() == 'quit':
+        print("Auf Wiedersehen!")
+        break
+    print(f"Du hast eingegeben: {eingabe}")
+
+# Verschachtelte Schleifen - Multiplikationstabelle
+print("
+3x3 Multiplikationstabelle:")
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i*j}")
+    print()  # Leerzeile nach jeder Reihe</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>Als Nächstes lernst du Listen kennen - eine wichtige Datenstruktur.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson5.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson7.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

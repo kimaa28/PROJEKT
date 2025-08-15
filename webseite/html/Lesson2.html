@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 2: Variablen und Datentypen</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,68 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 2: Variablen und Datentypen</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+Variablen sind wie Behälter, in denen du Daten speichern kannst. In Python musst du Variablen
+nicht vorher deklarieren - du weist ihnen einfach einen Wert zu und Python erkennt automatisch
+den Datentyp.
+
+Python hat verschiedene grundlegende Datentypen:
+- Strings (str): Text in Anführungszeichen
+- Integers (int): Ganze Zahlen wie 42, -17, 0
+- Floats (float): Dezimalzahlen wie 3.14, -2.5
+- Booleans (bool): Wahrheitswerte True oder False
+
+Du kannst Variablennamen fast frei wählen, aber sie sollten aussagekräftig sein und keine
+Leerzeichen enthalten. Verwende Unterstriche für mehrere Wörter wie "mein_name".
+
+Mit der type()-Funktion kannst du herausfinden, welchen Datentyp eine Variable hat.
+Python konvertiert Datentypen automatisch wenn möglich - zum Beispiel wenn du eine 
+Zahl mit einem String kombinierst.
+
+Die f-String Syntax (f"...") ist eine moderne Art, Variablen in Text einzufügen.
+Du schreibst die Variable in geschweifte Klammern {} innerhalb des Strings.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Verschiedene Datentypen
+name = "Anna"              # String
+alter = 25                 # Integer  
+groesse = 1.75             # Float
+ist_student = True         # Boolean
+
+# Ausgabe mit f-Strings
+print(f"Name: {name}")
+print(f"Alter: {alter}")
+print(f"Größe: {groesse}m")
+print(f"Student: {ist_student}")
+
+# Datentypen anzeigen
+print(f"Typ von name: {type(name)}")
+print(f"Typ von alter: {type(alter)}")
+
+# Variablen ändern
+alter = 26
+print(f"Neues Alter: {alter}")</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>Als Nächstes lernst du grundlegende Operatoren kennen.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson1.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson3.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

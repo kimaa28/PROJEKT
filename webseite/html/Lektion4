@@ -57,13 +57,7 @@
             border-radius: 20px;
             display: flex;   
             white-space: pre-wrap;      /* Zeilen werden umbrochen */
-            word-wrap: break-word;      /* Lange Wörter umbrechen */
-
-
-
-
-           
-            
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
 
         }
         #img {

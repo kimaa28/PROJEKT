@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 13: Klassen und Objekte (OOP)</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 13: Klassen und Objekte (OOP)</h1>
+                <p>
+Objektorientierte Programmierung (OOP) ist ein Programmierparadigma, das Code in
+Klassen und Objekte organisiert. Eine Klasse ist wie eine Bauplan, ein Objekt ist
+eine konkrete Instanz dieser Klasse.
+
+Grundkonzepte der OOP:
+- Klasse: Vorlage/Bauplan für Objekte
+- Objekt: konkrete Instanz einer Klasse
+- Attribute: Eigenschaften eines Objekts (Variablen)
+- Methoden: Funktionen, die zu einer Klasse gehören
+
+Die __init__-Methode ist der Konstruktor - sie wird aufgerufen, wenn ein neues
+Objekt erstellt wird. Der erste Parameter ist immer self (Verweis auf das Objekt selbst).
+
+Vorteile von OOP:
+- Kapselung: Daten und Funktionen gehören zusammen
+- Wiederverwendbarkeit: Klassen können mehrfach verwendet werden
+- Wartbarkeit: Code ist besser organisiert
+- Vererbung: neue Klassen basierend auf bestehenden erstellen
+
+Python ist vollständig objektorientiert - sogar einfache Datentypen wie int und str
+sind Objekte mit Methoden. Mit dir(objekt) siehst du alle verfügbaren Methoden.
+    </p>
+        </div>
+
+        <div id="content1">
+            <p># Einfache Klasse definieren
+class Person:
+    def __init__(self, name, alter):
+        "Konstruktor - wird beim Erstellen eines Objekts aufgerufen."
+        self.name = name
+        self.alter = alter
+    
+    def vorstellen(self):
+        "Methode zur Vorstellung der Person."
+        return f"Hallo, ich bin {self.name} und {self.alter} Jahre alt."
+    
+    def geburtstag(self):
+        "Erhöht das Alter um 1."
+        self.alter += 1
+        print(f"{self.name} ist jetzt {self.alter} Jahre alt!")
+
+# Objekte erstellen (Instanziierung)
+person1 = Person("Anna", 25)
+person2 = Person("Max", 30)
+
+# Methoden aufrufen
+print(person1.vorstellen())
+print(person2.vorstellen())
+
+# Attribute direkt zugreifen
+print(f"{person1.name} ist {person1.alter} Jahre alt")
+
+person1.geburtstag()
+
+# Klasse mit mehr Funktionalität
+class BankKonto:
+    def __init__(self, kontoinhaber, kontostand=0):
+        self.kontoinhaber = kontoinhaber
+        self.kontostand = kontostand
+        self.transaktionen = []
+    
+    def einzahlen(self, betrag):
+        if betrag > 0:
+            self.kontostand += betrag
+            self.transaktionen.append(f"Einzahlung: +{betrag}€")
+            print(f"{betrag}€ eingezahlt. Neuer Kontostand: {self.kontostand}€")
+        else:
+            print("Einzahlungsbetrag muss positiv sein!")
+    
+    def abheben(self, betrag):
+        if betrag > 0 and betrag <= self.kontostand:
+            self.kontostand -= betrag
+            self.transaktionen.append(f"Abhebung: -{betrag}€")
+            print(f"{betrag}€ abgehoben. Neuer Kontostand: {self.kontostand}€")
+        else:
+            print("Ungültiger Abhebungsbetrag!")
+    
+    def kontoauszug(self):
+        print(f"
+Konto von {self.kontoinhaber}")
+        print(f"Aktueller Kontostand: {self.kontostand}€")
+        print("Letzte Transaktionen:")
+        for transaktion in self.transaktionen[-5:]:  # Letzte 5
+            print(f"  {transaktion}")
+
+# Bankkonto verwenden
+konto = BankKonto("Anna Schmidt", 1000)
+konto.einzahlen(500)
+konto.abheben(200)
+konto.kontoauszug()</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="python13.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du Vererbung und erweiterte OOP-Konzepte.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lesson12.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson14.html">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

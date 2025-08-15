@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 15: Erweiterte Konzepte und Best Practices</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 15: Erweiterte Konzepte und Best Practices</h1>
+                <p>
+In dieser letzten Lektion lernst du wichtige erweiterte Python-Konzepte und Best Practices
+für sauberen, professionellen Code.
+
+List Comprehensions sind eine kompakte Art, Listen zu erstellen:
+[ausdruck for element in iterable if bedingung]
+
+Lambda-Funktionen sind kleine, anonyme Funktionen für einfache Operationen.
+Sie werden oft mit map(), filter() und sorted() verwendet.
+
+Generators erzeugen Werte on-demand und sparen Speicher bei großen Datenmengen.
+Sie verwenden yield statt return.
+
+Wichtige Best Practices:
+- Aussagekräftige Variablen- und Funktionsnamen verwenden
+- Code kommentieren und dokumentieren
+- Funktionen kurz und fokussiert halten (eine Aufgabe pro Funktion)
+- Konstanten in GROSSBUCHSTABEN schreiben
+- PEP 8 Stil-Richtlinien befolgen (Leerzeichen, Zeilenlänge, etc.)
+
+Debugging-Tipps:
+- print()-Statements für einfaches Debugging
+- Debugger verwenden für komplexere Probleme
+- Exception-Handling für robuste Programme
+
+Python-Ökosystem:
+- PyPI (Python Package Index) für externe Bibliotheken
+- Virtual Environments für Projekt-isolierte Abhängigkeiten
+- IDEs wie PyCharm, VS Code oder Jupyter Notebooks
+
+Herzlichen Glückwunsch! Du hast die Python-Grundlagen gemeistert!
+    </p>
+        </div>
+
+        <div id="content1">
+            <p># List Comprehensions
+zahlen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Traditionelle Methode
+quadrate_alt = []
+for zahl in zahlen:
+    if zahl % 2 == 0:
+        quadrate_alt.append(zahl ** 2)
+
+# Mit List Comprehension
+quadrate_neu = [zahl ** 2 for zahl in zahlen if zahl % 2 == 0]
+print("Quadrate gerader Zahlen:", quadrate_neu)
+
+# Verschachtelte List Comprehensions
+matrix = [[i*j for j in range(1, 4)] for i in range(1, 4)]
+print("Multiplikationstabelle:", matrix)
+
+# Lambda-Funktionen
+# Normale Funktion
+def verdoppeln(x):
+    return x * 2
+
+# Als Lambda
+lambda_verdoppeln = lambda x: x * 2
+
+print("Verdoppeln von 5:", lambda_verdoppeln(5))
+
+# Lambda mit map(), filter(), sorted()
+namen = ["Anna", "Bob", "Clara", "David"]
+grosse_namen = list(map(lambda name: name.upper(), namen))
+print("Große Namen:", grosse_namen)
+
+lange_namen = list(filter(lambda name: len(name) > 3, namen))
+print("Lange Namen:", lange_namen)
+
+# Generator-Funktionen
+def fibonacci_generator(n):
+    "Generator für Fibonacci-Zahlen."
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+print("Erste 10 Fibonacci-Zahlen:", list(fibonacci_generator(10)))
+
+# Decorator-Beispiel
+def zeitenmessung(func):
+    "Decorator zur Zeitmessung von Funktionen."
+    import time
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        ergebnis = func(*args, **kwargs)
+        ende = time.time()
+        print(f"{func.__name__} dauerte {ende-start:.4f} Sekunden")
+        return ergebnis
+    return wrapper
+
+@zeitenmessung
+def langsame_funktion():
+    "Eine Funktion, die etwas Zeit braucht."
+    import time
+    time.sleep(1)
+    return "Fertig!"
+
+# Context Manager (with-Statement)
+class DateiManager:
+    def __init__(self, dateiname, modus):
+        self.dateiname = dateiname
+        self.modus = modus
+    
+    def __enter__(self):
+        self.datei = open(self.dateiname, self.modus)
+        return self.datei
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.datei.close()
+
+# Verwendung
+# with DateiManager("test.txt", "w") as f:
+#     f.write("Test mit Context Manager")
+
+# Best Practice Beispiele
+KONSTANTE = 42  # Konstanten in Großbuchstaben
+
+def berechne_kreisflaeche(radius):
+    
+    "Berechnet die Fläche eines Kreises."
+    
+   " Args:"
+       " radius (float): Der Radius des Kreises"
+        
+    "Returns:"
+        "float: Die Fläche des Kreises"
+    
+    import math
+    return math.pi * radius ** 2
+
+print("Kreisfläche (r=5):", berechne_kreisflaeche(5))
+langsame_funktion()</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="python15.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Herzlichen Glückwunsch! Du hast alle Python-Grundlagen erfolgreich durchlaufen!</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lesson14.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson16.html">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>

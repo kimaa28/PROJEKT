@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 10: Dateien lesen und schreiben</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,96 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 10: Dateien lesen und schreiben</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
-    </p>
+Das Arbeiten mit Dateien ist in Python sehr einfach. Du kannst Textdateien lesen,
+schreiben und verändern. Dies ist nützlich für Datenspeicherung, Konfigurationsdateien
+oder das Verarbeiten von Datenmengen.
+
+Die open()-Funktion öffnet Dateien in verschiedenen Modi:
+- 'r': Lesen (read) - Standardmodus
+- 'w': Schreiben (write) - überschreibt die Datei
+- 'a': Anhängen (append) - fügt am Ende hinzu
+- 'r+': Lesen und Schreiben
+
+Wichtig: Verwende immer with open() - das stellt sicher, dass die Datei
+automatisch geschlossen wird, auch wenn ein Fehler auftritt.
+
+Methoden zum Lesen:
+- read(): liest die gesamte Datei
+- readline(): liest eine Zeile
+- readlines(): liest alle Zeilen in eine Liste
+
+Methoden zum Schreiben:
+- write(): schreibt einen String
+- writelines(): schreibt eine Liste von Strings
+
+Bei Dateipfaden achte auf das Betriebssystem: Windows verwendet Backslashes r"(\)",
+Linux und Mac verwenden Forward slashes r"(/)". Python akzeptiert beide.
+</p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Datei schreiben
+dateiname = "meine_datei.txt"
+
+# Text in Datei schreiben
+with open(dateiname, 'w', encoding='utf-8') as datei:
+    datei.write("Hallo Welt!
+")
+    datei.write("Das ist meine erste Datei.
+")
+    datei.write("Python macht Spaß!")
+
+print(f"Datei '{dateiname}' wurde erstellt.")
+
+# Datei lesen
+with open(dateiname, 'r', encoding='utf-8') as datei:
+    inhalt = datei.read()
+    print("Dateiinhalt:")
+    print(inhalt)
+
+# Datei zeilenweise lesen
+print("
+Zeilenweise lesen:")
+with open(dateiname, 'r', encoding='utf-8') as datei:
+    for nummer, zeile in enumerate(datei, 1):
+        print(f"Zeile {nummer}: {zeile.strip()}")
+
+# Text anhängen
+with open(dateiname, 'a', encoding='utf-8') as datei:
+    datei.write("
+Neue Zeile hinzugefügt!")
+
+# Liste in Datei schreiben
+einkaufsliste = ["Äpfel", "Bananen", "Brot", "Milch"]
+with open("einkauf.txt", 'w', encoding='utf-8') as datei:
+    for artikel in einkaufsliste:
+        datei.write(f"- {artikel}
+")
+
+# Datei existiert prüfen
+import os
+if os.path.exists("einkauf.txt"):
+    print("Einkaufsliste wurde erstellt!")</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python10.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>Als Nächstes lernst du den Umgang mit Fehlern und Exceptions.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson9.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson11.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 8: Dictionaries (Wörterbücher)</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,98 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 8: Dictionaries (Wörterbücher)</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+Dictionaries sind Sammlungen von Schlüssel-Wert-Paaren. Während Listen über Indizes
+zugreifen, verwendest du bei Dictionaries Schlüssel um auf Werte zuzugreifen.
+
+Du erstellst ein Dictionary mit geschweiften Klammern: {"schlüssel": "wert"}
+Jeder Schlüssel muss eindeutig sein und kann ein String, eine Zahl oder ein Tupel sein.
+Werte können beliebige Datentypen sein.
+
+Vorteile von Dictionaries:
+- Schneller Zugriff über Schlüssel (auch bei großen Datenmengen)
+- Logische Struktur für zusammengehörige Daten
+- Flexible Erweiterung um neue Schlüssel-Wert-Paare
+
+Wichtige Dictionary-Methoden:
+- keys(): gibt alle Schlüssel zurück
+- values(): gibt alle Werte zurück  
+- items(): gibt Schlüssel-Wert-Paare zurück
+- get(): sicherer Zugriff mit Standardwert
+- pop(): entfernt und gibt Wert zurück
+- update(): fügt mehrere Paare hinzu
+
+Du kannst prüfen, ob ein Schlüssel existiert mit dem in-Operator.
+For-Schleifen über Dictionaries iterieren standardmäßig über die Schlüssel.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Dictionary erstellen
+person = {
+    "name": "Anna Schmidt",
+    "alter": 28,
+    "stadt": "Berlin",
+    "beruf": "Programmiererin"
+}
+
+print("Person:", person)
+print("Name:", person["name"])
+print("Alter:", person["alter"])
+
+# Sicherer Zugriff mit get()
+email = person.get("email", "Keine E-Mail vorhanden")
+print("E-Mail:", email)
+
+# Werte ändern und hinzufügen
+person["alter"] = 29
+person["email"] = "anna@example.com"
+print("Nach Änderung:", person)
+
+# Mehrere Werte hinzufügen
+person.update({
+    "telefon": "0123456789",
+    "verheiratet": False
+})
+
+# Über Dictionary iterieren
+print("
+Alle Informationen:")
+for schluessel, wert in person.items():
+    print(f"{schluessel}: {wert}")
+
+# Nur Schlüssel oder Werte
+print("
+Alle Schlüssel:", list(person.keys()))
+print("Alle Werte:", list(person.values()))
+
+# Verschachtelte Dictionaries
+studenten = {
+    "Anna": {"note": 1, "fach": "Informatik"},
+    "Max": {"note": 2, "fach": "Mathematik"}
+}
+
+print(f"
+Annas Note: {studenten['Anna']['note']}")</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>Als Nächstes lernst du, wie du eigene Funktionen erstellst.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson7.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson9.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

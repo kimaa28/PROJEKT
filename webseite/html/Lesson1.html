@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 1: Was ist Python?</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,53 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 1: Was ist Python?</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+Python ist eine der beliebtesten Programmiersprachen der Welt und wurde 1991 von Guido van Rossum entwickelt.
+Der Name stammt übrigens von der britischen Komikertruppe "Monty Python" - nicht von der Schlange!
+
+Python zeichnet sich durch seine einfache, lesbare Syntax aus. Während andere Programmiersprachen
+oft komplizierte Klammern und Semikolons verwenden, setzt Python auf Einrückungen und klare Struktur.
+Das macht Python besonders anfängerfreundlich.
+
+Python ist eine interpretierte Sprache, das bedeutet, du kannst Code direkt ausführen ohne ihn vorher
+zu kompilieren. Python wird in vielen Bereichen eingesetzt: Webentwicklung, Datenanalyse, 
+Künstliche Intelligenz, Automatisierung und wissenschaftliche Berechnungen.
+
+In diesem ersten Beispiel siehst du ein klassisches "Hello World" Programm. Die print()-Funktion
+gibt Text auf dem Bildschirm aus. Beachte, wie einfach und lesbar Python-Code ist - du kannst
+wahrscheinlich schon verstehen, was passiert, ohne Programmiervorerfahrung zu haben!
+
+Python verwendet Anführungszeichen (einfach oder doppelt) um Text (Strings) zu kennzeichnen.
+Kommentare beginnst du mit dem #-Symbol - alles dahinter wird ignoriert und dient nur als Notiz.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Mein erstes Python-Programm
+print("Hallo Welt!")
+print("Willkommen bei Python!")
+
+# Dies ist ein Kommentar
+print("Python ist großartig!")  # Kommentar am Ende der Zeile</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>In der nächsten Lektion lernst du Variablen und Datentypen kennen.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson0.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson2.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

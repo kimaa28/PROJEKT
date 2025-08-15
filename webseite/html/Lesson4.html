@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Grundstruktur von HTML</title>
+    <title>Lektion 4: Eingabe und Ausgabe</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,72 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Grundstruktur von HTML</h1>
+            <h1>Lektion 4: Eingabe und Ausgabe</h1>
                 <p>
-Die Grundstruktur jeder HTML-Seite beginnt mit &#x3C;!DOCTYPE html&#x3E;, gefolgt von einem &#x3C;html&#x3E;-Element.
-Innerhalb dieses Elements befinden sich zwei wichtige Teile: &#x3C;head&#x3E; und &#x3C;body&#x3E;.
-Im &#x3C;head&#x3E;-Teil stehen Metadaten, z. B. der Titel, Zeichencodierung oder Stylesheets.
-Im &#x3C;body&#x3E; steht der sichtbare Inhalt wie Texte, Bilder, Tabellen oder Formulare.
-Diese Trennung sorgt für Ordnung und bessere Wartbarkeit.
-Der &#x3C;head&#x3E;-Bereich ist wie das Fundament eines Hauses - unsichtbar, aber essentiell.
-Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
+Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
+bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
+
+Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
+int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
+
+Die print()-Funktion hat viele nützliche Parameter:
+- sep: bestimmt das Trennzeichen zwischen mehreren Werten
+- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
+
+Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
+- f-Strings: f"Text {variable}"  
+- .format(): "Text {}".format(variable)
+- % formatting: "Text %s" % variable (älter)
+
+Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
+Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
-    &#x3C;meta name=&#x22;viewport&#x22; content=&#x22;width=device-width, initial-scale=1.0&#x22;&#x3E;
-    &#x3C;title&#x3E;Meine strukturierte Seite&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Haupt&#xFC;berschrift&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist der sichtbare Inhalt der Webseite.&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Einfache Eingabe
+name = input("Wie heißt du? ")
+print(f"Hallo {name}!")
+
+# Zahlen einlesen
+alter_str = input("Wie alt bist du? ")
+alter = int(alter_str)  # String zu Integer konvertieren
+print(f"Du bist {alter} Jahre alt.")
+
+# Direktkonvertierung
+groesse = float(input("Deine Größe in Metern: "))
+print(f"Du bist {groesse:.2f}m groß.")
+
+# Berechnungen mit Eingaben
+zahl1 = int(input("Erste Zahl: "))
+zahl2 = int(input("Zweite Zahl: "))
+summe = zahl1 + zahl2
+print(f"{zahl1} + {zahl2} = {summe}")
+
+# Formatierte Ausgabe
+preis = 49.99
+print(f"Preis: {preis:.2f}€")
+print("Name:", name, "Alter:", alter, sep=" - ")
+print("Ende", end="!
+")</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
-Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
-Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
-Der viewport-Tag ist besonders wichtig für mobile Geräte.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
+            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
         </div>
 
         <div id="buttons">
-            <p><a id="display1" href="Lektion1">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion3">Nächste Lektion ⮚</a></p>
+            <p><a id="display1" href="Lesson3.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson5.html">Nächste Lektion ⮚</a></p>
         </div>
     </section>
 </body>

@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 14: Vererbung und erweiterte OOP</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 14: Vererbung und erweiterte OOP</h1>
+                <p>
+Vererbung ermöglicht es, neue Klassen basierend auf bestehenden zu erstellen.
+Die neue Klasse (Kindklasse) erbt alle Attribute und Methoden der Elternklasse
+und kann zusätzliche hinzufügen oder bestehende überschreiben.
+
+Wichtige Konzepte:
+- Elternklasse (Basisklasse, Superklasse): die ursprüngliche Klasse
+- Kindklasse (abgeleitete Klasse): erbt von der Elternklasse
+- super(): Zugriff auf Methoden der Elternklasse
+- Überschreiben: Kindklasse definiert Methode der Elternklasse neu
+
+Weitere OOP-Konzepte:
+- Polymorphismus: gleiche Methode, unterschiedliches Verhalten
+- Kapselung: private Attribute mit _ oder __
+- Klassenvariablen: Variablen, die für alle Objekte einer Klasse gleich sind
+- Klassenmethoden: Methoden, die auf die Klasse, nicht auf Objekte wirken
+
+Multiple Vererbung ist möglich (von mehreren Klassen erben), sollte aber
+sparsam verwendet werden. Python verwendet Method Resolution Order (MRO)
+um zu bestimmen, welche Methode aufgerufen wird.
+
+Vererbung fördert Code-Wiederverwendung und ermöglicht elegante, hierarchische
+Programmstrukturen.
+    </p>
+        </div>
+
+        <div id="content1">
+            <p># Elternklasse
+class Fahrzeug:
+    def __init__(self, marke, modell, jahr):
+        self.marke = marke
+        self.modell = modell
+        self.jahr = jahr
+        self.kilometer = 0
+    
+    def info(self):
+        return f"{self.marke} {self.modell} ({self.jahr})"
+    
+    def fahren(self, km):
+        self.kilometer += km
+        print(f"Gefahren: {km} km. Gesamt: {self.kilometer} km")
+
+# Kindklasse erbt von Fahrzeug
+class Auto(Fahrzeug):
+    def __init__(self, marke, modell, jahr, tueren):
+        super().__init__(marke, modell, jahr)  # Eltern-Konstruktor aufrufen
+        self.tueren = tueren
+    
+    def info(self):
+        # Methode der Elternklasse überschreiben
+        basis_info = super().info()
+        return f"{basis_info} - {self.tueren} Türen"
+    
+    def hupen(self):
+        print("Beep beep! 🚗")
+
+# Weitere Kindklasse
+class Motorrad(Fahrzeug):
+    def __init__(self, marke, modell, jahr, hubraum):
+        super().__init__(marke, modell, jahr)
+        self.hubraum = hubraum
+    
+    def info(self):
+        basis_info = super().info()
+        return f"{basis_info} - {self.hubraum}ccm"
+    
+    def wheelie(self):
+        print("Wheelie! 🏍️")
+
+# Objekte erstellen und verwenden
+auto = Auto("BMW", "X3", 2020, 5)
+motorrad = Motorrad("Honda", "CBR", 2021, 600)
+
+print(auto.info())
+print(motorrad.info())
+
+auto.fahren(100)
+auto.hupen()
+
+motorrad.fahren(50)
+motorrad.wheelie()
+
+# Polymorphismus - gleiche Methode, unterschiedliches Verhalten
+fahrzeuge = [auto, motorrad]
+
+print("
+Alle Fahrzeuge:")
+for fahrzeug in fahrzeuge:
+    print(fahrzeug.info())  # Jedes Objekt verwendet seine eigene info()-Methode
+
+# Klassen-Variable und -Methode
+class Tier:
+    anzahl_tiere = 0  # Klassenvariable
+    
+    def __init__(self, name, art):
+        self.name = name
+        self.art = art
+        Tier.anzahl_tiere += 1
+    
+    @classmethod
+    def get_anzahl(cls):
+        return cls.anzahl_tiere
+
+hund = Tier("Bello", "Hund")
+katze = Tier("Mimi", "Katze")
+print(f"Anzahl Tiere: {Tier.get_anzahl()}")</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="python14.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der letzten Lektion lernst du erweiterte Python-Konzepte und Best Practices.</p>
+        </div>
+
+        <div id="buttons">
+            <p><a id="display1" href="Lesson13.html">⮘ Voherige Lektion</a></p>
+            <p><a id="display2" href="Lesson15.html">Nächste Lektion ⮚</a></p>
+        </div>
+    </section>
+</body>
+</html>
