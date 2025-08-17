@@ -19,13 +19,12 @@ def save_index(pfad, index_data):
 def site_name(id):
     return f"Lektion{id}"
 
-def redirect_link(id):
-    return f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{id}.html"
 
-def redirect_py_link(id):
-    return f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{id}.html"
-
-
+def redirect_link(id, lesson):
+    if lesson == "py":
+        return f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{id}.html"
+    elif lesson == "html":
+        return f"http://127.0.0.1:8000/webseite/html/Lektion{id}.html"
 
 
 # HTTP Header
@@ -46,52 +45,60 @@ print('''<!DOCTYPE html>
 path = "progress.json"
 
 # Prüfe ob JSON existiert
-if os.path.exists(path):
-    try:
-        with open(path, "r") as f:
-            content = f.read()
-    except Exception as e:
-        pass
-else:
-    pass
+
 
 # Form Daten
 form = cgi.FieldStorage()
-index_raw = form.getvalue("Index")
+index_html = form.getvalue("index")
+index_p = form.getvalue("index_p")
 
-index = index_raw or 1
+if not index_html:
+    index = index_p # if you start the programm on the terminal you will see an error but no panics it is normal because the don't have the value index fron formular but if you want you cant set (or 1) zu fix the error i don't it because i don't need an another json in my cgi folder
+    redirect_url = redirect_link(index, "py")
+else:
+    index = index_html 
+    redirect_url = redirect_link(index, "html")
+
 try:
     index = int(index)
 except ValueError as e:
-    index = 3
+    index = 1
 
 # JSON laden
 json_change = load_index(path)
 
 # Prüfe JSON Struktur
 if "Done" not in json_change:
-    json_change["Done"] = []
+    json_change["Done"] = {"html": [], "python": []}
 
 if "Current" not in json_change:
-    json_change["Current"] = []
-
+    json_change["Current"] = {"None": 0}
 
 # Logik
 try:
-    if index - 1 in json_change["Done"]:
-        json_change["Current"] = index
-        save_index(path, json_change)
+    if not index_html:
+        if index - 1 in json_change["Done"]["python"]:
+            json_change["Current"] = {"python": f"lektion{index}"}
+            save_index(path, json_change)
+        else:
+            json_change["Done"]["python"].append(index)
+            json_change["Current"] = {"python": f"lektion{index}"}
+            json_change["Done"]["python"].sort()
+            save_index(path, json_change)
     else:
-        json_change["Done"].append(index-1)
-        json_change["Current"] = index
-        save_index(path, json_change)
-    
-    
-except Exception as e:
-    print(f"<p><strong>❌ Fehler in Logik:</strong> {e}</p>")
+        if index - 1 in json_change["Done"]["html"]:
+            json_change["Current"] = {"html": f"lektion{index}"}
+            save_index(path, json_change)
+        else:
+            json_change["Done"]["html"].append(index)
+            json_change["Current"] = {"html": f"lektion{index}"}
+            json_change["Done"]["html"].sort()
+            save_index(path, json_change)
 
-# Redirect Link
-redirect_url = redirect_link(index)
+except Exception as e:
+    pass      # TODO i can ameliorate the struktur and the raise error 
+
+# Redirect Link just for some browser who don't redirekt
 
 print("<h3>🚀 Weiterleitung: </h3>")
 print(f'<p>Falls nicht automatisch weitergeleitet: <a href="{redirect_url}">Hier klicken</a></p>')
@@ -101,9 +108,9 @@ print(f'''
 <script>
     setTimeout(function() {{
         window.location.href = "{redirect_url}";
-    }}, 2000);
+    }}, 3000);
 </script> 
-<p><em>Automatische Weiterleitung in 3 Sekunden..{os.getcwd()}.</em></p>
+<p><em>Automatische Weiterleitung in 3 Sekunden...</em></p>
 ''')
 
 print("</body></html>")
