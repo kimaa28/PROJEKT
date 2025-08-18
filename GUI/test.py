@@ -161,7 +161,7 @@ class Daschboard:
         self.mittel_scroll.grid(row=1, column=2, padx=40)
 
         
-        # TODO: an explicite description from every quick accec course and a button 
+        # TODO: an explicite description from every quick access course and a button 
         # title from this frame
         ctk.CTkLabel(self.scroll, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.scroll.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
         self.frame_list = ["120h\nlearn Time", "23\nTotal course", "30%\nProgress", "Friend", "Coin", "Level"]
@@ -189,6 +189,7 @@ class Daschboard:
 
         self._load_image(rd.choice(self.image_list))
         self._start_image_loop()
+        
         
            
     # all widget from my course tab

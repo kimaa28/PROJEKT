@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 2: Variablen und Datentypen</title>
+    <title>Lektion 5: Links und Navigation</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,69 +111,73 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 2: Variablen und Datentypen</h1>
+            <h1>Lektion 5: Links und Navigation</h1>
                 <p>
-Variablen sind wie Behälter, in denen du Daten speichern kannst. In Python musst du Variablen
-nicht vorher deklarieren - du weist ihnen einfach einen Wert zu und Python erkennt automatisch
-den Datentyp.
-
-Python hat verschiedene grundlegende Datentypen:
-- Strings (str): Text in Anführungszeichen
-- Integers (int): Ganze Zahlen wie 42, -17, 0
-- Floats (float): Dezimalzahlen wie 3.14, -2.5
-- Booleans (bool): Wahrheitswerte True oder False
-
-Du kannst Variablennamen fast frei wählen, aber sie sollten aussagekräftig sein und keine
-Leerzeichen enthalten. Verwende Unterstriche für mehrere Wörter wie "mein_name".
-
-Mit der type()-Funktion kannst du herausfinden, welchen Datentyp eine Variable hat.
-Python konvertiert Datentypen automatisch wenn möglich - zum Beispiel wenn du eine 
-Zahl mit einem String kombinierst.
-
-Die f-String Syntax (f"...") ist eine moderne Art, Variablen in Text einzufügen.
-Du schreibst die Variable in geschweifte Klammern {} innerhalb des Strings.
+Links sind das Herzstück des World Wide Web und werden mit dem &#x3C;a&#x3E;-Tag erstellt.
+Das href-Attribut gibt das Ziel des Links an - das kann eine andere Webseite,
+eine E-Mail-Adresse, eine Telefonnummer oder ein Anker innerhalb der Seite sein.
+Links können absolut (komplette URL) oder relativ (bezogen auf die aktuelle Seite) sein.
+Das target-Attribut bestimmt, wo der Link geöffnet wird.
+title-Attribute bieten zusätzliche Informationen beim Hovern über den Link.
+Gute Linktexte sind beschreibend und aussagekräftig für die Barrierefreiheit.
     </p>
         </div>
 
         <div id="content1">
-            <p># Verschiedene Datentypen
-name = "Anna"              # String
-alter = 25                 # Integer  
-groesse = 1.75             # Float
-ist_student = True         # Boolean
-
-# Ausgabe mit f-Strings
-print(f"Name: {name}")
-print(f"Alter: {alter}")
-print(f"Größe: {groesse}m")
-print(f"Student: {ist_student}")
-
-# Datentypen anzeigen
-print(f"Typ von name: {type(name)}")
-print(f"Typ von alter: {type(alter)}")
-
-# Variablen ändern
-alter = 26
-print(f"Neues Alter: {alter}")</p>
-
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;Links und Navigation&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Verschiedene Arten von Links&#x3C;/h1&#x3E;
+    
+    &#x3C;nav&#x3E;
+        &#x3C;a href=&#x22;#abschnitt1&#x22;&#x3E;Sprung zu Abschnitt 1&#x3C;/a&#x3E; |
+        &#x3C;a href=&#x22;#abschnitt2&#x22;&#x3E;Sprung zu Abschnitt 2&#x3C;/a&#x3E;
+    &#x3C;/nav&#x3E;
+    
+    &#x3C;p&#x3E;&#x3C;a href=&#x22;https://www.example.com&#x22; target=&#x22;_blank&#x22; 
+       title=&#x22;&#xD6;ffnet externe Seite&#x22;&#x3E;Externe Webseite&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;&#x3C;a href=&#x22;mailto:info@example.com&#x22;&#x3E;E-Mail senden&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;&#x3C;a href=&#x22;tel:+49123456789&#x22;&#x3E;Anrufen&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    
+    &#x3C;p&#x3E;&#x3C;a href=&#x22;../andere-seite.html&#x22;&#x3E;Relative Verlinkung&#x3C;/a&#x3E;&#x3C;/p&#x3E;
+    
+    &#x3C;h2 id=&#x22;abschnitt1&#x22;&#x3E;Abschnitt 1&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Inhalt des ersten Abschnitts...&#x3C;/p&#x3E;
+    
+    &#x3C;h2 id=&#x22;abschnitt2&#x22;&#x3E;Abschnitt 2&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Inhalt des zweiten Abschnitts...&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p></p>
+            <p>
+Das &#x3C;nav&#x3E;-Element kennzeichnet Navigationsbereiche für bessere Semantik.
+target="_blank" öffnet Links in einem neuen Tab/Fenster.
+Anker-Links (#) springen zu Elementen mit entsprechender ID auf derselben Seite.
+mailto: und tel: Links öffnen E-Mail-Programme bzw. Telefon-Apps.
+Relative Links sind praktisch für interne Seitenstrukturen.
+    </p>
         </div>
-        
         <div id="img">
-            <img src="python2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/code5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du grundlegende Operatoren kennen.</p>
+            <p>In der nächsten Lektion lernst du, wie Bilder in Webseiten eingebunden werden.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson1.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson3.html">Nächste Lektion ⮚</a></p>
-        </div>
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index" value="4" id="display1">Lektion4.html</button>
+            <button type="submit" name="index" value="6" id="display2">Lektion6.html</button>
+        </form>
     </section>
 </body>
 </html>

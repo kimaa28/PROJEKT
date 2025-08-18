@@ -114,4 +114,18 @@ if __name__ == "__main__":
 
     frame = create_register_frame(app, uservar, passvar,second_pass, emailvar, sex, secretvar, lambda: print("alles gut", sex.get()), lo)
     frame["register_frame"].pack(expand=True, padx=20, pady=20)
+    def progre():
+        progress.start()
+        app.after(5000, stop)
+    def stop():
+        progress.stop()
+        print("je usis un con")
+
+      
+       
+
+    progress = ctk.CTkProgressBar(app, determinate_speed=0.4, orientation="horizontal", fg_color="red", progress_color="green")
+    progress.pack()
+    btn = ctk.CTkButton(app, command=progre)
+    btn.pack()
     app.mainloop()

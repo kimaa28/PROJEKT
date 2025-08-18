@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 6: Schleifen (for und while)</title>
+    <title>Lektion 12: Module und Bibliotheken</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,64 +111,85 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 6: Schleifen (for und while)</h1>
+            <h1>Lektion 12: Module und Bibliotheken</h1>
                 <p>
-Schleifen ermöglichen es, Code mehrfach auszuführen. Python bietet zwei Haupttypen:
-for-Schleifen und while-Schleifen.
+Module sind Python-Dateien, die Code enthalten, den du in anderen Programmen verwenden kannst.
+Python hat viele eingebaute Module, und du kannst auch eigene erstellen oder externe installieren.
 
-For-Schleifen verwendest du, wenn du weißt, wie oft der Code ausgeführt werden soll.
-Die range()-Funktion erzeugt eine Zahlenfolge:
-- range(5): 0, 1, 2, 3, 4
-- range(1, 6): 1, 2, 3, 4, 5  
-- range(0, 10, 2): 0, 2, 4, 6, 8 (mit Schrittweite)
+Wichtige eingebaute Module:
+- math: mathematische Funktionen
+- random: Zufallszahlen und -auswahlen
+- datetime: Datum und Zeit
+- os: Betriebssystem-Funktionen
+- json: JSON-Datenverarbeitung
 
-While-Schleifen laufen, solange eine Bedingung True ist. Achte darauf, dass sich die
-Bedingung irgendwann ändert, sonst entsteht eine Endlosschleife!
+Module importierst du mit:
+- import modulname: importiert das ganze Modul
+- from modulname import funktion: importiert nur bestimmte Funktionen
+- import modulname as alias: gibt dem Modul einen anderen Namen
 
-Nützliche Schleifenbefehle:
-- break: beendet die Schleife sofort
-- continue: überspringt den Rest der aktuellen Iteration
-- else bei Schleifen: wird ausgeführt, wenn die Schleife normal beendet wurde (nicht mit break)
+Externe Bibliotheken installierst du mit pip (Python Package Installer):
+pip install bibliotheksname
 
-Verschachtelte Schleifen sind Schleifen innerhalb von Schleifen - nützlich für
-Tabellen oder komplexere Muster.
+Eigene Module erstellst du, indem du Python-Code in eine .py-Datei schreibst.
+Diese Datei kannst du dann in anderen Programmen importieren.
+
+Die Python Standard Library enthält über 200 Module für fast jeden Zweck.
+Das macht Python so vielseitig - für die meisten Aufgaben gibt es bereits
+fertige Lösungen, die du einfach importieren kannst.
     </p>
         </div>
 
         <div id="content1">
-            <p># For-Schleife mit range()
-print("Zählen von 1 bis 5:")
-for i in range(1, 6):
-    print(f"Zahl: {i}")
+            <p># Math-Modul für mathematische Funktionen
+import math
 
-# For-Schleife über Strings
-wort = "Python"
-for buchstabe in wort:
-    print(f"Buchstabe: {buchstabe}")
+print(f"Pi: {math.pi}")
+print(f"Quadratwurzel von 16: {math.sqrt(16)}")
+print(f"2 hoch 8: {math.pow(2, 8)}")
+print(f"Fakultät von 5: {math.factorial(5)}")
 
-# While-Schleife
-zahl = 1
-print("
-While-Schleife - Verdopplung:")
-while zahl <= 100:
-    print(zahl)
-    zahl = zahl * 2
+# Random-Modul für Zufallszahlen
+import random
 
-# Benutzereingabe mit while
-while True:
-    eingabe = input("Gib 'quit' ein zum Beenden: ")
-    if eingabe.lower() == 'quit':
-        print("Auf Wiedersehen!")
-        break
-    print(f"Du hast eingegeben: {eingabe}")
+print(f"
+Zufallszahl 1-10: {random.randint(1, 10)}")
+print(f"Zufallszahl 0-1: {random.random()}")
 
-# Verschachtelte Schleifen - Multiplikationstabelle
-print("
-3x3 Multiplikationstabelle:")
-for i in range(1, 4):
-    for j in range(1, 4):
-        print(f"{i} x {j} = {i*j}")
-    print()  # Leerzeile nach jeder Reihe</p>
+farben = ["rot", "grün", "blau", "gelb"]
+print(f"Zufällige Farbe: {random.choice(farben)}")
+
+# Datetime für Datum und Zeit
+from datetime import datetime, date
+
+heute = date.today()
+jetzt = datetime.now()
+
+print(f"
+Heute: {heute}")
+print(f"Jetzt: {jetzt.strftime('%H:%M:%S')}")
+print(f"Jahr: {heute.year}, Monat: {heute.month}")
+
+# OS-Modul für Systemfunktionen
+import os
+
+print(f"
+Aktueller Ordner: {os.getcwd()}")
+print(f"Dateien im Ordner: {os.listdir('.')}")
+
+# JSON für Datenverarbeitung
+import json
+
+daten = {
+    "name": "Max",
+    "alter": 25,
+    "hobbys": ["Lesen", "Sport", "Kochen"]
+}
+
+json_string = json.dumps(daten, ensure_ascii=False, indent=2)
+print(f"
+JSON-Daten:
+{json_string}")</p>
 
         </div>
         <div class="anw">
@@ -177,17 +198,20 @@ for i in range(1, 4):
         </div>
         
         <div id="img">
-            <img src="python6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python12.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du Listen kennen - eine wichtige Datenstruktur.</p>
+            <p>Als Nächstes lernst du Klassen und objektorientierte Programmierung kennen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson5.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson7.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="11" id="display1">Lesson11.html</button>
+            <button type="submit" name="index_p" value="13" id="display2">Lesson13.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

@@ -4,6 +4,8 @@ import json
 import cgi, cgitb
 import sys
 
+#TODO manage the json for all user
+
 cgitb.enable()
 
 def load_index(pfad):

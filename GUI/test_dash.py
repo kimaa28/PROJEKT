@@ -3,7 +3,8 @@ from login import create_login_frame
 from register import create_register_frame
 from reset import create_reset_frame 
 from login import create_login_frame
-import hashlib, os, json
+import hashlib, os, json, subprocess, sys
+
 
 def hashed_passwort(passwort):
     return hashlib.blake2b(passwort.encode(), digest_size=32).hexdigest()
@@ -17,6 +18,10 @@ def load_passwort(pfad):
 def save_passwort(pfad, passwort):
     with open(pfad, "w") as datei:
         json.dump(passwort, datei, indent=4)
+
+
+
+
 
 class hauptpage:
     def __init__(self):
@@ -37,6 +42,7 @@ class hauptpage:
         self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]),lambda: self._choice_frame(self.register["register_frame"]), self._lo)        
         
         self._set_frame()
+        print(self.passlib)
 
         
         self.app.mainloop()
@@ -56,6 +62,15 @@ class hauptpage:
     def _set_frame(self):
         for frame in (self.register["register_frame"], self.reset["reset_frame"], self.login["login_frame"]):
             frame.grid(row=0, column=0, sticky="nsew")
+
+    def _switch_to(self):
+        self.login["bar"].configure(determinate_speed=0.5, progress_color="#BCE89C")
+        self.login["bar"].start()
+        self.app.after(5000, self._to_dash)
+
+    def _to_dash(self):
+        subprocess.Popen([sys.executable, "test.py"])
+        self.app.destroy()
 
     # check the login values   
     def _delete_L(self):
@@ -84,6 +99,7 @@ class hauptpage:
                 elif hashed_passwort(passvar) == self.passlib[uservar]["passwort"]:
                     self.login["raise_msg"].configure(text="Erfolgreich angemeldet", text_color="green")
                     self._delete_L()
+                    self.app.after(1000, self._switch_to)
                 else:
                     self.login["raise_msg"].configure(text="Ungültige Eingabe", text_color="red")
                     self._delete_L()
@@ -206,7 +222,7 @@ class hauptpage:
         
 
 
-
+            
     
     
 

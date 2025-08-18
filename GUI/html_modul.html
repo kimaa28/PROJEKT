@@ -24,12 +24,14 @@
 
         #Zurück{
             text-decoration: none;
-            margin: auto;        /* i would make a root to defined all this value */
-        
-            color: #000000;
-            border-radius: 10px;
-            font-size: 20px; 
+            color: #131212;
+            font-size: 20px;
             padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #e6e5e5;
+            transition: color 0,3s ease, background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
         
         
         }
@@ -37,6 +39,10 @@
             color: #7daa8c;
             background-color: #f0f0f0;
             transition: 0.3s;
+            color: #ffffff;
+            background-color: #5f7f8e;
+            transform: translatex(-50px);
+
         }
         #content {
           /* i would make a root to defined all this value */
@@ -83,16 +89,20 @@
         }
         #display1 {
             text-decoration: none;
-            color: #7d7272;
+            color: #131212;
             font-size: 20px;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: background-color 0.3s, color 0.3s;
-            background-color: #f0f0f0;
+            background-color: #e6e5e5;
+            transition: color 0,3s ease, background-color 0.3s ease, transform 0.4s ease;
+            display: inline-block;
         }
         #display1:hover {
-            color: #111513;
-            background-color: #e0e0e0;
+            color: #ffffff;
+            background-color: #7594b0;
+            transform: translatex(-10px);
+
         }
         #display2 {
             text-decoration: none;
@@ -102,10 +112,14 @@
             border-radius: 10px;
             transition: background-color 0.3s, color 0.3s;
             background-color: #242424;
+            transition: color 0,3s ease, background-color 0.5s ease, transform 0.5s ease;
+            display: inline-block;
         }
         #display2:hover {
             color: #ffffff;
             background-color: #2a72b6;
+            transform: translatex(10px);
+
         }
 
     </style>

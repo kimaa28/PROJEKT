@@ -1,0 +1,50 @@
+class my_class:
+    def __init__(self, titel_lesson, body, code, img, next_anw, btn_lst, btn_nxt, index):
+        self.titel_lesson = titel_lesson
+        self.body = body
+        self.code = code
+        self.img = img
+        self.next_anw = next_anw
+        self.btn_lst = btn_lst
+        self.btn_nxt = btn_nxt
+        self.index = index
+
+
+
+lektion1 = my_class( "Lektion 1: Was ist CGI?",
+""" CGI steht für Common Gateway Interface und ist eine Technologie, die es ermöglicht, dynamische Webseiten zu erstellen. CGI wurde in den frühen 1990er Jahren entwickelt und war eine der ersten Methoden, um interaktive Websites zu schaffen. CGI-Skripte laufen auf dem Webserver und können in verschiedenen Programmiersprachen geschrieben werden: Perl, Python, C, Shell-Scripts oder sogar JavaScript mit Node.js. Wenn ein Benutzer eine Webseite aufruft, die ein CGI-Skript verwendet, startet der Webserver das Skript als separaten Prozess. Das Skript verarbeitet die Anfrage, generiert HTML-Code und sendet diesen zurück an den Browser des Benutzers. CGI-Skripte werden häufig für Kontaktformulare, Gästebücher, Suchfunktionen und Datenbankanwendungen verwendet. Der Webserver kommuniziert mit CGI-Skripten über Umgebungsvariablen und Standardein-/ausgabe. In diesem ersten Beispiel siehst du ein einfaches CGI-Skript in Perl, das eine Grundstruktur zeigt. Der Content-Type-Header teilt dem Browser mit, dass HTML-Inhalt folgt. Die doppelte Leerzeile nach dem Header ist wichtig - sie trennt die HTTP-Header vom eigentlichen Inhalt. """,
+"""#!/usr/bin/perl # Einfaches CGI-Skript in Perl print "Content-Type: text/html\n\n"; # HTTP-Header print "<html>\n"; print "<head><title>Mein erstes CGI-Skript</title></head>\n"; print "<body>\n"; print "<h1>Willkommen bei CGI!</h1>\n"; print "<p>Dieses ist mein erstes CGI-Skript.</p>\n"; print "<p>Aktuelle Zeit: " . localtime() . "</p>\n"; print "</body>\n"; print "</html>\n";""",
+"cgi1.png",
+"In der nächsten Lektion lernst du, wie du Formulardaten verarbeitest.",
+"Zurück zur Startseite", 
+"Weiter zu Lektion 2",
+1 ),
+
+lektion2 = my_class( "Lektion 2: Formulardaten verarbeiten", 
+""" Eine der häufigsten Anwendungen von CGI ist die Verarbeitung von HTML-Formularen. Wenn ein Benutzer ein Formular absendet, werden die Daten an das CGI-Skript übertragen. Es gibt zwei Hauptmethoden für die Datenübertragung: GET und POST. Bei der GET-Methode werden die Daten in der URL übertragen und sind in der Umgebungsvariable QUERY_STRING verfügbar. Bei der POST-Methode werden die Daten über die Standardeingabe (STDIN) übertragen und sind nicht in der URL sichtbar. Formulardaten werden URL-kodiert übertragen, das bedeutet, Leerzeichen werden zu '+' und Sonderzeichen werden als %XX kodiert. CGI-Skripte müssen diese Kodierung rückgängig machen (URL-Dekodierung). Die Daten kommen im Format 'name1=wert1&name2=wert2' an. Jedes name=wert-Paar entspricht einem Formularfeld. In diesem Beispiel zeige ich dir ein CGI-Skript, das Formulardaten verarbeitet. Das Skript prüft zuerst die REQUEST_METHOD um zu unterscheiden zwischen GET und POST. Dann werden die Daten entsprechend ausgelesen und verarbeitet. Die URI::Escape-Bibliothek hilft bei der URL-Dekodierung. """, 
+"""#!/usr/bin/perl use strict; use warnings; use URI::Escape; print "Content-Type: text/html\n\n"; # Formulardaten lesen my $form_data; if ($ENV{'REQUEST_METHOD'} eq 'POST') { read(STDIN, $form_data, $ENV{'CONTENT_LENGTH'}); } else { $form_data = $ENV{'QUERY_STRING'}; } # Daten parsen my %form_fields; foreach my $pair (split(/&/, $form_data)) { my ($name, $value) = split(/=/, $pair); $value = uri_unescape($value); $value =~ s/\+/ /g; # + durch Leerzeichen ersetzen $form_fields{$name} = $value; } # HTML-Ausgabe print "<html><head><title>Formulardaten</title></head><body>\n"; print "<h1>Empfangene Daten:</h1>\n"; print "<p>Name: " . ($form_fields{'name'} || 'Nicht angegeben') . "</p>\n"; print "<p>Email: " . ($form_fields{'email'} || 'Nicht angegeben') . "</p>\n"; print "</body></html>\n";""", 
+"cgi2.png", 
+"In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.", 
+"Zurück zu Lektion 1", 
+"Weiter zu Lektion 3", 
+2 ),
+
+lektion3 = my_class( "Lektion 3: Umgebungsvariablen und HTTP-Header", 
+""" CGI-Skripte erhalten viele nützliche Informationen über Umgebungsvariablen. Diese Variablen enthalten Details über die HTTP-Anfrage, den Browser des Benutzers und die Serverumgebung. Wichtige Umgebungsvariablen sind: REQUEST_METHOD (GET, POST, etc.), QUERY_STRING (Parameter bei GET), CONTENT_LENGTH (Größe der POST-Daten), HTTP_USER_AGENT (Browser-Information), REMOTE_ADDR (IP-Adresse des Benutzers), und SERVER_NAME (Name des Servers). HTTP-Header sind wichtig für die Kommunikation zwischen Server und Browser. CGI-Skripte können verschiedene Header senden: Content-Type bestimmt den Medientyp, Location wird für Weiterleitungen verwendet, Set-Cookie setzt Cookies, und Cache-Control steuert das Caching-Verhalten. Header müssen vor dem eigentlichen Inhalt gesendet werden und durch eine Leerzeile getrennt sein. CGI-Skripte können auch eigene HTTP-Statuscodes senden, wie 404 (Not Found) oder 500 (Internal Server Error). In diesem Beispiel siehst du, wie man Umgebungsvariablen ausliest und verschiedene Header verwendet. Das Skript zeigt Browser-Informationen an und demonstriert eine einfache Weiterleitung. """, 
+"""#!/usr/bin/perl use strict; use warnings; print "Content-Type: text/html\n\n"; print "<html><head><title>CGI Umgebungsvariablen</title></head><body>\n"; print "<h1>Server-Informationen</h1>\n"; # Wichtige Umgebungsvariablen anzeigen print "<h2>HTTP-Anfrage:</h2>\n"; print "<p><strong>Request Method:</strong> " . ($ENV{'REQUEST_METHOD'} || 'Nicht verfügbar') . "</p>\n"; print "<p><strong>Query String:</strong> " . ($ENV{'QUERY_STRING'} || 'Leer') . "</p>\n"; print "<p><strong>Content Length:</strong> " . ($ENV{'CONTENT_LENGTH'} || '0') . "</p>\n"; print "<h2>Client-Informationen:</h2>\n"; print "<p><strong>User Agent:</strong> " . ($ENV{'HTTP_USER_AGENT'} || 'Unbekannt') . "</p>\n"; print "<p><strong>Remote Address:</strong> " . ($ENV{'REMOTE_ADDR'} || 'Unbekannt') . "</p>\n"; print "<p><strong>HTTP Accept:</strong> " . ($ENV{'HTTP_ACCEPT'} || 'Nicht verfügbar') . "</p>\n"; print "<h2>Server-Informationen:</h2>\n"; print "<p><strong>Server Name:</strong> " . ($ENV{'SERVER_NAME'} || 'Unbekannt') . "</p>\n"; print "<p><strong>Server Port:</strong> " . ($ENV{'SERVER_PORT'} || 'Unbekannt') . "</p>\n"; print "<p><strong>Script Name:</strong> " . ($ENV{'SCRIPT_NAME'} || 'Unbekannt') . "</p>\n"; # Beispiel für Weiterleitung (auskommentiert) # print "Location: http://www.example.com\n\n"; print "</body></html>\n";""", "cgi3.png", 
+"In der nächsten Lektion lernst du Fehlerbehandlung und Sicherheit bei CGI.", 
+"Zurück zu Lektion 2", 
+"Weiter zu Lektion 4", 
+3 ),
+
+lektion4 = my_class( "Lektion 4: Fehlerbehandlung und Sicherheit", 
+""" Sicherheit ist bei CGI-Skripten von größter Bedeutung, da sie direkt auf dem Server ausgeführt werden. Ungesicherte CGI-Skripte können zu schwerwiegenden Sicherheitslücken führen. Wichtige Sicherheitsmaßnahmen umfassen: Eingabevalidierung (alle Benutzereingaben prüfen), Ausgabe-Escaping (HTML-Zeichen maskieren), Pfad-Validierung (gefährliche Pfade verhindern), und sichere Dateizugriffe. Cross-Site-Scripting (XSS) ist eine häufige Bedrohung, bei der schädlicher Code in Webseiten eingeschleust wird. CGI-Skripte sollten alle Benutzereingaben filtern und HTML-Zeichen maskieren. SQL-Injection ist bei datenbankgestützten CGI-Skripten ein Problem. Verwende immer Prepared Statements und validiere Eingaben. Fehlerbehandlung ist wichtig für Debugging und Sicherheit. CGI-Skripte sollten Fehler protokollieren, aber keine sensiblen Informationen preisgeben. Verwende 'die' oder 'exit' für kontrollierte Programmbeendigung. Setze angemessene Dateiberechtigungen (meist 755 für CGI-Skripte). In diesem letzten Beispiel zeige ich dir sichere Praktiken: Eingabevalidierung, HTML-Escaping, Fehlerbehandlung und Logging. Das Skript demonstriert, wie man Benutzereingaben sicher verarbeitet. """, 
+"""#!/usr/bin/perl use strict; use warnings; use CGI qw(:standard); use HTML::Entities; # Für sicheres HTML-Escaping # Fehler-Logging aktivieren use CGI::Carp qw(fatalsToBrowser warningsToBrowser); warningsToBrowser(1); print header('text/html; charset=UTF-8'); # Sichere Header # Eingabevalidierung sub validate_input { my ($input, $max_length) = @_; return 0 unless defined $input; return 0 if length($input) > $max_length; return 0 if $input =~ /<script|javascript|vbscript/i; # XSS-Schutz return 1; } # HTML-Ausgabe beginnen print start_html(-title => 'Sicheres CGI-Skript', -encoding => 'UTF-8'); print h1('Sichere Datenverarbeitung'); # Formulardaten sicher verarbeiten if (param()) { my $name = param('name') || ''; my $message = param('message') || ''; # Eingabevalidierung if (validate_input($name, 100) && validate_input($message, 500)) { # HTML-Escaping für sichere Ausgabe $name = encode_entities($name); $message = encode_entities($message); print h2('Empfangene Daten (sicher maskiert):'); print p(strong('Name: ') . $name); print p(strong('Nachricht: ') . $message); # Daten sicher in Datei speichern (Beispiel) if (open(my $logfile, '>>', '/tmp/messages.log')) { print $logfile localtime() . " - Name: $name, Message: $message\n"; close($logfile); print p('Nachricht erfolgreich gespeichert.'); } else { print p('Fehler beim Speichern der Nachricht.'); } } else { print p(strong('Fehler: ') . 'Ungültige Eingabedaten erkannt.'); } } # Sicheres Formular anzeigen print h2('Nachricht senden:'); print start_form(-method => 'POST'); print p('Name: ' . textfield(-name => 'name', -maxlength => 100)); print p('Nachricht: ' . textarea(-name => 'message', -rows => 4, -cols => 50, -maxlength => 500)); print submit(-value => 'Senden'); print end_form(); print end_html();""",
+"cgi4.png", 
+"Herzlichen Glückwunsch! Du hast alle CGI-Grundlagen gelernt.", 
+"Zurück zu Lektion 3", 
+"Kurs abgeschlossen",
+ 4 )
+
+
+cgi_list = [lektion1, lektion2, lektion3, lektion4]

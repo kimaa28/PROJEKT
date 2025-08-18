@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 7: Listen</title>
+    <title>Lektion 6: Schleifen (for und while)</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,68 +111,64 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 7: Listen</h1>
+            <h1>Lektion 6: Schleifen (for und while)</h1>
                 <p>
-Listen sind eine der wichtigsten Datenstrukturen in Python. Sie speichern mehrere Werte
-in einer geordneten Reihenfolge und können verschiedene Datentypen enthalten.
+Schleifen ermöglichen es, Code mehrfach auszuführen. Python bietet zwei Haupttypen:
+for-Schleifen und while-Schleifen.
 
-Listen erstellst du mit eckigen Klammern: [1, 2, 3] oder ["a", "b", "c"]
-Du kannst auch eine leere Liste erstellen: [] oder list()
+For-Schleifen verwendest du, wenn du weißt, wie oft der Code ausgeführt werden soll.
+Die range()-Funktion erzeugt eine Zahlenfolge:
+- range(5): 0, 1, 2, 3, 4
+- range(1, 6): 1, 2, 3, 4, 5  
+- range(0, 10, 2): 0, 2, 4, 6, 8 (mit Schrittweite)
 
-Wichtige Eigenschaften von Listen:
-- Indizierung: Das erste Element hat Index 0, das zweite Index 1, usw.
-- Negative Indizes: -1 ist das letzte Element, -2 das vorletzte
-- Veränderbar: Du kannst Elemente hinzufügen, entfernen oder ändern
-- Slicing: Du kannst Teile der Liste mit [start:end] extrahieren
+While-Schleifen laufen, solange eine Bedingung True ist. Achte darauf, dass sich die
+Bedingung irgendwann ändert, sonst entsteht eine Endlosschleife!
 
-Nützliche Listen-Methoden:
-- append(): fügt am Ende hinzu
-- insert(): fügt an bestimmter Position hinzu  
-- remove(): entfernt erstes Vorkommen eines Wertes
-- pop(): entfernt und gibt Element an Index zurück
-- len(): gibt Anzahl der Elemente zurück
-- sort(): sortiert die Liste
+Nützliche Schleifenbefehle:
+- break: beendet die Schleife sofort
+- continue: überspringt den Rest der aktuellen Iteration
+- else bei Schleifen: wird ausgeführt, wenn die Schleife normal beendet wurde (nicht mit break)
 
-Du kannst über Listen mit for-Schleifen iterieren oder mit enumerate() 
-sowohl Index als auch Wert erhalten.
+Verschachtelte Schleifen sind Schleifen innerhalb von Schleifen - nützlich für
+Tabellen oder komplexere Muster.
     </p>
         </div>
 
         <div id="content1">
-            <p># Liste erstellen
-fruechte = ["Apfel", "Banane", "Orange", "Kiwi"]
-zahlen = [1, 3, 5, 7, 9]
-gemischt = ["Hallo", 42, 3.14, True]
+            <p># For-Schleife mit range()
+print("Zählen von 1 bis 5:")
+for i in range(1, 6):
+    print(f"Zahl: {i}")
 
-print("Früchte:", fruechte)
-print("Erstes Element:", fruechte[0])
-print("Letztes Element:", fruechte[-1])
+# For-Schleife über Strings
+wort = "Python"
+for buchstabe in wort:
+    print(f"Buchstabe: {buchstabe}")
 
-# Liste ändern
-fruechte[1] = "Mango"  # Banane durch Mango ersetzen
-print("Nach Änderung:", fruechte)
-
-# Elemente hinzufügen
-fruechte.append("Traube")
-fruechte.insert(1, "Erdbeere")
-print("Nach Hinzufügen:", fruechte)
-
-# Elemente entfernen
-fruechte.remove("Kiwi")
-letztes = fruechte.pop()
-print(f"Nach Entfernen: {fruechte}")
-print(f"Letztes Element war: {letztes}")
-
-# Über Liste iterieren
+# While-Schleife
+zahl = 1
 print("
-Alle Früchte:")
-for i, frucht in enumerate(fruechte):
-    print(f"{i+1}. {frucht}")
+While-Schleife - Verdopplung:")
+while zahl <= 100:
+    print(zahl)
+    zahl = zahl * 2
 
-# Listen-Operationen
-print(f"Anzahl Elemente: {len(fruechte)}")
-zahlen.sort()
-print(f"Sortierte Zahlen: {zahlen}")</p>
+# Benutzereingabe mit while
+while True:
+    eingabe = input("Gib 'quit' ein zum Beenden: ")
+    if eingabe.lower() == 'quit':
+        print("Auf Wiedersehen!")
+        break
+    print(f"Du hast eingegeben: {eingabe}")
+
+# Verschachtelte Schleifen - Multiplikationstabelle
+print("
+3x3 Multiplikationstabelle:")
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(f"{i} x {j} = {i*j}")
+    print()  # Leerzeile nach jeder Reihe</p>
 
         </div>
         <div class="anw">
@@ -181,17 +177,20 @@ print(f"Sortierte Zahlen: {zahlen}")</p>
         </div>
         
         <div id="img">
-            <img src="python7.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Dictionaries kennen - Datenstrukturen mit Schlüssel-Wert-Paaren.</p>
+            <p>Als Nächstes lernst du Listen kennen - eine wichtige Datenstruktur.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson6.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson8.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="5" id="display1">Lesson5.html</button>
+            <button type="submit" name="index_p" value="7" id="display2">Lesson7.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

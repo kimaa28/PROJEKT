@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 5: Bedingte Anweisungen (if-else)</title>
+    <title>Lektion 10: Dateien lesen und schreiben</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,67 +111,78 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 5: Bedingte Anweisungen (if-else)</h1>
+            <h1>Lektion 10: Dateien lesen und schreiben</h1>
                 <p>
-Bedingte Anweisungen ermöglichen es deinem Programm, Entscheidungen zu treffen.
-Mit if, elif und else kannst du verschiedene Codeblöcke je nach Bedingung ausführen.
+Das Arbeiten mit Dateien ist in Python sehr einfach. Du kannst Textdateien lesen,
+schreiben und verändern. Dies ist nützlich für Datenspeicherung, Konfigurationsdateien
+oder das Verarbeiten von Datenmengen.
 
-Die Syntax ist einfach:
-- if Bedingung: führt Code aus, wenn Bedingung True ist
-- elif Bedingung: (else if) prüft weitere Bedingungen  
-- else: führt Code aus, wenn alle Bedingungen False sind
+Die open()-Funktion öffnet Dateien in verschiedenen Modi:
+- 'r': Lesen (read) - Standardmodus
+- 'w': Schreiben (write) - überschreibt die Datei
+- 'a': Anhängen (append) - fügt am Ende hinzu
+- 'r+': Lesen und Schreiben
 
-Wichtig in Python: Die Einrückung bestimmt, welcher Code zum if-Block gehört!
-Verwende 4 Leerzeichen oder einen Tab für jede Einrückungsebene.
+Wichtig: Verwende immer with open() - das stellt sicher, dass die Datei
+automatisch geschlossen wird, auch wenn ein Fehler auftritt.
 
-Du kannst Bedingungen mit logischen Operatoren kombinieren:
-- and: beide Bedingungen müssen True sein
-- or: mindestens eine Bedingung muss True sein
-- not: kehrt True/False um
+Methoden zum Lesen:
+- read(): liest die gesamte Datei
+- readline(): liest eine Zeile
+- readlines(): liest alle Zeilen in eine Liste
 
-Vergleiche können mit Zahlen, Strings und anderen Datentypen durchgeführt werden.
-Bei Strings wird alphabetisch verglichen. Du kannst auch prüfen, ob ein Wert
-in einer Liste enthalten ist mit dem in-Operator.
-    </p>
+Methoden zum Schreiben:
+- write(): schreibt einen String
+- writelines(): schreibt eine Liste von Strings
+
+Bei Dateipfaden achte auf das Betriebssystem: Windows verwendet Backslashes r"(\)",
+Linux und Mac verwenden Forward slashes r"(/)". Python akzeptiert beide.
+</p>
         </div>
 
         <div id="content1">
-            <p># Einfache if-else Anweisung
-alter = int(input("Dein Alter: "))
+            <p># Datei schreiben
+dateiname = "meine_datei.txt"
 
-if alter >= 18:
-    print("Du bist volljährig!")
-else:
-    print("Du bist noch minderjährig.")
+# Text in Datei schreiben
+with open(dateiname, 'w', encoding='utf-8') as datei:
+    datei.write("Hallo Welt!
+")
+    datei.write("Das ist meine erste Datei.
+")
+    datei.write("Python macht Spaß!")
 
-# Mehrere Bedingungen mit elif
-note = int(input("Deine Note (1-6): "))
+print(f"Datei '{dateiname}' wurde erstellt.")
 
-if note == 1:
-    print("Sehr gut!")
-elif note == 2:
-    print("Gut!")
-elif note == 3:
-    print("Befriedigend!")
-elif note == 4:
-    print("Ausreichend!")
-elif note == 5:
-    print("Mangelhaft!")
-elif note == 6:
-    print("Ungenügend!")
-else:
-    print("Ungültige Note!")
+# Datei lesen
+with open(dateiname, 'r', encoding='utf-8') as datei:
+    inhalt = datei.read()
+    print("Dateiinhalt:")
+    print(inhalt)
 
-# Logische Operatoren
-temperatur = float(input("Temperatur in °C: "))
-regen = input("Regnet es? (ja/nein): ").lower()
+# Datei zeilenweise lesen
+print("
+Zeilenweise lesen:")
+with open(dateiname, 'r', encoding='utf-8') as datei:
+    for nummer, zeile in enumerate(datei, 1):
+        print(f"Zeile {nummer}: {zeile.strip()}")
 
-if temperatur > 20 and regen == "nein":
-    print("Perfektes Wetter für einen Spaziergang!")
-elif temperatur > 20 or regen == "nein":
-    print("Das Wetter ist okay.")
-else:
-    print("Lieber drinnen bleiben...")</p>
+# Text anhängen
+with open(dateiname, 'a', encoding='utf-8') as datei:
+    datei.write("
+Neue Zeile hinzugefügt!")
+
+# Liste in Datei schreiben
+einkaufsliste = ["Äpfel", "Bananen", "Brot", "Milch"]
+with open("einkauf.txt", 'w', encoding='utf-8') as datei:
+    for artikel in einkaufsliste:
+        datei.write(f"- {artikel}
+")
+
+# Datei existiert prüfen
+import os
+if os.path.exists("einkauf.txt"):
+    print("Einkaufsliste wurde erstellt!")</p>
 
         </div>
         <div class="anw">
@@ -180,17 +191,20 @@ else:
         </div>
         
         <div id="img">
-            <img src="python5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python10.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Schleifen kennen - for und while.</p>
+            <p>Als Nächstes lernst du den Umgang mit Fehlern und Exceptions.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson4.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson6.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="9" id="display1">Lesson9.html</button>
+            <button type="submit" name="index_p" value="11" id="display2">Lesson11.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

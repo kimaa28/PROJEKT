@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 1: Was ist HTML?</title>
+    <title>Lektion 8: Einführung in CSS</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,53 +111,102 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 1: Was ist HTML?</h1>
+            <h1>Lektion 8: Einführung in CSS</h1>
                 <p>
-HTML steht für Hypertext Markup Language und bildet das Grundgerüst jeder Webseite.
-Es beschreibt, wie Inhalte strukturiert werden sollen. HTML ist keine Programmiersprache, 
-sondern eine textbasierte Sprache, die es ermöglicht, Text, Bilder, Links, Tabellen und mehr
-auf Webseiten darzustellen.
-HTML wurde in den 1990ern entwickelt, um wissenschaftliche Dokumente im Internet verlinkbar zu machen.
-Heute ist es ein zentraler Bestandteil des World Wide Web und wird weltweit verwendet.
-Jede HTML-Seite besteht aus sogenannten Tags (z. B. &#x3C;p&#x3E;, &#x3C;h1&#x3E;, &#x3C;img&#x3E;), die Inhalte strukturieren.
-Das Ziel von HTML ist es, die Bedeutung und Funktion des Inhalts zu definieren, nicht sein Aussehen.
+CSS (Cascading Style Sheets) ist die Sprache, die das Aussehen von HTML-Elementen bestimmt.
+Während HTML die Struktur definiert, definiert CSS das Design: Farben, Schriftarten,
+Abstände, Layout und Animationen.
+CSS folgt dem Prinzip der Trennung von Inhalt und Darstellung.
+Es gibt drei Möglichkeiten, CSS einzubinden: inline, internal oder external.
+CSS-Regeln bestehen aus Selektoren und Deklarationsblöcken.
+Das Cascading-Prinzip bestimmt, welche Stile bei Konflikten angewendet werden.
+CSS macht Webseiten erst richtig schön und benutzerfreundlich.
     </p>
         </div>
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;html&#x3E;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
-    &#x3C;title&#x3E;Meine erste HTML-Seite&#x3C;/title&#x3E;
+    &#x3C;title&#x3E;CSS Grundlagen&#x3C;/title&#x3E;
+    &#x3C;style&#x3E;
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .highlight {
+            background-color: #f39c12;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        #special-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    &#x3C;/style&#x3E;
 &#x3C;/head&#x3E;
 &#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Willkommen!&#x3C;/h1&#x3E;
-    &#x3C;p&#x3E;Dies ist ein einfacher Absatz.&#x3C;/p&#x3E;
+    &#x3C;h1&#x3E;Willkommen zu CSS!&#x3C;/h1&#x3E;
+    
+    &#x3C;p&#x3E;Dies ist ein normaler Absatz.&#x3C;/p&#x3E;
+    
+    &#x3C;p class=&#x22;highlight&#x22;&#x3E;Dieser Text hat eine besondere Hervorhebung.&#x3C;/p&#x3E;
+    
+    &#x3C;p id=&#x22;special-text&#x22;&#x3E;Dieser Text hat eine eindeutige ID.&#x3C;/p&#x3E;
+    
+    &#x3C;p style=&#x22;color: green; font-style: italic;&#x22;&#x3E;
+        Dieser Text verwendet Inline-CSS.
+    &#x3C;/p&#x3E;
+    
+    &#x3C;div&#x3E;
+        &#x3C;h2&#x3E;CSS-Eigenschaften&#x3C;/h2&#x3E;
+        &#x3C;ul&#x3E;
+            &#x3C;li&#x3E;Farben (color, background-color)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Schriftarten (font-family, font-size)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Abst&#xE4;nde (margin, padding)&#x3C;/li&#x3E;
+            &#x3C;li&#x3E;Rahmen (border)&#x3C;/li&#x3E;
+        &#x3C;/ul&#x3E;
+    &#x3C;/div&#x3E;
 &#x3C;/body&#x3E;
 &#x3C;/html&#x3E;</pre>
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
             <p>
-In diesem Beispiel beginnt die Datei mit einem &#x3C;html&#x3E;-Element, das alles umfasst.
-Der &#x3C;head&#x3E;-Teil enthält den Titel der Seite (sichtbar im Browser-Tab),
-und im &#x3C;body&#x3E; steht alles, was der Benutzer direkt sieht. Jede HTML-Seite sollte mit &#x3C;!DOCTYPE html&#x3E; starten,
-um dem Browser zu sagen, dass es sich um ein HTML5-Dokument handelt.
+Selektoren bestimmen, welche Elemente gestylt werden: Elementname (h1), Klasse (.highlight), ID (#special-text).
+Deklarationen bestehen aus Eigenschaft und Wert, getrennt durch einen Doppelpunkt.
+Internal CSS steht im &#x3C;style&#x3E;-Tag im <head>, External CSS in separaten .css-Dateien.
+Inline-CSS hat die höchste Priorität, sollte aber sparsam verwendet werden.
+Die Kaskadierung löst Konflikte zwischen verschiedenen CSS-Regeln.
     </p>
         </div>
         <div id="img">
-            <img src="../asset/image/code1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/code8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion geht es um den Aufbau einer HTML-Seite.</p>
+            <p>In der nächsten Lektion vertiefst du dein Wissen über CSS-Selektoren.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lektion0">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion2">Nächste Lektion ⮚</a></p>
-        </div>
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index" value="7" id="display1">Lektion7.html</button>
+            <button type="submit" name="index" value="9" id="display2">Lektion9.html</button>
+        </form>
     </section>
 </body>
 </html>

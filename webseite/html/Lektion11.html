@@ -378,10 +378,10 @@ Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit Jav
             <p>Herzlichen Glückwunsch! Du hast alle HTML- und CSS-Grundlagen erfolgreich durchlaufen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lektion10">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion12">Nächste Lektion ⮚</a></p>
-        </div>
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index" value="10" id="display1">Lektion10.html</button>
+            <button type="submit" name="index" value="12" id="display2">Lektion12.html</button>
+        </form>
     </section>
 </body>
 </html>

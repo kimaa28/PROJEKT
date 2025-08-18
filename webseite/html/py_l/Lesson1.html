@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 8: Dictionaries (Wörterbücher)</title>
+    <title>Lektion 1: Was ist Python?</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,80 +111,35 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 8: Dictionaries (Wörterbücher)</h1>
+            <h1>Lektion 1: Was ist Python?</h1>
                 <p>
-Dictionaries sind Sammlungen von Schlüssel-Wert-Paaren. Während Listen über Indizes
-zugreifen, verwendest du bei Dictionaries Schlüssel um auf Werte zuzugreifen.
+Python ist eine der beliebtesten Programmiersprachen der Welt und wurde 1991 von Guido van Rossum entwickelt.
+Der Name stammt übrigens von der britischen Komikertruppe "Monty Python" - nicht von der Schlange!
 
-Du erstellst ein Dictionary mit geschweiften Klammern: {"schlüssel": "wert"}
-Jeder Schlüssel muss eindeutig sein und kann ein String, eine Zahl oder ein Tupel sein.
-Werte können beliebige Datentypen sein.
+Python zeichnet sich durch seine einfache, lesbare Syntax aus. Während andere Programmiersprachen
+oft komplizierte Klammern und Semikolons verwenden, setzt Python auf Einrückungen und klare Struktur.
+Das macht Python besonders anfängerfreundlich.
 
-Vorteile von Dictionaries:
-- Schneller Zugriff über Schlüssel (auch bei großen Datenmengen)
-- Logische Struktur für zusammengehörige Daten
-- Flexible Erweiterung um neue Schlüssel-Wert-Paare
+Python ist eine interpretierte Sprache, das bedeutet, du kannst Code direkt ausführen ohne ihn vorher
+zu kompilieren. Python wird in vielen Bereichen eingesetzt: Webentwicklung, Datenanalyse, 
+Künstliche Intelligenz, Automatisierung und wissenschaftliche Berechnungen.
 
-Wichtige Dictionary-Methoden:
-- keys(): gibt alle Schlüssel zurück
-- values(): gibt alle Werte zurück  
-- items(): gibt Schlüssel-Wert-Paare zurück
-- get(): sicherer Zugriff mit Standardwert
-- pop(): entfernt und gibt Wert zurück
-- update(): fügt mehrere Paare hinzu
+In diesem ersten Beispiel siehst du ein klassisches "Hello World" Programm. Die print()-Funktion
+gibt Text auf dem Bildschirm aus. Beachte, wie einfach und lesbar Python-Code ist - du kannst
+wahrscheinlich schon verstehen, was passiert, ohne Programmiervorerfahrung zu haben!
 
-Du kannst prüfen, ob ein Schlüssel existiert mit dem in-Operator.
-For-Schleifen über Dictionaries iterieren standardmäßig über die Schlüssel.
+Python verwendet Anführungszeichen (einfach oder doppelt) um Text (Strings) zu kennzeichnen.
+Kommentare beginnst du mit dem #-Symbol - alles dahinter wird ignoriert und dient nur als Notiz.
     </p>
         </div>
 
         <div id="content1">
-            <p># Dictionary erstellen
-person = {
-    "name": "Anna Schmidt",
-    "alter": 28,
-    "stadt": "Berlin",
-    "beruf": "Programmiererin"
-}
+            <p># Mein erstes Python-Programm
+print("Hallo Welt!")
+print("Willkommen bei Python!")
 
-print("Person:", person)
-print("Name:", person["name"])
-print("Alter:", person["alter"])
-
-# Sicherer Zugriff mit get()
-email = person.get("email", "Keine E-Mail vorhanden")
-print("E-Mail:", email)
-
-# Werte ändern und hinzufügen
-person["alter"] = 29
-person["email"] = "anna@example.com"
-print("Nach Änderung:", person)
-
-# Mehrere Werte hinzufügen
-person.update({
-    "telefon": "0123456789",
-    "verheiratet": False
-})
-
-# Über Dictionary iterieren
-print("
-Alle Informationen:")
-for schluessel, wert in person.items():
-    print(f"{schluessel}: {wert}")
-
-# Nur Schlüssel oder Werte
-print("
-Alle Schlüssel:", list(person.keys()))
-print("Alle Werte:", list(person.values()))
-
-# Verschachtelte Dictionaries
-studenten = {
-    "Anna": {"note": 1, "fach": "Informatik"},
-    "Max": {"note": 2, "fach": "Mathematik"}
-}
-
-print(f"
-Annas Note: {studenten['Anna']['note']}")</p>
+# Dies ist ein Kommentar
+print("Python ist großartig!")  # Kommentar am Ende der Zeile</p>
 
         </div>
         <div class="anw">
@@ -193,17 +148,20 @@ Annas Note: {studenten['Anna']['note']}")</p>
         </div>
         
         <div id="img">
-            <img src="python8.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du, wie du eigene Funktionen erstellst.</p>
+            <p>In der nächsten Lektion lernst du Variablen und Datentypen kennen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson7.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson9.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="0" id="display1">Lesson0.html</button>
+            <button type="submit" name="index_p" value="2" id="display2">Lesson2.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

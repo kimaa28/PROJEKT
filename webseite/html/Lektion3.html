@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 3: Überschriften und Absätze</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,73 +111,62 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
+            <h1>Lektion 3: Überschriften und Absätze</h1>
                 <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
+HTML bietet sechs verschiedene Überschriftenebenen von &#x3C;h1&#x3E; bis &#x3C;h6&#x3E;.
+&#x3C;h1&#x3E; ist die wichtigste Überschrift, &#x3C;h6&#x3E; die unwichtigste.
+Diese Hierarchie hilft nicht nur bei der visuellen Gliederung, sondern auch bei der
+Suchmaschinenoptimierung und der Barrierefreiheit.
+Absätze werden mit &#x3C;p&#x3E;-Tags erstellt und sollten thematisch zusammengehörige Inhalte gruppieren.
+Zwischen Absätzen entstehen automatisch Abstände, die das Lesen erleichtern.
+Eine gute Überschriftenstruktur ist wie ein Inhaltsverzeichnis - sie zeigt die Hierarchie des Inhalts.
     </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
-
+            <pre style=" white-space: pre-wrap;
+            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html lang=&#x22;de&#x22;&#x3E;
+&#x3C;head&#x3E;
+    &#x3C;title&#x3E;&#xDC;berschriften und Abs&#xE4;tze&#x3C;/title&#x3E;
+&#x3C;/head&#x3E;
+&#x3C;body&#x3E;
+    &#x3C;h1&#x3E;Hauptthema der Seite&#x3C;/h1&#x3E;
+    &#x3C;p&#x3E;Dies ist ein einleitender Absatz zum Hauptthema.&#x3C;/p&#x3E;
+    
+    &#x3C;h2&#x3E;Erstes Unterthema&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Hier wird das erste Unterthema behandelt.&#x3C;/p&#x3E;
+    
+    &#x3C;h3&#x3E;Detailpunkt&#x3C;/h3&#x3E;
+    &#x3C;p&#x3E;Spezifische Details zu diesem Punkt.&#x3C;/p&#x3E;
+    
+    &#x3C;h2&#x3E;Zweites Unterthema&#x3C;/h2&#x3E;
+    &#x3C;p&#x3E;Ein weiterer wichtiger Bereich wird hier besprochen.&#x3C;/p&#x3E;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</pre>
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p></p>
+            <p>
+Die Überschriften bilden eine logische Hierarchie: H1 für den Haupttitel,
+H2 für Hauptkapitel, H3 für Unterkapitel usw.
+Niemals sollte eine Überschriftenebene übersprungen werden (z.B. von H2 direkt zu H4).
+Jeder Absatz behandelt idealerweise nur einen Gedanken oder eine Idee.
+    </p>
         </div>
-        
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/code3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="../asset/image/screen3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du verschiedene Textformatierungen kennen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson3.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson5.html">Nächste Lektion ⮚</a></p>
-        </div>
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index" value="2" id="display1">Lektion2.html</button>
+            <button type="submit" name="index" value="4" id="display2">Lektion4.html</button>
+        </form>
     </section>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 11: Fehlerbehandlung (try-except)</title>
+    <title>Lektion 2: Variablen und Datentypen</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,93 +111,50 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 11: Fehlerbehandlung (try-except)</h1>
+            <h1>Lektion 2: Variablen und Datentypen</h1>
                 <p>
-Fehler gehören zur Programmierung dazu. Python bietet mit try-except eine elegante
-Möglichkeit, Fehler abzufangen und zu behandeln, ohne dass das Programm abstürzt.
+Variablen sind wie Behälter, in denen du Daten speichern kannst. In Python musst du Variablen
+nicht vorher deklarieren - du weist ihnen einfach einen Wert zu und Python erkennt automatisch
+den Datentyp.
 
-Die Grundstruktur:
-- try: Code, der einen Fehler verursachen könnte
-- except: Was passiert, wenn ein Fehler auftritt
-- else: Code, der ausgeführt wird, wenn kein Fehler auftritt  
-- finally: Code, der immer ausgeführt wird
+Python hat verschiedene grundlegende Datentypen:
+- Strings (str): Text in Anführungszeichen
+- Integers (int): Ganze Zahlen wie 42, -17, 0
+- Floats (float): Dezimalzahlen wie 3.14, -2.5
+- Booleans (bool): Wahrheitswerte True oder False
 
-Häufige Fehlertypen:
-- ValueError: falsche Datentyp-Konvertierung
-- TypeError: falsche Datentypen für Operationen
-- FileNotFoundError: Datei nicht gefunden
-- KeyError: Schlüssel in Dictionary nicht vorhanden
-- IndexError: Index außerhalb des Bereichs
-- ZeroDivisionError: Division durch Null
+Du kannst Variablennamen fast frei wählen, aber sie sollten aussagekräftig sein und keine
+Leerzeichen enthalten. Verwende Unterstriche für mehrere Wörter wie "mein_name".
 
-Du kannst spezifische Fehler abfangen oder alle mit einem allgemeinen except.
-Mit raise kannst du eigene Fehler auslösen.
+Mit der type()-Funktion kannst du herausfinden, welchen Datentyp eine Variable hat.
+Python konvertiert Datentypen automatisch wenn möglich - zum Beispiel wenn du eine 
+Zahl mit einem String kombinierst.
 
-Die Fehlerbehandlung macht deine Programme robuster und benutzerfreundlicher.
-Statt mysteriösen Fehlermeldungen bekommen Benutzer verständliche Hinweise.
+Die f-String Syntax (f"...") ist eine moderne Art, Variablen in Text einzufügen.
+Du schreibst die Variable in geschweifte Klammern {} innerhalb des Strings.
     </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Fehlerbehandlung
-while True:
-    try:
-        zahl = int(input("Gib eine Zahl ein: "))
-        ergebnis = 100 / zahl
-        print(f"100 / {zahl} = {ergebnis}")
-        break
-    except ValueError:
-        print("Das war keine gültige Zahl! Versuche es nochmal.")
-    except ZeroDivisionError:
-        print("Division durch Null ist nicht möglich!")
+            <p># Verschiedene Datentypen
+name = "Anna"              # String
+alter = 25                 # Integer  
+groesse = 1.75             # Float
+ist_student = True         # Boolean
 
-# Mehrere Fehlertypen behandeln
-def datei_lesen(dateiname):
-    try:
-        with open(dateiname, 'r') as datei:
-            return datei.read()
-    except FileNotFoundError:
-        return f"Fehler: Datei '{dateiname}' nicht gefunden."
-    except PermissionError:
-        return f"Fehler: Keine Berechtigung für '{dateiname}'."
-    except Exception as e:
-        return f"Unerwarteter Fehler: {e}"
+# Ausgabe mit f-Strings
+print(f"Name: {name}")
+print(f"Alter: {alter}")
+print(f"Größe: {groesse}m")
+print(f"Student: {ist_student}")
 
-# Try-except-else-finally
-def sichere_division(a, b):
-    try:
-        ergebnis = a / b
-    except ZeroDivisionError:
-        print("Warnung: Division durch Null!")
-        return None
-    except TypeError:
-        print("Fehler: Ungültige Datentypen für Division!")
-        return None
-    else:
-        print("Division erfolgreich!")
-        return ergebnis
-    finally:
-        print("Division-Vorgang abgeschlossen.")
+# Datentypen anzeigen
+print(f"Typ von name: {type(name)}")
+print(f"Typ von alter: {type(alter)}")
 
-# Beispiele
-print(sichere_division(10, 2))
-print(sichere_division(10, 0))
-print(sichere_division("10", 2))
-
-# Eigene Fehler auslösen
-def validiere_alter(alter):
-    if alter < 0:
-        raise ValueError("Alter kann nicht negativ sein!")
-    if alter > 150:
-        raise ValueError("Alter scheint unrealistisch hoch!")
-    return True
-
-try:
-    alter = int(input("Dein Alter: "))
-    validiere_alter(alter)
-    print("Alter ist gültig!")
-except ValueError as e:
-    print(f"Fehler: {e}")</p>
+# Variablen ändern
+alter = 26
+print(f"Neues Alter: {alter}")</p>
 
         </div>
         <div class="anw">
@@ -206,17 +163,20 @@ except ValueError as e:
         </div>
         
         <div id="img">
-            <img src="python11.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Module und Bibliotheken kennen.</p>
+            <p>Als Nächstes lernst du grundlegende Operatoren kennen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson10.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson12.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="1" id="display1">Lesson1.html</button>
+            <button type="submit" name="index_p" value="3" id="display2">Lesson3.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

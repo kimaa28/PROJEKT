@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 5: Links und Navigation</title>
+    <title>Lektion 5: Bedingte Anweisungen (if-else)</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,73 +111,89 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 5: Links und Navigation</h1>
+            <h1>Lektion 5: Bedingte Anweisungen (if-else)</h1>
                 <p>
-Links sind das Herzstück des World Wide Web und werden mit dem &#x3C;a&#x3E;-Tag erstellt.
-Das href-Attribut gibt das Ziel des Links an - das kann eine andere Webseite,
-eine E-Mail-Adresse, eine Telefonnummer oder ein Anker innerhalb der Seite sein.
-Links können absolut (komplette URL) oder relativ (bezogen auf die aktuelle Seite) sein.
-Das target-Attribut bestimmt, wo der Link geöffnet wird.
-title-Attribute bieten zusätzliche Informationen beim Hovern über den Link.
-Gute Linktexte sind beschreibend und aussagekräftig für die Barrierefreiheit.
+Bedingte Anweisungen ermöglichen es deinem Programm, Entscheidungen zu treffen.
+Mit if, elif und else kannst du verschiedene Codeblöcke je nach Bedingung ausführen.
+
+Die Syntax ist einfach:
+- if Bedingung: führt Code aus, wenn Bedingung True ist
+- elif Bedingung: (else if) prüft weitere Bedingungen  
+- else: führt Code aus, wenn alle Bedingungen False sind
+
+Wichtig in Python: Die Einrückung bestimmt, welcher Code zum if-Block gehört!
+Verwende 4 Leerzeichen oder einen Tab für jede Einrückungsebene.
+
+Du kannst Bedingungen mit logischen Operatoren kombinieren:
+- and: beide Bedingungen müssen True sein
+- or: mindestens eine Bedingung muss True sein
+- not: kehrt True/False um
+
+Vergleiche können mit Zahlen, Strings und anderen Datentypen durchgeführt werden.
+Bei Strings wird alphabetisch verglichen. Du kannst auch prüfen, ob ein Wert
+in einer Liste enthalten ist mit dem in-Operator.
     </p>
         </div>
 
         <div id="content1">
-            <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
-&#x3C;html lang=&#x22;de&#x22;&#x3E;
-&#x3C;head&#x3E;
-    &#x3C;title&#x3E;Links und Navigation&#x3C;/title&#x3E;
-&#x3C;/head&#x3E;
-&#x3C;body&#x3E;
-    &#x3C;h1&#x3E;Verschiedene Arten von Links&#x3C;/h1&#x3E;
-    
-    &#x3C;nav&#x3E;
-        &#x3C;a href=&#x22;#abschnitt1&#x22;&#x3E;Sprung zu Abschnitt 1&#x3C;/a&#x3E; |
-        &#x3C;a href=&#x22;#abschnitt2&#x22;&#x3E;Sprung zu Abschnitt 2&#x3C;/a&#x3E;
-    &#x3C;/nav&#x3E;
-    
-    &#x3C;p&#x3E;&#x3C;a href=&#x22;https://www.example.com&#x22; target=&#x22;_blank&#x22; 
-       title=&#x22;&#xD6;ffnet externe Seite&#x22;&#x3E;Externe Webseite&#x3C;/a&#x3E;&#x3C;/p&#x3E;
-    
-    &#x3C;p&#x3E;&#x3C;a href=&#x22;mailto:info@example.com&#x22;&#x3E;E-Mail senden&#x3C;/a&#x3E;&#x3C;/p&#x3E;
-    
-    &#x3C;p&#x3E;&#x3C;a href=&#x22;tel:+49123456789&#x22;&#x3E;Anrufen&#x3C;/a&#x3E;&#x3C;/p&#x3E;
-    
-    &#x3C;p&#x3E;&#x3C;a href=&#x22;../andere-seite.html&#x22;&#x3E;Relative Verlinkung&#x3C;/a&#x3E;&#x3C;/p&#x3E;
-    
-    &#x3C;h2 id=&#x22;abschnitt1&#x22;&#x3E;Abschnitt 1&#x3C;/h2&#x3E;
-    &#x3C;p&#x3E;Inhalt des ersten Abschnitts...&#x3C;/p&#x3E;
-    
-    &#x3C;h2 id=&#x22;abschnitt2&#x22;&#x3E;Abschnitt 2&#x3C;/h2&#x3E;
-    &#x3C;p&#x3E;Inhalt des zweiten Abschnitts...&#x3C;/p&#x3E;
-&#x3C;/body&#x3E;
-&#x3C;/html&#x3E;</pre>
+            <p># Einfache if-else Anweisung
+alter = int(input("Dein Alter: "))
+
+if alter >= 18:
+    print("Du bist volljährig!")
+else:
+    print("Du bist noch minderjährig.")
+
+# Mehrere Bedingungen mit elif
+note = int(input("Deine Note (1-6): "))
+
+if note == 1:
+    print("Sehr gut!")
+elif note == 2:
+    print("Gut!")
+elif note == 3:
+    print("Befriedigend!")
+elif note == 4:
+    print("Ausreichend!")
+elif note == 5:
+    print("Mangelhaft!")
+elif note == 6:
+    print("Ungenügend!")
+else:
+    print("Ungültige Note!")
+
+# Logische Operatoren
+temperatur = float(input("Temperatur in °C: "))
+regen = input("Regnet es? (ja/nein): ").lower()
+
+if temperatur > 20 and regen == "nein":
+    print("Perfektes Wetter für einen Spaziergang!")
+elif temperatur > 20 or regen == "nein":
+    print("Das Wetter ist okay.")
+else:
+    print("Lieber drinnen bleiben...")</p>
+
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
-Das &#x3C;nav&#x3E;-Element kennzeichnet Navigationsbereiche für bessere Semantik.
-target="_blank" öffnet Links in einem neuen Tab/Fenster.
-Anker-Links (#) springen zu Elementen mit entsprechender ID auf derselben Seite.
-mailto: und tel: Links öffnen E-Mail-Programme bzw. Telefon-Apps.
-Relative Links sind praktisch für interne Seitenstrukturen.
-    </p>
+            <p></p>
         </div>
+        
         <div id="img">
-            <img src="../asset/image/code5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
-            <img src="../asset/image/screen5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du, wie Bilder in Webseiten eingebunden werden.</p>
+            <p>In der nächsten Lektion lernst du Schleifen kennen - for und while.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lektion4">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lektion6">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="4" id="display1">Lesson4.html</button>
+            <button type="submit" name="index_p" value="6" id="display2">Lesson6.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 1: Was ist Python?</title>
+    <title>Lektion 9: Funktionen definieren</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,35 +111,78 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 1: Was ist Python?</h1>
+            <h1>Lektion 9: Funktionen definieren</h1>
                 <p>
-Python ist eine der beliebtesten Programmiersprachen der Welt und wurde 1991 von Guido van Rossum entwickelt.
-Der Name stammt übrigens von der britischen Komikertruppe "Monty Python" - nicht von der Schlange!
+Funktionen sind wiederverwendbare Codeblöcke, die eine bestimmte Aufgabe erfüllen.
+Sie helfen dabei, Code zu organisieren und Wiederholungen zu vermeiden.
 
-Python zeichnet sich durch seine einfache, lesbare Syntax aus. Während andere Programmiersprachen
-oft komplizierte Klammern und Semikolons verwenden, setzt Python auf Einrückungen und klare Struktur.
-Das macht Python besonders anfängerfreundlich.
+Eine Funktion definierst du mit dem def-Schlüsselwort, gefolgt vom Funktionsnamen
+und Parametern in Klammern. Der Code der Funktion wird eingerückt.
 
-Python ist eine interpretierte Sprache, das bedeutet, du kannst Code direkt ausführen ohne ihn vorher
-zu kompilieren. Python wird in vielen Bereichen eingesetzt: Webentwicklung, Datenanalyse, 
-Künstliche Intelligenz, Automatisierung und wissenschaftliche Berechnungen.
+Funktionen können:
+- Parameter entgegennehmen (Eingabewerte)
+- Werte mit return zurückgeben
+- Ohne Parameter oder return-Wert existieren
+- Standardwerte für Parameter haben
+- Variable Anzahl von Parametern akzeptieren
 
-In diesem ersten Beispiel siehst du ein klassisches "Hello World" Programm. Die print()-Funktion
-gibt Text auf dem Bildschirm aus. Beachte, wie einfach und lesbar Python-Code ist - du kannst
-wahrscheinlich schon verstehen, was passiert, ohne Programmiervorerfahrung zu haben!
+Wichtige Konzepte:
+- Lokale Variablen existieren nur innerhalb der Funktion
+- Globale Variablen sind überall verfügbar  
+- return beendet die Funktion und gibt einen Wert zurück
+- Ohne return gibt eine Funktion None zurück
 
-Python verwendet Anführungszeichen (einfach oder doppelt) um Text (Strings) zu kennzeichnen.
-Kommentare beginnst du mit dem #-Symbol - alles dahinter wird ignoriert und dient nur als Notiz.
+Docstrings (dreifache Anführungszeichen) dokumentieren, was eine Funktion tut.
+Das ist wichtig für die Lesbarkeit und Wartung des Codes.
+
+Funktionen machen deinen Code modularer, testbarer und einfacher zu verstehen.
     </p>
         </div>
 
         <div id="content1">
-            <p># Mein erstes Python-Programm
-print("Hallo Welt!")
-print("Willkommen bei Python!")
+            <p># Einfache Funktion ohne Parameter
+def begruessung():
+    "Gibt eine Begrüßung aus."
+    print("Hallo! Willkommen bei Python!")
 
-# Dies ist ein Kommentar
-print("Python ist großartig!")  # Kommentar am Ende der Zeile</p>
+# Funktion mit Parametern
+def begruesse_person(name, alter):
+    "Begrüßt eine Person mit Namen und Alter."
+    print(f"Hallo {name}! Du bist {alter} Jahre alt.")
+
+# Funktion mit Rückgabewert  
+def addiere(a, b):
+    "Addiert zwei Zahlen und gibt das Ergebnis zurück."
+    ergebnis = a + b
+    return ergebnis
+
+# Funktion mit Standardwerten
+def stelle_vor(name, alter=0, stadt="Unbekannt"):
+    "Stellt eine Person vor mit optionalen Parametern."
+    return f"Ich bin {name}, {alter} Jahre alt und komme aus {stadt}."
+
+# Funktionen aufrufen
+begruessung()
+begruesse_person("Max", 25)
+
+summe = addiere(10, 20)
+print(f"10 + 20 = {summe}")
+
+# Mit Standardwerten
+print(stelle_vor("Anna"))
+print(stelle_vor("Bob", 30))  
+print(stelle_vor("Clara", 25, "Hamburg"))
+
+# Funktion für Berechnungen
+def kreisflaeche(radius):
+    "Berechnet die Fläche eines Kreises."
+    pi = 3.14159
+    flaeche = pi * radius ** 2
+    return flaeche
+
+radius = float(input("Radius des Kreises: "))
+flaeche = kreisflaeche(radius)
+print(f"Fläche: {flaeche:.2f}")</p>
 
         </div>
         <div class="anw">
@@ -148,17 +191,20 @@ print("Python ist großartig!")  # Kommentar am Ende der Zeile</p>
         </div>
         
         <div id="img">
-            <img src="python1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python9.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Variablen und Datentypen kennen.</p>
+            <p>In der nächsten Lektion lernst du den Umgang mit Dateien.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson0.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson2.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="8" id="display1">Lesson8.html</button>
+            <button type="submit" name="index_p" value="10" id="display2">Lesson10.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

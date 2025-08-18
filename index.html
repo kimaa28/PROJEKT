@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Auswahl</title>
+</head>
+<body>
+    <h1>Wähle dein Ziel</h1>
+    
+    <!-- Formular mit GET-Methode für bessere Redirects -->
+    <form action="/cgi-bin/gear_cgi.py" method="get">
+        <h3>Zu welcher Lesson möchtest du?</h3>
+        
+        <label>
+            <input type="radio" name="lesson" value="1" checked> Lesson 1
+        </label><br>
+        
+        <label>
+            <input type="radio" name="lesson" value="2"> Lesson 2
+        </label><br>
+        
+        <label>
+            <input type="radio" name="lesson" value="3"> Lesson 3
+        </label><br>
+        
+        <label>
+            <input type="radio" name="lesson" value="home"> Startseite
+        </label><br>
+        
+        <label>
+            <input type="radio" name="lesson" value="about"> Über uns
+        </label><br><br>
+        
+        <input type="submit" value="Los geht's!">
+    </form>
+    
+    <!-- Schnelle Buttons mit GET -->
+    <hr>
+    <h3>Oder direkt:</h3>
+    
+    <a href="/cgi-bin/gear_cgi.py?lesson=2">
+        <button type="button">Direkt zu Lesson 2</button>
+    </a>
+    
+    <a href="/cgi-bin/gear_cgi.py?lesson=home">
+        <button type="button">Zur Startseite</button>
+    </a>
+    
+</body>
+</html>

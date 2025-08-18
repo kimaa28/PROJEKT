@@ -233,10 +233,13 @@ print(f"Anzahl Tiere: {Tier.get_anzahl()}")</p>
             <p>In der letzten Lektion lernst du erweiterte Python-Konzepte und Best Practices.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson13.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson15.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="13" id="display1">Lesson13.html</button>
+            <button type="submit" name="index_p" value="15" id="display2">Lesson15.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>

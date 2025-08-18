@@ -3,20 +3,6 @@ from python_lesson_class import python_liste
 import os
 
 
-class my_class:
-    def __init__(self, value1, value2, id):
-        self.value1 = value1
-        self.value2 = value2
-        self.id = id
-
-
-
-
-lektion1 = my_class("Lektion1", "je suis un con qui ne sait pas coder et utilise l'IA comme un debile", 1)
-lektion2 = my_class("Lektion2", "je sais coder et je n'utilise l'IA que pour des fonctions repetitives specifiques", 2)
-lektion3 = my_class("lektion 3", "je ne sia pas encore ce qui vas dans cette case ou frame mais bon ca m'es egal bitch", 3)
-les = [lektion1, lektion2, lektion3]
-
 
 
 def create_html_file(directory, filename, content):
@@ -35,7 +21,7 @@ def create_html_file(directory, filename, content):
 
 
    
-def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview, next):
+def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview, next, index):
     return f"""
 
 <!DOCTYPE html>
@@ -170,10 +156,10 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             <p>{anw}</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="{preview}">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="{next}">Nächste Lektion ⮚</a></p>
-        </div>
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
+            <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
+        </form>
     </section>
 </body>
 </html>
@@ -181,15 +167,15 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
 titel_list = [titel.titel_lesson for titel in html_list]
 
 
-
 def site_name(id):
-    return f"""Lektion{id}"""
+    return f"""Lektion{id}.html"""
 
+# create all html courses
 for index, (titel, ele) in enumerate(zip(titel_list, html_list)):
-    create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, site_name(ele.index-1), site_name(ele.index+1) ))
+    create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, site_name(ele.index-1), site_name(ele.index+1), ele.index ))
 
-
-def python(titel ,haupttitel, body, code,img_1, anw, preview, next):
+#python modul for python courses
+def python(titel ,haupttitel, body, code,img_1, anw, preview, next, index):
     return f"""
 
 <!DOCTYPE html>
@@ -324,10 +310,13 @@ def python(titel ,haupttitel, body, code,img_1, anw, preview, next):
             <p>{anw}</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="{preview}">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="{next}">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="{index - 1}" id="display1">{preview}</button>
+            <button type="submit" name="index_p" value="{index + 1}" id="display2">{next}</button>
+        </form>
+
+        
     </section>
 </body>
 </html>
@@ -338,4 +327,5 @@ def python_site_name(id):
     return f"""Lesson{id}.html"""
 
 for index, (titel, ele) in enumerate(zip(python_list, python_liste)):
-    create_html_file("../webseite/html", python_site_name(ele.index), python(titel, ele.titel_lesson, ele.body, ele.code,ele.img, ele.next_anw, python_site_name(ele.index-1), python_site_name(ele.index+1) ))
+    create_html_file("../webseite/html/py_l", python_site_name(ele.index), python(titel, ele.titel_lesson, ele.body, ele.code,ele.img, ele.next_anw, python_site_name(ele.index-1), python_site_name(ele.index+1), ele.index  ))
+

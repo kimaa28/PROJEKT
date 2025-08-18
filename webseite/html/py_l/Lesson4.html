@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 12: Module und Bibliotheken</title>
+    <title>Lektion 4: Eingabe und Ausgabe</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,85 +111,54 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 12: Module und Bibliotheken</h1>
+            <h1>Lektion 4: Eingabe und Ausgabe</h1>
                 <p>
-Module sind Python-Dateien, die Code enthalten, den du in anderen Programmen verwenden kannst.
-Python hat viele eingebaute Module, und du kannst auch eigene erstellen oder externe installieren.
+Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
+bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
 
-Wichtige eingebaute Module:
-- math: mathematische Funktionen
-- random: Zufallszahlen und -auswahlen
-- datetime: Datum und Zeit
-- os: Betriebssystem-Funktionen
-- json: JSON-Datenverarbeitung
+Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
+int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
 
-Module importierst du mit:
-- import modulname: importiert das ganze Modul
-- from modulname import funktion: importiert nur bestimmte Funktionen
-- import modulname as alias: gibt dem Modul einen anderen Namen
+Die print()-Funktion hat viele nützliche Parameter:
+- sep: bestimmt das Trennzeichen zwischen mehreren Werten
+- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
 
-Externe Bibliotheken installierst du mit pip (Python Package Installer):
-pip install bibliotheksname
+Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
+- f-Strings: f"Text {variable}"  
+- .format(): "Text {}".format(variable)
+- % formatting: "Text %s" % variable (älter)
 
-Eigene Module erstellst du, indem du Python-Code in eine .py-Datei schreibst.
-Diese Datei kannst du dann in anderen Programmen importieren.
-
-Die Python Standard Library enthält über 200 Module für fast jeden Zweck.
-Das macht Python so vielseitig - für die meisten Aufgaben gibt es bereits
-fertige Lösungen, die du einfach importieren kannst.
+Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
+Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
     </p>
         </div>
 
         <div id="content1">
-            <p># Math-Modul für mathematische Funktionen
-import math
+            <p># Einfache Eingabe
+name = input("Wie heißt du? ")
+print(f"Hallo {name}!")
 
-print(f"Pi: {math.pi}")
-print(f"Quadratwurzel von 16: {math.sqrt(16)}")
-print(f"2 hoch 8: {math.pow(2, 8)}")
-print(f"Fakultät von 5: {math.factorial(5)}")
+# Zahlen einlesen
+alter_str = input("Wie alt bist du? ")
+alter = int(alter_str)  # String zu Integer konvertieren
+print(f"Du bist {alter} Jahre alt.")
 
-# Random-Modul für Zufallszahlen
-import random
+# Direktkonvertierung
+groesse = float(input("Deine Größe in Metern: "))
+print(f"Du bist {groesse:.2f}m groß.")
 
-print(f"
-Zufallszahl 1-10: {random.randint(1, 10)}")
-print(f"Zufallszahl 0-1: {random.random()}")
+# Berechnungen mit Eingaben
+zahl1 = int(input("Erste Zahl: "))
+zahl2 = int(input("Zweite Zahl: "))
+summe = zahl1 + zahl2
+print(f"{zahl1} + {zahl2} = {summe}")
 
-farben = ["rot", "grün", "blau", "gelb"]
-print(f"Zufällige Farbe: {random.choice(farben)}")
-
-# Datetime für Datum und Zeit
-from datetime import datetime, date
-
-heute = date.today()
-jetzt = datetime.now()
-
-print(f"
-Heute: {heute}")
-print(f"Jetzt: {jetzt.strftime('%H:%M:%S')}")
-print(f"Jahr: {heute.year}, Monat: {heute.month}")
-
-# OS-Modul für Systemfunktionen
-import os
-
-print(f"
-Aktueller Ordner: {os.getcwd()}")
-print(f"Dateien im Ordner: {os.listdir('.')}")
-
-# JSON für Datenverarbeitung
-import json
-
-daten = {
-    "name": "Max",
-    "alter": 25,
-    "hobbys": ["Lesen", "Sport", "Kochen"]
-}
-
-json_string = json.dumps(daten, ensure_ascii=False, indent=2)
-print(f"
-JSON-Daten:
-{json_string}")</p>
+# Formatierte Ausgabe
+preis = 49.99
+print(f"Preis: {preis:.2f}€")
+print("Name:", name, "Alter:", alter, sep=" - ")
+print("Ende", end="!
+")</p>
 
         </div>
         <div class="anw">
@@ -198,17 +167,20 @@ JSON-Daten:
         </div>
         
         <div id="img">
-            <img src="python12.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du Klassen und objektorientierte Programmierung kennen.</p>
+            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
         </div>
 
-        <div id="buttons">
-            <p><a id="display1" href="Lesson11.html">⮘ Voherige Lektion</a></p>
-            <p><a id="display2" href="Lesson13.html">Nächste Lektion ⮚</a></p>
-        </div>
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name="index_p" value="3" id="display1">Lesson3.html</button>
+            <button type="submit" name="index_p" value="5" id="display2">Lesson5.html</button>
+        </form>
+
+        
     </section>
 </body>
 </html>
