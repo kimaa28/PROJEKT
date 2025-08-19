@@ -18,7 +18,7 @@ lektion1 = my_class( "Lektion 1: Was ist CGI?",
 "In der nächsten Lektion lernst du, wie du Formulardaten verarbeitest.",
 "Zurück zur Startseite", 
 "Weiter zu Lektion 2",
-1 ),
+1 )
 
 lektion2 = my_class( "Lektion 2: Formulardaten verarbeiten", 
 """ Eine der häufigsten Anwendungen von CGI ist die Verarbeitung von HTML-Formularen. Wenn ein Benutzer ein Formular absendet, werden die Daten an das CGI-Skript übertragen. Es gibt zwei Hauptmethoden für die Datenübertragung: GET und POST. Bei der GET-Methode werden die Daten in der URL übertragen und sind in der Umgebungsvariable QUERY_STRING verfügbar. Bei der POST-Methode werden die Daten über die Standardeingabe (STDIN) übertragen und sind nicht in der URL sichtbar. Formulardaten werden URL-kodiert übertragen, das bedeutet, Leerzeichen werden zu '+' und Sonderzeichen werden als %XX kodiert. CGI-Skripte müssen diese Kodierung rückgängig machen (URL-Dekodierung). Die Daten kommen im Format 'name1=wert1&name2=wert2' an. Jedes name=wert-Paar entspricht einem Formularfeld. In diesem Beispiel zeige ich dir ein CGI-Skript, das Formulardaten verarbeitet. Das Skript prüft zuerst die REQUEST_METHOD um zu unterscheiden zwischen GET und POST. Dann werden die Daten entsprechend ausgelesen und verarbeitet. Die URI::Escape-Bibliothek hilft bei der URL-Dekodierung. """, 
@@ -27,7 +27,7 @@ lektion2 = my_class( "Lektion 2: Formulardaten verarbeiten",
 "In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.", 
 "Zurück zu Lektion 1", 
 "Weiter zu Lektion 3", 
-2 ),
+2 )
 
 lektion3 = my_class( "Lektion 3: Umgebungsvariablen und HTTP-Header", 
 """ CGI-Skripte erhalten viele nützliche Informationen über Umgebungsvariablen. Diese Variablen enthalten Details über die HTTP-Anfrage, den Browser des Benutzers und die Serverumgebung. Wichtige Umgebungsvariablen sind: REQUEST_METHOD (GET, POST, etc.), QUERY_STRING (Parameter bei GET), CONTENT_LENGTH (Größe der POST-Daten), HTTP_USER_AGENT (Browser-Information), REMOTE_ADDR (IP-Adresse des Benutzers), und SERVER_NAME (Name des Servers). HTTP-Header sind wichtig für die Kommunikation zwischen Server und Browser. CGI-Skripte können verschiedene Header senden: Content-Type bestimmt den Medientyp, Location wird für Weiterleitungen verwendet, Set-Cookie setzt Cookies, und Cache-Control steuert das Caching-Verhalten. Header müssen vor dem eigentlichen Inhalt gesendet werden und durch eine Leerzeile getrennt sein. CGI-Skripte können auch eigene HTTP-Statuscodes senden, wie 404 (Not Found) oder 500 (Internal Server Error). In diesem Beispiel siehst du, wie man Umgebungsvariablen ausliest und verschiedene Header verwendet. Das Skript zeigt Browser-Informationen an und demonstriert eine einfache Weiterleitung. """, 
@@ -35,7 +35,7 @@ lektion3 = my_class( "Lektion 3: Umgebungsvariablen und HTTP-Header",
 "In der nächsten Lektion lernst du Fehlerbehandlung und Sicherheit bei CGI.", 
 "Zurück zu Lektion 2", 
 "Weiter zu Lektion 4", 
-3 ),
+3 )
 
 lektion4 = my_class( "Lektion 4: Fehlerbehandlung und Sicherheit", 
 """ Sicherheit ist bei CGI-Skripten von größter Bedeutung, da sie direkt auf dem Server ausgeführt werden. Ungesicherte CGI-Skripte können zu schwerwiegenden Sicherheitslücken führen. Wichtige Sicherheitsmaßnahmen umfassen: Eingabevalidierung (alle Benutzereingaben prüfen), Ausgabe-Escaping (HTML-Zeichen maskieren), Pfad-Validierung (gefährliche Pfade verhindern), und sichere Dateizugriffe. Cross-Site-Scripting (XSS) ist eine häufige Bedrohung, bei der schädlicher Code in Webseiten eingeschleust wird. CGI-Skripte sollten alle Benutzereingaben filtern und HTML-Zeichen maskieren. SQL-Injection ist bei datenbankgestützten CGI-Skripten ein Problem. Verwende immer Prepared Statements und validiere Eingaben. Fehlerbehandlung ist wichtig für Debugging und Sicherheit. CGI-Skripte sollten Fehler protokollieren, aber keine sensiblen Informationen preisgeben. Verwende 'die' oder 'exit' für kontrollierte Programmbeendigung. Setze angemessene Dateiberechtigungen (meist 755 für CGI-Skripte). In diesem letzten Beispiel zeige ich dir sichere Praktiken: Eingabevalidierung, HTML-Escaping, Fehlerbehandlung und Logging. Das Skript demonstriert, wie man Benutzereingaben sicher verarbeitet. """, 
@@ -47,4 +47,4 @@ lektion4 = my_class( "Lektion 4: Fehlerbehandlung und Sicherheit",
  4 )
 
 
-cgi_list = [lektion1, lektion2, lektion3, lektion4]
+cgi_class = [lektion1, lektion2, lektion3, lektion4]

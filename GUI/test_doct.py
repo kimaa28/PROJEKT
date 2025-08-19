@@ -1,5 +1,8 @@
 from html_class import html_list
-from python_lesson_class import python_liste
+from python_lesson_class import python_class
+from CGI_class import cgi_class
+from LINUX_class import linux_class
+from Tkinter_class import tkinter_class
 import os
 
 
@@ -175,7 +178,7 @@ for index, (titel, ele) in enumerate(zip(titel_list, html_list)):
     create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, site_name(ele.index-1), site_name(ele.index+1), ele.index ))
 
 #python modul for python courses
-def python(titel ,haupttitel, body, code,img_1, anw, preview, next, index):
+def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
     return f"""
 
 <!DOCTYPE html>
@@ -312,8 +315,8 @@ def python(titel ,haupttitel, body, code,img_1, anw, preview, next, index):
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name="index_p" value="{index - 1}" id="display1">{preview}</button>
-            <button type="submit" name="index_p" value="{index + 1}" id="display2">{next}</button>
+            <button type="submit" name={id} value="{index - 1}" id="display1">{preview}</button>
+            <button type="submit" name={id} value="{index + 1}" id="display2">{next}</button>
         </form>
 
         
@@ -321,11 +324,43 @@ def python(titel ,haupttitel, body, code,img_1, anw, preview, next, index):
 </body>
 </html>
 """
-python_list = [titel.titel_lesson for titel in python_liste]
 
-def python_site_name(id):
+def courses_site_name(id):
     return f"""Lesson{id}.html"""
 
-for index, (titel, ele) in enumerate(zip(python_list, python_liste)):
-    create_html_file("../webseite/html/py_l", python_site_name(ele.index), python(titel, ele.titel_lesson, ele.body, ele.code,ele.img, ele.next_anw, python_site_name(ele.index-1), python_site_name(ele.index+1), ele.index  ))
+  #neue in dex
+  #destination
+  # titel list
 
+courses_dict = {
+    "python": {
+            "id": "index_p",
+            "pfad": "../webseite/html/py_l",
+            "titel": [titel.titel_lesson for titel in python_class],
+            "class": python_class
+               },
+    "CGI": {
+            "id": "index_c",
+            "pfad": "../webseite/html/cgi",
+            "titel": [titel.titel_lesson for titel in cgi_class],
+            "class": cgi_class
+    },
+    "Linux": {
+            "id": "index_l",
+            "pfad": "../webseite/html/linux",
+            "titel": [titel.titel_lesson for titel in linux_class],
+            "class": linux_class
+    },
+    "Tkinter":{
+            "id": "index_t",
+            "pfad": "../webseite/html/tkinter",
+            "titel": [titel.titel_lesson for titel in tkinter_class],
+            "class": tkinter_class
+    }
+
+}
+
+for key, value in courses_dict.items():
+    for index, (titel, ele) in enumerate(zip(value["titel"], value["class"])):
+        create_html_file( value["pfad"], courses_site_name(ele.index), courses(titel, ele.titel_lesson, ele.body, ele.code, ele.img, ele.next_anw, courses_site_name(ele.index-1), courses_site_name(ele.index+1), value["id"],ele.index))
+# i am proud of me, just one line to resume 3 workingshours 

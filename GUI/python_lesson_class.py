@@ -468,7 +468,8 @@ print(f"\nAnnas Note: {studenten['Anna']['note']}")""",
     8
 )
 
-lesson9 = my_class( "Lektion 9: Funktionen definieren",
+lesson9 = my_class( 
+    "Lektion 9: Funktionen definieren",
 """
 Funktionen sind wiederverwendbare Codeblöcke, die eine bestimmte Aufgabe erfüllen.
 Sie helfen dabei, Code zu organisieren und Wiederholungen zu vermeiden.
@@ -1136,4 +1137,4 @@ langsame_funktion()""",
     15
 ) 
 
-python_liste = [lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9,lesson10, lesson11, lesson12, lesson13, lesson14, lesson15]
+python_class = [lesson1, lesson2, lesson3, lesson4, lesson5, lesson6, lesson7, lesson8, lesson9,lesson10, lesson11, lesson12, lesson13, lesson14, lesson15]

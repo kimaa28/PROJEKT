@@ -64,4 +64,4 @@ lektion6 = my_class( "Lektion 6: Skripting und Automatisierung",
 "Kurs abgeschlossen", 
 6 )
 
-linux_list = [lektion1, lektion2, lektion3, lektion4, lektion5, lektion6]
+linux_class = [lektion1, lektion2, lektion3, lektion4, lektion5, lektion6]
