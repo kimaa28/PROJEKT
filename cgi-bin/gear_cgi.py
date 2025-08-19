@@ -33,6 +33,24 @@ print('''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <title>Debug & Weiterleitung</title>
+    <style>
+
+        .loader {
+        width: calc(160px / 0.707);
+        height: 10px;
+        background: repeating-linear-gradient(-45deg, #ABC 0 30px,#0000 0 40px) left/200% 100%;
+        animation: i3 0.6s infinite linear;
+        border-radius: 10px;
+        border: 1px solid #766DF4;
+}
+
+@keyframes i3 {
+  100% {
+    background-position: right
+  }
+}
+  
+</style>
 </head>
 <body>''')
 
@@ -69,7 +87,7 @@ for key, value in index_list.items():
             link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html"]
             redirect_url = link_list[key]
 
-
+redirect_url =  redirect_url
 
 # JSON laden
 json_change = load_index(path)
@@ -81,9 +99,10 @@ if "Done" not in json_change:
 if "Current" not in json_change:
     json_change["Current"] = {"None": 0}
 
-# Logik
+# this small syntax resume 4 workings hours and can be use on many variable
+keys_liste = {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}
 try:
-    for key, value in {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}:
+    for key, value in keys_liste.items():
         if value :
             if index -1 in json_change["Done"][key]:
                 json_change["Current"] = {key : f"lektion{index}"}
@@ -95,6 +114,7 @@ try:
                 save_index(path, json_change)
 except Exception as e:
     pass 
+
 
 # try:
 #     if not index_h:
@@ -130,7 +150,8 @@ print(f'''
         window.location.href = "{redirect_url}";
     }}, 3000);
 </script> 
-<p><em>Automatische Weiterleitung in 3 Sekunden...</em></p>
+<p><em>Automatische Weiterleitung in 3 Sekunden...</p>
+<div class="loader"></div></em>
 ''')
 
 print("</body></html>")
