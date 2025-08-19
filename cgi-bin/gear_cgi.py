@@ -22,12 +22,6 @@ def site_name(id):
     return f"Lektion{id}"
 
 
-def redirect_link(id, lesson):
-    if lesson == "py":
-        return f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{id}.html"
-    elif lesson == "html":
-        return f"http://127.0.0.1:8000/webseite/html/Lektion{id}.html"
-
 
 # HTTP Header
 print("Content-Type: text/html; charset=utf-8")
@@ -51,54 +45,78 @@ path = "progress.json"
 
 # Form Daten
 form = cgi.FieldStorage()
-index_html = form.getvalue("index")
+index_h = form.getvalue("index")
 index_p = form.getvalue("index_p")
+index_t = form.getvalue("index_t")
+index_c = form.getvalue("index_c")
+index_l = form.getvalue("index_l")
 
-if not index_html:
-    index = index_p # if you start the programm on the terminal you will see an error but no panics it is normal because the don't have the value index fron formular but if you want you cant set (or 1) zu fix the error i don't it because i don't need an another json in my cgi folder
-    redirect_url = redirect_link(index, "py")
-else:
-    index = index_html 
-    redirect_url = redirect_link(index, "html")
+index_list = {
+    0: index_h,
+    1 : index_p,
+    2 : index_t,
+    3 : index_c,
+    4 : index_l
+}
+for key, value in index_list.items():
+    if value:
+        index = value
+        if value == index:
+            try:
+                index = int(index)
+            except ValueError as e:
+                index = 1
+            link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html"]
+            redirect_url = link_list[key]
 
-try:
-    index = int(index)
-except ValueError as e:
-    index = 1
+
 
 # JSON laden
 json_change = load_index(path)
 
 # Prüfe JSON Struktur
 if "Done" not in json_change:
-    json_change["Done"] = {"html": [], "python": []}
+    json_change["Done"] = {"html": [], "python": [], "tkinter": [], "cgi": [], "linux": []}
 
 if "Current" not in json_change:
     json_change["Current"] = {"None": 0}
 
 # Logik
 try:
-    if not index_html:
-        if index - 1 in json_change["Done"]["python"]:
-            json_change["Current"] = {"python": f"lektion{index}"}
-            save_index(path, json_change)
-        else:
-            json_change["Done"]["python"].append(index)
-            json_change["Current"] = {"python": f"lektion{index}"}
-            json_change["Done"]["python"].sort()
-            save_index(path, json_change)
-    else:
-        if index - 1 in json_change["Done"]["html"]:
-            json_change["Current"] = {"html": f"lektion{index}"}
-            save_index(path, json_change)
-        else:
-            json_change["Done"]["html"].append(index)
-            json_change["Current"] = {"html": f"lektion{index}"}
-            json_change["Done"]["html"].sort()
-            save_index(path, json_change)
-
+    for key, value in {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}:
+        if value :
+            if index -1 in json_change["Done"][key]:
+                json_change["Current"] = {key : f"lektion{index}"}
+                save_index(path, json_change)
+            else:
+                json_change["Done"][key].append(index - 1)
+                json_change["Current"] = {key: f"lektion{index}"}
+                json_change["Done"][key].sort()
+                save_index(path, json_change)
 except Exception as e:
-    pass      # TODO i can ameliorate the struktur and the raise error 
+    pass 
+
+# try:
+#     if not index_h:
+#         if index - 1 in json_change["Done"]["python"]:
+#             json_change["Current"] = {"python": f"lektion{index}"}
+#             save_index(path, json_change)
+#         else:
+#             json_change["Done"]["python"].append(index)
+#             json_change["Current"] = {"python": f"lektion{index}"}
+#             json_change["Done"]["python"].sort()
+#             save_index(path, json_change)
+#     else:
+#         if index - 1 in json_change["Done"]["html"]:
+#             json_change["Current"] = {"html": f"lektion{index}"}
+#             save_index(path, json_change)
+#         else:
+#             json_change["Done"]["html"].append(index)
+#             json_change["Current"] = {"html": f"lektion{index}"}
+#             json_change["Done"]["html"].sort()
+#             save_index(path, json_change)
+
+     # TODO i can ameliorate the struktur and the raise error 
 
 # Redirect Link just for some browser who don't redirekt
 
