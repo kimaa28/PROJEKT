@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 5: Menüs und Dialoge</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 5: Menüs und Dialoge</h1>
+                <p>
+Menüs geben deiner Anwendung ein professionelles Aussehen und bieten einfachen Zugang zu Funktionen. Tkinter bietet verschiedene Arten von Menüs: Menüleisten, Popup-Menüs und Untermenüs.
+
+Eine Menüleiste wird mit Menu(root) erstellt und mit root.config(menu=menubar) am Fenster befestigt. add_cascade() fügt Hauptmenüs hinzu, add_command() einzelne Menüeinträge, add_separator() Trennlinien.
+
+Dialoge sind spezielle Fenster für Benutzerinteraktionen. tkinter.messagebox bietet vorgefertigte Dialoge: showinfo() für Informationen, showwarning() für Warnungen, showerror() für Fehler, askquestion() für Ja/Nein-Fragen.
+
+tkinter.filedialog ermöglicht Datei-Operationen: askopenfilename() öffnet einen Dialog zur Dateiauswahl, asksaveasfilename() zum Speichern. Du kannst Dateitypen mit filetypes=[("Text", "*.txt")] einschränken.
+
+tkinter.simpledialog bietet einfache Eingabedialoge: askstring() für Text, askinteger() für Zahlen, askfloat() für Dezimalzahlen. Diese geben den eingegebenen Wert zurück oder None bei Abbruch.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import tkinter as tk
+from tkinter import messagebox, filedialog, simpledialog
+
+def show_info():
+    messagebox.showinfo("Information", "Das ist eine Informationsmeldung!")
+
+def show_warning():
+    messagebox.showwarning("Warnung", "Das ist eine Warnung!")
+
+def ask_question():
+    result = messagebox.askquestion("Frage", "Möchtest du fortfahren?")
+    status_label.config(text=f"Antwort: {result}")
+
+def open_file():
+    filename = filedialog.askopenfilename(
+        title="Datei öffnen",
+        filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+    )
+    if filename:
+        status_label.config(text=f"Gewählte Datei: {filename}")
+
+def save_file():
+    filename = filedialog.asksaveasfilename(
+        title="Datei speichern",
+        defaultextension=".txt",
+        filetypes=[("Text files", "*.txt"), ("All files", "*.*")]
+    )
+    if filename:
+        status_label.config(text=f"Speichern als: {filename}")
+
+def ask_name():
+    name = simpledialog.askstring("Eingabe", "Wie heißt du?")
+    if name:
+        status_label.config(text=f"Hallo, {name}!")
+
+root = tk.Tk()
+root.title("Menüs und Dialoge")
+root.geometry("600x400")
+
+# Menüleiste erstellen
+menubar = tk.Menu(root)
+root.config(menu=menubar)
+
+# Datei-Menü
+file_menu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Datei", menu=file_menu)
+file_menu.add_command(label="Öffnen", command=open_file)
+file_menu.add_command(label="Speichern", command=save_file)
+file_menu.add_separator()
+file_menu.add_command(label="Beenden", command=root.quit)
+
+# Hilfe-Menü
+help_menu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="Hilfe", menu=help_menu)
+help_menu.add_command(label="Info", command=show_info)
+
+# Buttons für verschiedene Dialoge
+tk.Button(root, text="Information anzeigen", command=show_info,
+          font=("Arial", 12)).pack(pady=10)
+
+tk.Button(root, text="Warnung anzeigen", command=show_warning,
+          font=("Arial", 12)).pack(pady=5)
+
+tk.Button(root, text="Frage stellen", command=ask_question,
+          font=("Arial", 12)).pack(pady=5)
+
+tk.Button(root, text="Name eingeben", command=ask_name,
+          font=("Arial", 12)).pack(pady=5)
+
+# Status-Label
+status_label = tk.Label(root, text="Bereit...", font=("Arial", 12),
+                       fg="blue", wraplength=500)
+status_label.pack(pady=20, fill=tk.X)
+
+root.mainloop()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="tkinter5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion wechseln wir zu CustomTkinter.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="4" id="display1">Lesson4.html</button>
+            <button type="submit" name=index_t value="6" id="display2">Lesson6.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>

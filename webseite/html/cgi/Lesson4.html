@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 4: Fehlerbehandlung und Sicherheit</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,13 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 4: Fehlerbehandlung und Sicherheit</h1>
+                <p> Sicherheit ist bei CGI-Skripten von größter Bedeutung, da sie direkt auf dem Server ausgeführt werden. Ungesicherte CGI-Skripte können zu schwerwiegenden Sicherheitslücken führen. Wichtige Sicherheitsmaßnahmen umfassen: Eingabevalidierung (alle Benutzereingaben prüfen), Ausgabe-Escaping (HTML-Zeichen maskieren), Pfad-Validierung (gefährliche Pfade verhindern), und sichere Dateizugriffe. Cross-Site-Scripting (XSS) ist eine häufige Bedrohung, bei der schädlicher Code in Webseiten eingeschleust wird. CGI-Skripte sollten alle Benutzereingaben filtern und HTML-Zeichen maskieren. SQL-Injection ist bei datenbankgestützten CGI-Skripten ein Problem. Verwende immer Prepared Statements und validiere Eingaben. Fehlerbehandlung ist wichtig für Debugging und Sicherheit. CGI-Skripte sollten Fehler protokollieren, aber keine sensiblen Informationen preisgeben. Verwende 'die' oder 'exit' für kontrollierte Programmbeendigung. Setze angemessene Dateiberechtigungen (meist 755 für CGI-Skripte). In diesem letzten Beispiel zeige ich dir sichere Praktiken: Eingabevalidierung, HTML-Escaping, Fehlerbehandlung und Logging. Das Skript demonstriert, wie man Benutzereingaben sicher verarbeitet. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+            <p>#!/usr/bin/perl use strict; use warnings; use CGI qw(:standard); use HTML::Entities; # Für sicheres HTML-Escaping # Fehler-Logging aktivieren use CGI::Carp qw(fatalsToBrowser warningsToBrowser); warningsToBrowser(1); print header('text/html; charset=UTF-8'); # Sichere Header # Eingabevalidierung sub validate_input { my ($input, $max_length) = @_; return 0 unless defined $input; return 0 if length($input) > $max_length; return 0 if $input =~ /<script|javascript|vbscript/i; # XSS-Schutz return 1; } # HTML-Ausgabe beginnen print start_html(-title => 'Sicheres CGI-Skript', -encoding => 'UTF-8'); print h1('Sichere Datenverarbeitung'); # Formulardaten sicher verarbeiten if (param()) { my $name = param('name') || ''; my $message = param('message') || ''; # Eingabevalidierung if (validate_input($name, 100) && validate_input($message, 500)) { # HTML-Escaping für sichere Ausgabe $name = encode_entities($name); $message = encode_entities($message); print h2('Empfangene Daten (sicher maskiert):'); print p(strong('Name: ') . $name); print p(strong('Nachricht: ') . $message); # Daten sicher in Datei speichern (Beispiel) if (open(my $logfile, '>>', '/tmp/messages.log')) { print $logfile localtime() . " - Name: $name, Message: $message
+"; close($logfile); print p('Nachricht erfolgreich gespeichert.'); } else { print p('Fehler beim Speichern der Nachricht.'); } } else { print p(strong('Fehler: ') . 'Ungültige Eingabedaten erkannt.'); } } # Sicheres Formular anzeigen print h2('Nachricht senden:'); print start_form(-method => 'POST'); print p('Name: ' . textfield(-name => 'name', -maxlength => 100)); print p('Nachricht: ' . textarea(-name => 'message', -rows => 4, -cols => 50, -maxlength => 500)); print submit(-value => 'Senden'); print end_form(); print end_html();</p>
 
         </div>
         <div class="anw">
@@ -167,17 +126,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="cgi4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>Herzlichen Glückwunsch! Du hast alle CGI-Grundlagen gelernt.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_c value="3" id="display1">Lesson3.html</button>
+            <button type="submit" name=index_c value="5" id="display2">Lesson5.html</button>
         </form>
 
         

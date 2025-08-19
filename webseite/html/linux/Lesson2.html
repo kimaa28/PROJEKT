@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 2: Dateien und Verzeichnisse verwalten</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,12 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 2: Dateien und Verzeichnisse verwalten</h1>
+                <p> Die Verwaltung von Dateien und Verzeichnissen ist eine der wichtigsten Fähigkeiten in Linux. Linux bietet mächtige Kommandozeilen-Tools, die oft effizienter sind als grafische Oberflächen. Zum Erstellen von Dateien verwendest du 'touch' für leere Dateien oder Editoren wie 'nano', 'vim' oder 'gedit'. Verzeichnisse erstellst du mit 'mkdir', und mit der Option '-p' kannst du sogar ganze Verzeichnisstrukturen auf einmal erstellen. Zum Kopieren verwendest du 'cp' für Dateien und 'cp -r' für Verzeichnisse rekursiv. Das Verschieben und Umbenennen funktioniert mit 'mv' - ein Befehl für beide Operationen! Zum Löschen verwendest du 'rm' für Dateien und 'rm -r' für Verzeichnisse. Sei vorsichtig: In Linux gibt es keinen Papierkorb auf der Kommandozeile! Wildcards sind sehr nützlich: '*' steht für beliebige Zeichen, '?' für ein einzelnes Zeichen, und '[abc]' für eines der angegebenen Zeichen. Dateiberechtigungen sind in Linux sehr wichtig und werden durch drei Zahlen dargestellt: Besitzer, Gruppe, und alle anderen. Jede Zahl ist die Summe aus: 4 (Lesen), 2 (Schreiben), 1 (Ausführen). </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+            <p># Dateien und Verzeichnisse erstellen touch neue_datei.txt # Leere Datei erstellen mkdir neues_verzeichnis # Verzeichnis erstellen mkdir -p pfad/zu/neuem/verzeichnis # Verschachtelte Verzeichnisse echo "Hallo Linux" > datei.txt # Text in Datei schreiben # Kopieren und Verschieben cp datei.txt kopie.txt # Datei kopieren cp -r verzeichnis verzeichnis_kopie # Verzeichnis rekursiv kopieren mv alte_datei.txt neue_datei.txt # Datei umbenennen mv datei.txt /home/user/ # Datei verschieben # Löschen rm datei.txt # Datei löschen rm -r verzeichnis # Verzeichnis rekursiv löschen rm -rf verzeichnis # Forciert löschen (gefährlich!) # Wildcards verwenden ls *.txt # Alle .txt Dateien anzeigen cp *.pdf /backup/ # Alle PDF-Dateien kopieren # Dateiberechtigungen ändern chmod 755 script.sh # Ausführbar für Besitzer, lesbar für alle chmod -R 644 verzeichnis/ # Rekursiv auf Verzeichnis anwenden</p>
 
         </div>
         <div class="anw">
@@ -167,17 +125,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="linux2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Textdateien zu bearbeiten und zu durchsuchen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_l value="1" id="display1">Lesson1.html</button>
+            <button type="submit" name=index_l value="3" id="display2">Lesson3.html</button>
         </form>
 
         

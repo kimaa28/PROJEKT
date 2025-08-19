@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 5: Netzwerk-Grundlagen</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,12 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 5: Netzwerk-Grundlagen</h1>
+                <p> Linux bietet umfassende Netzwerk-Tools für Diagnose, Konfiguration und Überwachung. Diese Fähigkeiten sind essentiell für Systemadministratoren und Entwickler. 'ping' testet die Erreichbarkeit von Hosts und misst die Latenz. 'traceroute' zeigt den Weg, den Pakete durch das Netzwerk nehmen. 'netstat' und das modernere 'ss' zeigen Netzwerkverbindungen und offene Ports an. 'wget' und 'curl' laden Dateien aus dem Internet herunter. Curl ist besonders mächtig für API-Tests und kann verschiedene HTTP-Methoden verwenden. SSH (Secure Shell) ist das wichtigste Tool für Remote-Administration. Mit 'ssh user@server' verbindest du dich zu entfernten Systemen. 'scp' kopiert Dateien über SSH, 'rsync' synchronisiert Verzeichnisse effizient. Firewalls schützen dein System vor unerwünschtem Netzwerkverkehr. 'ufw' (Uncomplicated Firewall) ist ein benutzerfreundliches Frontend für iptables. Du kannst Ports öffnen, schließen und Regeln definieren. Netzwerkkonfiguration erfolgt oft über '/etc/network/interfaces' oder mit modernen Tools wie 'nmcli' (NetworkManager). DNS-Auflösung konfigurierst du in '/etc/resolv.conf'. 'dig' und 'nslookup' helfen bei DNS-Problemen. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+            <p># Netzwerk-Diagnose ping google.com # Host erreichbarkeit testen ping -c 4 192.168.1.1 # Nur 4 Pings senden traceroute google.com # Route zu Host verfolgen mtr google.com # Kombiniert ping und traceroute # Netzwerkverbindungen anzeigen netstat -tuln # TCP/UDP Listening Ports ss -tuln # Moderner Ersatz für netstat netstat -an | grep :80 # Wer hört auf Port 80 lsof -i :22 # Welcher Prozess nutzt Port 22 # Dateien herunterladen wget https://example.com/datei.zip # Datei herunterladen curl -O https://example.com/datei.zip # Mit curl herunterladen curl -X POST -d "key=value" http://api.example.com # API-Request curl -I https://example.com # Nur HTTP-Header anzeigen # SSH und Remote-Zugriff ssh user@192.168.1.100 # SSH-Verbindung aufbauen ssh -p 2222 user@server # Anderer Port als 22 scp datei.txt user@server:/home/user/ # Datei kopieren rsync -avz /local/dir/ user@server:/remote/dir/ # Verzeichnis synchronisieren # Firewall mit ufw ufw status # Firewall-Status anzeigen ufw enable # Firewall aktivieren ufw allow 22 # SSH-Port öffnen ufw allow from 192.168.1.0/24 # Nur bestimmtes Netzwerk ufw deny 80 # Port blockieren # DNS und Netzwerk-Tools dig google.com # DNS-Auflösung testen nslookup google.com # Alternative zu dig host google.com # Einfache DNS-Abfrage whois example.com # Domain-Informationen abfragen ifconfig # Netzwerkinterfaces anzeigen (veraltet) ip addr show # Moderne Alternative zu ifconfig</p>
 
         </div>
         <div class="anw">
@@ -167,17 +125,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="linux5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der letzten Lektion lernst du Skripting und Automatisierung.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_l value="4" id="display1">Lesson4.html</button>
+            <button type="submit" name=index_l value="6" id="display2">Lesson6.html</button>
         </form>
 
         

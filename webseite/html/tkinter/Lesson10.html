@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 10: Bilder, Icons und Multimedia</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 10: Bilder, Icons und Multimedia</h1>
+                <p>
+CustomTkinter bietet erweiterte Möglichkeiten für die Integration von Bildern und Icons in deine Anwendungen. CTkImage ist eine mächtige Klasse, die automatische Skalierung und Theme-Anpassungen unterstützt.
+
+CTkImage kann sowohl Light- als auch Dark-Mode-Versionen von Bildern verwalten. Du kannst verschiedene Bilder für verschiedene Themes bereitstellen, und CustomTkinter wechselt automatisch zwischen ihnen.
+
+Die size-Parameter von CTkImage bestimmen die Anzeigegröße unabhängig von der ursprünglichen Bildgröße. Das ist perfekt für konsistente Icon-Größen in deiner Anwendung.
+
+PIL (Pillow) wird für die Bildverarbeitung verwendet. Du kannst Bilder laden, skalieren, drehen und andere Transformationen durchführen, bevor du sie in CTkImage verwendest.
+
+Icons lassen sich einfach zu Buttons, Labels und anderen Widgets hinzufügen. Der image-Parameter zeigt nur das Bild an, compound bestimmt, wie Text und Bild kombiniert werden.
+
+CustomTkinter unterstützt die meisten Bildformate: PNG, JPEG, GIF, BMP. PNG wird empfohlen für Icons wegen der Transparenz-Unterstützung.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import customtkinter as ctk
+from PIL import Image
+import os
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+class ImageApp:
+    def __init__(self):
+        self.root = ctk.CTk()
+        self.root.title("Bilder und Icons in CustomTkinter")
+        self.root.geometry("800x600")
+        
+        self.create_images()
+        self.create_widgets()
+        
+    def create_images(self):
+        # Erstelle einfache Bilder programmatisch (da wir keine echten Dateien haben)
+        # In einer echten App würdest du Image.open("pfad/zum/bild.png") verwenden
+        
+        # Beispiel für programmatisch erstellte Icons
+        self.home_icon = self.create_colored_image(32, 32, "blue")
+        self.settings_icon = self.create_colored_image(32, 32, "green") 
+        self.info_icon = self.create_colored_image(32, 32, "orange")
+        
+        # Größeres Bild
+        self.large_image = self.create_colored_image(200, 150, "purple")
+        
+    def create_colored_image(self, width, height, color):
+        ""Erstellt ein einfarbiges Bild als Beispiel""
+        # In einer echten App: return ctk.CTkImage(Image.open("pfad.png"), size=(width, height))
+        img = Image.new("RGB", (width, height), color)
+        return ctk.CTkImage(img, size=(width, height))
+        
+    def create_widgets(self):
+        # Titel
+        title = ctk.CTkLabel(self.root, text="Bilder und Icons Demo",
+                           font=ctk.CTkFont(size=24, weight="bold"))
+        title.pack(pady=20)
+        
+        # Icon-Buttons in einem Frame
+        icon_frame = ctk.CTkFrame(self.root)
+        icon_frame.pack(pady=20)
+        
+        ctk.CTkLabel(icon_frame, text="Icon-Buttons:",
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+        
+        button_frame = ctk.CTkFrame(icon_frame, fg_color="transparent")
+        button_frame.pack(pady=10)
+        
+        # Buttons mit Icons
+        home_btn = ctk.CTkButton(button_frame, text="Home", 
+                               image=self.home_icon, compound="left",
+                               command=lambda: self.show_message("Home geklickt!"))
+        home_btn.pack(side="left", padx=10)
+        
+        settings_btn = ctk.CTkButton(button_frame, text="Einstellungen",
+                                   image=self.settings_icon, compound="left",
+                                   command=lambda: self.show_message("Einstellungen geklickt!"))
+        settings_btn.pack(side="left", padx=10)
+        
+        info_btn = ctk.CTkButton(button_frame, text="Info",
+                               image=self.info_icon, compound="left",
+                               command=lambda: self.show_message("Info geklickt!"))
+        info_btn.pack(side="left", padx=10)
+        
+        # Nur-Icon Button
+        icon_only_btn = ctk.CTkButton(button_frame, text="", 
+                                    image=self.settings_icon,
+                                    width=50, height=50)
+        icon_only_btn.pack(side="left", padx=10)
+        
+        # Label mit Bild
+        image_frame = ctk.CTkFrame(self.root)
+        image_frame.pack(pady=20)
+        
+        ctk.CTkLabel(image_frame, text="Bild-Label:",
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+        
+        image_label = ctk.CTkLabel(image_frame, text="", image=self.large_image)
+        image_label.pack(pady=10)
+        
+        # Text mit Bild kombiniert
+        combined_frame = ctk.CTkFrame(self.root)
+        combined_frame.pack(pady=20, fill="x", padx=40)
+        
+        ctk.CTkLabel(combined_frame, text="Kombinierte Text-Bild-Labels:",
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+        
+        # Verschiedene compound-Modi
+        compound_frame = ctk.CTkFrame(combined_frame, fg_color="transparent")
+        compound_frame.pack(pady=10)
+        
+        compounds = [("left", "Icon links"), ("right", "Icon rechts"), 
+                    ("top", "Icon oben"), ("bottom", "Icon unten")]
+        
+        for i, (compound, text) in enumerate(compounds):
+            label = ctk.CTkLabel(compound_frame, text=text, 
+                               image=self.info_icon, compound=compound,
+                               font=ctk.CTkFont(size=12))
+            label.grid(row=i//2, column=i%2, padx=20, pady=10)
+            
+        # Bildgrößen-Kontrolle
+        control_frame = ctk.CTkFrame(self.root)
+        control_frame.pack(pady=20)
+        
+        ctk.CTkLabel(control_frame, text="Bildgröße anpassen:",
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        def change_image_size(value):
+            size = int(value)
+            new_image = self.create_colored_image(size, size, "red")
+            size_label.configure(image=new_image)
+            size_info.configure(text=f"Größe: {size}x{size} px")
+            
+        size_slider = ctk.CTkSlider(control_frame, from_=32, to=128,
+                                  command=change_image_size)
+        size_slider.set(64)
+        size_slider.pack(pady=10)
+        
+        self.size_image = self.create_colored_image(64, 64, "red")
+        size_label = ctk.CTkLabel(control_frame, text="", image=self.size_image)
+        size_label.pack(pady=5)
+        
+        size_info = ctk.CTkLabel(control_frame, text="Größe: 64x64 px")
+        size_info.pack(pady=5)
+        
+        # Status-Label für Button-Feedback
+        self.status_label = ctk.CTkLabel(self.root, text="Bereit...",
+                                       text_color="gray")
+        self.status_label.pack(pady=10)
+        
+    def show_message(self, message):
+        self.status_label.configure(text=message, text_color="green")
+        self.root.after(2000, lambda: self.status_label.configure(
+            text="Bereit...", text_color="gray"))
+        
+    def run(self):
+        self.root.mainloop()
+
+# App starten
+if __name__ == "__main__":
+    app = ImageApp()
+    app.run()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="customtkinter5.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du eine komplette Anwendung zu erstellen.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="9" id="display1">Lesson9.html</button>
+            <button type="submit" name=index_t value="11" id="display2">Lesson11.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>

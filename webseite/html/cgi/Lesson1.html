@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 1: Was ist CGI?</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,22 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 1: Was ist CGI?</h1>
+                <p> CGI steht für Common Gateway Interface und ist eine Technologie, die es ermöglicht, dynamische Webseiten zu erstellen. CGI wurde in den frühen 1990er Jahren entwickelt und war eine der ersten Methoden, um interaktive Websites zu schaffen. CGI-Skripte laufen auf dem Webserver und können in verschiedenen Programmiersprachen geschrieben werden: Perl, Python, C, Shell-Scripts oder sogar JavaScript mit Node.js. Wenn ein Benutzer eine Webseite aufruft, die ein CGI-Skript verwendet, startet der Webserver das Skript als separaten Prozess. Das Skript verarbeitet die Anfrage, generiert HTML-Code und sendet diesen zurück an den Browser des Benutzers. CGI-Skripte werden häufig für Kontaktformulare, Gästebücher, Suchfunktionen und Datenbankanwendungen verwendet. Der Webserver kommuniziert mit CGI-Skripten über Umgebungsvariablen und Standardein-/ausgabe. In diesem ersten Beispiel siehst du ein einfaches CGI-Skript in Perl, das eine Grundstruktur zeigt. Der Content-Type-Header teilt dem Browser mit, dass HTML-Inhalt folgt. Die doppelte Leerzeile nach dem Header ist wichtig - sie trennt die HTTP-Header vom eigentlichen Inhalt. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>#!/usr/bin/perl # Einfaches CGI-Skript in Perl print "Content-Type: text/html
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+"; # HTTP-Header print "<html>
+"; print "<head><title>Mein erstes CGI-Skript</title></head>
+"; print "<body>
+"; print "<h1>Willkommen bei CGI!</h1>
+"; print "<p>Dieses ist mein erstes CGI-Skript.</p>
+"; print "<p>Aktuelle Zeit: " . localtime() . "</p>
+"; print "</body>
+"; print "</html>
+";</p>
 
         </div>
         <div class="anw">
@@ -167,17 +135,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="cgi1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du, wie du Formulardaten verarbeitest.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_c value="0" id="display1">Lesson0.html</button>
+            <button type="submit" name=index_c value="2" id="display2">Lesson2.html</button>
         </form>
 
         

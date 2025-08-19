@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 4: Prozess- und Systemverwaltung</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,12 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 4: Prozess- und Systemverwaltung</h1>
+                <p> Prozessverwaltung ist ein zentraler Aspekt der Linux-Systemadministration. Jedes laufende Programm ist ein Prozess mit einer eindeutigen Prozess-ID (PID). 'ps' zeigt laufende Prozesse an. Mit 'ps aux' erhältst du eine detaillierte Übersicht aller Prozesse im System. 'top' und 'htop' zeigen Prozesse in Echtzeit mit CPU- und Speicherverbrauch. Mit 'kill' kannst du Prozesse beenden. 'kill -9 PID' beendet einen Prozess forciert, während 'killall prozessname' alle Prozesse mit diesem Namen beendet. Jobs können im Hintergrund laufen: Füge '&' am Ende eines Befehls hinzu. Mit 'jobs' siehst du Hintergrundjobs, 'fg' bringt sie in den Vordergrund. Systemressourcen überwachst du mit 'free' (Speicher), 'df' (Festplattenspeicher), 'du' (Verzeichnisgrößen), und 'uptime' (Systemlaufzeit und Load). Services (Dienste) verwaltest du mit 'systemctl' bei systemd-basierten Distributionen. Du kannst Services starten, stoppen, neu starten und ihren Status überprüfen. Umgebungsvariablen speichern wichtige Systeminformationen. 'env' zeigt alle an, mit 'export' setzt du neue. Die PATH-Variable bestimmt, wo Linux nach ausführbaren Dateien sucht. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+            <p># Prozesse anzeigen und verwalten ps aux # Alle laufenden Prozesse anzeigen ps -ef | grep apache # Nach Apache-Prozessen suchen top # Interaktive Prozessanzeige (q zum Beenden) htop # Verbesserte Version von top (falls installiert) # Prozesse beenden kill 1234 # Prozess mit PID 1234 beenden kill -9 1234 # Prozess forciert beenden (SIGKILL) killall firefox # Alle Firefox-Prozesse beenden pkill -f "python script.py" # Prozesse nach Befehlszeile beenden # Hintergrundjobs python script.py & # Skript im Hintergrund starten jobs # Aktuelle Hintergrundjobs anzeigen fg %1 # Job Nummer 1 in Vordergrund bringen bg %2 # Job Nummer 2 im Hintergrund weiterführen nohup long_running_script.sh & # Prozess läuft auch nach Logout weiter # Systemressourcen überwachen free -h # Speicherverbrauch (human readable) df -h # Festplattenspeicher anzeigen du -sh /var/log # Verzeichnisgröße anzeigen uptime # Systemlaufzeit und Load anzeigen iostat # I/O-Statistiken (falls installiert) # Services verwalten (systemd) systemctl status apache2 # Service-Status prüfen systemctl start apache2 # Service starten systemctl stop apache2 # Service stoppen systemctl restart apache2 # Service neu starten systemctl enable apache2 # Service beim Boot aktivieren # Umgebungsvariablen env # Alle Umgebungsvariablen anzeigen echo $PATH # PATH-Variable anzeigen export MYVAR="Hallo Welt" # Neue Variable setzen</p>
 
         </div>
         <div class="anw">
@@ -167,17 +125,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="linux4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Netzwerk-Grundlagen in Linux.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_l value="3" id="display1">Lesson3.html</button>
+            <button type="submit" name=index_l value="5" id="display2">Lesson5.html</button>
         </form>
 
         

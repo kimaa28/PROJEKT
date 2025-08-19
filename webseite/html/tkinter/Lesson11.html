@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 11: Komplette CustomTkinter-Anwendung</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 11: Komplette CustomTkinter-Anwendung</h1>
+                <p>
+In dieser finalen Lektion erstellen wir eine vollständige CustomTkinter-Anwendung, die alle gelernten Konzepte kombiniert. Wir bauen einen modernen Task-Manager mit verschiedenen Funktionen.
+
+Die Anwendung demonstriert professionelle Strukturierung mit separaten Klassen für verschiedene Komponenten. Das macht den Code wartbarer und erweiterbarer.
+
+Wir verwenden alle wichtigen CustomTkinter-Features: moderne Widgets, Tabs, Scrolling, Dialoge, Theme-Unterstützung und Event-Handling. Das zeigt, wie man eine echte Desktop-Anwendung entwickelt.
+
+Die Anwendung speichert Daten in einer einfachen JSON-Datei (in einer echten App würdest du eine Datenbank verwenden). Das zeigt Persistenz und Datenmanagement.
+
+Error-Handling und User-Feedback sind wichtige Aspekte professioneller Anwendungen. Wir zeigen, wie man Fehler abfängt und dem Benutzer klare Rückmeldungen gibt.
+
+Die modulare Struktur erlaubt einfache Erweiterungen. Du könntest weitere Features wie Kategorien, Deadlines, Prioritäten oder Export-Funktionen hinzufügen.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import customtkinter as ctk
+import json
+import os
+from datetime import datetime
+from tkinter import messagebox
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+class TaskManager:
+    def __init__(self):
+        self.root = ctk.CTk()
+        self.root.title("ModernTask - Task Manager")
+        self.root.geometry("900x700")
+        self.root.minsize(700, 500)
+        
+        # Datenfile
+        self.data_file = "tasks.json"
+        self.tasks = self.load_tasks()
+        
+        self.setup_ui()
+        self.refresh_task_list()
+        
+    def load_tasks(self):
+        ""Lädt Tasks aus JSON-Datei""
+        try:
+            if os.path.exists(self.data_file):
+                with open(self.data_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            return []
+        except Exception as e:
+            print(f"Fehler beim Laden: {e}")
+            return []
+            
+    def save_tasks(self):
+        ""Speichert Tasks in JSON-Datei""
+        try:
+            with open(self.data_file, 'w', encoding='utf-8') as f:
+                json.dump(self.tasks, f, ensure_ascii=False, indent=2)
+            return True
+        except Exception as e:
+            print(f"Fehler beim Speichern: {e}")
+            return False
+            
+    def setup_ui(self):
+        # Header
+        header_frame = ctk.CTkFrame(self.root, height=80)
+        header_frame.pack(fill="x", padx=20, pady=(20, 10))
+        header_frame.pack_propagate(False)
+        
+        title_label = ctk.CTkLabel(header_frame, text="🚀 ModernTask Manager",
+                                 font=ctk.CTkFont(size=28, weight="bold"))
+        title_label.pack(side="left", padx=20, pady=20)
+        
+        # Stats
+        self.stats_label = ctk.CTkLabel(header_frame, text="",
+                                      font=ctk.CTkFont(size=14))
+        self.stats_label.pack(side="right", padx=20, pady=20)
+        
+        # Main Container
+        main_container = ctk.CTkFrame(self.root)
+        main_container.pack(fill="both", expand=True, padx=20, pady=10)
+        
+        # Sidebar für Eingabe
+        sidebar = ctk.CTkFrame(main_container, width=300)
+        sidebar.pack(side="left", fill="y", padx=(0, 10))
+        sidebar.pack_propagate(False)
+        
+        # Task-Eingabe Bereich
+        input_frame = ctk.CTkFrame(sidebar)
+        input_frame.pack(fill="x", padx=15, pady=15)
+        
+        ctk.CTkLabel(input_frame, text="✏️ Neue Aufgabe",
+                    font=ctk.CTkFont(size=18, weight="bold")).pack(pady=(15, 10))
+        
+        self.task_entry = ctk.CTkEntry(input_frame, placeholder_text="Aufgabe eingeben...",
+                                     font=ctk.CTkFont(size=14), height=40)
+        self.task_entry.pack(fill="x", padx=15, pady=5)
+        self.task_entry.bind("<Return>", lambda e: self.add_task())
+        
+        self.desc_entry = ctk.CTkTextbox(input_frame, height=80,
+                                       font=ctk.CTkFont(size=12))
+        self.desc_entry.pack(fill="x", padx=15, pady=5)
+        self.desc_entry.insert("0.0", "Beschreibung (optional)...")
+        
+        # Priorität
+        priority_frame = ctk.CTkFrame(input_frame, fg_color="transparent")
+        priority_frame.pack(fill="x", padx=15, pady=5)
+        
+        ctk.CTkLabel(priority_frame, text="Priorität:").pack(side="left")
+        self.priority_var = ctk.StringVar(value="Normal")
+        priority_menu = ctk.CTkOptionMenu(priority_frame, variable=self.priority_var,
+                                        values=["Niedrig", "Normal", "Hoch", "Urgent"])
+        priority_menu.pack(side="right")
+        
+        # Buttons
+        button_frame = ctk.CTkFrame(input_frame, fg_color="transparent")
+        button_frame.pack(fill="x", padx=15, pady=15)
+        
+        add_btn = ctk.CTkButton(button_frame, text="➕ Hinzufügen",
+                              command=self.add_task, height=35,
+                              font=ctk.CTkFont(size=14, weight="bold"))
+        add_btn.pack(fill="x", pady=2)
+        
+        clear_btn = ctk.CTkButton(button_frame, text="🗑️ Alle löschen",
+                                command=self.clear_all_tasks,
+                                fg_color="red", hover_color="darkred",
+                                height=35)
+        clear_btn.pack(fill="x", pady=2)
+        
+        # Filter-Bereich
+        filter_frame = ctk.CTkFrame(sidebar)
+        filter_frame.pack(fill="x", padx=15, pady=(0, 15))
+        
+        ctk.CTkLabel(filter_frame, text="🔍 Filter",
+                    font=ctk.CTkFont(size=16, weight="bold")).pack(pady=(15, 10))
+        
+        self.filter_var = ctk.StringVar(value="Alle")
+        filter_menu = ctk.CTkOptionMenu(filter_frame, variable=self.filter_var,
+                                      values=["Alle", "Offen", "Erledigt"],
+                                      command=self.filter_tasks)
+        filter_menu.pack(padx=15, pady=(0, 15))
+        
+        # Task-Liste Bereich
+        list_frame = ctk.CTkFrame(main_container)
+        list_frame.pack(side="right", fill="both", expand=True)
+        
+        list_header = ctk.CTkFrame(list_frame, height=50)
+        list_header.pack(fill="x", padx=15, pady=(15, 5))
+        list_header.pack_propagate(False)
+        
+        ctk.CTkLabel(list_header, text="📋 Aufgaben-Liste",
+                    font=ctk.CTkFont(size=18, weight="bold")).pack(side="left", pady=15)
+        
+        # Scrollbare Task-Liste
+        self.task_list_frame = ctk.CTkScrollableFrame(list_frame, height=400)
+        self.task_list_frame.pack(fill="both", expand=True, padx=15, pady=(0, 15))
+        
+    def add_task(self):
+        task_text = self.task_entry.get().strip()
+        if not task_text:
+            messagebox.showwarning("Warnung", "Bitte gib eine Aufgabe ein!")
+            return
+            
+        desc_text = self.desc_entry.get("0.0", "end-1c").strip()
+        if desc_text == "Beschreibung (optional)...":
+            desc_text = ""
+            
+        new_task = {
+            "id": len(self.tasks) + 1,
+            "text": task_text,
+            "description": desc_text,
+            "priority": self.priority_var.get(),
+            "completed": False,
+            "created": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        
+        self.tasks.append(new_task)
+        self.save_tasks()
+        
+        # Eingabefelder leeren
+        self.task_entry.delete(0, "end")
+        self.desc_entry.delete("0.0", "end")
+        self.desc_entry.insert("0.0", "Beschreibung (optional)...")
+        
+        self.refresh_task_list()
+        
+    def toggle_task(self, task_id):
+        for task in self.tasks:
+            if task["id"] == task_id:
+                task["completed"] = not task["completed"]
+                break
+        self.save_tasks()
+        self.refresh_task_list()
+        
+    def delete_task(self, task_id):
+        self.tasks = [task for task in self.tasks if task["id"] != task_id]
+        self.save_tasks()
+        self.refresh_task_list()
+        
+    def clear_all_tasks(self):
+        if messagebox.askyesno("Bestätigung", "Wirklich alle Aufgaben löschen?"):
+            self.tasks = []
+            self.save_tasks()
+            self.refresh_task_list()
+            
+    def filter_tasks(self, filter_value):
+        self.refresh_task_list()
+        
+    def refresh_task_list(self):
+        # Alte Widgets löschen
+        for widget in self.task_list_frame.winfo_children():
+            widget.destroy()
+            
+        # Filter anwenden
+        filter_value = self.filter_var.get()
+        filtered_tasks = self.tasks
+        
+        if filter_value == "Offen":
+            filtered_tasks = [t for t in self.tasks if not t["completed"]]
+        elif filter_value == "Erledigt":
+            filtered_tasks = [t for t in self.tasks if t["completed"]]
+            
+        # Prioritäts-Sortierung
+        priority_order = {"Urgent": 0, "Hoch": 1, "Normal": 2, "Niedrig": 3}
+        filtered_tasks.sort(key=lambda x: (x["completed"], priority_order.get(x["priority"], 2)))
+        
+        # Tasks anzeigen
+        for task in filtered_tasks:
+            self.create_task_widget(task)
+            
+        # Stats aktualisieren
+        total = len(self.tasks)
+        completed = len([t for t in self.tasks if t["completed"]])
+        self.stats_label.configure(text=f"📊 {completed}/{total} erledigt")
+        
+        if not filtered_tasks:
+            empty_label = ctk.CTkLabel(self.task_list_frame, 
+                                     text="🎉 Keine Aufgaben gefunden!",
+                                     font=ctk.CTkFont(size=16),
+                                     text_color="gray")
+            empty_label.pack(pady=50)
+            
+    def create_task_widget(self, task):
+        # Task-Container
+        task_frame = ctk.CTkFrame(self.task_list_frame)
+        task_frame.pack(fill="x", pady=5, padx=5)
+        
+        # Checkbox und Text
+        left_frame = ctk.CTkFrame(task_frame, fg_color="transparent")
+        left_frame.pack(side="left", fill="both", expand=True, padx=10, pady=10)
+        
+        # Checkbox
+        checkbox_var = ctk.BooleanVar(value=task["completed"])
+        checkbox = ctk.CTkCheckBox(left_frame, text="", variable=checkbox_var,
+                                 command=lambda: self.toggle_task(task["id"]))
+        checkbox.pack(side="left")
+        
+        # Text-Bereich
+        text_frame = ctk.CTkFrame(left_frame, fg_color="transparent")
+        text_frame.pack(side="left", fill="both", expand=True, padx=(10, 0))
+        
+        # Prioritäts-Farben
+        priority_colors = {
+            "Urgent": "red", "Hoch": "orange", "Normal": "blue", "Niedrig": "green"
+        }
+        
+        task_text = task["text"]
+        if task["completed"]:
+            task_text = f"✓ {task_text}"
+            text_color = "gray"
+        else:
+            text_color = priority_colors.get(task["priority"], "white")
+            
+        title_label = ctk.CTkLabel(text_frame, text=task_text,
+                                 font=ctk.CTkFont(size=14, weight="bold"),
+                                 text_color=text_color, anchor="w")
+        title_label.pack(fill="x")
+        
+        if task["description"]:
+            desc_label = ctk.CTkLabel(text_frame, text=task["description"],
+                                    font=ctk.CTkFont(size=11),
+                                    text_color="gray", anchor="w")
+            desc_label.pack(fill="x")
+            
+        # Info-Zeile
+        info_text = f"{task['priority']} • {task['created']}"
+        info_label = ctk.CTkLabel(text_frame, text=info_text,
+                                font=ctk.CTkFont(size=10),
+                                text_color="darkgray", anchor="w")
+        info_label.pack(fill="x")
+        
+        # Delete-Button
+        delete_btn = ctk.CTkButton(task_frame, text="🗑️", width=40,
+                                 command=lambda: self.delete_task(task["id"]),
+                                 fg_color="transparent", text_color="red",
+                                 hover_color="darkred")
+        delete_btn.pack(side="right", padx=10)
+        
+    def run(self):
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        self.root.mainloop()
+        
+    def on_closing(self):
+        self.save_tasks()
+        self.root.destroy()
+
+# App starten
+if __name__ == "__main__":
+    app = TaskManager()
+    app.run()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="customtkinter6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>Gratulation! Du hast alle Lektionen abgeschlossen.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="10" id="display1">Lesson10.html</button>
+            <button type="submit" name=index_t value="12" id="display2">Lesson12.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>

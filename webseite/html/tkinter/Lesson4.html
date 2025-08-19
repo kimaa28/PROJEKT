@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 4: Event-Handling und Callbacks</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,66 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
+            <h1>Lektion 4: Event-Handling und Callbacks</h1>
                 <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
+Events sind Ereignisse wie Mausklicks, Tasteneingaben oder Fensterereignisse. Event-Handling ermöglicht es deiner Anwendung, auf Benutzerinteraktionen zu reagieren.
 
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
+Callbacks sind Funktionen, die aufgerufen werden, wenn ein bestimmtes Event auftritt. Bei Buttons verwendest du den 'command'-Parameter für Click-Events. Für komplexere Events nutzt du die bind()-Methode.
 
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
+Die bind()-Methode verbindet Events mit Callback-Funktionen. Häufige Events sind: '<Button-1>' (linker Mausklick), '<Key>' (Tastendruck), '<Return>' (Enter-Taste), '<FocusIn>' (Widget erhält Fokus).
 
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
+Event-Objekte enthalten Informationen über das aufgetretene Ereignis. Bei Tastatur-Events findest du in event.keysym die gedrückte Taste, bei Maus-Events event.x und event.y die Koordinaten.
 
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+Lambda-Funktionen sind praktisch für einfache Callbacks. Statt eine separate Funktion zu definieren, kannst du mit lambda eine Mini-Funktion direkt im command-Parameter erstellen.
+</p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>
+import tkinter as tk
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
+def on_button_click():
+    output.insert(tk.END, "Button wurde geklickt!\n")
 
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
+def on_key_press(event):
+    output.insert(tk.END, f"Taste gedrückt: {event.keysym}\n")
 
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
+def on_mouse_click(event):
+    output.insert(tk.END, f"Mausklick bei ({event.x}, {event.y})\n")
 
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+def clear_output():
+    output.delete(1.0, tk.END)
+
+root = tk.Tk()
+root.title("Event-Handling")
+root.geometry("500x400")
+
+# Button für Click-Event
+button = tk.Button(root, text="Klick mich!", command=on_button_click,
+                  font=("Arial", 12), bg="lightblue")
+button.pack(pady=10)
+
+# Entry für Tastatur-Events
+entry = tk.Entry(root, font=("Arial", 12))
+entry.pack(pady=10)
+entry.bind('<Key>', on_key_press)
+entry.focus_set()  # Fokus setzen
+
+# Frame für Maus-Events
+mouse_frame = tk.Frame(root, bg="lightyellow", width=200, height=100)
+mouse_frame.pack(pady=10)
+mouse_frame.bind('<Button-1>', on_mouse_click)
+
+# Text-Widget für Ausgabe
+output = tk.Text(root, height=8, font=("Arial", 10))
+output.pack(pady=10, fill=tk.BOTH, expand=True)
+
+# Clear-Button mit Lambda
+tk.Button(root, text="Löschen", command=lambda: clear_output(),
+          bg="lightcoral").pack(pady=5)
+
+root.mainloop()
+</p>
 
         </div>
         <div class="anw">
@@ -167,17 +179,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="tkinter4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Menüs und Dialoge kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_t value="3" id="display1">Lesson3.html</button>
+            <button type="submit" name=index_t value="5" id="display2">Lesson5.html</button>
         </form>
 
         

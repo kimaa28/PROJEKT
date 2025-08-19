@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 3: Umgebungsvariablen und HTTP-Header</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,31 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 3: Umgebungsvariablen und HTTP-Header</h1>
+                <p> CGI-Skripte erhalten viele nützliche Informationen über Umgebungsvariablen. Diese Variablen enthalten Details über die HTTP-Anfrage, den Browser des Benutzers und die Serverumgebung. Wichtige Umgebungsvariablen sind: REQUEST_METHOD (GET, POST, etc.), QUERY_STRING (Parameter bei GET), CONTENT_LENGTH (Größe der POST-Daten), HTTP_USER_AGENT (Browser-Information), REMOTE_ADDR (IP-Adresse des Benutzers), und SERVER_NAME (Name des Servers). HTTP-Header sind wichtig für die Kommunikation zwischen Server und Browser. CGI-Skripte können verschiedene Header senden: Content-Type bestimmt den Medientyp, Location wird für Weiterleitungen verwendet, Set-Cookie setzt Cookies, und Cache-Control steuert das Caching-Verhalten. Header müssen vor dem eigentlichen Inhalt gesendet werden und durch eine Leerzeile getrennt sein. CGI-Skripte können auch eigene HTTP-Statuscodes senden, wie 404 (Not Found) oder 500 (Internal Server Error). In diesem Beispiel siehst du, wie man Umgebungsvariablen ausliest und verschiedene Header verwendet. Das Skript zeigt Browser-Informationen an und demonstriert eine einfache Weiterleitung. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>#!/usr/bin/perl use strict; use warnings; print "Content-Type: text/html
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
+"; print "<html><head><title>CGI Umgebungsvariablen</title></head><body>
+"; print "<h1>Server-Informationen</h1>
+"; # Wichtige Umgebungsvariablen anzeigen print "<h2>HTTP-Anfrage:</h2>
+"; print "<p><strong>Request Method:</strong> " . ($ENV{'REQUEST_METHOD'} || 'Nicht verfügbar') . "</p>
+"; print "<p><strong>Query String:</strong> " . ($ENV{'QUERY_STRING'} || 'Leer') . "</p>
+"; print "<p><strong>Content Length:</strong> " . ($ENV{'CONTENT_LENGTH'} || '0') . "</p>
+"; print "<h2>Client-Informationen:</h2>
+"; print "<p><strong>User Agent:</strong> " . ($ENV{'HTTP_USER_AGENT'} || 'Unbekannt') . "</p>
+"; print "<p><strong>Remote Address:</strong> " . ($ENV{'REMOTE_ADDR'} || 'Unbekannt') . "</p>
+"; print "<p><strong>HTTP Accept:</strong> " . ($ENV{'HTTP_ACCEPT'} || 'Nicht verfügbar') . "</p>
+"; print "<h2>Server-Informationen:</h2>
+"; print "<p><strong>Server Name:</strong> " . ($ENV{'SERVER_NAME'} || 'Unbekannt') . "</p>
+"; print "<p><strong>Server Port:</strong> " . ($ENV{'SERVER_PORT'} || 'Unbekannt') . "</p>
+"; print "<p><strong>Script Name:</strong> " . ($ENV{'SCRIPT_NAME'} || 'Unbekannt') . "</p>
+"; # Beispiel für Weiterleitung (auskommentiert) # print "Location: http://www.example.com
 
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+"; print "</body></html>
+";</p>
 
         </div>
         <div class="anw">
@@ -167,17 +144,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="cgi3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Fehlerbehandlung und Sicherheit bei CGI.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_c value="2" id="display1">Lesson2.html</button>
+            <button type="submit" name=index_c value="4" id="display2">Lesson4.html</button>
         </form>
 
         

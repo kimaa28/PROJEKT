@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 6: Einführung in CustomTkinter</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,68 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
+            <h1>Lektion 6: Einführung in CustomTkinter</h1>
                 <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
+CustomTkinter ist eine moderne Alternative zu Tkinter, die ein zeitgemäßes und ansprechendes Design bietet. Es erweitert Tkinter um moderne UI-Elemente mit Dark/Light-Themes, abgerundeten Ecken und schöneren Animationen.
 
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
+Der große Vorteil von CustomTkinter ist das professionelle Aussehen ohne viel zusätzlichen Aufwand. Während Standard-Tkinter oft veraltet aussieht, bietet CustomTkinter eine moderne Optik, die heutigen Design-Standards entspricht.
 
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
+CustomTkinter muss separat installiert werden: pip install customtkinter. Es ist vollständig kompatibel mit Tkinter-Code, du kannst also bestehende Tkinter-Anwendungen leicht umstellen.
 
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
+Die wichtigsten Neuerungen sind: CTk() statt Tk() für das Hauptfenster, CTkLabel, CTkButton etc. statt den Standard-Widgets, automatische Theme-Unterstützung (Dark/Light), und schönere Standard-Farben und Schriftarten.
 
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+CustomTkinter unterstützt moderne Farbschemata und Appearance-Modi. Du kannst zwischen "dark", "light" und "system" (folgt Systemeinstellung) wählen. Das macht deine Anwendung automatisch benutzerfreundlicher.
+</p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>
+import customtkinter as ctk
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
+# Appearance-Modus und Farbthema setzen
+ctk.set_appearance_mode("dark")  # "dark" oder "light"
+ctk.set_default_color_theme("blue")  # "blue", "green", "dark-blue"
 
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
+# Hauptfenster erstellen
+root = ctk.CTk()
+root.title("Meine erste CustomTkinter-App")
+root.geometry("500x350")
 
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
+# Titel-Label
+title_label = ctk.CTkLabel(root, 
+                          text="Willkommen bei CustomTkinter!",
+                          font=ctk.CTkFont(size=24, weight="bold"))
+title_label.pack(pady=20)
 
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+# Beschreibungs-Label
+desc_label = ctk.CTkLabel(root,
+                         text="CustomTkinter bietet moderne, schöne GUI-Elemente\n"
+                              "mit Dark/Light-Theme-Unterstützung.",
+                         font=ctk.CTkFont(size=14))
+desc_label.pack(pady=10)
+
+# Moderne Buttons
+button1 = ctk.CTkButton(root, text="Moderner Button", 
+                       font=ctk.CTkFont(size=14))
+button1.pack(pady=10)
+
+button2 = ctk.CTkButton(root, text="Anderer Stil", 
+                       fg_color="green", hover_color="darkgreen")
+button2.pack(pady=5)
+
+# Theme-Wechsel Button
+def toggle_theme():
+    current_mode = ctk.get_appearance_mode()
+    new_mode = "light" if current_mode == "dark" else "dark"
+    ctk.set_appearance_mode(new_mode)
+
+theme_button = ctk.CTkButton(root, text="Theme wechseln", 
+                           command=toggle_theme,
+                           fg_color="orange", hover_color="darkorange")
+theme_button.pack(pady=20)
+
+root.mainloop()
+</p>
 
         </div>
         <div class="anw">
@@ -167,17 +181,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="customtkinter1.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du moderne CustomTkinter-Widgets kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_t value="5" id="display1">Lesson5.html</button>
+            <button type="submit" name=index_t value="7" id="display2">Lesson7.html</button>
         </form>
 
         

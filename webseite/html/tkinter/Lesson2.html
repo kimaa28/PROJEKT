@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 2: Grundlegende Widgets</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,48 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
+            <h1>Lektion 2: Grundlegende Widgets</h1>
                 <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
+Widgets sind die Bausteine jeder GUI-Anwendung. Tkinter bietet viele verschiedene Widget-Typen für unterschiedliche Zwecke.
 
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
+Label zeigt Text oder Bilder an - perfekt für Beschriftungen und Informationen. Button erstellt klickbare Schaltflächen für Benutzerinteraktionen. Entry ermöglicht einzeilige Texteingaben, während Text mehrzeilige Texteingaben erlaubt.
 
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
+Jedes Widget hat Eigenschaften (Optionen) die sein Aussehen und Verhalten bestimmen. 'text' setzt den anzuzeigenden Text, 'font' bestimmt Schriftart und -größe, 'fg' und 'bg' setzen Vorder- und Hintergrundfarbe.
 
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
+Die pack()-Methode ist eine der drei Layout-Manager in Tkinter. Sie ordnet Widgets automatisch im Fenster an. Der Parameter 'pady' fügt vertikalen Abstand hinzu, 'padx' horizontalen Abstand.
 
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+Das command-Parameter bei Buttons verbindet eine Funktion mit dem Klick-Ereignis. Wenn der Button geklickt wird, wird die angegebene Funktion ausgeführt.
+</p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>
+import tkinter as tk
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
+def button_clicked():
+    text = entry.get()
+    label_result.config(text=f"Du hast eingegeben: {text}")
 
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
+root = tk.Tk()
+root.title("Tkinter Widgets")
+root.geometry("400x300")
 
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
+# Verschiedene Widgets
+label = tk.Label(root, text="Gib etwas ein:", font=("Arial", 12))
+label.pack(pady=10)
 
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+entry = tk.Entry(root, font=("Arial", 12))
+entry.pack(pady=10)
+
+button = tk.Button(root, text="Klick mich!", command=button_clicked, 
+                  font=("Arial", 12), bg="lightblue")
+button.pack(pady=10)
+
+label_result = tk.Label(root, text="", font=("Arial", 12), fg="green")
+label_result.pack(pady=10)
+
+root.mainloop()
+</p>
 
         </div>
         <div class="anw">
@@ -167,17 +161,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="tkinter2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Layout-Management kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_t value="1" id="display1">Lesson1.html</button>
+            <button type="submit" name=index_t value="3" id="display2">Lesson3.html</button>
         </form>
 
         

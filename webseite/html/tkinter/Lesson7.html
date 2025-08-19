@@ -1,0 +1,230 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 7: Moderne Widgets in CustomTkinter</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 7: Moderne Widgets in CustomTkinter</h1>
+                <p>
+CustomTkinter bietet viele verbesserte Widgets, die nicht nur schöner aussehen, sondern auch mehr Funktionen bieten als ihre Tkinter-Gegenstücke.
+
+CTkEntry bietet moderne Texteingabefelder mit Placeholder-Text, abgerundeten Ecken und schönen Fokus-Animationen. Der placeholder_text wird automatisch angezeigt, wenn das Feld leer ist.
+
+CTkTextbox ersetzt das alte Text-Widget und bietet bessere Darstellung mit modernerm Scrollbar-Design. Es unterstützt alle bekannten Text-Operationen mit verbesserter Optik.
+
+CTkCheckBox und CTkRadioButton haben moderne Designs mit schöneren Animationen. CTkSwitch ist eine moderne Alternative zu Checkboxes für An/Aus-Optionen.
+
+CTkProgressBar zeigt Fortschritte mit schönen, animierten Balken an. CTkSlider bietet moderne Schieberegler mit besserer Bedienbarkeit als Scale-Widgets.
+
+Alle Widgets unterstützen die Theme-Farben automatisch und passen sich dem gewählten Appearance-Modus an. Du kannst aber auch individuelle Farben mit fg_color, text_color etc. setzen.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import customtkinter as ctk
+from tkinter import StringVar
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+root = ctk.CTk()
+root.title("Moderne CustomTkinter Widgets")
+root.geometry("600x700")
+
+# Titel
+title = ctk.CTkLabel(root, text="Moderne Widget-Sammlung", 
+                    font=ctk.CTkFont(size=20, weight="bold"))
+title.pack(pady=20)
+
+# Entry mit Placeholder
+entry = ctk.CTkEntry(root, placeholder_text="Gib hier etwas ein...",
+                    width=300, font=ctk.CTkFont(size=14))
+entry.pack(pady=10)
+
+# Textbox
+textbox = ctk.CTkTextbox(root, width=400, height=100)
+textbox.pack(pady=10)
+textbox.insert("0.0", "Das ist eine moderne Textbox.\n"
+                      "Sie unterstützt mehrzeiligen Text\n"
+                      "und hat schöne Scrollbars.")
+
+# Checkboxes und Switch
+checkbox_var = ctk.StringVar(value="on")
+checkbox = ctk.CTkCheckBox(root, text="Moderne Checkbox", 
+                          variable=checkbox_var)
+checkbox.pack(pady=5)
+
+switch_var = ctk.StringVar(value="on")
+switch = ctk.CTkSwitch(root, text="Modern Switch", 
+                      variable=switch_var)
+switch.pack(pady=5)
+
+# Radio Buttons
+radio_var = ctk.StringVar(value="option1")
+radio1 = ctk.CTkRadioButton(root, text="Option 1", 
+                           variable=radio_var, value="option1")
+radio1.pack(pady=2)
+
+radio2 = ctk.CTkRadioButton(root, text="Option 2", 
+                           variable=radio_var, value="option2")
+radio2.pack(pady=2)
+
+# Progress Bar
+progress = ctk.CTkProgressBar(root, width=300)
+progress.pack(pady=15)
+progress.set(0.7)  # 70%
+
+# Slider
+def slider_callback(value):
+    progress.set(value)
+    slider_label.configure(text=f"Wert: {value:.2f}")
+
+slider = ctk.CTkSlider(root, from_=0, to=1, 
+                      command=slider_callback, width=300)
+slider.pack(pady=5)
+slider.set(0.7)
+
+slider_label = ctk.CTkLabel(root, text="Wert: 0.70")
+slider_label.pack(pady=5)
+
+# Optionsmenu
+option_menu = ctk.CTkOptionMenu(root, 
+                               values=["Option 1", "Option 2", "Option 3"],
+                               width=200)
+option_menu.pack(pady=15)
+
+root.mainloop()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="customtkinter2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du Frames und Layout in CustomTkinter kennen.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="6" id="display1">Lesson6.html</button>
+            <button type="submit" name=index_t value="8" id="display2">Lesson8.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>

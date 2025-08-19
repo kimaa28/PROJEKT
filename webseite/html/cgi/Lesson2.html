@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 2: Formulardaten verarbeiten</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,19 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 2: Formulardaten verarbeiten</h1>
+                <p> Eine der häufigsten Anwendungen von CGI ist die Verarbeitung von HTML-Formularen. Wenn ein Benutzer ein Formular absendet, werden die Daten an das CGI-Skript übertragen. Es gibt zwei Hauptmethoden für die Datenübertragung: GET und POST. Bei der GET-Methode werden die Daten in der URL übertragen und sind in der Umgebungsvariable QUERY_STRING verfügbar. Bei der POST-Methode werden die Daten über die Standardeingabe (STDIN) übertragen und sind nicht in der URL sichtbar. Formulardaten werden URL-kodiert übertragen, das bedeutet, Leerzeichen werden zu '+' und Sonderzeichen werden als %XX kodiert. CGI-Skripte müssen diese Kodierung rückgängig machen (URL-Dekodierung). Die Daten kommen im Format 'name1=wert1&name2=wert2' an. Jedes name=wert-Paar entspricht einem Formularfeld. In diesem Beispiel zeige ich dir ein CGI-Skript, das Formulardaten verarbeitet. Das Skript prüft zuerst die REQUEST_METHOD um zu unterscheiden zwischen GET und POST. Dann werden die Daten entsprechend ausgelesen und verarbeitet. Die URI::Escape-Bibliothek hilft bei der URL-Dekodierung. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
+            <p>#!/usr/bin/perl use strict; use warnings; use URI::Escape; print "Content-Type: text/html
 
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+"; # Formulardaten lesen my $form_data; if ($ENV{'REQUEST_METHOD'} eq 'POST') { read(STDIN, $form_data, $ENV{'CONTENT_LENGTH'}); } else { $form_data = $ENV{'QUERY_STRING'}; } # Daten parsen my %form_fields; foreach my $pair (split(/&/, $form_data)) { my ($name, $value) = split(/=/, $pair); $value = uri_unescape($value); $value =~ s/\+/ /g; # + durch Leerzeichen ersetzen $form_fields{$name} = $value; } # HTML-Ausgabe print "<html><head><title>Formulardaten</title></head><body>
+"; print "<h1>Empfangene Daten:</h1>
+"; print "<p>Name: " . ($form_fields{'name'} || 'Nicht angegeben') . "</p>
+"; print "<p>Email: " . ($form_fields{'email'} || 'Nicht angegeben') . "</p>
+"; print "</body></html>
+";</p>
 
         </div>
         <div class="anw">
@@ -167,17 +132,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="cgi2.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_c value="1" id="display1">Lesson1.html</button>
+            <button type="submit" name=index_c value="3" id="display2">Lesson3.html</button>
         </form>
 
         

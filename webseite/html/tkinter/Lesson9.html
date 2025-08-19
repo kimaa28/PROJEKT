@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 9: Spezielle CustomTkinter-Features</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 9: Spezielle CustomTkinter-Features</h1>
+                <p>
+CustomTkinter bietet einige einzigartige Features, die in Standard-Tkinter nicht verfügbar sind. Diese machen deine Anwendungen professioneller und benutzerfreundlicher.
+
+CTkToplevel erstellt moderne popup-Fenster mit den gleichen Styling-Optionen wie das Hauptfenster. Anders als Tkinters Toplevel unterstützt es automatisch die Theme-Einstellungen.
+
+Die Scaling-Funktion ist besonders nützlich für verschiedene Bildschirmgrößen und DPI-Einstellungen. Mit set_widget_scaling() kannst du die Größe aller Widgets proportional anpassen - perfekt für High-DPI-Displays.
+
+Font-Handling ist in CustomTkinter deutlich verbessert. CTkFont bietet einfache Gewichts- und Größeneinstellungen mit automatischer Theme-Anpassung. Du kannst auch System-Schriftarten und eigene Schriftarten laden.
+
+Color-Management ist flexibler - du kannst eigene Farbthemen erstellen oder einzelne Widgets mit benutzerdefinierten Farben versehen. Transparenz wird ebenfalls unterstützt.
+
+Die bind()-Methoden funktionieren genauso wie in Tkinter, aber CustomTkinter fügt zusätzliche Events für Hover-Effekte und Theme-Änderungen hinzu.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import customtkinter as ctk
+import tkinter as tk
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("blue")
+
+class AdvancedApp:
+    def __init__(self):
+        self.root = ctk.CTk()
+        self.root.title("Erweiterte CustomTkinter-Features")
+        self.root.geometry("700x500")
+        
+        self.create_widgets()
+        
+    def create_widgets(self):
+        # Titel mit benutzerdefinierten Fonts
+        title_font = ctk.CTkFont(family="Arial", size=28, weight="bold")
+        title = ctk.CTkLabel(self.root, text="Erweiterte Features", font=title_font)
+        title.pack(pady=20)
+        
+        # Frame für Controls
+        control_frame = ctk.CTkFrame(self.root)
+        control_frame.pack(pady=20, padx=40, fill="x")
+        
+        # Scaling Controls
+        ctk.CTkLabel(control_frame, text="UI-Skalierung:", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        scaling_frame = ctk.CTkFrame(control_frame, fg_color="transparent")
+        scaling_frame.pack(pady=5)
+        
+        def change_scaling(value):
+            ctk.set_widget_scaling(value)
+            
+        scaling_slider = ctk.CTkSlider(scaling_frame, from_=0.8, to=1.5,
+                                     command=change_scaling, width=200)
+        scaling_slider.set(1.0)
+        scaling_slider.pack(side="left", padx=5)
+        
+        self.scaling_label = ctk.CTkLabel(scaling_frame, text="100%")
+        self.scaling_label.pack(side="left", padx=10)
+        
+        # Theme Controls
+        theme_frame = ctk.CTkFrame(control_frame, fg_color="transparent")
+        theme_frame.pack(pady=10, fill="x")
+        
+        ctk.CTkLabel(theme_frame, text="Appearance:", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        appearance_menu = ctk.CTkOptionMenu(theme_frame, 
+                                           values=["dark", "light", "system"],
+                                           command=self.change_appearance)
+        appearance_menu.pack(pady=5)
+        
+        # Color Theme Controls
+        ctk.CTkLabel(theme_frame, text="Farbthema:", 
+                    font=ctk.CTkFont(size=14, weight="bold")).pack(pady=5)
+        
+        color_menu = ctk.CTkOptionMenu(theme_frame,
+                                      values=["blue", "green", "dark-blue"],
+                                      command=self.change_color_theme)
+        color_menu.pack(pady=5)
+        
+        # Demo Widgets mit besonderen Features
+        demo_frame = ctk.CTkFrame(self.root)
+        demo_frame.pack(pady=20, padx=40, fill="both", expand=True)
+        
+        # Hover-Effekt Button
+        hover_button = ctk.CTkButton(demo_frame, text="Hover-Effekt", 
+                                   fg_color="purple", hover_color="magenta")
+        hover_button.pack(pady=10)
+        
+        # Popup-Fenster Button
+        popup_button = ctk.CTkButton(demo_frame, text="Popup öffnen", 
+                                   command=self.open_popup)
+        popup_button.pack(pady=10)
+        
+        # Transparente Elemente
+        transparent_frame = ctk.CTkFrame(demo_frame, fg_color="transparent")
+        transparent_frame.pack(pady=10, fill="x")
+        
+        ctk.CTkLabel(transparent_frame, text="Transparenter Frame-Hintergrund").pack()
+        
+    def change_appearance(self, mode):
+        ctk.set_appearance_mode(mode)
+        
+    def change_color_theme(self, theme):
+        ctk.set_default_color_theme(theme)
+        # Neustart der App für Theme-Änderung
+        self.root.destroy()
+        app = AdvancedApp()
+        app.run()
+        
+    def open_popup(self):
+        popup = ctk.CTkToplevel(self.root)
+        popup.title("Popup-Fenster")
+        popup.geometry("400x300")
+        popup.transient(self.root)  # Bleibt über Hauptfenster
+        
+        ctk.CTkLabel(popup, text="Das ist ein modernes Popup!", 
+                    font=ctk.CTkFont(size=18, weight="bold")).pack(pady=20)
+        
+        # Popup-spezifische Widgets
+        entry = ctk.CTkEntry(popup, placeholder_text="Eingabe im Popup...")
+        entry.pack(pady=10)
+        
+        def close_popup():
+            value = entry.get()
+            if value:
+                print(f"Eingabe aus Popup: {value}")
+            popup.destroy()
+            
+        ctk.CTkButton(popup, text="Schließen", command=close_popup).pack(pady=20)
+        
+        # Popup zentrieren
+        popup.grab_set()  # Modal machen
+        
+    def run(self):
+        self.root.mainloop()
+
+# App starten
+if __name__ == "__main__":
+    app = AdvancedApp()
+    app.run()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="customtkinter4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du die Integration von Bildern und Icons.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="8" id="display1">Lesson8.html</button>
+            <button type="submit" name=index_t value="10" id="display2">Lesson10.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>

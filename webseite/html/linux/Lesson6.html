@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lektion 4: Eingabe und Ausgabe</title>
+    <title>Lektion 6: Skripting und Automatisierung</title>
     <style>
         body {
             font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
@@ -111,54 +111,12 @@
     </div>
     <section id="section1">
         <div id="content">
-            <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
-Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
-bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
-
-Wenn du Zahlen einlesen möchtest, musst du sie mit int() oder float() konvertieren.
-int() wandelt in ganze Zahlen um, float() in Dezimalzahlen.
-
-Die print()-Funktion hat viele nützliche Parameter:
-- sep: bestimmt das Trennzeichen zwischen mehreren Werten
-- end: bestimmt, was am Ende gedruckt wird (standardmäßig ein Zeilenumbruch)
-
-Du kannst auch formatierte Ausgaben mit verschiedenen Methoden erstellen:
-- f-Strings: f"Text {variable}"  
-- .format(): "Text {}".format(variable)
-- % formatting: "Text %s" % variable (älter)
-
-Für Zahlen kannst du die Anzahl der Dezimalstellen kontrollieren mit :.2f für 2 Stellen.
-Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl eingibt.
-    </p>
+            <h1>Lektion 6: Skripting und Automatisierung</h1>
+                <p> Shell-Scripting ist eine der mächtigsten Fähigkeiten in Linux und ermöglicht die Automatisierung wiederkehrender Aufgaben. Bash (Bourne Again Shell) ist die Standard-Shell in den meisten Linux-Distributionen. Shell-Skripte beginnen mit der Shebang-Zeile (#!/bin/bash), die dem System mitteilt, welche Shell verwendet werden soll. Variablen in Bash werden ohne '$' definiert und mit '$' aufgerufen. Verwende Anführungszeichen um Leerzeichen zu behandeln. Kontrollstrukturen wie if-then-else, for-Schleifen und while-Schleifen ermöglichen komplexe Logik. Funktionen organisieren Code und machen ihn wiederverwendbar. Cron ist der Task-Scheduler von Linux. Mit 'crontab -e' bearbeitest du deine Cron-Jobs. Die Syntax folgt dem Format: Minute Stunde Tag Monat Wochentag Befehl. Beispiel: '0 2 * * *' führt täglich um 2 Uhr aus. Fehlerbehandlung ist wichtig: Überprüfe Exit-Codes mit '$?' und verwende 'set -e' um bei Fehlern zu stoppen. Logging hilft bei der Fehlersuche - leite Ausgaben in Dateien um. Parameter an Skripte übergibst du über '$1', '$2', etc. '$0' ist der Skriptname, '$#' die Anzahl Parameter, '$@' alle Parameter. Mit 'chmod +x script.sh' machst du Skripte ausführbar. </p>
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
-name = input("Wie heißt du? ")
-print(f"Hallo {name}!")
-
-# Zahlen einlesen
-alter_str = input("Wie alt bist du? ")
-alter = int(alter_str)  # String zu Integer konvertieren
-print(f"Du bist {alter} Jahre alt.")
-
-# Direktkonvertierung
-groesse = float(input("Deine Größe in Metern: "))
-print(f"Du bist {groesse:.2f}m groß.")
-
-# Berechnungen mit Eingaben
-zahl1 = int(input("Erste Zahl: "))
-zahl2 = int(input("Zweite Zahl: "))
-summe = zahl1 + zahl2
-print(f"{zahl1} + {zahl2} = {summe}")
-
-# Formatierte Ausgabe
-preis = 49.99
-print(f"Preis: {preis:.2f}€")
-print("Name:", name, "Alter:", alter, sep=" - ")
-print("Ende", end="!
-")</p>
+            <p>#!/bin/bash # Backup-Skript Beispiel - Speichere als backup.sh # Variablen definieren SOURCE_DIR="/home/user/documents" BACKUP_DIR="/backup/$(date +%Y%m%d)" LOG_FILE="/var/log/backup.log" # Funktion für Logging log_message() { echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE } # Backup-Verzeichnis erstellen if [ ! -d "$BACKUP_DIR" ]; then mkdir -p "$BACKUP_DIR" log_message "Backup-Verzeichnis erstellt: $BACKUP_DIR" fi # Backup durchführen log_message "Backup gestartet von $SOURCE_DIR nach $BACKUP_DIR" if rsync -av "$SOURCE_DIR/" "$BACKUP_DIR/"; then log_message "Backup erfolgreich abgeschlossen" echo "Backup erfolgreich!" else log_message "FEHLER: Backup fehlgeschlagen" echo "Backup fehlgeschlagen!" >&2 exit 1 fi # Alte Backups löschen (älter als 30 Tage) find /backup -type d -name "20*" -mtime +30 -exec rm -rf {} + 2>/dev/null log_message "Alte Backups bereinigt" # Beispiel Crontab-Einträge (mit 'crontab -e' hinzufügen): # 0 2 * * * /home/user/backup.sh # Täglich um 2 Uhr # */15 * * * * /usr/bin/system_check.sh # Alle 15 Minuten # 0 0 * * 0 /home/user/weekly_cleanup.sh # Sonntags um Mitternacht # Erweiterte Bash-Features for file in *.log; do echo "Verarbeite: $file" gzip "$file" # Komprimieren done # Parameter verarbeiten if [ $# -eq 0 ]; then echo "Verwendung: $0 <Quellverzeichnis>" exit 1 fi echo "Skript: $0 wurde mit $# Parametern aufgerufen" echo "Alle Parameter: $@" </p>
 
         </div>
         <div class="anw">
@@ -167,17 +125,17 @@ print("Ende", end="!
         </div>
         
         <div id="img">
-            <img src="python4.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+            <img src="linux6.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p>Herzlichen Glückwunsch! Du hast alle Linux-Grundlagen gemeistert.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <button type="submit" name=index_p value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_p value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_l value="5" id="display1">Lesson5.html</button>
+            <button type="submit" name=index_l value="7" id="display2">Lesson7.html</button>
         </form>
 
         

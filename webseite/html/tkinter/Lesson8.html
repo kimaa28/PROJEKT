@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 8: Frames und erweiterte Layouts</title>
+    <style>
+        body {
+            font-family: PT 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #back_to {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            width: 1200px; /* i would make a root to defined all this value */
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #Zurück{
+            text-decoration: none;
+            margin: auto;        /* i would make a root to defined all this value */
+            color: #000000;
+            border-radius: 10px;
+            font-size: 20px; 
+            padding: 10px;
+        }
+        #Zurück:hover {
+            color: #7daa8c;
+            background-color: #f0f0f0;
+            transition: 0.3s;
+        }
+        #content {
+            /* i would make a root to defined all this value */
+            padding-left: 20px;
+           
+            padding-bottom: 10px;
+        }
+        #section1 {
+            width: 50%; /* i would make a root to defined all this value */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow:0 4px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        #content1 {
+            margin: 20px;
+            padding: 40px;
+            background-color: #b2c0b815;
+            border-radius: 20px;
+            display: flex;   
+            white-space: pre-wrap;      /* Zeilen werden umbrochen */
+            word-wrap: break-word;      /* Lange Wörter umbrechen */     
+
+        }
+        #img {
+            text-align: center;
+            margin: 20px;
+            background-color: #d3d3d381;
+            border-radius: 20px;
+        }
+        .anw {
+            margin-left: 20px;
+            padding: 10px;
+        
+        }
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+        #display1 {
+            text-decoration: none;
+            color: #7d7272;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #f0f0f0;
+        }
+        #display1:hover {
+            color: #111513;
+            background-color: #e0e0e0;
+        }
+        #display2 {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #242424;
+        }
+        #display2:hover {
+            color: #ffffff;
+            background-color: #2a72b6;
+        }
+    </style>
+</head>
+<body>
+    <div id="back_to">
+    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    </div>
+    <section id="section1">
+        <div id="content">
+            <h1>Lektion 8: Frames und erweiterte Layouts</h1>
+                <p>
+CTkFrame ist das moderne Gegenstück zu Tkinters Frame-Widget und bietet viel mehr Gestaltungsmöglichkeiten. Du kannst Rahmenfarben, Eckenradius und verschiedene visuelle Effekte einstellen.
+
+CTkScrollableFrame ist eine einzigartige Neuerung in CustomTkinter - ein Frame mit automatischen Scrollbars. Das ist perfekt für Inhalte, die größer als das verfügbare Fenster sind, ohne manuell Scrollbars programmieren zu müssen.
+
+CTkTabview ermöglicht es, verschiedene Ansichten in Tabs zu organisieren - wie Browser-Tabs. Du kannst mit add() neue Tabs hinzufügen und dann Widgets in jeden Tab mit tab("Tabname").
+
+Das Layout-System funktioniert genauso wie in Tkinter - du kannst pack(), grid() und place() verwenden. CustomTkinter-Widgets haben aber bessere Standard-Paddings und Abstände.
+
+Corner_radius bestimmt, wie abgerundet die Ecken der Widgets sind. border_width setzt die Rahmendicke, fg_color die Hintergrundfarbe. Diese Parameter geben dir viel Kontrolle über das Aussehen.
+</p>
+        </div>
+
+        <div id="content1">
+            <p>
+import customtkinter as ctk
+
+ctk.set_appearance_mode("dark")
+ctk.set_default_color_theme("green")
+
+root = ctk.CTk()
+root.title("Frames und erweiterte Layouts")
+root.geometry("800x600")
+
+# Hauptframe mit unterschiedlichen Bereichen
+main_frame = ctk.CTkFrame(root, corner_radius=15)
+main_frame.pack(fill="both", expand=True, padx=20, pady=20)
+
+# Titel
+title = ctk.CTkLabel(main_frame, text="Layout-Demo", 
+                    font=ctk.CTkFont(size=24, weight="bold"))
+title.pack(pady=20)
+
+# Tabview für verschiedene Bereiche
+tabview = ctk.CTkTabview(main_frame, width=700, height=400)
+tabview.pack(pady=20, padx=20)
+
+# Tab 1: Normale Widgets
+tab1 = tabview.add("Widgets")
+ctk.CTkLabel(tab1, text="Normale Widget-Sammlung", 
+            font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+
+widget_frame = ctk.CTkFrame(tab1, fg_color="transparent")
+widget_frame.pack(fill="x", padx=20, pady=10)
+
+ctk.CTkEntry(widget_frame, placeholder_text="Eingabefeld").pack(pady=5)
+ctk.CTkButton(widget_frame, text="Button").pack(pady=5)
+ctk.CTkCheckBox(widget_frame, text="Checkbox").pack(pady=5)
+
+# Tab 2: Scrollbarer Bereich
+tab2 = tabview.add("Scrollbar")
+ctk.CTkLabel(tab2, text="Scrollbarer Inhalt", 
+            font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+
+# Scrollbares Frame
+scrollable_frame = ctk.CTkScrollableFrame(tab2, width=600, height=250)
+scrollable_frame.pack(pady=10, padx=20)
+
+# Viele Widgets zum Scrollen hinzufügen
+for i in range(20):
+    frame_item = ctk.CTkFrame(scrollable_frame)
+    frame_item.pack(fill="x", pady=5, padx=5)
+    
+    ctk.CTkLabel(frame_item, text=f"Element {i+1}").pack(side="left", padx=10, pady=10)
+    ctk.CTkButton(frame_item, text=f"Button {i+1}", width=100).pack(side="right", padx=10, pady=5)
+
+# Tab 3: Grid Layout
+tab3 = tabview.add("Grid Layout")
+ctk.CTkLabel(tab3, text="Grid-basiertes Layout", 
+            font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+
+grid_frame = ctk.CTkFrame(tab3, fg_color="transparent")
+grid_frame.pack(pady=20)
+
+# Grid mit verschiedenen Widgets
+colors = ["red", "green", "blue", "orange", "purple", "pink"]
+for i in range(2):
+    for j in range(3):
+        btn = ctk.CTkButton(grid_frame, text=f"{i},{j}", 
+                           fg_color=colors[i*3 + j],
+                           width=120, height=60)
+        btn.grid(row=i, column=j, padx=10, pady=10)
+
+root.mainloop()
+</p>
+
+        </div>
+        <div class="anw">
+            <p>Bildbeschreibung des beispiel:</p>
+            <p></p>
+        </div>
+        
+        <div id="img">
+            <img src="customtkinter3.png" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
+          
+        </div>
+        <div class="anw">
+            <p>In der nächsten Lektion lernst du spezielle CustomTkinter-Features kennen.</p>
+        </div>
+
+       
+        <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <button type="submit" name=index_t value="7" id="display1">Lesson7.html</button>
+            <button type="submit" name=index_t value="9" id="display2">Lesson9.html</button>
+        </form>
+
+        
+    </section>
+</body>
+</html>
