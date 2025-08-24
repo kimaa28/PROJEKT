@@ -2,6 +2,11 @@ import customtkinter as ctk
 from tkinter import PhotoImage, Canvas
 from PIL import Image, ImageDraw
 import random as rd
+import webbrowser as web
+
+
+
+
 
 
 
@@ -229,6 +234,10 @@ class Daschboard:
                 frame2.pack(fill="both", expand="true")
                 label_image.pack(fill="both", expand="true")
 
+                
+            def open():
+                web.open("http://127.0.0.1:8000/webseite/html/index.html")
+
             label_titel = ctk.CTkLabel(frame2, text=titel, text_color=self.color, font=("Arial", 20, "bold"), anchor="w")
             label_titel.pack(padx=10, pady=10)
             label_about = ctk.CTkLabel(frame2, text=about, text_color="#676464", font=("verdana", 13, "italic"), anchor="w")
@@ -238,8 +247,12 @@ class Daschboard:
             tutot_img.grid(row=0, column=0)
             label_tutor = ctk.CTkLabel(frame3, text=tutor, text_color=label_about.cget("text_color"), font=("PT serif", 13, "underline"))
             label_tutor.grid(row=0, column=1, padx=5)
-            button_start = ctk.CTkButton(frame2, text="Start Course", text_color="white", fg_color="#005f73")
-            button_start.pack(fill="x")
+            frame4 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
+            frame4.pack(fill="x")
+            button_start = ctk.CTkButton(frame4, text="Start Course", text_color="white", fg_color="#005f73", command=lambda: self.app.after(4000, open))
+            button_start.pack(fill="x", padx=10, pady=5, side="left", expand="true")
+            button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command=lambda: self.app.after(4000, open))
+            button_continue.pack(fill="x", padx=10, pady=5, side="right", expand="true")
             
 
     # tab for course

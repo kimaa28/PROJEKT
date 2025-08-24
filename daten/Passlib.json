@@ -1,0 +1,38 @@
+{
+    "user": {
+        "passwort": "passwort",
+        "email": "user@gmail.com",
+        "sex": "sex",
+        "secret_code": "secret_code"
+    },
+    "kitio": {
+        "passwort": "bb7fbebc5cf6dce938d62c446870b65e48606fc8f9dbc542fd0e68d0a2d8b4ae",
+        "email": "jordan.@",
+        "sex": "male",
+        "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
+    },
+    "jordan": {
+        "passwort": "b4212b26bf87cfb10a77081ccfaa582f66b9f6923e60a8c23eba46d60885db86",
+        "email": "jordan@.com",
+        "sex": "male",
+        "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4"
+    },
+    "user1": {
+        "passwort": "1f1a2e891fc5039fcf7b08dbc59f0bdcc398510295b7f7c3c99628cdf06b8ae9",
+        "email": "j@.com",
+        "sex": "female",
+        "secret_code": "4361be62001d25deb2bd85fab3e46011afae57539026d8d37d57f45e29571271"
+    },
+    "Done": {
+        "html": [
+            1
+        ],
+        "python": [],
+        "tkinter": [],
+        "cgi": [],
+        "linux": []
+    },
+    "Current": {
+        "html": "lektion2"
+    }
+}

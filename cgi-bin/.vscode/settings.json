@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/<!DOCTYPE html>.html"
+    "livePreview.defaultPreviewPath": "/<!DOCTYPE html>.html",
+    "python-envs.pythonProjects": []
 }

@@ -1,27 +1,16 @@
 {
     "Done": {
-        "html": [],
-        "python": [
-            7,
-            8
-        ],
-        "tkinter": [
+        "html": [
             1,
             2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10,
-            11
+            3
         ],
+        "python": [],
+        "tkinter": [],
         "cgi": [],
         "linux": []
     },
     "Current": {
-        "python": "lektion9"
+        "html": "lektion4"
     }
 }

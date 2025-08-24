@@ -2,7 +2,8 @@
 import os
 import json
 import cgi, cgitb
-import sys
+
+
 
 #TODO manage the json for all user
 
@@ -56,7 +57,7 @@ print('''<!DOCTYPE html>
 
 # DEBUG SECTION
 
-path = "progress.json"
+path = "daten/Passlib.json"
 
 # Prüfe ob JSON existiert
 
@@ -78,7 +79,7 @@ index_list = {
 }
 for key, value in index_list.items():
     if value:
-        index = value
+        index = value or  1
         if value == index:
             try:
                 index = int(index)
