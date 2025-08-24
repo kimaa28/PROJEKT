@@ -6,12 +6,198 @@
     <title>Document</title>
     <style>
 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #flex-container {
+            display: flex;
+            width: 100%;
+        
+        }   
+        #logo {
+            height: 40px;
+            
+        }
+        #header {
+            
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: left;
+            
+        }
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: right;
+            gap: 20px;
+            padding: 20px;
+            padding: 20px 25px;
+            margin-right: 0px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+        .button {
+            width: 100px;
+            background-color: #4CAF50; 
+            border: 3px solid #484b48;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .button:hover {
+            background-color: #76aa78;
+            border-color: #484b48;
+        }
+        .button:active {
+            background-color: #3e8e41;
+            border-color: #484b48;
+        }
+        .button:focus {
+            outline: none;
+            box-shadow: 0 0 5px #76aa78;
+        }
+        #header h1 {
+            color: #55a356;
+            font-size: 40px;
+            margin: 0;
+            font-weight: bold;
+        }
+     
+        #header img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid #4CAF50;
+        }
+        #header h1 {
+            margin-left: 10px;
+            font-size: 40px;
+            color: #4CAF50;
+            font-weight: bold;
+        }   
+        #content {
+            padding: 20px;
+            text-align: center;
+            border: 3px solid #cabebe;
+            width: 60%;
+            margin: 20px auto;
+            border-radius: 20px;
+
+        }
+        #htmlimage {
+          
+            height: auto;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        #course_name {
+            color: #4CAF50;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        #P1 {
+            font-size: 20px;
+            color: #555;
+        }
+        #P2 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .start {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start:hover {
+            background-color: #76aa78;
+            text-decoration: none;
+            
+        }   
     </style>
 </head>
 <body>
-    <div>
-        <img src="dev" alt="">
+    <div id="flex-container">
+        <div id="header">
+            <img src="dev.png" alt="logo" id="logo">
+            <h1>Devlearn </h1>
+        </div>
+
+
     </div>
+
+    <hr style="border: 1px solid #ccc; margin: 10px 20px;">
     
+   <!-- HTML Kurs -->
+<div id="content">
+    <h2 id="course_name">HTML modern lernen</h2>
+    <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Aufgaben</p>
+    <img src="html.jpeg" alt="html bild" id="htmlimage">
+    <p id="P2">Meistere die Bausteine des Webs. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, deine erste Seite noch heute zu veröffentlichen</p>
+
+        <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/Lektion1.html">Kurs starten</a></button>
+    
+</div>
+    
+        
+
+<!-- Python Kurs -->
+<div id="content">
+    <h2 id="course_name">Python modern lernen</h2>
+    <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Projekten</p>
+    <img src="python.jpeg" alt="python bild" id="pythonimage">
+    <p id="P2">Meistere die vielseitigste Programmiersprache. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, dein erstes Programm noch heute zu schreiben</p>
+    
+    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/py_l/Lesson1.html">Kurs starten</a></button>
+    
+</div>
+    
+        
+<!-- CGI Kurs -->
+<div id="content">
+    <h2 id="course_name">CGI modern lernen</h2>
+    <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Skripten</p>
+    <img src="cgi.jpeg" alt="cgi bild" id="cgiimage">
+    <p id="P2">Meistere dynamische Webentwicklung mit CGI. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, dein erstes dynamisches Web-Skript noch heute zu erstellen</p>
+    
+    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/cgi/Lesson1.html">Kurs starten</a></button>
+    
+</div>
+    
+        
+
+<!-- Linux Kurs -->
+<div id="content">
+    <h2 id="course_name">Linux modern lernen</h2>
+    <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Kommandos</p>
+    <img src="linux.jpeg" alt="linux bild" id="linuximage">
+    <p id="P2">Meistere das mächtigste Betriebssystem. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, deine ersten Linux-Befehle noch heute auszuführen</p>
+    
+    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/linux/Lesson1.html">Kurs starten</a></button>
+    
+</div>
+    
+        
+
+
+
+
+
+
+
 </body>
 </html>
