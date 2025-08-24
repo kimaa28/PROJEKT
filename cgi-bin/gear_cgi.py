@@ -87,7 +87,8 @@ for key, value in index_list.items():
             link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html"]
             redirect_url = link_list[key]
 
-redirect_url =  redirect_url
+if index == 0 :
+    redirect_url = "http://127.0.0.1:8000/webseite/html/index.html"
 
 # JSON laden
 json_change = load_index(path)
@@ -104,7 +105,11 @@ keys_liste = {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_
 try:
     for key, value in keys_liste.items():
         if value :
-            if index -1 in json_change["Done"][key]:
+            if index == 0:
+                pass
+            elif index == 1:
+                pass
+            elif index -1 in json_change["Done"][key]:
                 json_change["Current"] = {key : f"lektion{index}"}
                 save_index(path, json_change)
             else:
@@ -112,6 +117,8 @@ try:
                 json_change["Current"] = {key: f"lektion{index}"}
                 json_change["Done"][key].sort()
                 save_index(path, json_change)
+        else:
+            pass
 except Exception as e:
     pass 
 
