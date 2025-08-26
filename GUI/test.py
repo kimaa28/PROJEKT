@@ -17,13 +17,14 @@ class Daschboard:
         self.color = ("black", "white")
         self.app.title("Devlearn")
 
-        
+        self.dash = ctk.CTkFrame(self.app)
+        self.dash.pack(fill="both", expand="true")
          # left frame for Menu and info
-        self.left_frame = ctk.CTkFrame(self.app, corner_radius=0, border_width=1, fg_color="#99c0b3")
+        self.left_frame = ctk.CTkFrame(self.dash, corner_radius=0, border_width=1, fg_color="#99c0b3")
         self.left_frame.pack(fill="both", side="left")
 
         # right frame for all tab and specifics information 
-        self.right_frame = ctk.CTkFrame(self.app, fg_color="#99c0b3", corner_radius=0)
+        self.right_frame = ctk.CTkFrame(self.dash, fg_color="#99c0b3", corner_radius=0)
         self.right_frame.pack(fill="both", side="right", expand="true")
         
 
