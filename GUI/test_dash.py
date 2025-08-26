@@ -167,18 +167,20 @@ class hauptpage:
                 self.register["raise_msg"].configure(text="Erfolgreich registriert", text_color="green")
                 self._delete_R()
         
-        
+    # delete entry if somethings wrong
     def _delete_re(self):
         user_entry = self.reset["username"]
         passwort_entry = self.reset["neue_passwort"]
         passwort_w = self.reset["passwort_w"]
         email_entry = self.reset["email"]
         secret_entry = self.reset["secret_code"]
-        for entry  in [user_entry, passwort_entry, passwort_w, secret_entry, email_entry]:
-            entry.delete(0, "end")
+        try:
+            for entry  in [user_entry, passwort_entry, passwort_w, secret_entry, email_entry]:
+                entry.delete(0, "end")
+        except KeyError as f :
+            pass
 
-
-
+    # funktion for resetting the users informations TODO: after that i learn APi i would create an automatic mail sender so that, if the users his info complet forget the can always reset it
     def _reset(self):
         self.reset["raise_msg"].configure(text="")
         self.reset["bar"].start()
@@ -201,7 +203,7 @@ class hauptpage:
             self.reset["reset"].configure(state="normal")
             self.reset["check"].configure(state="disabled")
             self._delete_re()
-            
+     # reset the informations if the secret code username and email correct else await       
     def _load_check(self):
         bar = self.reset["bar"]
         bar.start()
@@ -225,8 +227,6 @@ class hauptpage:
             save_passwort(self.path, self.passlib)
             raise_msg.configure(text="Passwort erfolgreich  geändert", text_color="green")
             self._delete_re()
-
-
 
 
 

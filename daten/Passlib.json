@@ -24,15 +24,15 @@
         "secret_code": "4361be62001d25deb2bd85fab3e46011afae57539026d8d37d57f45e29571271"
     },
     "Done": {
-        "html": [
+        "html": [],
+        "python": [
             1
         ],
-        "python": [],
         "tkinter": [],
         "cgi": [],
         "linux": []
     },
     "Current": {
-        "html": "lektion2"
+        "python": "lektion2"
     }
 }
