@@ -197,9 +197,23 @@ Listen k&#xF6;nnen mit CSS-Eigenschaften wie list-style-type angepasst werden.
         </div>
 
        <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <input type="hidden" name="user" id="userField">
             <button type="submit" name="index" value="6" id="display1">Lektion6.html</button>
             <button type="submit" name="index" value="8" id="display2">Lektion8.html</button>
         </form>
+
+
+        <script>
+        // URL-Parameter auslesen
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("user");
+
+            // falls user vorhanden, in das versteckte Feld einfügen
+            if (user) {
+                document.getElementById("userField").value = user;
+            }
+        </script>
+
     </section>
 </body>
 </html>

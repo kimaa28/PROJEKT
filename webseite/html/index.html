@@ -52,6 +52,7 @@
             cursor: pointer;
             padding: 20px;
             border-radius: 20px;
+            text-align: center;
         }
         .button:hover {
             background-color: #76aa78;
@@ -122,6 +123,7 @@
             font-size: 18px;
             cursor: pointer;
             margin-top: 20px;
+            text-align: center;
         }
         .start:hover {
             background-color: #76aa78;
@@ -143,54 +145,85 @@
     <hr style="border: 1px solid #ccc; margin: 10px 20px;">
     
    <!-- HTML Kurs -->
+<!-- HTML Kurs -->
 <div id="content">
     <h2 id="course_name">HTML modern lernen</h2>
     <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Aufgaben</p>
     <img src="html.jpeg" alt="html bild" id="htmlimage">
-    <p id="P2">Meistere die Bausteine des Webs. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, deine erste Seite noch heute zu veröffentlichen</p>
+    <p id="P2">Meistere die Bausteine des Webs...</p>
 
-        <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/Lektion1.html">Kurs starten</a></button>
-    
+    <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+        <input type="hidden" name="user" id="userFieldHTML">
+        <button type="submit" name="html" value="0" class="start">Kurs starten</button>
+    </form>
 </div>
-    
-        
 
 <!-- Python Kurs -->
 <div id="content">
     <h2 id="course_name">Python modern lernen</h2>
     <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Projekten</p>
     <img src="python.jpeg" alt="python bild" id="pythonimage">
-    <p id="P2">Meistere die vielseitigste Programmiersprache. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, dein erstes Programm noch heute zu schreiben</p>
-    
-    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/py_l/Lesson1.html">Kurs starten</a></button>
-    
+    <p id="P2">Meistere die vielseitigste Programmiersprache...</p>
+
+    <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+        <input type="hidden" name="user" id="userFieldPython">
+        <button type="submit" name="python" value="0" class="start">Kurs starten</button>
+    </form>
 </div>
-    
-        
+
 <!-- CGI Kurs -->
 <div id="content">
     <h2 id="course_name">CGI modern lernen</h2>
     <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Skripten</p>
     <img src="cgi.jpeg" alt="cgi bild" id="cgiimage">
-    <p id="P2">Meistere dynamische Webentwicklung mit CGI. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, dein erstes dynamisches Web-Skript noch heute zu erstellen</p>
-    
-    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/cgi/Lesson1.html">Kurs starten</a></button>
-    
+    <p id="P2">Meistere dynamische Webentwicklung mit CGI...</p>
+
+    <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+        <input type="hidden" name="user" id="userFieldCGI">
+        <button type="submit" name="cgi" value="0" class="start">Kurs starten</button>
+    </form>
 </div>
-    
-        
 
 <!-- Linux Kurs -->
 <div id="content">
     <h2 id="course_name">Linux modern lernen</h2>
     <p id="P1">Schnelle, praktische Lektionen mit Beispielen und Mini-Kommandos</p>
     <img src="linux.jpeg" alt="linux bild" id="linuximage">
-    <p id="P2">Meistere das mächtigste Betriebssystem. Kurze Lektionen, klare Erklärungen und praktische Übungen helfen dir, deine ersten Linux-Befehle noch heute auszuführen</p>
-    
-    <button class="start"><a style="text-decoration: none; color: aliceblue;" href="http://127.0.0.1:8000/webseite/html/linux/Lesson1.html">Kurs starten</a></button>
-    
+    <p id="P2">Meistere das mächtigste Betriebssystem...</p>
+
+    <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+        <input type="hidden" name="user" id="userFieldLinux">
+        <button type="submit" name="linux" value="0" class="start">Kurs starten</button>
+    </form>
 </div>
-    
+
+<div id="content">
+    <h2 id="course_name">Tkinter/Customtkinter</h2>
+    <p id="P1">Hier lernst du die grundlagen zur Erstellung einfache und robuste GUI, von Anfang an</p>
+    <img src="tkinter.jpeg" alt="tkinter bild" id="tkinterimage">
+    <p id="P2">Meistere das mächtigste Betriebssystem...</p>
+
+    <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+        <input type="hidden" name="user" id="userFieldTkinter">
+        <button type="submit" name="tkinter" value="0" class="start">Kurs starten</button>
+    </form>
+</div>
+
+<script>
+    // URL-Parameter auslesen
+    const params = new URLSearchParams(window.location.search);
+    const user = params.get("user");
+
+    // Falls user vorhanden, in die versteckten Felder einfügen
+    if (user) {
+        document.getElementById("userFieldHTML").value = user;
+        document.getElementById("userFieldPython").value = user;
+        document.getElementById("userFieldCGI").value = user;
+        document.getElementById("userFieldLinux").value = user;
+        document.getElementById("userFieldTkinter").value = user;
+    }
+</script>
+
         
 
 

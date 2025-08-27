@@ -379,9 +379,23 @@ Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit Jav
         </div>
 
        <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <input type="hidden" name="user" id="userField">
             <button type="submit" name="index" value="10" id="display1">Lektion10.html</button>
             <button type="submit" name="index" value="12" id="display2">Lektion12.html</button>
         </form>
+
+
+        <script>
+        // URL-Parameter auslesen
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("user");
+
+            // falls user vorhanden, in das versteckte Feld einfügen
+            if (user) {
+                document.getElementById("userField").value = user;
+            }
+        </script>
+
     </section>
 </body>
 </html>

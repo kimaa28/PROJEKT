@@ -69,60 +69,71 @@ index_p = form.getvalue("index_p")
 index_t = form.getvalue("index_t")
 index_c = form.getvalue("index_c")
 index_l = form.getvalue("index_l")
-
+username = form.getvalue("user")
+index_html = form.getvalue("html")
+index_python = form.getvalue("python")
+index_cgi = form.getvalue("cgi")
+index_linux = form.getvalue("linux")
+index_tkinter = form.getvalue("tkinter")
 index_list = {
-    0: index_h,
-    1 : index_p,
-    2 : index_t,
-    3 : index_c,
-    4 : index_l
+    0: [index_html, index_h],
+    1 : [index_python, index_p],
+    2 : [index_tkinter, index_t],
+    3 : [index_cgi, index_c],
+    4 : [index_linux, index_l]
 }
 for key, value in index_list.items():
-    if value:
-        index = value or  1
-        if value == index:
-            try:
-                index = int(index)
-            except ValueError as e:
-                index = 1
-            link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html"]
+    if value[0]:
+        index = int(value[0]) + 1
+        link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html?user={username}", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html?user={username}", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html?user={username}",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html?user={username}",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html?user={username}"]
+        redirect_url = link_list[key]
+    elif value[1]:
+        if int(value[1]) == 0 :
+            redirect_url = f"http://127.0.0.1:8000/webseite/html/index.html?user={username}"
+        else:
+            index = int(value[1])
+            link_list = [f"http://127.0.0.1:8000/webseite/html/Lektion{index}.html?user={username}", f"http://127.0.0.1:8000/webseite/html/py_l/Lesson{index}.html?user={username}", f"http://127.0.0.1:8000/webseite/html/tkinter/Lesson{index}.html?user={username}",f"http://127.0.0.1:8000/webseite/html/cgi/Lesson{index}.html?user={username}",f"http://127.0.0.1:8000/webseite/html/linux/Lesson{index}.html?user={username}"]
             redirect_url = link_list[key]
-
-if index == 0 :
+    else:
+        pass
+    
+if all(value is None for value in index_list.values()):
+    index = 1
     redirect_url = "http://127.0.0.1:8000/webseite/html/index.html"
+
 
 # JSON laden
 json_change = load_index(path)
 
 # Prüfe JSON Struktur
-if "Done" not in json_change:
-    json_change["Done"] = {"html": [], "python": [], "tkinter": [], "cgi": [], "linux": []}
+if username in json_change:
+    if "Done" not in json_change[username]:
+        json_change[username]["Done"] = {"html": [], "python": [], "tkinter": [], "cgi": [], "linux": []}
 
-if "Current" not in json_change:
-    json_change["Current"] = {"None": 0}
+    if "Current" not in json_change[username]:
+        json_change[username]["Current"] = {"None": 0}
 
-# this small syntax resume 4 workings hours and can be use on many variable
-keys_liste = {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}
-try:
-    for key, value in keys_liste.items():
-        if value :
-            if index == 0:
-                pass
-            elif index == 1:
-                pass
-            elif index -1 in json_change["Done"][key]:
-                json_change["Current"] = {key : f"lektion{index}"}
-                save_index(path, json_change)
+    # this small syntax resume 4 workings hours and can be use on many variable
+    keys_liste = {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}
+    try:
+        for key, value in keys_liste.items():
+            if value :
+                if index == 0 or index == 1:
+                    pass
+                elif index -1 in json_change[username]["Done"][key]:
+                    json_change[username]["Current"] = {key : f"lektion{username}"}
+                    save_index(path, json_change)
+                else:
+                    json_change[username]["Done"][key].append(index - 1)
+                    json_change[username]["Current"] = {key: f"lektion: {index}"}
+                    json_change[username]["Done"][key].sort()
+                    save_index(path, json_change)
             else:
-                json_change["Done"][key].append(index - 1)
-                json_change["Current"] = {key: f"lektion{index}"}
-                json_change["Done"][key].sort()
-                save_index(path, json_change)
-        else:
-            pass
-except Exception as e:
-    pass 
-
+                pass
+    except Exception as e:
+        pass 
+else:
+    pass
 
 # try:
 #     if not index_h:

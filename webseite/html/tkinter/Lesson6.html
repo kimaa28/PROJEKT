@@ -190,11 +190,21 @@ root.mainloop()
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <input type="hidden" name="user" id="userField">
             <button type="submit" name=index_t value="5" id="display1">Lesson5.html</button>
             <button type="submit" name=index_t value="7" id="display2">Lesson7.html</button>
         </form>
 
-        
+        <script>
+        // URL-Parameter auslesen
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("user");
+
+            // falls user vorhanden, in das versteckte Feld einfügen
+            if (user) {
+                document.getElementById("userField").value = user;
+            }
+        </script>
     </section>
 </body>
 </html>
