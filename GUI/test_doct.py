@@ -159,10 +159,24 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             <p>{anw}</p>
         </div>
 
-       <form action="../../cgi-bin/gear_cgi.py" method="GET" id="buttons">
+       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <input type="hidden" name="user" id="userField">
             <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
             <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
         </form>
+
+
+        <script>
+        // URL-Parameter auslesen
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("user");
+
+            // falls user vorhanden, in das versteckte Feld einfügen
+            if (user) {{
+                document.getElementById("userField").value = user;
+            }}
+        </script>
+
     </section>
 </body>
 </html>
@@ -315,11 +329,21 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+            <input type="hidden" name="user" id="userField">
             <button type="submit" name={id} value="{index - 1}" id="display1">{preview}</button>
             <button type="submit" name={id} value="{index + 1}" id="display2">{next}</button>
         </form>
 
-        
+        <script>
+        // URL-Parameter auslesen
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("user");
+
+            // falls user vorhanden, in das versteckte Feld einfügen
+            if (user) {{
+                document.getElementById("userField").value = user;
+            }}
+        </script>
     </section>
 </body>
 </html>
