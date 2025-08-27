@@ -105,7 +105,7 @@ class hauptpage:
                 ctk.set_appearance_mode("light")
                 self.daschboar.pack(fill="both", expand="true")
                 self._create_daschboard()
-                self.app.after(5000, self._delete_L)
+                
             else:
                 self.login["raise_msg"].configure(text="Ungültige Eingabe", text_color="red")
                 self._delete_L()
@@ -449,7 +449,7 @@ class hauptpage:
 
                 
             def open():
-                web.open("http://127.0.0.1:8000/webseite/html/index.html")
+                web.open(f"http://127.0.0.1:8000/webseite/html/index.html?user={self.uservar.get()}")
 
             label_titel = ctk.CTkLabel(frame2, text=titel, text_color=self.color, font=("Arial", 20, "bold"), anchor="w")
             label_titel.pack(padx=10, pady=10)

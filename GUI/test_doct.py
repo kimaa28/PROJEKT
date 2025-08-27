@@ -159,7 +159,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             <p>{anw}</p>
         </div>
 
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
+       <form action="../../cgi-bin/gear_cgi.py" method="GET" id="buttons">
             <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
             <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
         </form>
