@@ -83,7 +83,7 @@ class hauptpage:
     def _lo(self):
         self.login["raise_msg"].configure(text="")
         self.login["bar"].start()
-        self.app.after(5000, self._check_login )
+        self.app.after(1000, self._check_login )
 
     # funtion for checking all informations and giving a  feedback to them
     def _check_login(self):
@@ -381,9 +381,9 @@ class hauptpage:
         
         # TODO: an explicite description from every quick access course and a button 
         # title from this frame
-        self.link = self.passlib[self.uservar.get()]
+        self.link = self.passlib[self.uservar.get()]["Done"]
         self.progress = 0
-        for key, value in self.link["Done"].items():
+        for key, value in self.link.items():
             self.progress = self.progress + len(value)
 
         self.percent = int((self.progress / 47)*100)
@@ -465,9 +465,26 @@ class hauptpage:
                 frame2.pack(fill="both", expand="true")
                 label_image.pack(fill="both", expand="true")
 
+            
+            urls = {
+                0: "Lektion",
+                1: "py_l/Lesson",
+                2: "cgi/Lesson",
+                4: "tkinter/Lesson",
+                3: "linux/Lesson"
+            }
+
+            keys = ["html","linux", "python", "cgi", "tkinter"]
+
+            try:
+                lesson = self.link[keys[index]][-1]
+            except IndexError:
+                lesson = 1
+           
                 
-            def open():
+            def start():
                 web.open(f"http://127.0.0.1:8000/webseite/html/index.html?user={self.uservar.get()}")
+
 
             label_titel = ctk.CTkLabel(frame2, text=titel, text_color=self.color, font=("Arial", 20, "bold"), anchor="w")
             label_titel.pack(padx=10, pady=10)
@@ -480,9 +497,10 @@ class hauptpage:
             label_tutor.grid(row=0, column=1, padx=5)
             frame4 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
             frame4.pack(fill="x")
-            button_start = ctk.CTkButton(frame4, text="Start Course", text_color="white", fg_color="#005f73", command=lambda: self.app.after(4000, open))
+            button_start = ctk.CTkButton(frame4, text="Start Course", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
             button_start.pack(fill="x", padx=10, pady=5, side="left", expand="true")
-            button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command=lambda: self.app.after(4000, open))
+            button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command=lambda: self.app.after(2000, lambda: web.open(f"http://127.0.0.1:8000/webseite/html/{urls[index]}{lesson}.html?user={self.uservar.get()}")
+))
             button_continue.pack(fill="x", padx=10, pady=5, side="right", expand="true")
             
 
