@@ -381,8 +381,26 @@ class hauptpage:
         
         # TODO: an explicite description from every quick access course and a button 
         # title from this frame
+        self.link = self.passlib[self.uservar.get()]
+        self.progress = 0
+        for key, value in self.link["Done"].items():
+            self.progress = self.progress + len(value)
+
+        self.percent = int((self.progress / 47)*100)
+
+        if self.progress < 10 :
+            self.level  = 1
+        elif self.progress < 20:
+            self.level = 2
+        elif self.progress < 30:
+            self.level = 3
+        elif self.progress < 40:
+            self.level = 4
+        else:
+            self.level = 5
+
         ctk.CTkLabel(self.scroll, text="Learning Statistics", font=("verdana", 20), text_color=self.color, fg_color=self.scroll.cget("fg_color")).grid(row=0, column=0, sticky="w", pady=15, padx=15)
-        self.frame_list = ["120h\nlearn Time", "23\nTotal course", "30%\nProgress", "Friend", "Coin", "Level"]
+        self.frame_list = ["---\nlearn Time", f"{self.progress}/47\nTotal course", f"{self.percent}%\nProgress", "0\nFriend", "0\nCoin", f"{self.level}\nLevel"]
 
         for i, text in enumerate(self.frame_list, start=1):
             ctk.CTkLabel(self.scroll, width=200,height=70, corner_radius=20, fg_color="#949494", text=text, text_color=self.color).grid(row=i, column=0, padx=20, pady=10)
