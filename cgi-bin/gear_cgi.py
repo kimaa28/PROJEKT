@@ -114,14 +114,16 @@ if username in json_change:
         json_change[username]["Current"] = {"None": 0}
 
     # this small syntax resume 4 workings hours and can be use on many variable
-    keys_liste = {"html": index_h,"python": index_p,"tkinter": index_t,"cgi": index_c,"linux": index_l}
+    keys_liste = {"html": index_h, "python": index_p, "tkinter": index_t, "cgi": index_c, "linux": index_l, "h_html": index_html, "h_py": index_python, "h_cgi": index_cgi, "h_tk": index_tkinter, "h_linux": index_linux}
     try:
         for key, value in keys_liste.items():
             if value :
-                if index == 0 or index == 1:
-                    pass
+                if key in ["h_html", "h_py", "h_tk", "h_linux", "h_cgi"]:
+                    json_change[username]["Current"] = {key : "Lektion1"}
+                elif index == 1:
+                    pass   
                 elif index -1 in json_change[username]["Done"][key]:
-                    json_change[username]["Current"] = {key : f"lektion{username}"}
+                    json_change[username]["Current"] = {key : f"lektion: {index}"}
                     save_index(path, json_change)
                 else:
                     json_change[username]["Done"][key].append(index - 1)
