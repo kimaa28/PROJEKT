@@ -444,13 +444,36 @@ class hauptpage:
         self.courses_titel = ["HTML & CSS Basics", "Python for Beginners", "CGI scripting", "CustomTkinter UI", "Linux Fundamentals"]
         self.courses_about = ["Learn the fundamentals from web development with HTML und CSS", "Dive into programming with python, a versatile language", "Understand server-side programming with CGI", "Build modern dekstop application with customtkinter", "Master the command line and linux operatings system"]
         self.courses_tutor = ["Pierre Giraud", "Graven & GeeksforGeeks", "Prof dr Preuss & Syryakow", "ChatGpt & Customtkinter", "ChatGpt & Herr dr preuss"]  # this musst be a button to the webseite von lehrer
-        
-        for index, (img, titel, about, tutor) in enumerate(zip(self.courses_image, self.courses_titel, self.courses_about, self.courses_tutor)):
+        self.urls_path = ["Lektion", "py_l/Lesson", "cgi/Lesson", "tkinter/Lesson", "linux/Lesson"]
+        self.keys = ["html", "python", "cgi", "tkinter", "linux"]
+        self.function = {}
+        for index, (img, titel, about, tutor, url, key) in enumerate(zip(self.courses_image, self.courses_titel, self.courses_about, self.courses_tutor, self.urls_path, self.keys)):
+            try:
+                lesson = self.link[key][-1]
+            except IndexError:
+                lesson = 1
+                
+            
+            def func(pfad=url, num=lesson):
+                web.open(f"http://127.0.0.1:8000/webseite/html/{pfad}{num}.html?user={self.uservar.get()}")
+               
+               
+                
+            self.function[index] = func    
+            
+            
+
+            
+                
+            def start():
+                web.open(f"http://127.0.0.1:8000/webseite/html/index.html?user={self.uservar.get()}")
+
             frame = ctk.CTkFrame(self.frame_liste, height=300, fg_color=None, corner_radius=25, border_width=2)
             self.frame1 = ctk.CTkFrame(frame, fg_color= self.tab1_frame.cget("fg_color"), corner_radius=0)
             label_image = ctk.CTkLabel(self.frame1, image=img, text="")
             frame2 = ctk.CTkFrame(frame, fg_color=None, corner_radius=20)
             frame3 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
+
 
             if index % 2 == 0 :
                 frame.grid(row=0, column=index//2, pady=20, padx=30)
@@ -465,25 +488,11 @@ class hauptpage:
                 frame2.pack(fill="both", expand="true")
                 label_image.pack(fill="both", expand="true")
 
-            
-            urls = {
-                0: "Lektion",
-                1: "py_l/Lesson",
-                2: "cgi/Lesson",
-                4: "tkinter/Lesson",
-                3: "linux/Lesson"
-            }
-
-            keys = ["html","linux", "python", "cgi", "tkinter"]
-
             try:
-                lesson = self.link[keys[index]][-1]
+                lesson = self.link[key][-1]
             except IndexError:
                 lesson = 1
-           
                 
-            def start():
-                web.open(f"http://127.0.0.1:8000/webseite/html/index.html?user={self.uservar.get()}")
 
 
             label_titel = ctk.CTkLabel(frame2, text=titel, text_color=self.color, font=("Arial", 20, "bold"), anchor="w")
@@ -497,10 +506,9 @@ class hauptpage:
             label_tutor.grid(row=0, column=1, padx=5)
             frame4 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
             frame4.pack(fill="x")
-            button_start = ctk.CTkButton(frame4, text="Start Course", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
+            button_start = ctk.CTkButton(frame4, text=f"Start Course{index}", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
             button_start.pack(fill="x", padx=10, pady=5, side="left", expand="true")
-            button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command=lambda: self.app.after(2000, lambda: web.open(f"http://127.0.0.1:8000/webseite/html/{urls[index]}{lesson}.html?user={self.uservar.get()}")
-))
+            button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command= self.function[index])
             button_continue.pack(fill="x", padx=10, pady=5, side="right", expand="true")
             
 
