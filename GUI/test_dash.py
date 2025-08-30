@@ -446,8 +446,9 @@ class hauptpage:
         self.courses_tutor = ["Pierre Giraud", "Graven & GeeksforGeeks", "Prof dr Preuss & Syryakow", "ChatGpt & Customtkinter", "ChatGpt & Herr dr preuss"]  # this musst be a button to the webseite von lehrer
         self.urls_path = ["Lektion", "py_l/Lesson", "cgi/Lesson", "tkinter/Lesson", "linux/Lesson"]
         self.keys = ["html", "python", "cgi", "tkinter", "linux"]
+        self.tutor_link = ["https://www.youtube.com/@PierreGiraudcom", "https://www.youtube.com/watch?v=psaDHhZ0cPs&list=PLMS9Cy4Enq5JmIZtKE5OHJCI3jZfpASbR", "https://youtu.be/H0eFX8FKXYk?list=PL5-HGvYNkCrUNpWManGYWdmnB44_jtZYw", "https://customtkinter.tomschimansky.com/", "http://chatgpt.com"]
         self.function = {}
-        for index, (img, titel, about, tutor, url, key) in enumerate(zip(self.courses_image, self.courses_titel, self.courses_about, self.courses_tutor, self.urls_path, self.keys)):
+        for index, (img, titel, about, tutor, url, key, link) in enumerate(zip(self.courses_image, self.courses_titel, self.courses_about, self.courses_tutor, self.urls_path, self.keys, self.tutor_link)):
             try:
                 lesson = self.link[key][-1]
             except IndexError:
@@ -456,11 +457,15 @@ class hauptpage:
             
             def func(pfad=url, num=lesson):
                 web.open(f"http://127.0.0.1:8000/webseite/html/{pfad}{num}.html?user={self.uservar.get()}")
+                print()
                
-               
+            def open_link(L=link):
+                web.open(L)
+                print(L)
                 
-            self.function[index] = func    
-            
+            self.function[index] = func 
+            self.function[key] = open_link   
+ 
             
 
             
@@ -502,15 +507,15 @@ class hauptpage:
             frame3.pack()
             tutot_img = ctk.CTkLabel(frame3, image=ctk.CTkImage(light_image=(Image.open("user.png")), size=(13, 13)), text="")
             tutot_img.grid(row=0, column=0)
-            label_tutor = ctk.CTkLabel(frame3, text=tutor, text_color=label_about.cget("text_color"), font=("PT serif", 13, "underline"))
-            label_tutor.grid(row=0, column=1, padx=5)
+            button_tutor = ctk.CTkButton(frame3, text=tutor, text_color=label_about.cget("text_color"), font=("PT serif", 13, "underline"), border_width=0, corner_radius=25,fg_color=frame2.cget("fg_color"),bg_color=frame2.cget("fg_color"), text_color_disabled=label_about.cget("text_color"), hover_color="#67C2FF", command= self.function[key])
+            button_tutor.grid(row=0, column=1, padx=5)
             frame4 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
             frame4.pack(fill="x")
             button_start = ctk.CTkButton(frame4, text=f"Start Course{index}", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
             button_start.pack(fill="x", padx=10, pady=5, side="left", expand="true")
             button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command= self.function[index])
             button_continue.pack(fill="x", padx=10, pady=5, side="right", expand="true")
-            
+
 
     # tab for course
     def _widget_profil(self):
