@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,12 +119,12 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 4: Fehlerbehandlung und Sicherheit</h1>
-                <p> Sicherheit ist bei CGI-Skripten von größter Bedeutung, da sie direkt auf dem Server ausgeführt werden. Ungesicherte CGI-Skripte können zu schwerwiegenden Sicherheitslücken führen. Wichtige Sicherheitsmaßnahmen umfassen: Eingabevalidierung (alle Benutzereingaben prüfen), Ausgabe-Escaping (HTML-Zeichen maskieren), Pfad-Validierung (gefährliche Pfade verhindern), und sichere Dateizugriffe. Cross-Site-Scripting (XSS) ist eine häufige Bedrohung, bei der schädlicher Code in Webseiten eingeschleust wird. CGI-Skripte sollten alle Benutzereingaben filtern und HTML-Zeichen maskieren. SQL-Injection ist bei datenbankgestützten CGI-Skripten ein Problem. Verwende immer Prepared Statements und validiere Eingaben. Fehlerbehandlung ist wichtig für Debugging und Sicherheit. CGI-Skripte sollten Fehler protokollieren, aber keine sensiblen Informationen preisgeben. Verwende 'die' oder 'exit' für kontrollierte Programmbeendigung. Setze angemessene Dateiberechtigungen (meist 755 für CGI-Skripte). In diesem letzten Beispiel zeige ich dir sichere Praktiken: Eingabevalidierung, HTML-Escaping, Fehlerbehandlung und Logging. Das Skript demonstriert, wie man Benutzereingaben sicher verarbeitet. </p>
+                <p id="text"> Sicherheit ist bei CGI-Skripten von größter Bedeutung, da sie direkt auf dem Server ausgeführt werden. Ungesicherte CGI-Skripte können zu schwerwiegenden Sicherheitslücken führen. Wichtige Sicherheitsmaßnahmen umfassen: Eingabevalidierung (alle Benutzereingaben prüfen), Ausgabe-Escaping (HTML-Zeichen maskieren), Pfad-Validierung (gefährliche Pfade verhindern), und sichere Dateizugriffe. Cross-Site-Scripting (XSS) ist eine häufige Bedrohung, bei der schädlicher Code in Webseiten eingeschleust wird. CGI-Skripte sollten alle Benutzereingaben filtern und HTML-Zeichen maskieren. SQL-Injection ist bei datenbankgestützten CGI-Skripten ein Problem. Verwende immer Prepared Statements und validiere Eingaben. Fehlerbehandlung ist wichtig für Debugging und Sicherheit. CGI-Skripte sollten Fehler protokollieren, aber keine sensiblen Informationen preisgeben. Verwende 'die' oder 'exit' für kontrollierte Programmbeendigung. Setze angemessene Dateiberechtigungen (meist 755 für CGI-Skripte). In diesem letzten Beispiel zeige ich dir sichere Praktiken: Eingabevalidierung, HTML-Escaping, Fehlerbehandlung und Logging. Das Skript demonstriert, wie man Benutzereingaben sicher verarbeitet. </p>
         </div>
 
         <div id="content1">
-            <p>#!/usr/bin/perl use strict; use warnings; use CGI qw(:standard); use HTML::Entities; # Für sicheres HTML-Escaping # Fehler-Logging aktivieren use CGI::Carp qw(fatalsToBrowser warningsToBrowser); warningsToBrowser(1); print header('text/html; charset=UTF-8'); # Sichere Header # Eingabevalidierung sub validate_input { my ($input, $max_length) = @_; return 0 unless defined $input; return 0 if length($input) > $max_length; return 0 if $input =~ /<script|javascript|vbscript/i; # XSS-Schutz return 1; } # HTML-Ausgabe beginnen print start_html(-title => 'Sicheres CGI-Skript', -encoding => 'UTF-8'); print h1('Sichere Datenverarbeitung'); # Formulardaten sicher verarbeiten if (param()) { my $name = param('name') || ''; my $message = param('message') || ''; # Eingabevalidierung if (validate_input($name, 100) && validate_input($message, 500)) { # HTML-Escaping für sichere Ausgabe $name = encode_entities($name); $message = encode_entities($message); print h2('Empfangene Daten (sicher maskiert):'); print p(strong('Name: ') . $name); print p(strong('Nachricht: ') . $message); # Daten sicher in Datei speichern (Beispiel) if (open(my $logfile, '>>', '/tmp/messages.log')) { print $logfile localtime() . " - Name: $name, Message: $message
-"; close($logfile); print p('Nachricht erfolgreich gespeichert.'); } else { print p('Fehler beim Speichern der Nachricht.'); } } else { print p(strong('Fehler: ') . 'Ungültige Eingabedaten erkannt.'); } } # Sicheres Formular anzeigen print h2('Nachricht senden:'); print start_form(-method => 'POST'); print p('Name: ' . textfield(-name => 'name', -maxlength => 100)); print p('Nachricht: ' . textarea(-name => 'message', -rows => 4, -cols => 50, -maxlength => 500)); print submit(-value => 'Senden'); print end_form(); print end_html();</p>
+            <p id="anw1">#!/usr/bin/perl use strict; use warnings; use CGI qw(:standard); use HTML::Entities; # F&#xFC;r sicheres HTML-Escaping # Fehler-Logging aktivieren use CGI::Carp qw(fatalsToBrowser warningsToBrowser); warningsToBrowser(1); print header(&#x27;text/html; charset=UTF-8&#x27;); # Sichere Header # Eingabevalidierung sub validate_input { my ($input, $max_length) = @_; return 0 unless defined $input; return 0 if length($input) &#x3E; $max_length; return 0 if $input =~ /&#x3C;script|javascript|vbscript/i; # XSS-Schutz return 1; } # HTML-Ausgabe beginnen print start_html(-title =&#x3E; &#x27;Sicheres CGI-Skript&#x27;, -encoding =&#x3E; &#x27;UTF-8&#x27;); print h1(&#x27;Sichere Datenverarbeitung&#x27;); # Formulardaten sicher verarbeiten if (param()) { my $name = param(&#x27;name&#x27;) || &#x27;&#x27;; my $message = param(&#x27;message&#x27;) || &#x27;&#x27;; # Eingabevalidierung if (validate_input($name, 100) &#x26;&#x26; validate_input($message, 500)) { # HTML-Escaping f&#xFC;r sichere Ausgabe $name = encode_entities($name); $message = encode_entities($message); print h2(&#x27;Empfangene Daten (sicher maskiert):&#x27;); print p(strong(&#x27;Name: &#x27;) . $name); print p(strong(&#x27;Nachricht: &#x27;) . $message); # Daten sicher in Datei speichern (Beispiel) if (open(my $logfile, &#x27;&#x3E;&#x3E;&#x27;, &#x27;/tmp/messages.log&#x27;)) { print $logfile localtime() . &#x22; - Name: $name, Message: $message
+&#x22;; close($logfile); print p(&#x27;Nachricht erfolgreich gespeichert.&#x27;); } else { print p(&#x27;Fehler beim Speichern der Nachricht.&#x27;); } } else { print p(strong(&#x27;Fehler: &#x27;) . &#x27;Ung&#xFC;ltige Eingabedaten erkannt.&#x27;); } } # Sicheres Formular anzeigen print h2(&#x27;Nachricht senden:&#x27;); print start_form(-method =&#x3E; &#x27;POST&#x27;); print p(&#x27;Name: &#x27; . textfield(-name =&#x3E; &#x27;name&#x27;, -maxlength =&#x3E; 100)); print p(&#x27;Nachricht: &#x27; . textarea(-name =&#x3E; &#x27;message&#x27;, -rows =&#x3E; 4, -cols =&#x3E; 50, -maxlength =&#x3E; 500)); print submit(-value =&#x3E; &#x27;Senden&#x27;); print end_form(); print end_html();</p>
 
         </div>
         <div class="anw">
@@ -130,7 +137,7 @@
           
         </div>
         <div class="anw">
-            <p>Herzlichen Glückwunsch! Du hast alle CGI-Grundlagen gelernt.</p>
+            <p >Herzlichen Glückwunsch! Du hast alle CGI-Grundlagen gelernt.</p>
         </div>
 
        

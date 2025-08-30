@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 5: Menüs und Dialoge</h1>
-                <p>
+                <p id="text">
 Menüs geben deiner Anwendung ein professionelles Aussehen und bieten einfachen Zugang zu Funktionen. Tkinter bietet verschiedene Arten von Menüs: Menüleisten, Popup-Menüs und Untermenüs.
 
 Eine Menüleiste wird mit Menu(root) erstellt und mit root.config(menu=menubar) am Fenster befestigt. add_cascade() fügt Hauptmenüs hinzu, add_command() einzelne Menüeinträge, add_separator() Trennlinien.
@@ -126,7 +133,7 @@ tkinter.simpledialog bietet einfache Eingabedialoge: askstring() für Text, aski
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import tkinter as tk
 from tkinter import messagebox, filedialog, simpledialog
 
@@ -215,7 +222,7 @@ root.mainloop()
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion wechseln wir zu CustomTkinter.</p>
+            <p >In der nächsten Lektion wechseln wir zu CustomTkinter.</p>
         </div>
 
        

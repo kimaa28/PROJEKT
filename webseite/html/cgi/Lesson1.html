@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,21 +119,21 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 1: Was ist CGI?</h1>
-                <p> CGI steht für Common Gateway Interface und ist eine Technologie, die es ermöglicht, dynamische Webseiten zu erstellen. CGI wurde in den frühen 1990er Jahren entwickelt und war eine der ersten Methoden, um interaktive Websites zu schaffen. CGI-Skripte laufen auf dem Webserver und können in verschiedenen Programmiersprachen geschrieben werden: Perl, Python, C, Shell-Scripts oder sogar JavaScript mit Node.js. Wenn ein Benutzer eine Webseite aufruft, die ein CGI-Skript verwendet, startet der Webserver das Skript als separaten Prozess. Das Skript verarbeitet die Anfrage, generiert HTML-Code und sendet diesen zurück an den Browser des Benutzers. CGI-Skripte werden häufig für Kontaktformulare, Gästebücher, Suchfunktionen und Datenbankanwendungen verwendet. Der Webserver kommuniziert mit CGI-Skripten über Umgebungsvariablen und Standardein-/ausgabe. In diesem ersten Beispiel siehst du ein einfaches CGI-Skript in Perl, das eine Grundstruktur zeigt. Der Content-Type-Header teilt dem Browser mit, dass HTML-Inhalt folgt. Die doppelte Leerzeile nach dem Header ist wichtig - sie trennt die HTTP-Header vom eigentlichen Inhalt. </p>
+                <p id="text"> CGI steht für Common Gateway Interface und ist eine Technologie, die es ermöglicht, dynamische Webseiten zu erstellen. CGI wurde in den frühen 1990er Jahren entwickelt und war eine der ersten Methoden, um interaktive Websites zu schaffen. CGI-Skripte laufen auf dem Webserver und können in verschiedenen Programmiersprachen geschrieben werden: Perl, Python, C, Shell-Scripts oder sogar JavaScript mit Node.js. Wenn ein Benutzer eine Webseite aufruft, die ein CGI-Skript verwendet, startet der Webserver das Skript als separaten Prozess. Das Skript verarbeitet die Anfrage, generiert HTML-Code und sendet diesen zurück an den Browser des Benutzers. CGI-Skripte werden häufig für Kontaktformulare, Gästebücher, Suchfunktionen und Datenbankanwendungen verwendet. Der Webserver kommuniziert mit CGI-Skripten über Umgebungsvariablen und Standardein-/ausgabe. In diesem ersten Beispiel siehst du ein einfaches CGI-Skript in Perl, das eine Grundstruktur zeigt. Der Content-Type-Header teilt dem Browser mit, dass HTML-Inhalt folgt. Die doppelte Leerzeile nach dem Header ist wichtig - sie trennt die HTTP-Header vom eigentlichen Inhalt. </p>
         </div>
 
         <div id="content1">
-            <p>#!/usr/bin/perl # Einfaches CGI-Skript in Perl print "Content-Type: text/html
+            <p id="anw1">#!/usr/bin/perl # Einfaches CGI-Skript in Perl print &#x22;Content-Type: text/html
 
-"; # HTTP-Header print "<html>
-"; print "<head><title>Mein erstes CGI-Skript</title></head>
-"; print "<body>
-"; print "<h1>Willkommen bei CGI!</h1>
-"; print "<p>Dieses ist mein erstes CGI-Skript.</p>
-"; print "<p>Aktuelle Zeit: " . localtime() . "</p>
-"; print "</body>
-"; print "</html>
-";</p>
+&#x22;; # HTTP-Header print &#x22;&#x3C;html&#x3E;
+&#x22;; print &#x22;&#x3C;head&#x3E;&#x3C;title&#x3E;Mein erstes CGI-Skript&#x3C;/title&#x3E;&#x3C;/head&#x3E;
+&#x22;; print &#x22;&#x3C;body&#x3E;
+&#x22;; print &#x22;&#x3C;h1&#x3E;Willkommen bei CGI!&#x3C;/h1&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;Dieses ist mein erstes CGI-Skript.&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;Aktuelle Zeit: &#x22; . localtime() . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;/body&#x3E;
+&#x22;; print &#x22;&#x3C;/html&#x3E;
+&#x22;;</p>
 
         </div>
         <div class="anw">
@@ -139,7 +146,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du, wie du Formulardaten verarbeitest.</p>
+            <p >In der nächsten Lektion lernst du, wie du Formulardaten verarbeitest.</p>
         </div>
 
        

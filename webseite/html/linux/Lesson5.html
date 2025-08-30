@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,11 +119,11 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 5: Netzwerk-Grundlagen</h1>
-                <p> Linux bietet umfassende Netzwerk-Tools für Diagnose, Konfiguration und Überwachung. Diese Fähigkeiten sind essentiell für Systemadministratoren und Entwickler. 'ping' testet die Erreichbarkeit von Hosts und misst die Latenz. 'traceroute' zeigt den Weg, den Pakete durch das Netzwerk nehmen. 'netstat' und das modernere 'ss' zeigen Netzwerkverbindungen und offene Ports an. 'wget' und 'curl' laden Dateien aus dem Internet herunter. Curl ist besonders mächtig für API-Tests und kann verschiedene HTTP-Methoden verwenden. SSH (Secure Shell) ist das wichtigste Tool für Remote-Administration. Mit 'ssh user@server' verbindest du dich zu entfernten Systemen. 'scp' kopiert Dateien über SSH, 'rsync' synchronisiert Verzeichnisse effizient. Firewalls schützen dein System vor unerwünschtem Netzwerkverkehr. 'ufw' (Uncomplicated Firewall) ist ein benutzerfreundliches Frontend für iptables. Du kannst Ports öffnen, schließen und Regeln definieren. Netzwerkkonfiguration erfolgt oft über '/etc/network/interfaces' oder mit modernen Tools wie 'nmcli' (NetworkManager). DNS-Auflösung konfigurierst du in '/etc/resolv.conf'. 'dig' und 'nslookup' helfen bei DNS-Problemen. </p>
+                <p id="text"> Linux bietet umfassende Netzwerk-Tools für Diagnose, Konfiguration und Überwachung. Diese Fähigkeiten sind essentiell für Systemadministratoren und Entwickler. 'ping' testet die Erreichbarkeit von Hosts und misst die Latenz. 'traceroute' zeigt den Weg, den Pakete durch das Netzwerk nehmen. 'netstat' und das modernere 'ss' zeigen Netzwerkverbindungen und offene Ports an. 'wget' und 'curl' laden Dateien aus dem Internet herunter. Curl ist besonders mächtig für API-Tests und kann verschiedene HTTP-Methoden verwenden. SSH (Secure Shell) ist das wichtigste Tool für Remote-Administration. Mit 'ssh user@server' verbindest du dich zu entfernten Systemen. 'scp' kopiert Dateien über SSH, 'rsync' synchronisiert Verzeichnisse effizient. Firewalls schützen dein System vor unerwünschtem Netzwerkverkehr. 'ufw' (Uncomplicated Firewall) ist ein benutzerfreundliches Frontend für iptables. Du kannst Ports öffnen, schließen und Regeln definieren. Netzwerkkonfiguration erfolgt oft über '/etc/network/interfaces' oder mit modernen Tools wie 'nmcli' (NetworkManager). DNS-Auflösung konfigurierst du in '/etc/resolv.conf'. 'dig' und 'nslookup' helfen bei DNS-Problemen. </p>
         </div>
 
         <div id="content1">
-            <p># Netzwerk-Diagnose ping google.com # Host erreichbarkeit testen ping -c 4 192.168.1.1 # Nur 4 Pings senden traceroute google.com # Route zu Host verfolgen mtr google.com # Kombiniert ping und traceroute # Netzwerkverbindungen anzeigen netstat -tuln # TCP/UDP Listening Ports ss -tuln # Moderner Ersatz für netstat netstat -an | grep :80 # Wer hört auf Port 80 lsof -i :22 # Welcher Prozess nutzt Port 22 # Dateien herunterladen wget https://example.com/datei.zip # Datei herunterladen curl -O https://example.com/datei.zip # Mit curl herunterladen curl -X POST -d "key=value" http://api.example.com # API-Request curl -I https://example.com # Nur HTTP-Header anzeigen # SSH und Remote-Zugriff ssh user@192.168.1.100 # SSH-Verbindung aufbauen ssh -p 2222 user@server # Anderer Port als 22 scp datei.txt user@server:/home/user/ # Datei kopieren rsync -avz /local/dir/ user@server:/remote/dir/ # Verzeichnis synchronisieren # Firewall mit ufw ufw status # Firewall-Status anzeigen ufw enable # Firewall aktivieren ufw allow 22 # SSH-Port öffnen ufw allow from 192.168.1.0/24 # Nur bestimmtes Netzwerk ufw deny 80 # Port blockieren # DNS und Netzwerk-Tools dig google.com # DNS-Auflösung testen nslookup google.com # Alternative zu dig host google.com # Einfache DNS-Abfrage whois example.com # Domain-Informationen abfragen ifconfig # Netzwerkinterfaces anzeigen (veraltet) ip addr show # Moderne Alternative zu ifconfig</p>
+            <p id="anw1"># Netzwerk-Diagnose ping google.com # Host erreichbarkeit testen ping -c 4 192.168.1.1 # Nur 4 Pings senden traceroute google.com # Route zu Host verfolgen mtr google.com # Kombiniert ping und traceroute # Netzwerkverbindungen anzeigen netstat -tuln # TCP/UDP Listening Ports ss -tuln # Moderner Ersatz für netstat netstat -an | grep :80 # Wer hört auf Port 80 lsof -i :22 # Welcher Prozess nutzt Port 22 # Dateien herunterladen wget https://example.com/datei.zip # Datei herunterladen curl -O https://example.com/datei.zip # Mit curl herunterladen curl -X POST -d "key=value" http://api.example.com # API-Request curl -I https://example.com # Nur HTTP-Header anzeigen # SSH und Remote-Zugriff ssh user@192.168.1.100 # SSH-Verbindung aufbauen ssh -p 2222 user@server # Anderer Port als 22 scp datei.txt user@server:/home/user/ # Datei kopieren rsync -avz /local/dir/ user@server:/remote/dir/ # Verzeichnis synchronisieren # Firewall mit ufw ufw status # Firewall-Status anzeigen ufw enable # Firewall aktivieren ufw allow 22 # SSH-Port öffnen ufw allow from 192.168.1.0/24 # Nur bestimmtes Netzwerk ufw deny 80 # Port blockieren # DNS und Netzwerk-Tools dig google.com # DNS-Auflösung testen nslookup google.com # Alternative zu dig host google.com # Einfache DNS-Abfrage whois example.com # Domain-Informationen abfragen ifconfig # Netzwerkinterfaces anzeigen (veraltet) ip addr show # Moderne Alternative zu ifconfig</p>
 
         </div>
         <div class="anw">
@@ -129,7 +136,7 @@
           
         </div>
         <div class="anw">
-            <p>In der letzten Lektion lernst du Skripting und Automatisierung.</p>
+            <p >In der letzten Lektion lernst du Skripting und Automatisierung.</p>
         </div>
 
        

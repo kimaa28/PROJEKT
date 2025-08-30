@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 9: Spezielle CustomTkinter-Features</h1>
-                <p>
+                <p id="text">
 CustomTkinter bietet einige einzigartige Features, die in Standard-Tkinter nicht verfügbar sind. Diese machen deine Anwendungen professioneller und benutzerfreundlicher.
 
 CTkToplevel erstellt moderne popup-Fenster mit den gleichen Styling-Optionen wie das Hauptfenster. Anders als Tkinters Toplevel unterstützt es automatisch die Theme-Einstellungen.
@@ -128,7 +135,7 @@ Die bind()-Methoden funktionieren genauso wie in Tkinter, aber CustomTkinter fü
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import customtkinter as ctk
 import tkinter as tk
 
@@ -266,7 +273,7 @@ if __name__ == "__main__":
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du die Integration von Bildern und Icons.</p>
+            <p >In der nächsten Lektion lernst du die Integration von Bildern und Icons.</p>
         </div>
 
        

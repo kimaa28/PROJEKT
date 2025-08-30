@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,11 +119,11 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 3: Textbearbeitung und Suche</h1>
-                <p> Linux bietet mächtige Werkzeuge für die Textverarbeitung. Diese Tools sind besonders nützlich für die Analyse von Logdateien, Konfigurationsdateien und Datenverarbeitung. 'cat' zeigt Dateiinhalt an, 'less' und 'more' ermöglichen seitenweise Anzeige großer Dateien. Mit 'head' siehst du die ersten Zeilen, mit 'tail' die letzten - 'tail -f' verfolgt sogar Änderungen in Echtzeit! 'grep' ist das wichtigste Suchwerkzeug in Linux. Es sucht nach Textmustern in Dateien und unterstützt reguläre Ausdrücke. Mit Optionen wie '-i' (ignoriert Groß-/Kleinschreibung), '-r' (rekursiv), '-n' (mit Zeilennummern) wird es noch mächtiger. 'find' sucht Dateien nach verschiedenen Kriterien: Name, Größe, Datum, Berechtigungen. Es kann auch Aktionen auf gefundene Dateien ausführen. Pipes (|) sind ein mächtiges Konzept in Linux: Die Ausgabe eines Befehls wird zur Eingabe des nächsten. So kannst du komplexe Datenverarbeitungsketten erstellen. 'sort' sortiert Zeilen, 'uniq' entfernt Duplikate, 'wc' zählt Wörter/Zeilen/Zeichen, und 'cut' extrahiert bestimmte Spalten aus Text. </p>
+                <p id="text"> Linux bietet mächtige Werkzeuge für die Textverarbeitung. Diese Tools sind besonders nützlich für die Analyse von Logdateien, Konfigurationsdateien und Datenverarbeitung. 'cat' zeigt Dateiinhalt an, 'less' und 'more' ermöglichen seitenweise Anzeige großer Dateien. Mit 'head' siehst du die ersten Zeilen, mit 'tail' die letzten - 'tail -f' verfolgt sogar Änderungen in Echtzeit! 'grep' ist das wichtigste Suchwerkzeug in Linux. Es sucht nach Textmustern in Dateien und unterstützt reguläre Ausdrücke. Mit Optionen wie '-i' (ignoriert Groß-/Kleinschreibung), '-r' (rekursiv), '-n' (mit Zeilennummern) wird es noch mächtiger. 'find' sucht Dateien nach verschiedenen Kriterien: Name, Größe, Datum, Berechtigungen. Es kann auch Aktionen auf gefundene Dateien ausführen. Pipes (|) sind ein mächtiges Konzept in Linux: Die Ausgabe eines Befehls wird zur Eingabe des nächsten. So kannst du komplexe Datenverarbeitungsketten erstellen. 'sort' sortiert Zeilen, 'uniq' entfernt Duplikate, 'wc' zählt Wörter/Zeilen/Zeichen, und 'cut' extrahiert bestimmte Spalten aus Text. </p>
         </div>
 
         <div id="content1">
-            <p># Dateiinhalt anzeigen cat datei.txt # Gesamten Inhalt anzeigen less datei.txt # Seitenweise anzeigen (q zum Beenden) head -n 10 datei.txt # Erste 10 Zeilen anzeigen tail -n 5 datei.txt # Letzte 5 Zeilen anzeigen tail -f logfile.log # Datei in Echtzeit verfolgen # Text suchen mit grep grep "fehler" logfile.log # Nach "fehler" suchen grep -i "ERROR" *.log # Groß-/Kleinschreibung ignorieren grep -r "TODO" . # Rekursiv in allen Dateien suchen grep -n "function" script.py # Mit Zeilennummern anzeigen # Dateien finden find /home -name "*.txt" # Alle .txt Dateien finden find . -size +1M # Dateien größer als 1MB find /var/log -mtime -7 # In letzten 7 Tagen geändert find . -type f -exec chmod 644 {} \; # Aktion auf gefundene Dateien # Pipes und Textverarbeitung cat datei.txt | grep "wichtig" | sort # Suchen und sortieren ps aux | grep python | wc -l # Python-Prozesse zählen ls -la | sort -k5 -n # Nach Dateigröße sortieren cut -d':' -f1 /etc/passwd | sort # Benutzernamen extrahieren history | tail -20 | grep cd # Letzte cd-Befehle finden</p>
+            <p id="anw1"># Dateiinhalt anzeigen cat datei.txt # Gesamten Inhalt anzeigen less datei.txt # Seitenweise anzeigen (q zum Beenden) head -n 10 datei.txt # Erste 10 Zeilen anzeigen tail -n 5 datei.txt # Letzte 5 Zeilen anzeigen tail -f logfile.log # Datei in Echtzeit verfolgen # Text suchen mit grep grep "fehler" logfile.log # Nach "fehler" suchen grep -i "ERROR" *.log # Groß-/Kleinschreibung ignorieren grep -r "TODO" . # Rekursiv in allen Dateien suchen grep -n "function" script.py # Mit Zeilennummern anzeigen # Dateien finden find /home -name "*.txt" # Alle .txt Dateien finden find . -size +1M # Dateien größer als 1MB find /var/log -mtime -7 # In letzten 7 Tagen geändert find . -type f -exec chmod 644 {} \; # Aktion auf gefundene Dateien # Pipes und Textverarbeitung cat datei.txt | grep "wichtig" | sort # Suchen und sortieren ps aux | grep python | wc -l # Python-Prozesse zählen ls -la | sort -k5 -n # Nach Dateigröße sortieren cut -d':' -f1 /etc/passwd | sort # Benutzernamen extrahieren history | tail -20 | grep cd # Letzte cd-Befehle finden</p>
 
         </div>
         <div class="anw">
@@ -129,7 +136,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Prozess- und Systemverwaltung.</p>
+            <p >In der nächsten Lektion lernst du Prozess- und Systemverwaltung.</p>
         </div>
 
        

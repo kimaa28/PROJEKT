@@ -35,18 +35,34 @@
         "sex": "female",
         "secret_code": "4361be62001d25deb2bd85fab3e46011afae57539026d8d37d57f45e29571271",
         "Done": {
-            "html": [],
-            "python": [],
+            "html": [
+                1,
+                2
+            ],
+            "python": [
+                1,
+                2
+            ],
             "tkinter": [
                 1
             ],
             "cgi": [
-                1
+                1,
+                2,
+                3,
+                4
             ],
-            "linux": []
+            "linux": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
         },
         "Current": {
-            "tkinter": "lektion: 2"
+            "cgi": "lektion: 5"
         }
     }
 }

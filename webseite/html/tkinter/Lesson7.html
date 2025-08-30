@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 7: Moderne Widgets in CustomTkinter</h1>
-                <p>
+                <p id="text">
 CustomTkinter bietet viele verbesserte Widgets, die nicht nur schöner aussehen, sondern auch mehr Funktionen bieten als ihre Tkinter-Gegenstücke.
 
 CTkEntry bietet moderne Texteingabefelder mit Placeholder-Text, abgerundeten Ecken und schönen Fokus-Animationen. Der placeholder_text wird automatisch angezeigt, wenn das Feld leer ist.
@@ -128,7 +135,7 @@ Alle Widgets unterstützen die Theme-Farben automatisch und passen sich dem gew�
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import customtkinter as ctk
 from tkinter import StringVar
 
@@ -215,7 +222,7 @@ root.mainloop()
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Frames und Layout in CustomTkinter kennen.</p>
+            <p >In der nächsten Lektion lernst du Frames und Layout in CustomTkinter kennen.</p>
         </div>
 
        

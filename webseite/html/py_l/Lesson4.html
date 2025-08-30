@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 4: Eingabe und Ausgabe</h1>
-                <p>
+                <p id="text">
 Die input()-Funktion ermöglicht es, Daten vom Benutzer einzulesen. Das Programm wartet,
 bis der Benutzer etwas eingibt und Enter drückt. Wichtig: input() gibt immer einen String zurück!
 
@@ -134,7 +141,7 @@ Mit try/except kannst du Fehler abfangen, wenn der Benutzer keine gültige Zahl 
         </div>
 
         <div id="content1">
-            <p># Einfache Eingabe
+            <p id="anw1"># Einfache Eingabe
 name = input("Wie heißt du? ")
 print(f"Hallo {name}!")
 
@@ -171,7 +178,7 @@ print("Ende", end="!
           
         </div>
         <div class="anw">
-            <p>Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
+            <p >Als Nächstes lernst du bedingte Anweisungen mit if-else kennen.</p>
         </div>
 
        

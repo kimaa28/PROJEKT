@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,11 +119,11 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 6: Skripting und Automatisierung</h1>
-                <p> Shell-Scripting ist eine der mächtigsten Fähigkeiten in Linux und ermöglicht die Automatisierung wiederkehrender Aufgaben. Bash (Bourne Again Shell) ist die Standard-Shell in den meisten Linux-Distributionen. Shell-Skripte beginnen mit der Shebang-Zeile (#!/bin/bash), die dem System mitteilt, welche Shell verwendet werden soll. Variablen in Bash werden ohne '$' definiert und mit '$' aufgerufen. Verwende Anführungszeichen um Leerzeichen zu behandeln. Kontrollstrukturen wie if-then-else, for-Schleifen und while-Schleifen ermöglichen komplexe Logik. Funktionen organisieren Code und machen ihn wiederverwendbar. Cron ist der Task-Scheduler von Linux. Mit 'crontab -e' bearbeitest du deine Cron-Jobs. Die Syntax folgt dem Format: Minute Stunde Tag Monat Wochentag Befehl. Beispiel: '0 2 * * *' führt täglich um 2 Uhr aus. Fehlerbehandlung ist wichtig: Überprüfe Exit-Codes mit '$?' und verwende 'set -e' um bei Fehlern zu stoppen. Logging hilft bei der Fehlersuche - leite Ausgaben in Dateien um. Parameter an Skripte übergibst du über '$1', '$2', etc. '$0' ist der Skriptname, '$#' die Anzahl Parameter, '$@' alle Parameter. Mit 'chmod +x script.sh' machst du Skripte ausführbar. </p>
+                <p id="text"> Shell-Scripting ist eine der mächtigsten Fähigkeiten in Linux und ermöglicht die Automatisierung wiederkehrender Aufgaben. Bash (Bourne Again Shell) ist die Standard-Shell in den meisten Linux-Distributionen. Shell-Skripte beginnen mit der Shebang-Zeile (#!/bin/bash), die dem System mitteilt, welche Shell verwendet werden soll. Variablen in Bash werden ohne '$' definiert und mit '$' aufgerufen. Verwende Anführungszeichen um Leerzeichen zu behandeln. Kontrollstrukturen wie if-then-else, for-Schleifen und while-Schleifen ermöglichen komplexe Logik. Funktionen organisieren Code und machen ihn wiederverwendbar. Cron ist der Task-Scheduler von Linux. Mit 'crontab -e' bearbeitest du deine Cron-Jobs. Die Syntax folgt dem Format: Minute Stunde Tag Monat Wochentag Befehl. Beispiel: '0 2 * * *' führt täglich um 2 Uhr aus. Fehlerbehandlung ist wichtig: Überprüfe Exit-Codes mit '$?' und verwende 'set -e' um bei Fehlern zu stoppen. Logging hilft bei der Fehlersuche - leite Ausgaben in Dateien um. Parameter an Skripte übergibst du über '$1', '$2', etc. '$0' ist der Skriptname, '$#' die Anzahl Parameter, '$@' alle Parameter. Mit 'chmod +x script.sh' machst du Skripte ausführbar. </p>
         </div>
 
         <div id="content1">
-            <p>#!/bin/bash # Backup-Skript Beispiel - Speichere als backup.sh # Variablen definieren SOURCE_DIR="/home/user/documents" BACKUP_DIR="/backup/$(date +%Y%m%d)" LOG_FILE="/var/log/backup.log" # Funktion für Logging log_message() { echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE } # Backup-Verzeichnis erstellen if [ ! -d "$BACKUP_DIR" ]; then mkdir -p "$BACKUP_DIR" log_message "Backup-Verzeichnis erstellt: $BACKUP_DIR" fi # Backup durchführen log_message "Backup gestartet von $SOURCE_DIR nach $BACKUP_DIR" if rsync -av "$SOURCE_DIR/" "$BACKUP_DIR/"; then log_message "Backup erfolgreich abgeschlossen" echo "Backup erfolgreich!" else log_message "FEHLER: Backup fehlgeschlagen" echo "Backup fehlgeschlagen!" >&2 exit 1 fi # Alte Backups löschen (älter als 30 Tage) find /backup -type d -name "20*" -mtime +30 -exec rm -rf {} + 2>/dev/null log_message "Alte Backups bereinigt" # Beispiel Crontab-Einträge (mit 'crontab -e' hinzufügen): # 0 2 * * * /home/user/backup.sh # Täglich um 2 Uhr # */15 * * * * /usr/bin/system_check.sh # Alle 15 Minuten # 0 0 * * 0 /home/user/weekly_cleanup.sh # Sonntags um Mitternacht # Erweiterte Bash-Features for file in *.log; do echo "Verarbeite: $file" gzip "$file" # Komprimieren done # Parameter verarbeiten if [ $# -eq 0 ]; then echo "Verwendung: $0 <Quellverzeichnis>" exit 1 fi echo "Skript: $0 wurde mit $# Parametern aufgerufen" echo "Alle Parameter: $@" </p>
+            <p id="anw1">#!/bin/bash # Backup-Skript Beispiel - Speichere als backup.sh # Variablen definieren SOURCE_DIR="/home/user/documents" BACKUP_DIR="/backup/$(date +%Y%m%d)" LOG_FILE="/var/log/backup.log" # Funktion für Logging log_message() { echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE } # Backup-Verzeichnis erstellen if [ ! -d "$BACKUP_DIR" ]; then mkdir -p "$BACKUP_DIR" log_message "Backup-Verzeichnis erstellt: $BACKUP_DIR" fi # Backup durchführen log_message "Backup gestartet von $SOURCE_DIR nach $BACKUP_DIR" if rsync -av "$SOURCE_DIR/" "$BACKUP_DIR/"; then log_message "Backup erfolgreich abgeschlossen" echo "Backup erfolgreich!" else log_message "FEHLER: Backup fehlgeschlagen" echo "Backup fehlgeschlagen!" >&2 exit 1 fi # Alte Backups löschen (älter als 30 Tage) find /backup -type d -name "20*" -mtime +30 -exec rm -rf {} + 2>/dev/null log_message "Alte Backups bereinigt" # Beispiel Crontab-Einträge (mit 'crontab -e' hinzufügen): # 0 2 * * * /home/user/backup.sh # Täglich um 2 Uhr # */15 * * * * /usr/bin/system_check.sh # Alle 15 Minuten # 0 0 * * 0 /home/user/weekly_cleanup.sh # Sonntags um Mitternacht # Erweiterte Bash-Features for file in *.log; do echo "Verarbeite: $file" gzip "$file" # Komprimieren done # Parameter verarbeiten if [ $# -eq 0 ]; then echo "Verwendung: $0 <Quellverzeichnis>" exit 1 fi echo "Skript: $0 wurde mit $# Parametern aufgerufen" echo "Alle Parameter: $@" </p>
 
         </div>
         <div class="anw">
@@ -129,7 +136,7 @@
           
         </div>
         <div class="anw">
-            <p>Herzlichen Glückwunsch! Du hast alle Linux-Grundlagen gemeistert.</p>
+            <p >Herzlichen Glückwunsch! Du hast alle Linux-Grundlagen gemeistert.</p>
         </div>
 
        

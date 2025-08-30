@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 2: Grundlegende Widgets</h1>
-                <p>
+                <p id="text">
 Widgets sind die Bausteine jeder GUI-Anwendung. Tkinter bietet viele verschiedene Widget-Typen für unterschiedliche Zwecke.
 
 Label zeigt Text oder Bilder an - perfekt für Beschriftungen und Informationen. Button erstellt klickbare Schaltflächen für Benutzerinteraktionen. Entry ermöglicht einzeilige Texteingaben, während Text mehrzeilige Texteingaben erlaubt.
@@ -126,7 +133,7 @@ Das command-Parameter bei Buttons verbindet eine Funktion mit dem Klick-Ereignis
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import tkinter as tk
 
 def button_clicked():
@@ -165,7 +172,7 @@ root.mainloop()
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Layout-Management kennen.</p>
+            <p >In der nächsten Lektion lernst du Layout-Management kennen.</p>
         </div>
 
        

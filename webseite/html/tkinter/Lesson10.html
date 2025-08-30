@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 10: Bilder, Icons und Multimedia</h1>
-                <p>
+                <p id="text">
 CustomTkinter bietet erweiterte Möglichkeiten für die Integration von Bildern und Icons in deine Anwendungen. CTkImage ist eine mächtige Klasse, die automatische Skalierung und Theme-Anpassungen unterstützt.
 
 CTkImage kann sowohl Light- als auch Dark-Mode-Versionen von Bildern verwalten. Du kannst verschiedene Bilder für verschiedene Themes bereitstellen, und CustomTkinter wechselt automatisch zwischen ihnen.
@@ -128,7 +135,7 @@ CustomTkinter unterstützt die meisten Bildformate: PNG, JPEG, GIF, BMP. PNG wir
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import customtkinter as ctk
 from PIL import Image
 import os
@@ -286,7 +293,7 @@ if __name__ == "__main__":
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du eine komplette Anwendung zu erstellen.</p>
+            <p >In der nächsten Lektion lernst du eine komplette Anwendung zu erstellen.</p>
         </div>
 
        

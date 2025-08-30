@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,11 +119,11 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 2: Dateien und Verzeichnisse verwalten</h1>
-                <p> Die Verwaltung von Dateien und Verzeichnissen ist eine der wichtigsten Fähigkeiten in Linux. Linux bietet mächtige Kommandozeilen-Tools, die oft effizienter sind als grafische Oberflächen. Zum Erstellen von Dateien verwendest du 'touch' für leere Dateien oder Editoren wie 'nano', 'vim' oder 'gedit'. Verzeichnisse erstellst du mit 'mkdir', und mit der Option '-p' kannst du sogar ganze Verzeichnisstrukturen auf einmal erstellen. Zum Kopieren verwendest du 'cp' für Dateien und 'cp -r' für Verzeichnisse rekursiv. Das Verschieben und Umbenennen funktioniert mit 'mv' - ein Befehl für beide Operationen! Zum Löschen verwendest du 'rm' für Dateien und 'rm -r' für Verzeichnisse. Sei vorsichtig: In Linux gibt es keinen Papierkorb auf der Kommandozeile! Wildcards sind sehr nützlich: '*' steht für beliebige Zeichen, '?' für ein einzelnes Zeichen, und '[abc]' für eines der angegebenen Zeichen. Dateiberechtigungen sind in Linux sehr wichtig und werden durch drei Zahlen dargestellt: Besitzer, Gruppe, und alle anderen. Jede Zahl ist die Summe aus: 4 (Lesen), 2 (Schreiben), 1 (Ausführen). </p>
+                <p id="text"> Die Verwaltung von Dateien und Verzeichnissen ist eine der wichtigsten Fähigkeiten in Linux. Linux bietet mächtige Kommandozeilen-Tools, die oft effizienter sind als grafische Oberflächen. Zum Erstellen von Dateien verwendest du 'touch' für leere Dateien oder Editoren wie 'nano', 'vim' oder 'gedit'. Verzeichnisse erstellst du mit 'mkdir', und mit der Option '-p' kannst du sogar ganze Verzeichnisstrukturen auf einmal erstellen. Zum Kopieren verwendest du 'cp' für Dateien und 'cp -r' für Verzeichnisse rekursiv. Das Verschieben und Umbenennen funktioniert mit 'mv' - ein Befehl für beide Operationen! Zum Löschen verwendest du 'rm' für Dateien und 'rm -r' für Verzeichnisse. Sei vorsichtig: In Linux gibt es keinen Papierkorb auf der Kommandozeile! Wildcards sind sehr nützlich: '*' steht für beliebige Zeichen, '?' für ein einzelnes Zeichen, und '[abc]' für eines der angegebenen Zeichen. Dateiberechtigungen sind in Linux sehr wichtig und werden durch drei Zahlen dargestellt: Besitzer, Gruppe, und alle anderen. Jede Zahl ist die Summe aus: 4 (Lesen), 2 (Schreiben), 1 (Ausführen). </p>
         </div>
 
         <div id="content1">
-            <p># Dateien und Verzeichnisse erstellen touch neue_datei.txt # Leere Datei erstellen mkdir neues_verzeichnis # Verzeichnis erstellen mkdir -p pfad/zu/neuem/verzeichnis # Verschachtelte Verzeichnisse echo "Hallo Linux" > datei.txt # Text in Datei schreiben # Kopieren und Verschieben cp datei.txt kopie.txt # Datei kopieren cp -r verzeichnis verzeichnis_kopie # Verzeichnis rekursiv kopieren mv alte_datei.txt neue_datei.txt # Datei umbenennen mv datei.txt /home/user/ # Datei verschieben # Löschen rm datei.txt # Datei löschen rm -r verzeichnis # Verzeichnis rekursiv löschen rm -rf verzeichnis # Forciert löschen (gefährlich!) # Wildcards verwenden ls *.txt # Alle .txt Dateien anzeigen cp *.pdf /backup/ # Alle PDF-Dateien kopieren # Dateiberechtigungen ändern chmod 755 script.sh # Ausführbar für Besitzer, lesbar für alle chmod -R 644 verzeichnis/ # Rekursiv auf Verzeichnis anwenden</p>
+            <p id="anw1"># Dateien und Verzeichnisse erstellen touch neue_datei.txt # Leere Datei erstellen mkdir neues_verzeichnis # Verzeichnis erstellen mkdir -p pfad/zu/neuem/verzeichnis # Verschachtelte Verzeichnisse echo "Hallo Linux" > datei.txt # Text in Datei schreiben # Kopieren und Verschieben cp datei.txt kopie.txt # Datei kopieren cp -r verzeichnis verzeichnis_kopie # Verzeichnis rekursiv kopieren mv alte_datei.txt neue_datei.txt # Datei umbenennen mv datei.txt /home/user/ # Datei verschieben # Löschen rm datei.txt # Datei löschen rm -r verzeichnis # Verzeichnis rekursiv löschen rm -rf verzeichnis # Forciert löschen (gefährlich!) # Wildcards verwenden ls *.txt # Alle .txt Dateien anzeigen cp *.pdf /backup/ # Alle PDF-Dateien kopieren # Dateiberechtigungen ändern chmod 755 script.sh # Ausführbar für Besitzer, lesbar für alle chmod -R 644 verzeichnis/ # Rekursiv auf Verzeichnis anwenden</p>
 
         </div>
         <div class="anw">
@@ -129,7 +136,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Textdateien zu bearbeiten und zu durchsuchen.</p>
+            <p >In der nächsten Lektion lernst du Textdateien zu bearbeiten und zu durchsuchen.</p>
         </div>
 
        

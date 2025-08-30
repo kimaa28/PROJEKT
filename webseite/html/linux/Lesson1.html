@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,11 +119,11 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 1: Was ist Linux?</h1>
-                <p> Linux ist ein freies und quelloffenes Betriebssystem, das 1991 von Linus Torvalds entwickelt wurde. Anders als Windows oder macOS ist Linux kostenlos und kann von jedem verwendet, modifiziert und verteilt werden. Linux basiert auf Unix und verwendet einen Kernel (Betriebssystemkern), der die Hardware verwaltet. Auf diesem Kernel bauen verschiedene Distributionen auf: Ubuntu, Debian, CentOS, Fedora, openSUSE und viele mehr. Jede Distribution hat ihre eigenen Besonderheiten, aber alle verwenden denselben Linux-Kernel. Linux läuft auf fast allen Geräten: von Smartphones (Android basiert auf Linux) über Desktop-Computer bis hin zu Supercomputern und Servern. Über 90% aller Webserver laufen auf Linux! Das Dateisystem in Linux ist hierarchisch aufgebaut und beginnt mit dem Root-Verzeichnis (/). Wichtige Verzeichnisse sind: /home (Benutzerverzeichnisse), /etc (Konfigurationsdateien), /var (variable Daten), /usr (Benutzerprogramme), /bin (grundlegende Programme). Linux unterscheidet zwischen Groß- und Kleinschreibung - 'Datei.txt' und 'datei.txt' sind verschiedene Dateien! In diesem ersten Beispiel siehst du grundlegende Linux-Befehle zum Navigieren im Dateisystem. </p>
+                <p id="text"> Linux ist ein freies und quelloffenes Betriebssystem, das 1991 von Linus Torvalds entwickelt wurde. Anders als Windows oder macOS ist Linux kostenlos und kann von jedem verwendet, modifiziert und verteilt werden. Linux basiert auf Unix und verwendet einen Kernel (Betriebssystemkern), der die Hardware verwaltet. Auf diesem Kernel bauen verschiedene Distributionen auf: Ubuntu, Debian, CentOS, Fedora, openSUSE und viele mehr. Jede Distribution hat ihre eigenen Besonderheiten, aber alle verwenden denselben Linux-Kernel. Linux läuft auf fast allen Geräten: von Smartphones (Android basiert auf Linux) über Desktop-Computer bis hin zu Supercomputern und Servern. Über 90% aller Webserver laufen auf Linux! Das Dateisystem in Linux ist hierarchisch aufgebaut und beginnt mit dem Root-Verzeichnis (/). Wichtige Verzeichnisse sind: /home (Benutzerverzeichnisse), /etc (Konfigurationsdateien), /var (variable Daten), /usr (Benutzerprogramme), /bin (grundlegende Programme). Linux unterscheidet zwischen Groß- und Kleinschreibung - 'Datei.txt' und 'datei.txt' sind verschiedene Dateien! In diesem ersten Beispiel siehst du grundlegende Linux-Befehle zum Navigieren im Dateisystem. </p>
         </div>
 
         <div id="content1">
-            <p># Grundlegende Linux-Navigation ls # Zeigt Dateien und Verzeichnisse an ls -l # Detaillierte Ansicht mit Berechtigungen ls -la # Auch versteckte Dateien anzeigen pwd # Zeigt aktuelles Verzeichnis an cd /home # Wechselt in das /home Verzeichnis cd ~ # Wechselt ins eigene Benutzerverzeichnis cd .. # Wechselt ein Verzeichnis nach oben cd - # Wechselt zum vorherigen Verzeichnis whoami # Zeigt aktuellen Benutzernamen an date # Zeigt Datum und Uhrzeit an uname -a # Zeigt Systeminformationen an</p>
+            <p id="anw1"># Grundlegende Linux-Navigation ls # Zeigt Dateien und Verzeichnisse an ls -l # Detaillierte Ansicht mit Berechtigungen ls -la # Auch versteckte Dateien anzeigen pwd # Zeigt aktuelles Verzeichnis an cd /home # Wechselt in das /home Verzeichnis cd ~ # Wechselt ins eigene Benutzerverzeichnis cd .. # Wechselt ein Verzeichnis nach oben cd - # Wechselt zum vorherigen Verzeichnis whoami # Zeigt aktuellen Benutzernamen an date # Zeigt Datum und Uhrzeit an uname -a # Zeigt Systeminformationen an</p>
 
         </div>
         <div class="anw">
@@ -129,7 +136,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Dateien und Verzeichnisse zu verwalten.</p>
+            <p >In der nächsten Lektion lernst du Dateien und Verzeichnisse zu verwalten.</p>
         </div>
 
        

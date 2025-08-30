@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,30 +119,30 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 3: Umgebungsvariablen und HTTP-Header</h1>
-                <p> CGI-Skripte erhalten viele nützliche Informationen über Umgebungsvariablen. Diese Variablen enthalten Details über die HTTP-Anfrage, den Browser des Benutzers und die Serverumgebung. Wichtige Umgebungsvariablen sind: REQUEST_METHOD (GET, POST, etc.), QUERY_STRING (Parameter bei GET), CONTENT_LENGTH (Größe der POST-Daten), HTTP_USER_AGENT (Browser-Information), REMOTE_ADDR (IP-Adresse des Benutzers), und SERVER_NAME (Name des Servers). HTTP-Header sind wichtig für die Kommunikation zwischen Server und Browser. CGI-Skripte können verschiedene Header senden: Content-Type bestimmt den Medientyp, Location wird für Weiterleitungen verwendet, Set-Cookie setzt Cookies, und Cache-Control steuert das Caching-Verhalten. Header müssen vor dem eigentlichen Inhalt gesendet werden und durch eine Leerzeile getrennt sein. CGI-Skripte können auch eigene HTTP-Statuscodes senden, wie 404 (Not Found) oder 500 (Internal Server Error). In diesem Beispiel siehst du, wie man Umgebungsvariablen ausliest und verschiedene Header verwendet. Das Skript zeigt Browser-Informationen an und demonstriert eine einfache Weiterleitung. </p>
+                <p id="text"> CGI-Skripte erhalten viele nützliche Informationen über Umgebungsvariablen. Diese Variablen enthalten Details über die HTTP-Anfrage, den Browser des Benutzers und die Serverumgebung. Wichtige Umgebungsvariablen sind: REQUEST_METHOD (GET, POST, etc.), QUERY_STRING (Parameter bei GET), CONTENT_LENGTH (Größe der POST-Daten), HTTP_USER_AGENT (Browser-Information), REMOTE_ADDR (IP-Adresse des Benutzers), und SERVER_NAME (Name des Servers). HTTP-Header sind wichtig für die Kommunikation zwischen Server und Browser. CGI-Skripte können verschiedene Header senden: Content-Type bestimmt den Medientyp, Location wird für Weiterleitungen verwendet, Set-Cookie setzt Cookies, und Cache-Control steuert das Caching-Verhalten. Header müssen vor dem eigentlichen Inhalt gesendet werden und durch eine Leerzeile getrennt sein. CGI-Skripte können auch eigene HTTP-Statuscodes senden, wie 404 (Not Found) oder 500 (Internal Server Error). In diesem Beispiel siehst du, wie man Umgebungsvariablen ausliest und verschiedene Header verwendet. Das Skript zeigt Browser-Informationen an und demonstriert eine einfache Weiterleitung. </p>
         </div>
 
         <div id="content1">
-            <p>#!/usr/bin/perl use strict; use warnings; print "Content-Type: text/html
+            <p id="anw1">#!/usr/bin/perl use strict; use warnings; print &#x22;Content-Type: text/html
 
-"; print "<html><head><title>CGI Umgebungsvariablen</title></head><body>
-"; print "<h1>Server-Informationen</h1>
-"; # Wichtige Umgebungsvariablen anzeigen print "<h2>HTTP-Anfrage:</h2>
-"; print "<p><strong>Request Method:</strong> " . ($ENV{'REQUEST_METHOD'} || 'Nicht verfügbar') . "</p>
-"; print "<p><strong>Query String:</strong> " . ($ENV{'QUERY_STRING'} || 'Leer') . "</p>
-"; print "<p><strong>Content Length:</strong> " . ($ENV{'CONTENT_LENGTH'} || '0') . "</p>
-"; print "<h2>Client-Informationen:</h2>
-"; print "<p><strong>User Agent:</strong> " . ($ENV{'HTTP_USER_AGENT'} || 'Unbekannt') . "</p>
-"; print "<p><strong>Remote Address:</strong> " . ($ENV{'REMOTE_ADDR'} || 'Unbekannt') . "</p>
-"; print "<p><strong>HTTP Accept:</strong> " . ($ENV{'HTTP_ACCEPT'} || 'Nicht verfügbar') . "</p>
-"; print "<h2>Server-Informationen:</h2>
-"; print "<p><strong>Server Name:</strong> " . ($ENV{'SERVER_NAME'} || 'Unbekannt') . "</p>
-"; print "<p><strong>Server Port:</strong> " . ($ENV{'SERVER_PORT'} || 'Unbekannt') . "</p>
-"; print "<p><strong>Script Name:</strong> " . ($ENV{'SCRIPT_NAME'} || 'Unbekannt') . "</p>
-"; # Beispiel für Weiterleitung (auskommentiert) # print "Location: http://www.example.com
+&#x22;; print &#x22;&#x3C;html&#x3E;&#x3C;head&#x3E;&#x3C;title&#x3E;CGI Umgebungsvariablen&#x3C;/title&#x3E;&#x3C;/head&#x3E;&#x3C;body&#x3E;
+&#x22;; print &#x22;&#x3C;h1&#x3E;Server-Informationen&#x3C;/h1&#x3E;
+&#x22;; # Wichtige Umgebungsvariablen anzeigen print &#x22;&#x3C;h2&#x3E;HTTP-Anfrage:&#x3C;/h2&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Request Method:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;REQUEST_METHOD&#x27;} || &#x27;Nicht verf&#xFC;gbar&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Query String:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;QUERY_STRING&#x27;} || &#x27;Leer&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Content Length:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;CONTENT_LENGTH&#x27;} || &#x27;0&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;h2&#x3E;Client-Informationen:&#x3C;/h2&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;User Agent:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;HTTP_USER_AGENT&#x27;} || &#x27;Unbekannt&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Remote Address:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;REMOTE_ADDR&#x27;} || &#x27;Unbekannt&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;HTTP Accept:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;HTTP_ACCEPT&#x27;} || &#x27;Nicht verf&#xFC;gbar&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;h2&#x3E;Server-Informationen:&#x3C;/h2&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Server Name:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;SERVER_NAME&#x27;} || &#x27;Unbekannt&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Server Port:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;SERVER_PORT&#x27;} || &#x27;Unbekannt&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;&#x3C;strong&#x3E;Script Name:&#x3C;/strong&#x3E; &#x22; . ($ENV{&#x27;SCRIPT_NAME&#x27;} || &#x27;Unbekannt&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; # Beispiel f&#xFC;r Weiterleitung (auskommentiert) # print &#x22;Location: http://www.example.com
 
-"; print "</body></html>
-";</p>
+&#x22;; print &#x22;&#x3C;/body&#x3E;&#x3C;/html&#x3E;
+&#x22;;</p>
 
         </div>
         <div class="anw">
@@ -148,7 +155,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Fehlerbehandlung und Sicherheit bei CGI.</p>
+            <p >In der nächsten Lektion lernst du Fehlerbehandlung und Sicherheit bei CGI.</p>
         </div>
 
        

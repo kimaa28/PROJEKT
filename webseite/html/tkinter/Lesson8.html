@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 8: Frames und erweiterte Layouts</h1>
-                <p>
+                <p id="text">
 CTkFrame ist das moderne Gegenstück zu Tkinters Frame-Widget und bietet viel mehr Gestaltungsmöglichkeiten. Du kannst Rahmenfarben, Eckenradius und verschiedene visuelle Effekte einstellen.
 
 CTkScrollableFrame ist eine einzigartige Neuerung in CustomTkinter - ein Frame mit automatischen Scrollbars. Das ist perfekt für Inhalte, die größer als das verfügbare Fenster sind, ohne manuell Scrollbars programmieren zu müssen.
@@ -126,7 +133,7 @@ Corner_radius bestimmt, wie abgerundet die Ecken der Widgets sind. border_width 
         </div>
 
         <div id="content1">
-            <p>
+            <p id="anw1">
 import customtkinter as ctk
 
 ctk.set_appearance_mode("dark")
@@ -209,7 +216,7 @@ root.mainloop()
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du spezielle CustomTkinter-Features kennen.</p>
+            <p >In der nächsten Lektion lernst du spezielle CustomTkinter-Features kennen.</p>
         </div>
 
        

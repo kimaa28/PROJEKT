@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,18 +119,18 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 2: Formulardaten verarbeiten</h1>
-                <p> Eine der häufigsten Anwendungen von CGI ist die Verarbeitung von HTML-Formularen. Wenn ein Benutzer ein Formular absendet, werden die Daten an das CGI-Skript übertragen. Es gibt zwei Hauptmethoden für die Datenübertragung: GET und POST. Bei der GET-Methode werden die Daten in der URL übertragen und sind in der Umgebungsvariable QUERY_STRING verfügbar. Bei der POST-Methode werden die Daten über die Standardeingabe (STDIN) übertragen und sind nicht in der URL sichtbar. Formulardaten werden URL-kodiert übertragen, das bedeutet, Leerzeichen werden zu '+' und Sonderzeichen werden als %XX kodiert. CGI-Skripte müssen diese Kodierung rückgängig machen (URL-Dekodierung). Die Daten kommen im Format 'name1=wert1&name2=wert2' an. Jedes name=wert-Paar entspricht einem Formularfeld. In diesem Beispiel zeige ich dir ein CGI-Skript, das Formulardaten verarbeitet. Das Skript prüft zuerst die REQUEST_METHOD um zu unterscheiden zwischen GET und POST. Dann werden die Daten entsprechend ausgelesen und verarbeitet. Die URI::Escape-Bibliothek hilft bei der URL-Dekodierung. </p>
+                <p id="text"> Eine der häufigsten Anwendungen von CGI ist die Verarbeitung von HTML-Formularen. Wenn ein Benutzer ein Formular absendet, werden die Daten an das CGI-Skript übertragen. Es gibt zwei Hauptmethoden für die Datenübertragung: GET und POST. Bei der GET-Methode werden die Daten in der URL übertragen und sind in der Umgebungsvariable QUERY_STRING verfügbar. Bei der POST-Methode werden die Daten über die Standardeingabe (STDIN) übertragen und sind nicht in der URL sichtbar. Formulardaten werden URL-kodiert übertragen, das bedeutet, Leerzeichen werden zu '+' und Sonderzeichen werden als %XX kodiert. CGI-Skripte müssen diese Kodierung rückgängig machen (URL-Dekodierung). Die Daten kommen im Format 'name1=wert1&name2=wert2' an. Jedes name=wert-Paar entspricht einem Formularfeld. In diesem Beispiel zeige ich dir ein CGI-Skript, das Formulardaten verarbeitet. Das Skript prüft zuerst die REQUEST_METHOD um zu unterscheiden zwischen GET und POST. Dann werden die Daten entsprechend ausgelesen und verarbeitet. Die URI::Escape-Bibliothek hilft bei der URL-Dekodierung. </p>
         </div>
 
         <div id="content1">
-            <p>#!/usr/bin/perl use strict; use warnings; use URI::Escape; print "Content-Type: text/html
+            <p id="anw1">#!/usr/bin/perl use strict; use warnings; use URI::Escape; print &#x22;Content-Type: text/html
 
-"; # Formulardaten lesen my $form_data; if ($ENV{'REQUEST_METHOD'} eq 'POST') { read(STDIN, $form_data, $ENV{'CONTENT_LENGTH'}); } else { $form_data = $ENV{'QUERY_STRING'}; } # Daten parsen my %form_fields; foreach my $pair (split(/&/, $form_data)) { my ($name, $value) = split(/=/, $pair); $value = uri_unescape($value); $value =~ s/\+/ /g; # + durch Leerzeichen ersetzen $form_fields{$name} = $value; } # HTML-Ausgabe print "<html><head><title>Formulardaten</title></head><body>
-"; print "<h1>Empfangene Daten:</h1>
-"; print "<p>Name: " . ($form_fields{'name'} || 'Nicht angegeben') . "</p>
-"; print "<p>Email: " . ($form_fields{'email'} || 'Nicht angegeben') . "</p>
-"; print "</body></html>
-";</p>
+&#x22;; # Formulardaten lesen my $form_data; if ($ENV{&#x27;REQUEST_METHOD&#x27;} eq &#x27;POST&#x27;) { read(STDIN, $form_data, $ENV{&#x27;CONTENT_LENGTH&#x27;}); } else { $form_data = $ENV{&#x27;QUERY_STRING&#x27;}; } # Daten parsen my %form_fields; foreach my $pair (split(/&#x26;/, $form_data)) { my ($name, $value) = split(/=/, $pair); $value = uri_unescape($value); $value =~ s/\+/ /g; # + durch Leerzeichen ersetzen $form_fields{$name} = $value; } # HTML-Ausgabe print &#x22;&#x3C;html&#x3E;&#x3C;head&#x3E;&#x3C;title&#x3E;Formulardaten&#x3C;/title&#x3E;&#x3C;/head&#x3E;&#x3C;body&#x3E;
+&#x22;; print &#x22;&#x3C;h1&#x3E;Empfangene Daten:&#x3C;/h1&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;Name: &#x22; . ($form_fields{&#x27;name&#x27;} || &#x27;Nicht angegeben&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;p&#x3E;Email: &#x22; . ($form_fields{&#x27;email&#x27;} || &#x27;Nicht angegeben&#x27;) . &#x22;&#x3C;/p&#x3E;
+&#x22;; print &#x22;&#x3C;/body&#x3E;&#x3C;/html&#x3E;
+&#x22;;</p>
 
         </div>
         <div class="anw">
@@ -136,7 +143,7 @@
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.</p>
+            <p >In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.</p>
         </div>
 
        

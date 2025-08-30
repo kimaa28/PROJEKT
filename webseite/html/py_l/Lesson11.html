@@ -69,6 +69,7 @@
         .anw {
             margin-left: 20px;
             padding: 10px;
+            
         
         }
         #buttons {
@@ -103,6 +104,12 @@
             color: #ffffff;
             background-color: #2a72b6;
         }
+        #text{
+            font-size: 23px;
+         }
+        #anw1{
+         font-size:20px;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +119,7 @@
     <section id="section1">
         <div id="content">
             <h1>Lektion 11: Fehlerbehandlung (try-except)</h1>
-                <p>
+                <p id="text">
 Fehler gehören zur Programmierung dazu. Python bietet mit try-except eine elegante
 Möglichkeit, Fehler abzufangen und zu behandeln, ohne dass das Programm abstürzt.
 
@@ -139,7 +146,7 @@ Statt mysteriösen Fehlermeldungen bekommen Benutzer verständliche Hinweise.
         </div>
 
         <div id="content1">
-            <p># Einfache Fehlerbehandlung
+            <p id="anw1"># Einfache Fehlerbehandlung
 while True:
     try:
         zahl = int(input("Gib eine Zahl ein: "))
@@ -210,7 +217,7 @@ except ValueError as e:
           
         </div>
         <div class="anw">
-            <p>In der nächsten Lektion lernst du Module und Bibliotheken kennen.</p>
+            <p >In der nächsten Lektion lernst du Module und Bibliotheken kennen.</p>
         </div>
 
        
