@@ -96,6 +96,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
         .anw {{
             margin-left: 20px;
             padding: 10px;
+            
         
         }}
         #buttons {{
@@ -130,6 +131,12 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             color: #ffffff;
             background-color: #2a72b6;
         }}
+        #text{{
+            font-size:23px;
+        }}
+        #anw1{{
+         font-size:18px;
+        }}
     </style>
 </head>
 <body>
@@ -139,7 +146,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
     <section id="section1">
         <div id="content">
             <h1>{haupttitel}</h1>
-                <p>{body}</p>
+                <p id="text">{body}</p>
         </div>
 
         <div id="content1">
@@ -156,7 +163,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
           
         </div>
         <div class="anw">
-            <p>{anw}</p>
+            <p id="anw1">{anw}</p>
         </div>
 
        <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
@@ -264,6 +271,7 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
         .anw {{
             margin-left: 20px;
             padding: 10px;
+            
         
         }}
         #buttons {{
@@ -298,6 +306,12 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
             color: #ffffff;
             background-color: #2a72b6;
         }}
+        #text{{
+            font-size: 23px;
+         }}
+        #anw1{{
+         font-size:20px;
+        }}
     </style>
 </head>
 <body>
@@ -307,11 +321,11 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
     <section id="section1">
         <div id="content">
             <h1>{haupttitel}</h1>
-                <p>{body}</p>
+                <p id="text">{body}</p>
         </div>
 
         <div id="content1">
-            <p>{code}</p>
+            <p id="anw1">{code}</p>
 
         </div>
         <div class="anw">
@@ -324,7 +338,7 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
           
         </div>
         <div class="anw">
-            <p>{anw}</p>
+            <p >{anw}</p>
         </div>
 
        
