@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -148,7 +151,7 @@ Linux und Mac verwenden Forward slashes r"(/)". Python akzeptiert beide.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Datei schreiben
+            <p class="anw1"># Datei schreiben
 dateiname = "meine_datei.txt"
 
 # Text in Datei schreiben
@@ -202,14 +205,14 @@ if os.path.exists("einkauf.txt"):
           
         </div>
         <div class="anw">
-            <p >Als Nächstes lernst du den Umgang mit Fehlern und Exceptions.</p>
+            <p class="anw1">Als Nächstes lernst du den Umgang mit Fehlern und Exceptions.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="9" id="display1">Lesson9.html</button>
-            <button type="submit" name=index_p value="11" id="display2">Lesson11.html</button>
+            <button type="submit" name=index_p value="9" id="display1">Lektion9</button>
+            <button type="submit" name=index_p value="11" id="display2">Lektion11</button>
         </form>
 
         <script>

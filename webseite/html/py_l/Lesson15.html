@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -154,7 +157,7 @@ Herzlichen Glückwunsch! Du hast die Python-Grundlagen gemeistert!
         </div>
 
         <div id="content1">
-            <p id="anw1"># List Comprehensions
+            <p class="anw1"># List Comprehensions
 zahlen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # Traditionelle Methode
@@ -265,14 +268,14 @@ langsame_funktion()</p>
           
         </div>
         <div class="anw">
-            <p >Herzlichen Glückwunsch! Du hast alle Python-Grundlagen erfolgreich durchlaufen!</p>
+            <p class="anw1">Herzlichen Glückwunsch! Du hast alle Python-Grundlagen erfolgreich durchlaufen!</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="14" id="display1">Lesson14.html</button>
-            <button type="submit" name=index_p value="16" id="display2">Lesson16.html</button>
+            <button type="submit" name=index_p value="14" id="display1">Lektion14</button>
+            <button type="submit" name=index_p value="16" id="display2">Lektion16</button>
         </form>
 
         <script>

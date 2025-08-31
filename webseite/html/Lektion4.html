@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 4: Textformatierung</h1>
@@ -131,7 +134,7 @@ Die semantischen Tags sind wichtig für Screenreader und Suchmaschinen.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;Textformatierung&#x3C;/title&#x3E;
@@ -156,7 +159,7 @@ Die semantischen Tags sind wichtig für Screenreader und Suchmaschinen.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 &#x3C;strong&#x3E; und &#x3C;em&#x3E; haben semantische Bedeutung und werden von Screenreadern unterschiedlich vorgelesen.
 &#x3C;mark&#x3E; hebt Text hervor, als wäre er mit einem Textmarker markiert.
 &#x3C;sub&#x3E; und &#x3C;sup&#x3E; erstellen tiefgestellten bzw. hochgestellten Text für Formeln.
@@ -172,12 +175,13 @@ Diese Tags können auch kombiniert werden für komplexere Formatierungen.
         <div class="anw">
             <p id="anw1">Als Nächstes erfährst du, wie Links und Navigation funktionieren.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="3" id="display1">Lektion3.html</button>
-            <button type="submit" name="index" value="5" id="display2">Lektion5.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="3" id="display1">Lektion3</button>
+            <button type="submit" name="index" value="5" id="display2">Lektion5</button>
         </form>
+        </div>
 
 
         <script>

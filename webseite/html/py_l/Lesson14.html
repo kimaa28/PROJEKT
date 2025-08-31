@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -146,7 +149,7 @@ Programmstrukturen.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Elternklasse
+            <p class="anw1"># Elternklasse
 class Fahrzeug:
     def __init__(self, marke, modell, jahr):
         self.marke = marke
@@ -237,14 +240,14 @@ print(f"Anzahl Tiere: {Tier.get_anzahl()}")</p>
           
         </div>
         <div class="anw">
-            <p >In der letzten Lektion lernst du erweiterte Python-Konzepte und Best Practices.</p>
+            <p class="anw1">In der letzten Lektion lernst du erweiterte Python-Konzepte und Best Practices.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="13" id="display1">Lesson13.html</button>
-            <button type="submit" name=index_p value="15" id="display2">Lesson15.html</button>
+            <button type="submit" name=index_p value="13" id="display1">Lektion13</button>
+            <button type="submit" name=index_p value="15" id="display2">Lektion15</button>
         </form>
 
         <script>

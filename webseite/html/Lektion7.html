@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 7: Listen erstellen</h1>
@@ -133,7 +136,7 @@ CSS kann das Aussehen von Listen vollst&#xE4;ndig anpassen.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;Listen in HTML&#x3C;/title&#x3E;
@@ -186,7 +189,7 @@ CSS kann das Aussehen von Listen vollst&#xE4;ndig anpassen.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 &#x3C;ul&#x3E; f&#xFC;r Listen ohne bestimmte Reihenfolge (Shopping-Listen, Features).
 &#x3C;ol&#x3E; f&#xFC;r Listen mit wichtiger Reihenfolge (Anleitungen, Rankings).
 Verschachtelte Listen erstellen Hierarchien durch Listen innerhalb von &#x3C;li&#x3E;-Elementen.
@@ -202,12 +205,13 @@ Listen k&#xF6;nnen mit CSS-Eigenschaften wie list-style-type angepasst werden.
         <div class="anw">
             <p id="anw1">In der nächsten Lektion lernst du die Grundlagen von CSS kennen.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="6" id="display1">Lektion6.html</button>
-            <button type="submit" name="index" value="8" id="display2">Lektion8.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="6" id="display1">Lektion6</button>
+            <button type="submit" name="index" value="8" id="display2">Lektion8</button>
         </form>
+        </div>
 
 
         <script>

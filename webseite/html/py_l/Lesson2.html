@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -143,7 +146,7 @@ Du schreibst die Variable in geschweifte Klammern {} innerhalb des Strings.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Verschiedene Datentypen
+            <p class="anw1"># Verschiedene Datentypen
 name = "Anna"              # String
 alter = 25                 # Integer  
 groesse = 1.75             # Float
@@ -174,14 +177,14 @@ print(f"Neues Alter: {alter}")</p>
           
         </div>
         <div class="anw">
-            <p >Als Nächstes lernst du grundlegende Operatoren kennen.</p>
+            <p class="anw1">Als Nächstes lernst du grundlegende Operatoren kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="1" id="display1">Lesson1.html</button>
-            <button type="submit" name=index_p value="3" id="display2">Lesson3.html</button>
+            <button type="submit" name=index_p value="1" id="display1">Lektion1</button>
+            <button type="submit" name=index_p value="3" id="display2">Lektion3</button>
         </form>
 
         <script>

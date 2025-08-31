@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 1: Was ist HTML?</h1>
@@ -133,7 +136,7 @@ Das Ziel von HTML ist es, die Bedeutung und Funktion des Inhalts zu definieren, 
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;html&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;Meine erste HTML-Seite&#x3C;/title&#x3E;
 &#x3C;/head&#x3E;
@@ -145,7 +148,7 @@ Das Ziel von HTML ist es, die Bedeutung und Funktion des Inhalts zu definieren, 
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 In diesem Beispiel beginnt die Datei mit einem &#x3C;html&#x3E;-Element, das alles umfasst.
 Der &#x3C;head&#x3E;-Teil enthält den Titel der Seite (sichtbar im Browser-Tab),
 und im &#x3C;body&#x3E; steht alles, was der Benutzer direkt sieht. Jede HTML-Seite sollte mit &#x3C;!DOCTYPE html&#x3E; starten,
@@ -160,12 +163,13 @@ um dem Browser zu sagen, dass es sich um ein HTML5-Dokument handelt.
         <div class="anw">
             <p id="anw1">In der nächsten Lektion geht es um den Aufbau einer HTML-Seite.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="0" id="display1">Lektion0.html</button>
-            <button type="submit" name="index" value="2" id="display2">Lektion2.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="0" id="display1">Lektion0</button>
+            <button type="submit" name="index" value="2" id="display2">Lektion2</button>
         </form>
+        </div>
 
 
         <script>

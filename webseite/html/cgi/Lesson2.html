@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1">#!/usr/bin/perl use strict; use warnings; use URI::Escape; print &#x22;Content-Type: text/html
+            <p class="anw1">#!/usr/bin/perl use strict; use warnings; use URI::Escape; print &#x22;Content-Type: text/html
 
 &#x22;; # Formulardaten lesen my $form_data; if ($ENV{&#x27;REQUEST_METHOD&#x27;} eq &#x27;POST&#x27;) { read(STDIN, $form_data, $ENV{&#x27;CONTENT_LENGTH&#x27;}); } else { $form_data = $ENV{&#x27;QUERY_STRING&#x27;}; } # Daten parsen my %form_fields; foreach my $pair (split(/&#x26;/, $form_data)) { my ($name, $value) = split(/=/, $pair); $value = uri_unescape($value); $value =~ s/\+/ /g; # + durch Leerzeichen ersetzen $form_fields{$name} = $value; } # HTML-Ausgabe print &#x22;&#x3C;html&#x3E;&#x3C;head&#x3E;&#x3C;title&#x3E;Formulardaten&#x3C;/title&#x3E;&#x3C;/head&#x3E;&#x3C;body&#x3E;
 &#x22;; print &#x22;&#x3C;h1&#x3E;Empfangene Daten:&#x3C;/h1&#x3E;
@@ -143,14 +146,14 @@
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Umgebungsvariablen und HTTP-Header kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_c value="1" id="display1">Lesson1.html</button>
-            <button type="submit" name=index_c value="3" id="display2">Lesson3.html</button>
+            <button type="submit" name=index_c value="1" id="display1">Lektion1</button>
+            <button type="submit" name=index_c value="3" id="display2">Lektion3</button>
         </form>
 
         <script>

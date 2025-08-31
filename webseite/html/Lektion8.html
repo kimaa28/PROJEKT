@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 8: Einführung in CSS</h1>
@@ -133,7 +136,7 @@ CSS macht Webseiten erst richtig schön und benutzerfreundlich.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;CSS Grundlagen&#x3C;/title&#x3E;
@@ -193,7 +196,7 @@ CSS macht Webseiten erst richtig schön und benutzerfreundlich.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 Selektoren bestimmen, welche Elemente gestylt werden: Elementname (h1), Klasse (.highlight), ID (#special-text).
 Deklarationen bestehen aus Eigenschaft und Wert, getrennt durch einen Doppelpunkt.
 Internal CSS steht im &#x3C;style&#x3E;-Tag im <head>, External CSS in separaten .css-Dateien.
@@ -209,12 +212,13 @@ Die Kaskadierung löst Konflikte zwischen verschiedenen CSS-Regeln.
         <div class="anw">
             <p id="anw1">In der nächsten Lektion vertiefst du dein Wissen über CSS-Selektoren.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="7" id="display1">Lektion7.html</button>
-            <button type="submit" name="index" value="9" id="display2">Lektion9.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="7" id="display1">Lektion7</button>
+            <button type="submit" name="index" value="9" id="display2">Lektion9</button>
         </form>
+        </div>
 
 
         <script>

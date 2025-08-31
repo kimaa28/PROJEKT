@@ -75,6 +75,7 @@ index_python = form.getvalue("python")
 index_cgi = form.getvalue("cgi")
 index_linux = form.getvalue("linux")
 index_tkinter = form.getvalue("tkinter")
+home= form.getvalue("zurück")
 index_list = {
     0: [index_html, index_h],
     1 : [index_python, index_p],
@@ -96,6 +97,10 @@ for key, value in index_list.items():
             redirect_url = link_list[key]
     else:
         pass
+if home:
+    redirect_url = f"http://127.0.0.1:8000/webseite/html/index.html?user={username}"
+
+
     
 if all(value is None for value in index_list.values()):
     index = 1

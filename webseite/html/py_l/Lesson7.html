@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -146,7 +149,7 @@ sowohl Index als auch Wert erhalten.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Liste erstellen
+            <p class="anw1"># Liste erstellen
 fruechte = ["Apfel", "Banane", "Orange", "Kiwi"]
 zahlen = [1, 3, 5, 7, 9]
 gemischt = ["Hallo", 42, 3.14, True]
@@ -192,14 +195,14 @@ print(f"Sortierte Zahlen: {zahlen}")</p>
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Dictionaries kennen - Datenstrukturen mit Schlüssel-Wert-Paaren.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Dictionaries kennen - Datenstrukturen mit Schlüssel-Wert-Paaren.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="6" id="display1">Lesson6.html</button>
-            <button type="submit" name=index_p value="8" id="display2">Lesson8.html</button>
+            <button type="submit" name=index_p value="6" id="display1">Lektion6</button>
+            <button type="submit" name=index_p value="8" id="display2">Lektion8</button>
         </form>
 
         <script>

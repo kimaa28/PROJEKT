@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1"># Netzwerk-Diagnose ping google.com # Host erreichbarkeit testen ping -c 4 192.168.1.1 # Nur 4 Pings senden traceroute google.com # Route zu Host verfolgen mtr google.com # Kombiniert ping und traceroute # Netzwerkverbindungen anzeigen netstat -tuln # TCP/UDP Listening Ports ss -tuln # Moderner Ersatz für netstat netstat -an | grep :80 # Wer hört auf Port 80 lsof -i :22 # Welcher Prozess nutzt Port 22 # Dateien herunterladen wget https://example.com/datei.zip # Datei herunterladen curl -O https://example.com/datei.zip # Mit curl herunterladen curl -X POST -d "key=value" http://api.example.com # API-Request curl -I https://example.com # Nur HTTP-Header anzeigen # SSH und Remote-Zugriff ssh user@192.168.1.100 # SSH-Verbindung aufbauen ssh -p 2222 user@server # Anderer Port als 22 scp datei.txt user@server:/home/user/ # Datei kopieren rsync -avz /local/dir/ user@server:/remote/dir/ # Verzeichnis synchronisieren # Firewall mit ufw ufw status # Firewall-Status anzeigen ufw enable # Firewall aktivieren ufw allow 22 # SSH-Port öffnen ufw allow from 192.168.1.0/24 # Nur bestimmtes Netzwerk ufw deny 80 # Port blockieren # DNS und Netzwerk-Tools dig google.com # DNS-Auflösung testen nslookup google.com # Alternative zu dig host google.com # Einfache DNS-Abfrage whois example.com # Domain-Informationen abfragen ifconfig # Netzwerkinterfaces anzeigen (veraltet) ip addr show # Moderne Alternative zu ifconfig</p>
+            <p class="anw1"># Netzwerk-Diagnose ping google.com # Host erreichbarkeit testen ping -c 4 192.168.1.1 # Nur 4 Pings senden traceroute google.com # Route zu Host verfolgen mtr google.com # Kombiniert ping und traceroute # Netzwerkverbindungen anzeigen netstat -tuln # TCP/UDP Listening Ports ss -tuln # Moderner Ersatz für netstat netstat -an | grep :80 # Wer hört auf Port 80 lsof -i :22 # Welcher Prozess nutzt Port 22 # Dateien herunterladen wget https://example.com/datei.zip # Datei herunterladen curl -O https://example.com/datei.zip # Mit curl herunterladen curl -X POST -d "key=value" http://api.example.com # API-Request curl -I https://example.com # Nur HTTP-Header anzeigen # SSH und Remote-Zugriff ssh user@192.168.1.100 # SSH-Verbindung aufbauen ssh -p 2222 user@server # Anderer Port als 22 scp datei.txt user@server:/home/user/ # Datei kopieren rsync -avz /local/dir/ user@server:/remote/dir/ # Verzeichnis synchronisieren # Firewall mit ufw ufw status # Firewall-Status anzeigen ufw enable # Firewall aktivieren ufw allow 22 # SSH-Port öffnen ufw allow from 192.168.1.0/24 # Nur bestimmtes Netzwerk ufw deny 80 # Port blockieren # DNS und Netzwerk-Tools dig google.com # DNS-Auflösung testen nslookup google.com # Alternative zu dig host google.com # Einfache DNS-Abfrage whois example.com # Domain-Informationen abfragen ifconfig # Netzwerkinterfaces anzeigen (veraltet) ip addr show # Moderne Alternative zu ifconfig</p>
 
         </div>
         <div class="anw">
@@ -136,14 +139,14 @@
           
         </div>
         <div class="anw">
-            <p >In der letzten Lektion lernst du Skripting und Automatisierung.</p>
+            <p class="anw1">In der letzten Lektion lernst du Skripting und Automatisierung.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_l value="4" id="display1">Lesson4.html</button>
-            <button type="submit" name=index_l value="6" id="display2">Lesson6.html</button>
+            <button type="submit" name=index_l value="4" id="display1">Lektion4</button>
+            <button type="submit" name=index_l value="6" id="display2">Lektion6</button>
         </form>
 
         <script>

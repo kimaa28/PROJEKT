@@ -99,7 +99,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             
         
         }}
-        #buttons {{
+        #bottons {{
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -134,15 +134,18 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
         #text{{
             font-size:23px;
         }}
-        #anw1{{
-         font-size:18px;
+        .anw1{{
+         font-size:19px;
         }}
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>{haupttitel}</h1>
@@ -151,11 +154,11 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">{code}</pre>
+            word-wrap: break-word;" class="anw1">{code}</pre>
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>{beschreibung}</p>
+            <p class="anw1">{beschreibung}</p>
         </div>
         <div id="img">
             <img src="{img_1}" alt="Placeholder Image" style="width:100%; height:auto; border-radius:10px;">
@@ -165,12 +168,13 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
         <div class="anw">
             <p id="anw1">{anw}</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
             <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
         </form>
+        </div>
 
 
         <script>
@@ -194,9 +198,12 @@ titel_list = [titel.titel_lesson for titel in html_list]
 def site_name(id):
     return f"""Lektion{id}.html"""
 
+def label(id):
+    return f"Lektion{id}"
+
 # create all html courses
 for index, (titel, ele) in enumerate(zip(titel_list, html_list)):
-    create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, site_name(ele.index-1), site_name(ele.index+1), ele.index ))
+    create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, label(ele.index-1), label(ele.index+1), ele.index ))
 
 #python modul for python courses
 def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
@@ -307,16 +314,19 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
             background-color: #2a72b6;
         }}
         #text{{
-            font-size: 23px;
+            font-size: 22px;
          }}
-        #anw1{{
+        .anw1{{
          font-size:20px;
         }}
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -325,7 +335,7 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
         </div>
 
         <div id="content1">
-            <p id="anw1">{code}</p>
+            <p class="anw1">{code}</p>
 
         </div>
         <div class="anw">
@@ -338,7 +348,7 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
           
         </div>
         <div class="anw">
-            <p >{anw}</p>
+            <p class="anw1">{anw}</p>
         </div>
 
        
@@ -398,7 +408,9 @@ courses_dict = {
 
 }
 
+
+
 for key, value in courses_dict.items():
     for index, (titel, ele) in enumerate(zip(value["titel"], value["class"])):
-        create_html_file( value["pfad"], courses_site_name(ele.index), courses(titel, ele.titel_lesson, ele.body, ele.code, ele.img, ele.next_anw, courses_site_name(ele.index-1), courses_site_name(ele.index+1), value["id"],ele.index))
+        create_html_file( value["pfad"], courses_site_name(ele.index), courses(titel, ele.titel_lesson, ele.body, ele.code, ele.img, ele.next_anw, label(ele.index-1), label(ele.index+1), value["id"],ele.index))
 # i am proud of me, just one line to resume 3 workingshours 

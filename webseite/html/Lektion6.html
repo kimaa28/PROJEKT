@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 6: Bilder einbinden</h1>
@@ -132,7 +135,7 @@ Bildformate wie WebP bieten bessere Kompression als klassische JPG/PNG.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;Bilder einbinden&#x3C;/title&#x3E;
@@ -163,7 +166,7 @@ Bildformate wie WebP bieten bessere Kompression als klassische JPG/PNG.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 Das alt-Attribut ist nicht optional - es macht Bilder für sehbehinderte Menschen zugänglich.
 Bei dekorativen Bildern kann alt="" (leer) verwendet werden.
 Das &#x3C;picture&#x3E;-Element lädt je nach Bildschirmgröße unterschiedliche Bilder.
@@ -179,12 +182,13 @@ Bilder in Links werden automatisch mit einem blauen Rahmen versehen (kann per CS
         <div class="anw">
             <p id="anw1">Als Nächstes lernst du, wie Listen zur Strukturierung von Inhalten verwendet werden.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="5" id="display1">Lektion5.html</button>
-            <button type="submit" name="index" value="7" id="display2">Lektion7.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="5" id="display1">Lektion5</button>
+            <button type="submit" name="index" value="7" id="display2">Lektion7</button>
         </form>
+        </div>
 
 
         <script>

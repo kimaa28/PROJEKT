@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 5: Links und Navigation</h1>
@@ -132,7 +135,7 @@ Gute Linktexte sind beschreibend und aussagekräftig für die Barrierefreiheit.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;Links und Navigation&#x3C;/title&#x3E;
@@ -164,7 +167,7 @@ Gute Linktexte sind beschreibend und aussagekräftig für die Barrierefreiheit.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 Das &#x3C;nav&#x3E;-Element kennzeichnet Navigationsbereiche für bessere Semantik.
 target="_blank" öffnet Links in einem neuen Tab/Fenster.
 Anker-Links (#) springen zu Elementen mit entsprechender ID auf derselben Seite.
@@ -180,12 +183,13 @@ Relative Links sind praktisch für interne Seitenstrukturen.
         <div class="anw">
             <p id="anw1">In der nächsten Lektion lernst du, wie Bilder in Webseiten eingebunden werden.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="4" id="display1">Lektion4.html</button>
-            <button type="submit" name="index" value="6" id="display2">Lektion6.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="4" id="display1">Lektion4</button>
+            <button type="submit" name="index" value="6" id="display2">Lektion6</button>
         </form>
+        </div>
 
 
         <script>

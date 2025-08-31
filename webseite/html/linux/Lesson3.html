@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1"># Dateiinhalt anzeigen cat datei.txt # Gesamten Inhalt anzeigen less datei.txt # Seitenweise anzeigen (q zum Beenden) head -n 10 datei.txt # Erste 10 Zeilen anzeigen tail -n 5 datei.txt # Letzte 5 Zeilen anzeigen tail -f logfile.log # Datei in Echtzeit verfolgen # Text suchen mit grep grep "fehler" logfile.log # Nach "fehler" suchen grep -i "ERROR" *.log # Groß-/Kleinschreibung ignorieren grep -r "TODO" . # Rekursiv in allen Dateien suchen grep -n "function" script.py # Mit Zeilennummern anzeigen # Dateien finden find /home -name "*.txt" # Alle .txt Dateien finden find . -size +1M # Dateien größer als 1MB find /var/log -mtime -7 # In letzten 7 Tagen geändert find . -type f -exec chmod 644 {} \; # Aktion auf gefundene Dateien # Pipes und Textverarbeitung cat datei.txt | grep "wichtig" | sort # Suchen und sortieren ps aux | grep python | wc -l # Python-Prozesse zählen ls -la | sort -k5 -n # Nach Dateigröße sortieren cut -d':' -f1 /etc/passwd | sort # Benutzernamen extrahieren history | tail -20 | grep cd # Letzte cd-Befehle finden</p>
+            <p class="anw1"># Dateiinhalt anzeigen cat datei.txt # Gesamten Inhalt anzeigen less datei.txt # Seitenweise anzeigen (q zum Beenden) head -n 10 datei.txt # Erste 10 Zeilen anzeigen tail -n 5 datei.txt # Letzte 5 Zeilen anzeigen tail -f logfile.log # Datei in Echtzeit verfolgen # Text suchen mit grep grep "fehler" logfile.log # Nach "fehler" suchen grep -i "ERROR" *.log # Groß-/Kleinschreibung ignorieren grep -r "TODO" . # Rekursiv in allen Dateien suchen grep -n "function" script.py # Mit Zeilennummern anzeigen # Dateien finden find /home -name "*.txt" # Alle .txt Dateien finden find . -size +1M # Dateien größer als 1MB find /var/log -mtime -7 # In letzten 7 Tagen geändert find . -type f -exec chmod 644 {} \; # Aktion auf gefundene Dateien # Pipes und Textverarbeitung cat datei.txt | grep "wichtig" | sort # Suchen und sortieren ps aux | grep python | wc -l # Python-Prozesse zählen ls -la | sort -k5 -n # Nach Dateigröße sortieren cut -d':' -f1 /etc/passwd | sort # Benutzernamen extrahieren history | tail -20 | grep cd # Letzte cd-Befehle finden</p>
 
         </div>
         <div class="anw">
@@ -136,14 +139,14 @@
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Prozess- und Systemverwaltung.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Prozess- und Systemverwaltung.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_l value="2" id="display1">Lesson2.html</button>
-            <button type="submit" name=index_l value="4" id="display2">Lesson4.html</button>
+            <button type="submit" name=index_l value="2" id="display1">Lektion2</button>
+            <button type="submit" name=index_l value="4" id="display2">Lektion4</button>
         </form>
 
         <script>

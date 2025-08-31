@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 10: CSS Box-Model und Layout</h1>
@@ -132,7 +135,7 @@ Moderne Layout-Methoden wie Flexbox und CSS Grid revolutionieren das Webdesign.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;title&#x3E;CSS Box-Model&#x3C;/title&#x3E;
@@ -248,7 +251,7 @@ Moderne Layout-Methoden wie Flexbox und CSS Grid revolutionieren das Webdesign.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 box-sizing: border-box macht width/height-Berechnungen vorhersagbarer.
 Flexbox ist ideal für eindimensionale Layouts (Reihen oder Spalten).
 CSS Grid eignet sich perfekt für zweidimensionale Layouts.
@@ -265,12 +268,13 @@ gap-Eigenschaft erstellt Abstände zwischen Flex- oder Grid-Items.
         <div class="anw">
             <p id="anw1">In der letzten Lektion lernst du responsive Design und erweiterte CSS-Techniken.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="9" id="display1">Lektion9.html</button>
-            <button type="submit" name="index" value="11" id="display2">Lektion11.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="9" id="display1">Lektion9</button>
+            <button type="submit" name="index" value="11" id="display2">Lektion11</button>
         </form>
+        </div>
 
 
         <script>

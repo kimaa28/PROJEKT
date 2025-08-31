@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -146,7 +149,7 @@ Statt mysteriösen Fehlermeldungen bekommen Benutzer verständliche Hinweise.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Einfache Fehlerbehandlung
+            <p class="anw1"># Einfache Fehlerbehandlung
 while True:
     try:
         zahl = int(input("Gib eine Zahl ein: "))
@@ -217,14 +220,14 @@ except ValueError as e:
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Module und Bibliotheken kennen.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Module und Bibliotheken kennen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="10" id="display1">Lesson10.html</button>
-            <button type="submit" name=index_p value="12" id="display2">Lesson12.html</button>
+            <button type="submit" name=index_p value="10" id="display1">Lektion10</button>
+            <button type="submit" name=index_p value="12" id="display2">Lektion12</button>
         </form>
 
         <script>

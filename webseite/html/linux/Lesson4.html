@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1"># Prozesse anzeigen und verwalten ps aux # Alle laufenden Prozesse anzeigen ps -ef | grep apache # Nach Apache-Prozessen suchen top # Interaktive Prozessanzeige (q zum Beenden) htop # Verbesserte Version von top (falls installiert) # Prozesse beenden kill 1234 # Prozess mit PID 1234 beenden kill -9 1234 # Prozess forciert beenden (SIGKILL) killall firefox # Alle Firefox-Prozesse beenden pkill -f "python script.py" # Prozesse nach Befehlszeile beenden # Hintergrundjobs python script.py & # Skript im Hintergrund starten jobs # Aktuelle Hintergrundjobs anzeigen fg %1 # Job Nummer 1 in Vordergrund bringen bg %2 # Job Nummer 2 im Hintergrund weiterführen nohup long_running_script.sh & # Prozess läuft auch nach Logout weiter # Systemressourcen überwachen free -h # Speicherverbrauch (human readable) df -h # Festplattenspeicher anzeigen du -sh /var/log # Verzeichnisgröße anzeigen uptime # Systemlaufzeit und Load anzeigen iostat # I/O-Statistiken (falls installiert) # Services verwalten (systemd) systemctl status apache2 # Service-Status prüfen systemctl start apache2 # Service starten systemctl stop apache2 # Service stoppen systemctl restart apache2 # Service neu starten systemctl enable apache2 # Service beim Boot aktivieren # Umgebungsvariablen env # Alle Umgebungsvariablen anzeigen echo $PATH # PATH-Variable anzeigen export MYVAR="Hallo Welt" # Neue Variable setzen</p>
+            <p class="anw1"># Prozesse anzeigen und verwalten ps aux # Alle laufenden Prozesse anzeigen ps -ef | grep apache # Nach Apache-Prozessen suchen top # Interaktive Prozessanzeige (q zum Beenden) htop # Verbesserte Version von top (falls installiert) # Prozesse beenden kill 1234 # Prozess mit PID 1234 beenden kill -9 1234 # Prozess forciert beenden (SIGKILL) killall firefox # Alle Firefox-Prozesse beenden pkill -f "python script.py" # Prozesse nach Befehlszeile beenden # Hintergrundjobs python script.py & # Skript im Hintergrund starten jobs # Aktuelle Hintergrundjobs anzeigen fg %1 # Job Nummer 1 in Vordergrund bringen bg %2 # Job Nummer 2 im Hintergrund weiterführen nohup long_running_script.sh & # Prozess läuft auch nach Logout weiter # Systemressourcen überwachen free -h # Speicherverbrauch (human readable) df -h # Festplattenspeicher anzeigen du -sh /var/log # Verzeichnisgröße anzeigen uptime # Systemlaufzeit und Load anzeigen iostat # I/O-Statistiken (falls installiert) # Services verwalten (systemd) systemctl status apache2 # Service-Status prüfen systemctl start apache2 # Service starten systemctl stop apache2 # Service stoppen systemctl restart apache2 # Service neu starten systemctl enable apache2 # Service beim Boot aktivieren # Umgebungsvariablen env # Alle Umgebungsvariablen anzeigen echo $PATH # PATH-Variable anzeigen export MYVAR="Hallo Welt" # Neue Variable setzen</p>
 
         </div>
         <div class="anw">
@@ -136,14 +139,14 @@
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Netzwerk-Grundlagen in Linux.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Netzwerk-Grundlagen in Linux.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_l value="3" id="display1">Lesson3.html</button>
-            <button type="submit" name=index_l value="5" id="display2">Lesson5.html</button>
+            <button type="submit" name=index_l value="3" id="display1">Lektion3</button>
+            <button type="submit" name=index_l value="5" id="display2">Lektion5</button>
         </form>
 
         <script>

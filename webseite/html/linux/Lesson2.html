@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1"># Dateien und Verzeichnisse erstellen touch neue_datei.txt # Leere Datei erstellen mkdir neues_verzeichnis # Verzeichnis erstellen mkdir -p pfad/zu/neuem/verzeichnis # Verschachtelte Verzeichnisse echo "Hallo Linux" > datei.txt # Text in Datei schreiben # Kopieren und Verschieben cp datei.txt kopie.txt # Datei kopieren cp -r verzeichnis verzeichnis_kopie # Verzeichnis rekursiv kopieren mv alte_datei.txt neue_datei.txt # Datei umbenennen mv datei.txt /home/user/ # Datei verschieben # Löschen rm datei.txt # Datei löschen rm -r verzeichnis # Verzeichnis rekursiv löschen rm -rf verzeichnis # Forciert löschen (gefährlich!) # Wildcards verwenden ls *.txt # Alle .txt Dateien anzeigen cp *.pdf /backup/ # Alle PDF-Dateien kopieren # Dateiberechtigungen ändern chmod 755 script.sh # Ausführbar für Besitzer, lesbar für alle chmod -R 644 verzeichnis/ # Rekursiv auf Verzeichnis anwenden</p>
+            <p class="anw1"># Dateien und Verzeichnisse erstellen touch neue_datei.txt # Leere Datei erstellen mkdir neues_verzeichnis # Verzeichnis erstellen mkdir -p pfad/zu/neuem/verzeichnis # Verschachtelte Verzeichnisse echo "Hallo Linux" > datei.txt # Text in Datei schreiben # Kopieren und Verschieben cp datei.txt kopie.txt # Datei kopieren cp -r verzeichnis verzeichnis_kopie # Verzeichnis rekursiv kopieren mv alte_datei.txt neue_datei.txt # Datei umbenennen mv datei.txt /home/user/ # Datei verschieben # Löschen rm datei.txt # Datei löschen rm -r verzeichnis # Verzeichnis rekursiv löschen rm -rf verzeichnis # Forciert löschen (gefährlich!) # Wildcards verwenden ls *.txt # Alle .txt Dateien anzeigen cp *.pdf /backup/ # Alle PDF-Dateien kopieren # Dateiberechtigungen ändern chmod 755 script.sh # Ausführbar für Besitzer, lesbar für alle chmod -R 644 verzeichnis/ # Rekursiv auf Verzeichnis anwenden</p>
 
         </div>
         <div class="anw">
@@ -136,14 +139,14 @@
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Textdateien zu bearbeiten und zu durchsuchen.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Textdateien zu bearbeiten und zu durchsuchen.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_l value="1" id="display1">Lesson1.html</button>
-            <button type="submit" name=index_l value="3" id="display2">Lesson3.html</button>
+            <button type="submit" name=index_l value="1" id="display1">Lektion1</button>
+            <button type="submit" name=index_l value="3" id="display2">Lektion3</button>
         </form>
 
         <script>

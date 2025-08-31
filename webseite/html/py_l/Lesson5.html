@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -143,7 +146,7 @@ in einer Liste enthalten ist mit dem in-Operator.
         </div>
 
         <div id="content1">
-            <p id="anw1"># Einfache if-else Anweisung
+            <p class="anw1"># Einfache if-else Anweisung
 alter = int(input("Dein Alter: "))
 
 if alter >= 18:
@@ -191,14 +194,14 @@ else:
           
         </div>
         <div class="anw">
-            <p >In der nächsten Lektion lernst du Schleifen kennen - for und while.</p>
+            <p class="anw1">In der nächsten Lektion lernst du Schleifen kennen - for und while.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_p value="4" id="display1">Lesson4.html</button>
-            <button type="submit" name=index_p value="6" id="display2">Lesson6.html</button>
+            <button type="submit" name=index_p value="4" id="display1">Lektion4</button>
+            <button type="submit" name=index_p value="6" id="display2">Lektion6</button>
         </form>
 
         <script>

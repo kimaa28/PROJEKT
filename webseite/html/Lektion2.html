@@ -72,7 +72,7 @@
             
         
         }
-        #buttons {
+        #bottons {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -107,15 +107,18 @@
         #text{
             font-size:23px;
         }
-        #anw1{
-         font-size:18px;
+        .anw1{
+         font-size:19px;
         }
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first">⇦ Zurück zum Kurs</button>
+        <form>
     </div>
+
     <section id="section1">
         <div id="content">
             <h1>Lektion 2: Grundstruktur von HTML</h1>
@@ -132,7 +135,7 @@ Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
 
         <div id="content1">
             <pre style=" white-space: pre-wrap;
-            word-wrap: break-word;">&#x3C;!DOCTYPE html&#x3E;
+            word-wrap: break-word;" class="anw1">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html lang=&#x22;de&#x22;&#x3E;
 &#x3C;head&#x3E;
     &#x3C;meta charset=&#x22;UTF-8&#x22;&#x3E;
@@ -147,7 +150,7 @@ Hier werden wichtige Informationen für Browser und Suchmaschinen hinterlegt.
         </div>
         <div class="anw">
             <p>Bildbeschreibung des beispiel:</p>
-            <p>
+            <p class="anw1">
 Der DOCTYPE-Tag zeigt dem Browser, dass es sich um HTML5 handelt.
 Das lang-Attribut hilft Screenreadern und Suchmaschinen bei der Spracherkennung.
 Meta-Tags definieren Zeichencodierung und Responsive-Verhalten.
@@ -162,12 +165,13 @@ Der viewport-Tag ist besonders wichtig für mobile Geräte.
         <div class="anw">
             <p id="anw1">Als Nächstes lernst du, wie man Text mit Überschriften und Absätzen gliedert.</p>
         </div>
-
-       <form action="../../cgi-bin/gear_cgi.py" method="post" id="buttons">
-            <input type="hidden" name="user" id="userField">
-            <button type="submit" name="index" value="1" id="display1">Lektion1.html</button>
-            <button type="submit" name="index" value="3" id="display2">Lektion3.html</button>
+        <div id="bottons">
+            <form action="../../cgi-bin/gear_cgi.py" method="post" >
+                <input type="hidden" name="user" id="userField">
+                 <button type="submit" name="index" value="1" id="display1">Lektion1</button>
+            <button type="submit" name="index" value="3" id="display2">Lektion3</button>
         </form>
+        </div>
 
 
         <script>

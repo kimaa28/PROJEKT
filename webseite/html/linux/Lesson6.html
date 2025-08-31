@@ -105,16 +105,19 @@
             background-color: #2a72b6;
         }
         #text{
-            font-size: 23px;
+            font-size: 22px;
          }
-        #anw1{
+        .anw1{
          font-size:20px;
         }
+   
     </style>
 </head>
 <body>
-    <div id="back_to">
-    <p> <a> ⇦ Zurück zum Kurs</a></p>
+    <div  id="back_to">
+        <form action="../../cgi-bin/gear_cgi.py" method="post">
+            <button name="zurück" value="first" style="padding: 10px; font-size:18px;">⇦ Zurück zum Kurs</button>
+        </form>
     </div>
     <section id="section1">
         <div id="content">
@@ -123,7 +126,7 @@
         </div>
 
         <div id="content1">
-            <p id="anw1">#!/bin/bash # Backup-Skript Beispiel - Speichere als backup.sh # Variablen definieren SOURCE_DIR="/home/user/documents" BACKUP_DIR="/backup/$(date +%Y%m%d)" LOG_FILE="/var/log/backup.log" # Funktion für Logging log_message() { echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE } # Backup-Verzeichnis erstellen if [ ! -d "$BACKUP_DIR" ]; then mkdir -p "$BACKUP_DIR" log_message "Backup-Verzeichnis erstellt: $BACKUP_DIR" fi # Backup durchführen log_message "Backup gestartet von $SOURCE_DIR nach $BACKUP_DIR" if rsync -av "$SOURCE_DIR/" "$BACKUP_DIR/"; then log_message "Backup erfolgreich abgeschlossen" echo "Backup erfolgreich!" else log_message "FEHLER: Backup fehlgeschlagen" echo "Backup fehlgeschlagen!" >&2 exit 1 fi # Alte Backups löschen (älter als 30 Tage) find /backup -type d -name "20*" -mtime +30 -exec rm -rf {} + 2>/dev/null log_message "Alte Backups bereinigt" # Beispiel Crontab-Einträge (mit 'crontab -e' hinzufügen): # 0 2 * * * /home/user/backup.sh # Täglich um 2 Uhr # */15 * * * * /usr/bin/system_check.sh # Alle 15 Minuten # 0 0 * * 0 /home/user/weekly_cleanup.sh # Sonntags um Mitternacht # Erweiterte Bash-Features for file in *.log; do echo "Verarbeite: $file" gzip "$file" # Komprimieren done # Parameter verarbeiten if [ $# -eq 0 ]; then echo "Verwendung: $0 <Quellverzeichnis>" exit 1 fi echo "Skript: $0 wurde mit $# Parametern aufgerufen" echo "Alle Parameter: $@" </p>
+            <p class="anw1">#!/bin/bash # Backup-Skript Beispiel - Speichere als backup.sh # Variablen definieren SOURCE_DIR="/home/user/documents" BACKUP_DIR="/backup/$(date +%Y%m%d)" LOG_FILE="/var/log/backup.log" # Funktion für Logging log_message() { echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE } # Backup-Verzeichnis erstellen if [ ! -d "$BACKUP_DIR" ]; then mkdir -p "$BACKUP_DIR" log_message "Backup-Verzeichnis erstellt: $BACKUP_DIR" fi # Backup durchführen log_message "Backup gestartet von $SOURCE_DIR nach $BACKUP_DIR" if rsync -av "$SOURCE_DIR/" "$BACKUP_DIR/"; then log_message "Backup erfolgreich abgeschlossen" echo "Backup erfolgreich!" else log_message "FEHLER: Backup fehlgeschlagen" echo "Backup fehlgeschlagen!" >&2 exit 1 fi # Alte Backups löschen (älter als 30 Tage) find /backup -type d -name "20*" -mtime +30 -exec rm -rf {} + 2>/dev/null log_message "Alte Backups bereinigt" # Beispiel Crontab-Einträge (mit 'crontab -e' hinzufügen): # 0 2 * * * /home/user/backup.sh # Täglich um 2 Uhr # */15 * * * * /usr/bin/system_check.sh # Alle 15 Minuten # 0 0 * * 0 /home/user/weekly_cleanup.sh # Sonntags um Mitternacht # Erweiterte Bash-Features for file in *.log; do echo "Verarbeite: $file" gzip "$file" # Komprimieren done # Parameter verarbeiten if [ $# -eq 0 ]; then echo "Verwendung: $0 <Quellverzeichnis>" exit 1 fi echo "Skript: $0 wurde mit $# Parametern aufgerufen" echo "Alle Parameter: $@" </p>
 
         </div>
         <div class="anw">
@@ -136,14 +139,14 @@
           
         </div>
         <div class="anw">
-            <p >Herzlichen Glückwunsch! Du hast alle Linux-Grundlagen gemeistert.</p>
+            <p class="anw1">Herzlichen Glückwunsch! Du hast alle Linux-Grundlagen gemeistert.</p>
         </div>
 
        
         <form action="../../../cgi-bin/gear_cgi.py" method="post" id="buttons">
             <input type="hidden" name="user" id="userField">
-            <button type="submit" name=index_l value="5" id="display1">Lesson5.html</button>
-            <button type="submit" name=index_l value="7" id="display2">Lesson7.html</button>
+            <button type="submit" name=index_l value="5" id="display1">Lektion5</button>
+            <button type="submit" name=index_l value="7" id="display2">Lektion7</button>
         </form>
 
         <script>
