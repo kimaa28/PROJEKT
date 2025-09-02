@@ -12,7 +12,7 @@
         "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
     },
     "jordan": {
-        "passwort": "b4212b26bf87cfb10a77081ccfaa582f66b9f6923e60a8c23eba46d60885db86",
+        "passwort": "113fb14c5407f60c61d6e32009683b5ee449b3c545f7d6874b90c3d8a4075122",
         "email": "jordan@.com",
         "sex": "male",
         "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4",
@@ -62,7 +62,25 @@
             ]
         },
         "Current": {
-            "cgi": "lektion: 5"
+            "linux": "lektion: 4"
+        }
+    },
+    "jordank": {
+        "passwort": "113fb14c5407f60c61d6e32009683b5ee449b3c545f7d6874b90c3d8a4075122",
+        "email": "kitiojordan28@gmail.com",
+        "sex": "helicopther",
+        "secret_code": "b6bf85335fa968b4aaa3bee36388a47d3cdde4699c69375b1b6772323a29f2d8",
+        "Done": {
+            "html": [],
+            "python": [],
+            "tkinter": [],
+            "cgi": [],
+            "linux": [
+                1
+            ]
+        },
+        "Current": {
+            "linux": "lektion: 2"
         }
     }
 }

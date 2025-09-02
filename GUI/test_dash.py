@@ -138,7 +138,7 @@ class hauptpage:
         self.value = []
         for value in self.passlib.values():
             self.value.append(value["email"])
-        print(self.value)
+        
 
         self.register["bar"].stop()
         if not all([uservar, passvar, emailvar, sexvar, secret_codevar]):
@@ -202,7 +202,7 @@ class hauptpage:
             raise_msg.configure(text="Jetzt können sie den neuen passwort eingeben", text_color="green")
             self.reset["reset"].configure(state="normal")
             self.reset["check"].configure(state="disabled")
-            self._delete_re()
+            
      # reset the informations if the secret code username and email correct else await       
     def _load_check(self):
         bar = self.reset["bar"]
@@ -219,7 +219,7 @@ class hauptpage:
         if not passvar :
             raise_msg.configure(text="Prüfen Sie zuerst ihre Informationen", text_color="red")
             self._delete_re()
-        elif passvar != second_pass or len(passvar) < 8 or passvar in self.passwort_list :
+        elif passvar != second_pass or len(passvar) < 8 or passvar in self.passwort_list:
             raise_msg.configure(text="passwort unterschiedlich or zu schwach", text_color="red")
             self._delete_re()
         else:
@@ -381,10 +381,19 @@ class hauptpage:
         
         # TODO: an explicite description from every quick access course and a button 
         # title from this frame
+    
+        
+        if "Done" not in self.passlib[self.uservar.get()]:
+            self.passlib[self.uservar.get()]["Done"] = {"html": [], "python": [], "tkinter": [], "cgi": [], "linux": []}
+        if "Current" not in self.passlib[self.uservar.get()]:
+            self.passlib[self.uservar.get()]["Current"] = {"None": 0}
+
         self.link = self.passlib[self.uservar.get()]["Done"]
         self.progress = 0
         for key, value in self.link.items():
             self.progress = self.progress + len(value)
+
+        self.percent = int((self.progress / 47)*100)
 
         self.percent = int((self.progress / 47)*100)
 
@@ -450,18 +459,22 @@ class hauptpage:
         self.function = {}
         for index, (img, titel, about, tutor, url, key, link) in enumerate(zip(self.courses_image, self.courses_titel, self.courses_about, self.courses_tutor, self.urls_path, self.keys, self.tutor_link)):
             try:
-                lesson = self.link[key][-1]
+                if self.link[key] != 0:
+                    lesson = self.link[key][-1]
+                else:
+                    lesson = 0
             except IndexError:
                 lesson = 1
                 
             
             def func(pfad=url, num=lesson):
                 web.open(f"http://127.0.0.1:8000/webseite/html/{pfad}{num}.html?user={self.uservar.get()}")
-                print()
+
                
             def open_link(L=link):
-                web.open(L)
                 print(L)
+                web.open(L)
+                
                 
             self.function[index] = func 
             self.function[key] = open_link   
