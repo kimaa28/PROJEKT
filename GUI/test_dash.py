@@ -233,7 +233,7 @@ class hauptpage:
 
 
 
-    # To make it faster and easier, I built both of my apps (login and dashboard) into a single class so that I can access user informations on json  more quickly.
+    # To make it faster and easier, I built both of my apps (login and dashboard) into a single class so that I can access user informations on json  more quickly. but the normal version of my app ist on test.py
     
     def _create_daschboard(self):
          # left frame for Menu and info
@@ -272,7 +272,7 @@ class hauptpage:
 
         # set the widht of my tho frame 
     def _set_frame_width(self):
-        height_app = self.daschboar.winfo_height()
+        
         width_app= self.daschboar.winfo_width()
         width_l = width_app / 4
         width_r = width_app - width_l
@@ -524,7 +524,7 @@ class hauptpage:
             button_tutor.grid(row=0, column=1, padx=5)
             frame4 = ctk.CTkFrame(frame2, fg_color=frame2.cget("fg_color"))
             frame4.pack(fill="x")
-            button_start = ctk.CTkButton(frame4, text=f"Start Course{index}", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
+            button_start = ctk.CTkButton(frame4, text=f"Start Course", text_color="white", fg_color="#005f73", command=lambda: self.app.after(2000, start))
             button_start.pack(fill="x", padx=10, pady=5, side="left", expand="true")
             button_continue = ctk.CTkButton(frame4, text="Continue", text_color="white", fg_color="#6f7d80", command= self.function[index])
             button_continue.pack(fill="x", padx=10, pady=5, side="right", expand="true")

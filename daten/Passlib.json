@@ -12,21 +12,39 @@
         "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
     },
     "jordan": {
-        "passwort": "113fb14c5407f60c61d6e32009683b5ee449b3c545f7d6874b90c3d8a4075122",
+        "passwort": "1f1a2e891fc5039fcf7b08dbc59f0bdcc398510295b7f7c3c99628cdf06b8ae9",
         "email": "jordan@.com",
         "sex": "male",
         "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4",
         "Done": {
-            "html": [],
+            "html": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+            ],
             "python": [
-                1
+                1,
+                2,
+                3
             ],
             "tkinter": [],
-            "cgi": [],
-            "linux": []
+            "cgi": [
+                1
+            ],
+            "linux": [
+                1
+            ]
         },
         "Current": {
-            "python": "lektion: 2"
+            "html": "lektion: 12"
         }
     },
     "user1": {
@@ -81,6 +99,24 @@
         },
         "Current": {
             "linux": "lektion: 2"
+        }
+    },
+    "saitama": {
+        "passwort": "43baaac335fc1fba2f573f748dafc6f20605b63d660dbd268b98498d21bd750a",
+        "email": "onepunch@.com",
+        "sex": "male",
+        "secret_code": "be28e712b7fdedf0e1326d800c47bec55c124f804da07099bfa8a7e361787aac",
+        "Done": {
+            "html": [
+                1
+            ],
+            "python": [],
+            "tkinter": [],
+            "cgi": [],
+            "linux": []
+        },
+        "Current": {
+            "html": "lektion: 2"
         }
     }
 }
