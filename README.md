@@ -41,6 +41,6 @@ lernportal/
 | ✅ **5. Dashboard view**           | Show module progress in GUI (green checkmarks, etc.)           | 10 days       |
 | ✅ **6. Testing & optimization**   | Check for bugs, clean up design                                | 6 day          |
 
-I'm student at a germany university so i can't speak englisch very good. I already learn Html, css and python so i try to make an app and a learn plattform like a site web but all the progress would be save on the app with mein python. people can just acces to the 
-lewrn platform with the app.
-i choice to add something like tabview, this is bether than tkraise if you already login. in my daschboard i use some button with specifics tabview changer to show some frame. the daschboard muss be an another class then we can import dash_class in haupt_class to manage it.
+I'm a student at a university in Germany, so I can't speak English very well. I've already learned HTML, CSS, and Python, and now I'm trying to build an app and a learning platform—something like a website—but all progress will be saved locally in the app using my Json file. Users can only access the learning platform through the app.
+
+I chose to use something like a TabView because it's better than tkraise once the user is logged in. In my dashboard, I use buttons that switch between specific tabs or frames. The dashboard should be a separate class so we can import the Dashboard class into the main class to manage it.
