@@ -12,11 +12,9 @@
         "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
     },
     "jordan": {
-<<<<<<< HEAD
+
         "passwort": "1f1a2e891fc5039fcf7b08dbc59f0bdcc398510295b7f7c3c99628cdf06b8ae9",
-=======
         "passwort": "113fb14c5407f60c61d6e32009683b5ee449b3c545f7d6874b90c3d8a4075122",
->>>>>>> 479513d997a891505405e3ae042cf71521bdce2e
         "email": "jordan@.com",
         "sex": "male",
         "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4",
@@ -103,7 +101,6 @@
         },
         "Current": {
             "linux": "lektion: 2"
-<<<<<<< HEAD
         }
     },
     "saitama": {
@@ -122,8 +119,6 @@
         },
         "Current": {
             "html": "lektion: 2"
-=======
->>>>>>> 479513d997a891505405e3ae042cf71521bdce2e
         }
     }
 }
