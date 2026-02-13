@@ -1,46 +1,90 @@
+# Lernportal – Offline Learning Platform
+
+A local desktop-based learning platform built with Python, CustomTkinter, HTML, and CGI.
+The application provides an offline learning experience with persistent progress tracking using JSON storage.
+
+---
+
+## Features
+
+- User authentication (local JSON-based login system)
+- GUI built with CustomTkinter
+- Dashboard with module progress tracking
+- Local HTML learning pages
+- CGI-based questionnaires
+- Offline HTTP server
+- Persistent user progress tracking
+
+---
+
+## Project Structure
+
 lernportal/
 │
-├── gui/                           # CustomTkinter GUI App
-│   ├── main.py                    # Entry point of the app
-│   ├── login.py                   # Login window
-│   ├── dashboard.py               # Homepage after login
-│   └── lernmanager.py             # Course management, topics, progress
+├── gui/                  # CustomTkinter GUI Application
+│   ├── main.py
+│   ├── login.py
+│   ├── dashboard.py
+│   └── lernmanager.py
 │
-├── data/                          # Local user data and learning progress
-│   ├── users.json                 # User login credentials
-│   └── progress.json              # Progress per user
+├── data/                 # Local user & progress data
+│   ├── users.json
+│   └── progress.json
 │
-├── webpages/                      # Local HTML content
+├── webpages/             # HTML learning content
 │   ├── html/
-│   │   └── intro.html             # First learning page
 │   └── style/
-│       └── style.css              # Stylesheet for HTML pages
 │
-├── server/                        # Local HTTP + CGI scripts
+├── server/               # Local HTTP server & CGI scripts
 │   ├── cgi-bin/
-│   │   ├── questionnaire.py       # CGI quiz/questionnaire
-│   │   ├── help.py                # CGI contact form or similar
-│   │   └── __init__.py            # Optional (for testing)
-│   │
-│   ├── python-portable/           # (Optional) Portable Python (e.g. WinPython)
-│   │   └── python.exe             # Portable interpreter
-│   │
-│   ├── start_server.bat           # Start server on Windows
-│   └── start_server.sh            # Start server on Linux/macOS
+│   ├── start_server.bat
+│   └── start_server.sh
 │
-├── README.md                      # Project description
-└── .gitignore                     # (optional for Git)
+└── README.md
 
+---
 
-| Task                              | Description                                                    | Estimated Time |
-| --------------------------------- | -------------------------------------------------------------- | -------------- |
-| ✅ **1. Connect GUI with modules** | Button click → open HTML page and save progress                | 10 days       |
-| ✅ **2. Create HTML pages**        | Content per module (intro, text formatting, lists, etc.)       | 2–3 days       |
-| ✅ **3. Integrate CGI scripts**    | Send and save progress via HTML form                           | 1–2 days       |
-| ✅ **4. Improve JSON handling**    | Check progress, avoid duplicates, optionally include timestamp | 1 day          |
-| ✅ **5. Dashboard view**           | Show module progress in GUI (green checkmarks, etc.)           | 10 days       |
-| ✅ **6. Testing & optimization**   | Check for bugs, clean up design                                | 6 day          |
+## Architecture
 
-I'm a student at a university in Germany, so I can't speak English very well. I've already learned HTML, CSS, and Python, and now I'm trying to build an app and a learning platform—something like a website—but all progress will be saved locally in the app using my Json file. Users can only access the learning platform through the app.
+The application follows a modular architecture:
 
-I chose to use something like a TabView because it's better than tkraise once the user is logged in. In my dashboard, I use buttons that switch between specific tabs or frames. The dashboard should be a separate class so we can import the Dashboard class into the main class to manage it.
+- Separation between GUI, data, and server logic
+- Dedicated Dashboard class for tab management
+- CustomTkinter TabView for structured navigation
+- JSON-based persistence layer
+- Local HTTP server with CGI scripts for questionnaires
+
+This separation improves maintainability and scalability.
+
+---
+
+## Technologies Used
+
+- Python 3
+- CustomTkinter
+- HTML / CSS
+- CGI (Common Gateway Interface)
+- JSON (data persistence)
+
+---
+
+## How to Run
+
+1. Start the local server:
+   - Windows: run `start_server.bat`
+   - Linux/macOS: run `start_server.sh`
+
+2. Start the GUI application:
+   python gui/main.py
+
+---
+
+## Learning Objectives
+
+This project was built to practice:
+
+- Modular software architecture
+- GUI development with CustomTkinter
+- Client–server interaction (local HTTP + CGI)
+- JSON-based data management
+- Separation of concerns in software design

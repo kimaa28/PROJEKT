@@ -1,4 +1,4 @@
-#!/home/kimaa/git-projekt/lernportal/cgi-bin/env/bin/python3
+#!/home/kimaa05/test/lernportal/cgi-bin/env/bin/python3.13
 # -*- coding: utf-8 -*-
 import re
 import sys

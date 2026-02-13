@@ -946,4 +946,4 @@ Progressive Enhancement: Grundfunktionen ohne JavaScript, Verbesserungen mit Jav
 
 
 
-html_list = [lektion1, lektion2, lektion3, lektion4, lektion5, lektion6, lektion7, lektion8, lektion9, lektion10, lektion11]
+html_class = [lektion1, lektion2, lektion3, lektion4, lektion5, lektion6, lektion7, lektion8, lektion9, lektion10, lektion11]
