@@ -1,9 +1,22 @@
 {
     "user": {
-        "passwort": "passwort",
+        "passwort": "92cdf578c47085a5992256f0dcf97d0b19f1f1c9de4d5fe30c3ace6191b6e5db",
         "email": "user@gmail.com",
         "sex": "sex",
-        "secret_code": "secret_code"
+        "secret_code": "secret_code",
+        "Done": {
+            "html": [
+                1,
+                2
+            ],
+            "python": [],
+            "tkinter": [],
+            "cgi": [],
+            "linux": []
+        },
+        "Current": {
+            "html": "lektion: 3"
+        }
     },
     "kitio": {
         "passwort": "bb7fbebc5cf6dce938d62c446870b65e48606fc8f9dbc542fd0e68d0a2d8b4ae",
@@ -12,9 +25,7 @@
         "secret_code": "96f7ee9678dac665d7abbeae56e4cd59abd33773016f76cc510c49c740861f74"
     },
     "jordan": {
-
-        "passwort": "1f1a2e891fc5039fcf7b08dbc59f0bdcc398510295b7f7c3c99628cdf06b8ae9",
-        "passwort": "113fb14c5407f60c61d6e32009683b5ee449b3c545f7d6874b90c3d8a4075122",
+        "passwort": "a552934126d993a061ebe7f2745dc679b354e845949268358660dee8b6a7ca14",
         "email": "jordan@.com",
         "sex": "male",
         "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4",
@@ -24,29 +35,36 @@
                 2,
                 3,
                 4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10,
-                11
+                5
             ],
             "python": [
                 1,
                 2,
+                3,
+                4,
+                5
+            ],
+            "tkinter": [
+                1,
+                2,
                 3
             ],
-            "tkinter": [],
             "cgi": [
-                1
+                1,
+                2,
+                3,
+                4
             ],
             "linux": [
-                1
+                1,
+                2,
+                3,
+                4,
+                5
             ]
         },
         "Current": {
-            "html": "lektion: 12"
+            "tkinter": "lektion: 4"
         }
     },
     "user1": {
@@ -57,7 +75,8 @@
         "Done": {
             "html": [
                 1,
-                2
+                2,
+                3
             ],
             "python": [
                 1,
@@ -120,5 +139,11 @@
         "Current": {
             "html": "lektion: 2"
         }
+    },
+    "Kitiooo": {
+        "passwort": "76f6034d119b5b63641e10e23d9b3fceb75a73498ee65c1e2902f8ea70682038",
+        "email": "j@gmail.com",
+        "sex": "other",
+        "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4"
     }
 }

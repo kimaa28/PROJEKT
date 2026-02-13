@@ -1,4 +1,4 @@
-from html_class import html_list
+from html_class import html_class
 from python_lesson_class import python_class
 from CGI_class import cgi_class
 from LINUX_class import linux_class
@@ -172,8 +172,8 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
             <form action="../../cgi-bin/gear_cgi.py" method="post" >
                 <input type="hidden" name="user" id="userField">
                  <button type="submit" name="index" value="{index - 1}" id="display1">{preview}</button>
-            <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
-        </form>
+                <button type="submit" name="index" value="{index + 1}" id="display2">{next}</button>
+            </form>
         </div>
 
 
@@ -192,7 +192,7 @@ def html(titel ,haupttitel, body, code, beschreibung,img_1, img_2, anw, preview,
 </body>
 </html>
 """
-titel_list = [titel.titel_lesson for titel in html_list]
+titel_list = [titel.titel_lesson for titel in html_class]
 
 
 def site_name(id):
@@ -202,10 +202,10 @@ def label(id):
     return f"Lektion{id}"
 
 # create all html courses
-for index, (titel, ele) in enumerate(zip(titel_list, html_list)):
+for index, (titel, ele) in enumerate(zip(titel_list, html_class)):
     create_html_file("../webseite/html", site_name(ele.index), html(titel, ele.titel_lesson, ele.body, ele.code, ele.beschreibung,ele.img[0], ele.img[1], ele.next_anw, label(ele.index-1), label(ele.index+1), ele.index ))
 
-#python modul for python courses
+#modul for all others courses
 def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
     return f"""
 
@@ -376,7 +376,7 @@ def courses(titel ,haupttitel, body, code,img_1, anw, preview, next, id, index):
 def courses_site_name(id):
     return f"""Lesson{id}.html"""
 
-  #neue in dex
+  #neue index
   #destination
   # titel list
 
@@ -408,9 +408,8 @@ courses_dict = {
 
 }
 
-
-
+#It loops through the data and creates an HTML page for each course element by calling create_html_file with the relevant values. Each generated page represents a lesson or part of the course. 
 for key, value in courses_dict.items():
     for index, (titel, ele) in enumerate(zip(value["titel"], value["class"])):
-        create_html_file( value["pfad"], courses_site_name(ele.index), courses(titel, ele.titel_lesson, ele.body, ele.code, ele.img, ele.next_anw, label(ele.index-1), label(ele.index+1), value["id"],ele.index))
+        create_html_file( value["pfad"], courses_site_name(ele.index), courses(titel, ele.titel_lesson, ele.body, ele.code, ele.img, ele.next_anw, label(ele.index-1), label(ele.index+1), value["id"], ele.index))
 # i am proud of me, just one line to resume 3 workingshours 
