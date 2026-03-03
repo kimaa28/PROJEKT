@@ -145,5 +145,11 @@
         "email": "j@gmail.com",
         "sex": "other",
         "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4"
+    },
+    "emmanuel": {
+        "passwort": "ac694fcf045b514b6c8de34efd6e6f8eee61725237d4323ab5040f780e57bf3a",
+        "email": "emmanu@gmail.com",
+        "sex": "male",
+        "secret_code": "33756ca9d42894dd598b1e84a323c4c9850781cc0e6c687737997120e5ab71f4"
     }
 }

@@ -1,5 +1,5 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:venv",
-    "python-envs.pythonProjects": [],
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "python.REPL.enableREPLSmartSend": false
 }
