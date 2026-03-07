@@ -1,2 +1,1 @@
-
-               print()
+map(lambda a : print(a[0]), n)

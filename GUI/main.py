@@ -48,9 +48,9 @@ class Main:
         self.daschboar = ctk.CTkFrame(self.app, fg_color=self.color, corner_radius=0)
              
         # create all login, register and reset frame and set the first to be show
-        self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar, self.second_pass, self.emailvar, self.sexvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]) or self.app.title("Main"), self._registrierung)
-        self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.second_pass, self.emailvar, self.secret_code, lambda: self._choice_frame(self.login["login_frame"]) or self.app.title("Main"), lambda: self._choice_frame(self.register["register_frame"]) or self.app.title("Register"), self._reset, self._load_check)
-        self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self._choice_frame(self.reset["reset_frame"]) or self.app.title("Reset passwort"),lambda: self._choice_frame(self.register["register_frame"]) or self.app.title("Register"), self._lo)        
+        self.register = create_register_frame(self.neue_frame, self.uservar, self.passvar, self.second_pass, self.emailvar, self.sexvar, self.secret_code, lambda: self.choice_frame(self.login["login_frame"]) or self.app.title("Main"), self._registrierung)
+        self.reset = create_reset_frame(self.neue_frame, self.uservar, self.passvar, self.second_pass, self.emailvar, self.secret_code, lambda: self.choice_frame(self.login["login_frame"]) or self.app.title("Main"), lambda: self.choice_frame(self.register["register_frame"]) or self.app.title("Register"), self._reset, self._load_check)
+        self.login = create_login_frame(self.neue_frame, self.uservar, self.passvar,lambda: self.choice_frame(self.reset["reset_frame"]) or self.app.title("Reset passwort"),lambda: self.choice_frame(self.register["register_frame"]) or self.app.title("Register"), self._lo)        
       
         # set funktion enable to grid all frame
         self._set_frame()
@@ -71,7 +71,7 @@ class Main:
         self.secret_code = ctk.StringVar()
         
     # switch into the three frame
-    def _choice_frame(self, frame):
+    def choice_frame(self, frame):
         frame.tkraise()
     # set the default frame and grid it
     def _set_frame(self):
@@ -112,8 +112,8 @@ class Main:
                 user = uservar
                 count = 1
                 self.neue_frame.pack_forget()
-                self.app.geometry("500x500")
-                self.neue = App(self.app, bg_color="blue", fg_color="#111", )
+                self.app.attributes("-fullscreen", True)
+                self.neue = App(self.app, bg_color="blue", fg_color="#111")
                 self.neue.pack(expand="true", fill="both")
                 
                 
@@ -229,26 +229,64 @@ class Main:
 
 
 class App(ctk.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, *agrs, **kwargs):
         super().__init__(master, **kwargs)
-        self._define_frame_width()
+        self.args = agrs
+        self.master = master
         self._create_dash_frames()
+        self.left_frame_widget()
+        self.create_image(self.button_frame, self.image_liste)
+        self._create_button(self.button_frame, self.button_list)
+
         
-    def _define_frame_width(self):
-        self.w = self.winfo_width()
-        self.lwidth = self.w / 4 
-        self.rwidth = self.w - self.lwidth
-        
+    # to separate the both principal frame one with all button and the second with all information about it    
     def _create_dash_frames(self):
-        self.right_frame = ctk.CTkFrame(self, width=self.rwidth, corner_radius=30, fg_color="#C1B98F", bg_color="#BAB1B1")   
-        self.right_frame.pack(fill="y", expand="true")
-        self.left_frame = ctk.CTkFrame(self, width=self.lwidth, corner_radius=30, border_width=2, bg_color="#BAB1B1", fg_color="#C1B98F")
-        self.left_frame.pack(fill="y", expand="true")
-                
+        l= self.winfo_width() / 4
+        r = self.winfo_width() - l                
+        self.left_frame = ctk.CTkFrame(self, corner_radius=30, bg_color="#BAB1B1", fg_color="#C1B98F", width= l)   
+        self.right_frame = ctk.CTkFrame(self, corner_radius=30, fg_color="#C1B98F", bg_color="#BAB1B1", width= r)  
+        self.left_frame.grid(row=0, column=0, sticky="nsew", padx=1)
+        self.right_frame.grid(row=0, column=1, sticky="nsew")
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=20)
+        self.rowconfigure(0, weight=1)
+        
+    def left_frame_widget(self):
+        self.button_list = ["Dashboard", "Courses", "Progress"]
+        self.image_liste = ["image/coding.png", "image/book.png", "image/command.png"]
+        self.test_frame = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
+        self.test_frame.pack(fill="x")
+        ctk.CTkLabel(self.test_frame, font=("Verdana", 30, "bold"), text="Lerntrack", text_color="#56AECE").grid(row=0, column=0, sticky="w", padx=20, pady=30, columnspan=2)
+        self.button_frame = ctk.CTkFrame(self.test_frame, fg_color=self.test_frame.cget("fg_color"))
+        self.button_frame.grid(row=1, column=0, pady=(50, 250), padx=20)
+        self.frame = ctk.CTkFrame(self.right_frame, width=500, fg_color="blue")
+       
+        self.frame.pack(fill="both", expand="true")
+    # make the fonction more global so that any other class can use it external 
+    def create_image(self, master,  agrs):
+        m = list(map(lambda a : ctk.CTkImage(light_image=Image.open(a), size=(25, 25)), agrs))
+        l = list(map(lambda a : ctk.CTkLabel(master, image=a[1], text="").grid(row=a[0], column=0, padx=(0, 20), pady=20), enumerate(m)))
+        
+    def _create_button(self, master, liste):
+        button = list(map(lambda a : ctk.CTkButton(master, text=a[1], text_color="white", hover_color="#1687d8", command=lambda: self.frame.destroy()).grid(row=a[0], column=1, pady=20), enumerate(liste)))
+        self.egal = ctk.CTkLabel(self.left_frame, text="Placeholder", font=("Verdana", 30, "bold"))
+        self.egal.pack(side="bottom", pady=20, padx=20, anchor="w")
+    # try to use instead pack gind for the left frame       
+       
+        
+        
 
-
-if __name__== "__main__":           
-    Main()
+if __name__== "__main__":    
+    n = int(input("gibt das ein: "))   
+    if n == 1:
+        app = ctk.CTk()
+        
+        
+        neu = App(app,bg_color="blue", fg_color="#111")
+        neu.pack(expand="true", fill="both")
+        app.mainloop()
+    else:
+        Main()
  
    
 
