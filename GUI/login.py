@@ -51,6 +51,7 @@ def create_login_frame(parent, uservar, passvar, forgot, neue_account, check_pas
 
     login_button = ctk.CTkButton(login_frame, text="Login", command= check_passwort, width=100, height=40, corner_radius=10)
     login_button.pack(fill="x", padx=20)
+    login_button.bind('<Return>', check_passwort)
 
     create_account_frame = ctk.CTkFrame(login_frame, fg_color="#333")
     create_account_frame.pack(expand=True)

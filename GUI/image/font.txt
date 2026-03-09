@@ -1,0 +1,7 @@
+color_liste = (pc study light, light studyb, light study g , warm orange, warm brown)
+border = (#00000014, #00000014, #e2e8f0, #f1ddc7, #d8c9bb)
+color_on_button = (#2b7cff, #4aa8ff, #10b981 , #f97316, #8b5e3c)
+second_or_bg = (#eaf6ff, #e6f9ec, #e0f2fe, #ffe7cc, #efe3d6)
+bg= (#f5f9ff, #fff8f1, #f7f3ef)
+
+font(inter)

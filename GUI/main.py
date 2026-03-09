@@ -5,6 +5,7 @@ from register import create_register_frame
 from reset import create_reset_frame 
 from tkinter import PhotoImage, Canvas
 from PIL import Image, ImageDraw
+from tkinter.messagebox import showerror, showwarning, showinfo
 import random as rd
 import webbrowser as web
 import matplotlib.pyplot as plt
@@ -85,6 +86,7 @@ class Main:
             entry.delete(0, "end") 
 
     # login frame waiting time for answer
+    
     def _lo(self):
         self.login["raise_msg"].configure(text="")
         self.login["bar"].start()
@@ -225,7 +227,7 @@ class Main:
             save_passwort(self.path, self.passlib)
             raise_msg.configure(text="Passwort erfolgreich  geändert", text_color="green")
             self._delete_entry(self.liste_r)
-
+# https://chatgpt.com/s/t_69ac93bfc0dc8191ae32ea94e4d8af40, https://chatgpt.com/s/t_69ac93f82da08191a06cd2f78883d99b
 
 
 class App(ctk.CTkFrame):
@@ -233,14 +235,15 @@ class App(ctk.CTkFrame):
         super().__init__(master, **kwargs)
         self.args = agrs
         self.master = master
-        self._create_dash_frames()
-        self.left_frame_widget()
+        self._create_app_frames()
+        self._nav_widget()
         self.create_image(self.button_frame, self.image_liste)
         self._create_button(self.button_frame, self.button_list)
 
         
     # to separate the both principal frame one with all button and the second with all information about it    
-    def _create_dash_frames(self):
+    def _create_app_frames(self):
+        
         l= self.winfo_width() / 4
         r = self.winfo_width() - l                
         self.left_frame = ctk.CTkFrame(self, corner_radius=30, bg_color="#BAB1B1", fg_color="#C1B98F", width= l)   
@@ -250,31 +253,40 @@ class App(ctk.CTkFrame):
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=20)
         self.rowconfigure(0, weight=1)
+        # n = Daschbord(self.right_frame)
+        # n.place(relwidth=1, relheight=1)
+        # self.rowconfigure(0, weight=1)
         
-    def left_frame_widget(self):
+        
+        
+        
+    def _nav_widget(self):
         self.button_list = ["Dashboard", "Courses", "Progress"]
-        self.image_liste = ["image/coding.png", "image/book.png", "image/command.png"]
+        self.image_liste = ["image/brain.png", "image/card.png", "image/dash.png"]
         self.test_frame = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
         self.test_frame.pack(fill="x")
-        ctk.CTkLabel(self.test_frame, font=("Verdana", 30, "bold"), text="Lerntrack", text_color="#56AECE").grid(row=0, column=0, sticky="w", padx=20, pady=30, columnspan=2)
+        ctk.CTkLabel(self.test_frame, text="", image=ctk.CTkImage(light_image=Image.open("image/brain.png"), size=(30, 30))).grid(row=0, column=0, sticky="w", ipadx=0)
+        ctk.CTkLabel(self.test_frame, font=("Verdana", 30, "bold"), text="Lerntrack", text_color="#56AECE").grid(row=0, column=0, sticky="e", ipadx=0)
         self.button_frame = ctk.CTkFrame(self.test_frame, fg_color=self.test_frame.cget("fg_color"))
         self.button_frame.grid(row=1, column=0, pady=(50, 250), padx=20)
-        self.frame = ctk.CTkFrame(self.right_frame, width=500, fg_color="blue")
-       
-        self.frame.pack(fill="both", expand="true")
+        
     # make the fonction more global so that any other class can use it external 
     def create_image(self, master,  agrs):
         m = list(map(lambda a : ctk.CTkImage(light_image=Image.open(a), size=(25, 25)), agrs))
         l = list(map(lambda a : ctk.CTkLabel(master, image=a[1], text="").grid(row=a[0], column=0, padx=(0, 20), pady=20), enumerate(m)))
         
     def _create_button(self, master, liste):
-        button = list(map(lambda a : ctk.CTkButton(master, text=a[1], text_color="white", hover_color="#1687d8", command=lambda: self.frame.destroy()).grid(row=a[0], column=1, pady=20), enumerate(liste)))
+        button = list(map(lambda a : ctk.CTkButton(master, text=a[1], text_color="white", hover_color="#1687d8", command=lambda: showwarning(title='Warning',message='This is a warning message.')).grid(row=a[0], column=1, pady=20), enumerate(liste)))
         self.egal = ctk.CTkLabel(self.left_frame, text="Placeholder", font=("Verdana", 30, "bold"))
         self.egal.pack(side="bottom", pady=20, padx=20, anchor="w")
     # try to use instead pack gind for the left frame       
        
-        
-        
+# class Daschbord(ctk.CTkFrame):
+#     def __init__(self, master, *args, **kwargs):
+#         super().__init__(master,**kwargs)
+#         self.master = master
+#         self.args = args
+    
 
 if __name__== "__main__":    
     n = int(input("gibt das ein: "))   
@@ -282,7 +294,7 @@ if __name__== "__main__":
         app = ctk.CTk()
         
         
-        neu = App(app,bg_color="blue", fg_color="#111")
+        neu = App(app,bg_color="blue", fg_color="#f5f9ff")
         neu.pack(expand="true", fill="both")
         app.mainloop()
     else:
