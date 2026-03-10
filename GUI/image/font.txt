@@ -5,3 +5,20 @@ second_or_bg = (#eaf6ff, #e6f9ec, #e0f2fe, #ffe7cc, #efe3d6)
 bg= (#f5f9ff, #fff8f1, #f7f3ef)
 
 font(inter)
+
+# https://chatgpt.com/s/t_69ac93bfc0dc8191ae32ea94e4d8af40, https://chatgpt.com/s/t_69ac93f82da08191a06cd2f78883d99b
+
+https://chatgpt.com/s/t_69b066427b1881919523b29071b5e73b
+
+https://chatgpt.com/s/t_69b06677e78c81918801228dfce6b4d8
+
+https://chatgpt.com/s/t_69b0687f50088191bbb710c33c52286a
+
+https://chatgpt.com/s/t_69b068c631e48191961f1b2355a910a0
+
+https://chatgpt.com/s/t_69b068c631e48191961f1b2355a910a0
+
+https://chatgpt.com/s/t_69b075f409b081919265a26f9a82740d
+
+https://chatgpt.com/s/t_69b0763bd6608191b4672a2be7ae11d5
+

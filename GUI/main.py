@@ -4,7 +4,7 @@ from login import create_login_frame
 from register import create_register_frame
 from reset import create_reset_frame 
 from tkinter import PhotoImage, Canvas
-from PIL import Image, ImageDraw
+from PIL import Image, ImageTk, ImageDraw
 from tkinter.messagebox import showerror, showwarning, showinfo
 import random as rd
 import webbrowser as web
@@ -90,7 +90,7 @@ class Main:
     def _lo(self):
         self.login["raise_msg"].configure(text="")
         self.login["bar"].start()
-        self.app.after(2000, self._check_login )
+        self.app.after(200, self._check_login )
         
 
  
@@ -110,14 +110,9 @@ class Main:
                 self._delete_entry(self.liste_l)
             elif hashed_passwort(passvar) == self.passlib[uservar]["passwort"]:
                 self.login["raise_msg"].configure(text="Erfolgreich angemeldet", text_color="green")
-                global user, count
-                user = uservar
-                count = 1
-                self.neue_frame.pack_forget()
-                self.app.attributes("-fullscreen", True)
-                self.neue = App(self.app, bg_color="blue", fg_color="#111")
-                self.neue.pack(expand="true", fill="both")
-                
+                self._load_app()                
+            
+               
                 
             else:
                 self.login["raise_msg"].configure(text="Ungültige Eingabe", text_color="red")
@@ -227,7 +222,21 @@ class Main:
             save_passwort(self.path, self.passlib)
             raise_msg.configure(text="Passwort erfolgreich  geändert", text_color="green")
             self._delete_entry(self.liste_r)
-# https://chatgpt.com/s/t_69ac93bfc0dc8191ae32ea94e4d8af40, https://chatgpt.com/s/t_69ac93f82da08191a06cd2f78883d99b
+            
+    # hier wird die app gebaut und an den user angezeigt
+    def _load_app(self):
+         
+        self.neue_frame.pack_forget()
+        self.app.attributes("-fullscreen", True)
+        
+        self.hoverframe = ctk.CTkFrame(self.app, height=20, fg_color="#3974ab", corner_radius=0, border_color="#313032", border_width=1 )
+        self.hoverframe.pack(fill="x")
+        self.close = ctk.CTkButton(self.hoverframe, text="x", text_color="white", hover_color="#692929", fg_color="red" , corner_radius=3, width=15, command=self.app.destroy)
+        self.close.pack(side="right", ipadx=6)
+        self.neue = App(self.app, bg_color="blue", fg_color="#111")
+        self.neue.pack(expand="true", fill="both")
+        
+
 
 
 class App(ctk.CTkFrame):
@@ -246,53 +255,75 @@ class App(ctk.CTkFrame):
         
         l= self.winfo_width() / 4
         r = self.winfo_width() - l                
-        self.left_frame = ctk.CTkFrame(self, corner_radius=30, bg_color="#BAB1B1", fg_color="#C1B98F", width= l)   
-        self.right_frame = ctk.CTkFrame(self, corner_radius=30, fg_color="#C1B98F", bg_color="#BAB1B1", width= r)  
+        self.left_frame = ctk.CTkFrame(self, bg_color="#86c0f7", fg_color="#86c0f7", width= l, corner_radius=0, border_color="#292827")   
+        self.right_frame = ctk.CTkFrame(self, corner_radius=0, fg_color="#f5f9ff", bg_color="#f5f9ff", width=r)  
         self.left_frame.grid(row=0, column=0, sticky="nsew", padx=1)
         self.right_frame.grid(row=0, column=1, sticky="nsew")
-        self.columnconfigure(0, weight=1)
+        
         self.columnconfigure(1, weight=20)
         self.rowconfigure(0, weight=1)
-        # n = Daschbord(self.right_frame)
+        # n = Daschbord(self.right_frame, corner_radius=0, border_color="black")
         # n.place(relwidth=1, relheight=1)
         # self.rowconfigure(0, weight=1)
         
         
         
-        
+    # enthält alle button für die navigation in der app    
     def _nav_widget(self):
-        self.button_list = ["Dashboard", "Courses", "Progress"]
-        self.image_liste = ["image/brain.png", "image/card.png", "image/dash.png"]
-        self.test_frame = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
-        self.test_frame.pack(fill="x")
-        ctk.CTkLabel(self.test_frame, text="", image=ctk.CTkImage(light_image=Image.open("image/brain.png"), size=(30, 30))).grid(row=0, column=0, sticky="w", ipadx=0)
-        ctk.CTkLabel(self.test_frame, font=("Verdana", 30, "bold"), text="Lerntrack", text_color="#56AECE").grid(row=0, column=0, sticky="e", ipadx=0)
-        self.button_frame = ctk.CTkFrame(self.test_frame, fg_color=self.test_frame.cget("fg_color"))
-        self.button_frame.grid(row=1, column=0, pady=(50, 250), padx=20)
+        self.button_list = ["Dashboard", "Courses", "Progress", "Settings", "Support"]
+        self.image_liste = ["image/dash.png", "image/course.png", "image/stat.png", "image/setting.png", "image/suport 1.png"]
+        self.nav_frame = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
+        self.nav_frame.pack(fill="x", padx=20)
+        
+        ctk.CTkLabel(self.nav_frame, text="", fg_color="#1d89ee", font=("Inter", 35), corner_radius=6,  image=ctk.CTkImage(light_image=Image.open("image/brain 1.png"), size=(30, 30))).grid(row=0, column=0, sticky="w", padx=(10, 10), pady=20, ipady=5, ipadx=1)
+        ctk.CTkLabel(self.nav_frame, font=("Inter", 30, "bold"), text="Lerntrack", text_color="#2C2B2B").grid(row=0, column=0, padx=(0, 10), pady=20, ipadx=0, sticky="e")
+        
+        self.button_frame = ctk.CTkFrame(self.nav_frame, fg_color=self.nav_frame.cget("fg_color"))
+        self.button_frame.grid(row=2, column=0, pady=(00, 250), padx=(10, 30), sticky="w")
+        
+        ctk.CTkLabel(self.nav_frame, text="WORKSPACE", font=("Inter", 18, "normal"), text_color="#6b7280").grid(row=1, column=0, sticky="w", pady=(50, 0), padx=10)
         
     # make the fonction more global so that any other class can use it external 
     def create_image(self, master,  agrs):
         m = list(map(lambda a : ctk.CTkImage(light_image=Image.open(a), size=(25, 25)), agrs))
-        l = list(map(lambda a : ctk.CTkLabel(master, image=a[1], text="").grid(row=a[0], column=0, padx=(0, 20), pady=20), enumerate(m)))
+        list(map(lambda a : ctk.CTkLabel(master, image=a[1], text="").grid(row=a[0], column=0, padx=(0, 20), pady=20), enumerate(m)))
         
     def _create_button(self, master, liste):
-        button = list(map(lambda a : ctk.CTkButton(master, text=a[1], text_color="white", hover_color="#1687d8", command=lambda: showwarning(title='Warning',message='This is a warning message.')).grid(row=a[0], column=1, pady=20), enumerate(liste)))
-        self.egal = ctk.CTkLabel(self.left_frame, text="Placeholder", font=("Verdana", 30, "bold"))
-        self.egal.pack(side="bottom", pady=20, padx=20, anchor="w")
+        list(map(lambda a : ctk.CTkButton(master, text=a[1], text_color="white", hover_color="#1687d8", command=lambda: showwarning(title='Warning',message='This is a warning message.')).grid(row=a[0], column=1, pady=20), enumerate(liste)))
+        self.test = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
+        self.test.pack(side="bottom", pady=20, padx=20, anchor="w")
+        img = Image.open('image/third.gif').resize((75,75))
+        new_img = Image.new("RGBA", img.size, "#86c0f7")
+        mask = Image.new("L", (75,75), 0)
+        draw = ImageDraw.Draw(mask)
+        draw.ellipse((0, 0, 75, 75), fill=255, outline=None)
+        new_img.paste(img, (0,0), mask)
+        self.tk_img = ImageTk.PhotoImage(new_img)
+        self.egal = tk.Label(self.test, image=self.tk_img, font=("Verdana", 30, "bold"), fg=self.left_frame.cget("fg_color"), borderwidth=0, text="JE suis unc on ")
+        self.egal.grid(row=0, column=0)
+        self.text = ctk.CTkLabel(self.test, text="Username\nName", text_color="#433F3F", font=("Inter", 20))
+        self.text.grid(row=0, column=1, sticky="n")
+        
+        
+        self.canva = Canvas(self.left_frame, width=220, height=10, bg=self.left_frame.cget("fg_color"), bd=0, borderwidth=0, highlightthickness=0)
+        self.canva.create_line(10, 5, 215, 5, width=2.5, fill="#908A8A")
+        self.canva.pack(side="bottom", padx=10, pady=10)
+        
+
     # try to use instead pack gind for the left frame       
        
-# class Daschbord(ctk.CTkFrame):
-#     def __init__(self, master, *args, **kwargs):
-#         super().__init__(master,**kwargs)
-#         self.master = master
-#         self.args = args
+class Daschbord(ctk.CTkFrame):
+    def __init__(self, master, *args, **kwargs):
+        super().__init__(master,**kwargs)
+        self.master = master
+        self.args = args
     
 
 if __name__== "__main__":    
     n = int(input("gibt das ein: "))   
     if n == 1:
         app = ctk.CTk()
-        
+
         
         neu = App(app,bg_color="blue", fg_color="#f5f9ff")
         neu.pack(expand="true", fill="both")

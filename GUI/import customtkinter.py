@@ -1,23 +1,26 @@
+from PIL import Image, ImageDraw, ImageTk
 import tkinter as tk
-from tkinter import ttk
-
-
-def return_pressed(event):
-    print('Return key pressed.')
-
-
-def log(event):
-    print(event)
-
 
 root = tk.Tk()
 
-btn = ttk.Button(root, text='Save')
-btn.bind('<Return>', return_pressed)
-btn.bind('<Return>', log, add='+')
+# Originalbild laden
+img = Image.open("image/test.gif").convert("RGBA")
 
+# Neue leere RGBA-Fläche (Hintergrundfarbe)
+bg_color = (255, 255, 255, 255)  # Weiß
+new_img = Image.new("RGBA", img.size, bg_color)
 
-btn.focus()
-btn.pack(expand=True)
+# Maske erzeugen
+mask = Image.new("L", img.size, 0)
+draw = ImageDraw.Draw(mask)
+draw.ellipse((0, 0, img.size[0], img.size[1]), fill=255)
+
+# Originalbild in die neue Fläche einfügen mit Maske
+new_img.paste(img, (0,0), mask)
+
+# In Tkinter anzeigen
+tk_img = ImageTk.PhotoImage(new_img)
+label = tk.Label(root, image=tk_img)
+label.pack()
 
 root.mainloop()
