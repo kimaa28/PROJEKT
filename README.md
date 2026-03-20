@@ -1,46 +1,90 @@
+# 📚 Lernportal (Python + CustomTkinter)
+
+Ein lokales Lernportal, entwickelt mit Python und CustomTkinter.
+Die Anwendung kombiniert eine Desktop-GUI mit HTML-Inhalten und speichert den Lernfortschritt der Nutzer lokal über JSON-Dateien.
+
+👉 Ziel des Projekts ist es, eine einfache und flexible Lernumgebung zu schaffen, die ohne externe Server oder Datenbanken funktioniert.
+
+---
+
+## 🚀 Features
+
+* 🔐 Login-System (lokal über JSON)
+* 🖥️ GUI mit CustomTkinter (Dashboard + Navigation)
+* 📄 Integration von HTML-Lernseiten
+* 📊 Fortschritts-Tracking pro Benutzer
+* ⚙️ Lokaler HTTP-Server mit Python (inkl. CGI-Skripte)
+* 🧠 Quiz / Fragebögen über CGI
+* 💾 Speicherung aller Daten lokal (keine Cloud)
+
+---
+
+## 🧱 Projektstruktur
+
+```
 lernportal/
-│
-├── gui/                           # CustomTkinter GUI App
-│   ├── main.py                    # Entry point of the app
-│   ├── login.py                   # Login window
-│   ├── dashboard.py               # Homepage after login
-│   └── lernmanager.py             # Course management, topics, progress
-│
-├── data/                          # Local user data and learning progress
-│   ├── users.json                 # User login credentials
-│   └── progress.json              # Progress per user
-│
-├── webpages/                      # Local HTML content
-│   ├── html/
-│   │   └── intro.html             # First learning page
-│   └── style/
-│       └── style.css              # Stylesheet for HTML pages
-│
-├── server/                        # Local HTTP + CGI scripts
-│   ├── cgi-bin/
-│   │   ├── questionnaire.py       # CGI quiz/questionnaire
-│   │   ├── help.py                # CGI contact form or similar
-│   │   └── __init__.py            # Optional (for testing)
-│   │
-│   ├── python-portable/           # (Optional) Portable Python (e.g. WinPython)
-│   │   └── python.exe             # Portable interpreter
-│   │
-│   ├── start_server.bat           # Start server on Windows
-│   └── start_server.sh            # Start server on Linux/macOS
-│
-├── README.md                      # Project description
-└── .gitignore                     # (optional for Git)
+├── gui/              # GUI (CustomTkinter)
+├── data/             # JSON Daten (User + Fortschritt)
+├── webseite/         # HTML Lerninhalte  aber wird in der neue version entfernt
+├── cgi-bin/           # Lokaler Server + CGI aber wird in der neue version entfernt
+└── README.md
+```
 
+---
 
-| Task                              | Description                                                    | Estimated Time |
-| --------------------------------- | -------------------------------------------------------------- | -------------- |
-| ✅ **1. Connect GUI with modules** | Button click → open HTML page and save progress                | 10 days       |
-| ✅ **2. Create HTML pages**        | Content per module (intro, text formatting, lists, etc.)       | 2–3 days       |
-| ✅ **3. Integrate CGI scripts**    | Send and save progress via HTML form                           | 1–2 days       |
-| ✅ **4. Improve JSON handling**    | Check progress, avoid duplicates, optionally include timestamp | 1 day          |
-| ✅ **5. Dashboard view**           | Show module progress in GUI (green checkmarks, etc.)           | 10 days       |
-| ✅ **6. Testing & optimization**   | Check for bugs, clean up design                                | 6 day          |
+## 🧠 Technischer Ansatz
 
-I'm a student at a university in Germany, so I can't speak English very well. I've already learned HTML, CSS, and Python, and now I'm trying to build an app and a learning platform—something like a website—but all progress will be saved locally in the app using my Json file. Users can only access the learning platform through the app.
+Das Projekt kombiniert mehrere Technologien:
 
-I chose to use something like a TabView because it's better than tkraise once the user is logged in. In my dashboard, I use buttons that switch between specific tabs or frames. The dashboard should be a separate class so we can import the Dashboard class into the main class to manage it.
+* **Frontend (GUI):** CustomTkinter
+* **Web-Inhalte:** HTML + CSS
+* **Backend (lokal):** Python
+* **Daten:** JSON (kein Datenbank-System)
+* **Server:** Python HTTP Server (früher mit CGI)
+
+👉 Der Nutzer greift ausschließlich über die Desktop-App auf Inhalte zu.
+
+---
+
+## ⚠️ Hinweis zu CGI
+
+Die ursprüngliche Version nutzte **CGI mit dem Python HTTP Server**.
+Da CGI ab Python 3.13 entfernt wurde, wird dieser Teil aktuell überarbeitet.
+
+➡️ Alternative Ansätze (in Planung):
+
+* Umstieg auf lokale API (z. B. Flask)
+* Direkte Verarbeitung in Python ohne CGI
+
+---
+
+## 🆕 Aktuelle Erweiterung (in Entwicklung)
+
+Neue Features in einer separaten Branch:
+
+📄 **PDF-Kursverwaltung**
+
+* Upload von PDF-Lernmaterialien
+* Lokale Speicherung
+* Schnelles Wiederfinden von Kursen
+* Integration in das Dashboard
+
+👉 Ziel: Lernportal mehr wie eine echte Lernplattform machen
+
+## 💡 Motivation
+
+Dieses Projekt wurde entwickelt, um praktische Erfahrungen in folgenden Bereichen zu sammeln:
+
+* Python-Anwendungsentwicklung
+* GUI-Design
+* Systemstrukturierung
+* Arbeiten mit lokalen Daten
+* Kombination von Desktop + Web-Technologien
+
+---
+
+## 🔗 Author
+
+Jordan Kitio Zangio
+Informatik-Student (2. Semester)
+GitHub: https://github.com/kimaa28
