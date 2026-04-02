@@ -436,6 +436,7 @@ class Settings(ctk.CTkFrame):
         self._settings_frame()
         self._create_profil_frame()
         self._create_nav_buttons()
+        self._profile_widget()
         
         
     def _settings_frame(self):         
@@ -444,7 +445,7 @@ class Settings(ctk.CTkFrame):
         
         
         
-        self.profil_name = ctk.CTkLabel(self.titel_frame, text="Settings", font=("Inter", 30, "bold"), text_color="#000000")
+        self.profil_name = ctk.CTkLabel(self.titel_frame, text="Settings", font=("Inter", 30, "bold"), text_color="#569C4E")
         self.profil_name.pack(anchor="w", padx=40, pady=(45, 20))
         self.save_change = ctk.CTkButton(self.titel_frame,text="Save changes", fg_color="#111111", text_color="white", command=lambda: showinfo(title='Info', message='Diese funktionalität ist noch nicht verfügbar.'), state="disabled")
         self.save_change.pack(side="right", anchor="e", pady=(0, 60), padx=20)
@@ -458,30 +459,30 @@ class Settings(ctk.CTkFrame):
     
     def _create_profil_frame(self):
         self.profil_frame.rowconfigure(0, weight=1)
-        self.profil_frame.rowconfigure(1, weight=1)
-
         self.profil_frame.columnconfigure(0, weight=1)
         self.profil_frame.columnconfigure(1, weight=14)
         
         self.nav_side = ctk.CTkFrame(self.profil_frame, fg_color="#97AEB7", border_width=0)
-        self.nav_side.grid(row=0, column=0, sticky="nsew", rowspan=2, pady=(20, 0))
+        self.nav_side.grid(row=0, column=0, sticky="nsew", pady=(20, 0))
         
-        self.public_info = ctk.CTkFrame(self.profil_frame, fg_color="#529D75", border_width=0)
+        self.public_info = ctk.CTkFrame(self.profil_frame, fg_color=self.profil_frame.cget("fg_color"), border_width=0)
         self.public_info.grid(row=0, column=1, sticky="nsew", pady=(20, 0))
         
-        self.account_details = ctk.CTkFrame(self.profil_frame, fg_color="#DCA4A4", corner_radius=0, border_width=0)
-        self.account_details.grid(row=1, column=1, sticky="nsew")
+      
         
         
     def _create_nav_buttons(self):
         self.liste_image = ['./image/profil.png', './image/pallete.png', './image/lnotif.png', './image/privacy.png']
-        self.liste_titel = ["Profile & Passwort", "Appearance", "Notifications", "Privacy & Data"]
+        self.liste_titel = ["Profile", "Appearance", "Notifications", "Privacy & Data"]
+        self.nav_side.columnconfigure(0, weight=1)
+        list(map(lambda a : ctk.CTkButton(self.nav_side, text=a[1][0], text_color="white", font= ("Inter", 16), hover_color="#87a3b7",fg_color=self.nav_side.cget("fg_color"),command=lambda: showinfo(title='Info',message='Dieses fenster ist noch nicht bereit.'), image=ctk.CTkImage(light_image=Image.open(a[1][1]), size=(30, 30)), anchor="w").grid(row=a[0], column=0, pady=(0, 20), padx=(35, 10), sticky="we"), enumerate(zip(self.liste_titel, self.liste_image))))
         
-        list(map(lambda a : ctk.CTkButton(self.nav_side, text=a[1][0], text_color="white", font= ("Inter", 16), hover_color="#87a3b7",fg_color=self.nav_side.cget("fg_color"),command=lambda: showinfo(title='Info',message='Dieses fenster ist noch nicht bereit.'), image=ctk.CTkImage(light_image=Image.open(a[1][1]), size=(25, 25))).grid(row=a[0], column=0, pady=(0, 20), padx=35, sticky="w", ipadx=10), enumerate(zip(self.liste_titel, self.liste_image))))
-        
-        
-     
-    
+    def _profile_widget(self):
+        self.scroll_frame = ctk.CTkScrollableFrame(self.public_info, corner_radius=20, border_color="#868686", border_width=1, fg_color="#C6C6C6")
+        self.scroll_frame.place(relwidth=1, relheight=1)
+
+        self.account_details = ctk.CTkFrame(self.scroll_frame, fg_color="#DCA4A4", corner_radius=0, border_width=0)
+        self.account_details.pack(fill="x") 
 
         
 
