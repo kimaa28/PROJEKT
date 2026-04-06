@@ -95,7 +95,7 @@ class App(ctk.CTkFrame):
         new_img = Image.new("RGBA", img.size, "#86c0f7")
         mask = Image.new("L", (75,75), 0)
         draw = ImageDraw.Draw(mask)
-        draw.ellipse((0, 0, 75, 75), fill=255, outline=True)
+        draw.rounded_rectangle((0, 0, 75, 75), fill=255, outline=True, radius=10)
         new_img.paste(img, (0,0), mask)
         self.tk_img = ImageTk.PhotoImage(new_img)
         self.egal = tk.Label(self.test, image=self.tk_img, font=("Verdana", 30, "bold"), fg=self.left_frame.cget("fg_color"), borderwidth=0, text="JE suis unc on ")

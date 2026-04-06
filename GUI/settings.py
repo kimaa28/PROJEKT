@@ -142,13 +142,14 @@ class Settings(ctk.CTkFrame):
         
        
         self.color = ctk.StringVar(value="green") # in json 
-        self.color_btn = ctk.CTkSegmentedButton(frame3, corner_radius=20, values=["green", "red", "brown", "yellow", "blue"], variable=self.color, fg_color= frame3.cget("fg_color"), selected_color="red", selected_hover_color="#C0C8BF", command= lambda a: self.color_btn.configure(selected_color=a))
+        self.color_btn = ctk.CTkSegmentedButton(frame3, corner_radius=20, values=["green", "red", "brown", "yellow", "blue"], variable=self.color, fg_color= frame3.cget("fg_color"), selected_color="green", selected_hover_color="#C0C8BF", command= lambda a: self.color_btn.configure(selected_color=a))
         self.color_btn.pack(padx=20, pady=(0, 25), side="right", ipadx=5, ipady=5)
 
     
     def _privacy(self):
         self.privacy.rowconfigure(0, weight=1)
         self.privacy.rowconfigure(1, weight=1)
+        self.privacy.rowconfigure(2, weight=1)
         self.privacy.columnconfigure(0, weight=1)
         
         frame1 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
@@ -159,17 +160,32 @@ class Settings(ctk.CTkFrame):
 
         self.export_data = ctk.CTkButton(frame1, text="Export Json", text_color="black", font=("Inter", 17), fg_color=frame1.cget("fg_color"),border_width=1, border_color="#7E7B7B", hover_color="#C2B196", image=ctk.CTkImage(light_image=Image.open('./image/import.png'), size=(20, 20)))
         self.export_data.pack(side="right", padx=20, pady=(0, 25), ipadx=2, ipady=3)
-
+        
         frame2 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
-        frame2.grid(row=1, column=0, sticky="nsew", pady=(0,1), padx=1)
+        frame2.grid(row=1, column=0, sticky="nsew", pady=(1,0), padx=1)
         
-        ctk.CTkLabel(frame2, text="Delete", text_color="red", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20) # blocked account
-        ctk.CTkLabel(frame2, text="Permanently remove your account and all data. This cannot be undone.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+        ctk.CTkLabel(frame2, text="Change Passwort", text_color="red", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20)
+        ctk.CTkLabel(frame2, text="This action will permanetly change your passwort.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+        
+        self.chg_pass = ctk.CTkButton(frame2, text="Change passwort", text_color="red", fg_color=frame2.cget("fg_color"), hover_color="#C2B196", border_color="red", border_width=1, command=self.ask_chg)
+        self.chg_pass.pack(side="right", padx=20, pady=(0, 25), ipadx=5, ipady=5)
+        
+        ctk.CTkButton(frame2, text="Forgot passwort ?", text_color="#4F4F4F", font=("Inter", 15, "underline"), fg_color=frame2.cget("fg_color"), hover_color=self.chg_pass.cget("hover_color"), command=lambda: showinfo("Was?", "Und wie hast du dich den angemeldet ? ", icon='question')).pack(side="right", padx=0, pady=(0, 25))
+
+        frame3 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
+        frame3.grid(row=2, column=0, sticky="nsew", pady=(0,1), padx=1)
+        
+        ctk.CTkLabel(frame3, text="Delete", text_color="red", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20) # blocked account
+        ctk.CTkLabel(frame3, text="Permanently remove your account and all data. This cannot be undone.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
         
 
-        self.del_account_btn = ctk.CTkButton(frame2, text="Delete Account", font=("inter", 16), text_color="red", fg_color=frame2.cget("fg_color"),  hover_color="#C2B196",border_color="red", border_width=1, command=self.ask_del)
-        self.del_account_btn.pack(side="right", padx=20, pady=(0, 25), ipadx=5, ipady=5)
+        self.del_account_btn = ctk.CTkButton(frame3, text="Delete Account", font=("inter", 16), text_color="red", fg_color=frame3.cget("fg_color"),  hover_color="#C2B196",border_color="red", border_width=1, command=self.ask_del)
+        self.del_account_btn.pack(side="right", padx=20, pady=(0, 25), ipadx=5, ipady=5) # progressbar to wait untill all will load
         
     def ask_del(self):
         answer = messagebox.askyesno("Frage", "willst du fortfahren?")
         print(answer)
+        
+    def ask_chg(self):
+        change = simpledialog.askstring("Passwort", "Gibt dein passwort ein", show="*")  
+        print(change)
