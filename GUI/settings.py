@@ -1,7 +1,8 @@
 import customtkinter as ctk
 import hashlib, os, json
-from tkinter import PhotoImage, Canvas
+from tkinter import PhotoImage, Canvas, simpledialog
 from PIL import Image, ImageTk, ImageDraw
+from tkinter import messagebox
 from tkinter.messagebox import showerror, showwarning, showinfo
 import webbrowser as web
 import matplotlib.pyplot as plt
@@ -21,6 +22,8 @@ class Settings(ctk.CTkFrame):
         self._settings_frame()
         self._profil_widget()
         self._myprofile()
+        self._preferences()
+        self._privacy()
         
         
     def _settings_frame(self):         
@@ -39,11 +42,11 @@ class Settings(ctk.CTkFrame):
         self.my_profile_frame.pack(fill="x", padx=(40, 20), pady=20)
     
         ctk.CTkLabel(self.profil_frame, text="Preferences", text_color="black", font=("Inter", 17, "bold")).pack(padx=40, pady=20, anchor="w")
-        self.preferences = ctk.CTkFrame(self.profil_frame, fg_color="green", corner_radius=20, height=250)
+        self.preferences = ctk.CTkFrame(self.profil_frame, fg_color=self.profil_frame.cget("fg_color"), corner_radius=20, height=250)
         self.preferences.pack(fill="x", padx=(40, 20), pady=20)
         
-        ctk.CTkLabel(self.profil_frame, text="Privacy and security", text_color="black", font=("Inter", 17, "bold")).pack(padx=40, pady=20, anchor="w")
-        self.privacy = ctk.CTkFrame(self.profil_frame, fg_color="green", corner_radius=20, height=250)
+        ctk.CTkLabel(self.profil_frame, text="Privacy and security", text_color="red", font=("Inter", 17, "bold")).pack(padx=40, pady=20, anchor="w")
+        self.privacy = ctk.CTkFrame(self.profil_frame, fg_color=self.profil_frame.cget("fg_color"), corner_radius=20, height=250, border_width=4)
         self.privacy.pack(fill="x", padx=(40, 20), pady=20)
         
     def _myprofile(self):
@@ -75,7 +78,7 @@ class Settings(ctk.CTkFrame):
         self.user_status = ctk.CTkLabel(frame1, text="Administrator ๏ kimaa@gmail.com", text_color="#696969", font=("Inter", 15), anchor="w")
         self.user_status.pack(anchor="sw", padx=5, pady=(0, 20))
          
-        frame2 = ctk.CTkFrame(self.my_profile_frame, fg_color="#D8D8D8", border_width=1, border_color="#747474")
+        frame2 = ctk.CTkFrame(self.my_profile_frame, fg_color="#C4C4C4", border_width=1, border_color="#747474")
         frame2.grid(row=1, column=0, sticky="nsew")
         
         ctk.CTkLabel(frame2, text="Display Name", text_color="black", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 10), padx=15)
@@ -101,3 +104,72 @@ class Settings(ctk.CTkFrame):
         self.email_var = ctk.StringVar() 
         self.email_entry = ctk.CTkEntry(frame3, textvariable=self.email_var,text_color="black", width=200, fg_color="#D4D4D4", border_width=1)
         self.email_entry.pack(side="right", padx=0, pady=(0, 20))
+        
+    def _preferences(self):
+        self.preferences.rowconfigure(0, weight=1)
+        self.preferences.rowconfigure(1, weight=1)
+        self.preferences.rowconfigure(2, weight=1)
+        self.preferences.columnconfigure(0, weight=1)
+        frame1 = ctk.CTkFrame(self.preferences, fg_color="#D0D0D0", border_width=1, border_color="#5A5A5A")
+        frame1.grid(row=0, column=0, sticky="nsew")
+        
+        ctk.CTkLabel(frame1, text="Daily study reminder", text_color="black", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20)
+        ctk.CTkLabel(frame1, text="Receive a notifications at 9:00 AM you haven't studied yet.", text_color="#646363", font=("Inter", 15)).pack(side="left", padx=20, pady=(0, 25))
+        
+        self.reminder = ctk.IntVar()
+        self.reminder_swt = ctk.CTkSwitch(frame1, corner_radius=20,text="", onvalue=1, offvalue=0, variable=self.reminder, command=lambda: print(self.reminder.get()), switch_height=25, switch_width=50, progress_color="green", button_color="white", width=50)
+        self.reminder_swt.pack(side="right", padx=17, pady=(0, 20))
+
+        frame2 = ctk.CTkFrame(self.preferences, fg_color="#D0D0D0", border_width=1, border_color="#5A5A5A")
+        frame2.grid(row=1, column=0, sticky="nsew")
+        
+        ctk.CTkLabel(frame2, text="Visibility", text_color="black", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20)
+        ctk.CTkLabel(frame2, text="This determines whether your name will be visible to other users and whether you can \nreceive messages from others while you're offline or online.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+        
+        self.online = ctk.StringVar(value="no")
+        self.online_swt = ctk.CTkSwitch(frame2, corner_radius=20, text="online", text_color="black", onvalue="yes", offvalue="no", variable=self.online, command=lambda: print(self.online.get()), switch_height=25, switch_width=50, progress_color="green", button_color="white", width=50)
+        self.online_swt.pack(side="right", padx=17, pady=(0, 20))
+        
+        self.offline = ctk.StringVar(value="no")
+        self.offline_swt = ctk.CTkSwitch(frame2, corner_radius=20, text="offline", text_color="black", onvalue="yes", offvalue="no", variable=self.offline, command=lambda: print(self.online.get()), switch_height=25, switch_width=50, progress_color="green", button_color="white", width=50)
+        self.offline_swt.pack(side="right", padx=17, pady=(0, 20))
+        
+        frame3 = ctk.CTkFrame(self.preferences, fg_color="#D0D0D0", border_width=1, border_color="#5A5A5A")
+        frame3.grid(row=2, column=0, sticky="nsew")
+        
+        ctk.CTkLabel(frame3, text="Theme color", text_color="black", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20)
+        ctk.CTkLabel(frame3, text="Select your prefered accent color for the interface", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+        
+       
+        self.color = ctk.StringVar(value="green") # in json 
+        self.color_btn = ctk.CTkSegmentedButton(frame3, corner_radius=20, values=["green", "red", "brown", "yellow", "blue"], variable=self.color, fg_color= frame3.cget("fg_color"), selected_color="red", selected_hover_color="#C0C8BF", command= lambda a: self.color_btn.configure(selected_color=a))
+        self.color_btn.pack(padx=20, pady=(0, 25), side="right", ipadx=5, ipady=5)
+
+    
+    def _privacy(self):
+        self.privacy.rowconfigure(0, weight=1)
+        self.privacy.rowconfigure(1, weight=1)
+        self.privacy.columnconfigure(0, weight=1)
+        
+        frame1 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
+        frame1.grid(row=0, column=0, sticky="nsew", pady=(1,0), padx=1)
+        
+        ctk.CTkLabel(frame1, text="Export Data", text_color="black", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20)
+        ctk.CTkLabel(frame1, text="Download all your flashcard and progress history.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+
+        self.export_data = ctk.CTkButton(frame1, text="Export Json", text_color="black", font=("Inter", 17), fg_color=frame1.cget("fg_color"),border_width=1, border_color="#7E7B7B", hover_color="#C2B196", image=ctk.CTkImage(light_image=Image.open('./image/import.png'), size=(20, 20)))
+        self.export_data.pack(side="right", padx=20, pady=(0, 25), ipadx=2, ipady=3)
+
+        frame2 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
+        frame2.grid(row=1, column=0, sticky="nsew", pady=(0,1), padx=1)
+        
+        ctk.CTkLabel(frame2, text="Delete", text_color="red", font=("Inter", 17, "bold")).pack(anchor="w", pady=(20, 0), padx=20) # blocked account
+        ctk.CTkLabel(frame2, text="Permanently remove your account and all data. This cannot be undone.", text_color="#646363", font=("Inter", 15), anchor="w", justify="left").pack(side="left", padx=20, pady=(0, 25))
+        
+
+        self.del_account_btn = ctk.CTkButton(frame2, text="Delete Account", font=("inter", 16), text_color="red", fg_color=frame2.cget("fg_color"),  hover_color="#C2B196",border_color="red", border_width=1, command=self.ask_del)
+        self.del_account_btn.pack(side="right", padx=20, pady=(0, 25), ipadx=5, ipady=5)
+        
+    def ask_del(self):
+        answer = messagebox.askyesno("Frage", "willst du fortfahren?")
+        print(answer)
