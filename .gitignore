@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtuelle Umgebungen
+env/
+venv/
+cgi-bin/env/
+
+# Lokale Nutzerdaten (Passwort-Hashes)
+daten/Passlib.json
+
+# Editor-Temp-Dateien
+*.swp
+tempCodeRunnerFile.*

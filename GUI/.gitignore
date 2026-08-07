@@ -1,4 +1,14 @@
-env/
-'./tempCodeRunnerFile.py'
-'./tempCodeRunnerFile.shellscript'
+# Python
+__pycache__/
+*.pyc
 
+# Virtuelle Umgebungen
+env/
+
+# VS Code Temp-Dateien
+tempCodeRunnerFile.*
+
+# Notizen / temporäre Dateien
+neu.txt
+zwischen.txt
+import customtkinter.py
