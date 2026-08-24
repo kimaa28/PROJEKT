@@ -2,7 +2,6 @@ import customtkinter as ctk
 from tkinter import PhotoImage, Canvas
 from PIL import Image, ImageTk, ImageDraw
 from tkinter.messagebox import showerror, showwarning, showinfo
-import webbrowser as web
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -10,6 +9,7 @@ import tkinter as tk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import numpy as np
+import datetime as dt
 
 class Dashboard(ctk.CTkFrame):
     def __init__(self, master, *args, **kwargs):
@@ -26,18 +26,17 @@ class Dashboard(ctk.CTkFrame):
         self.title_frame = ctk.CTkFrame(self, fg_color="#97AEB7", height=100)
         self.title_frame.pack(fill="x")    
         
-        ctk.CTkLabel(self.title_frame, text="Welcome back Jordan", text_color="black", font=("Inter", 30, "bold")).pack(anchor="w", padx=30, pady=(30, 10))
+        ctk.CTkLabel(self.title_frame, text=f"Welcome back {dt.date.today()}", text_color="black", font=("Inter", 30, "bold")).pack(anchor="w", padx=30, pady=(30, 10))
         ctk.CTkLabel(self.title_frame, text="Here is what's happening in your workspace today.", text_color="#5B5B5B", font=("Inter", 20, "bold")).pack(anchor="w", padx=30, pady=(5, 25) )
         
         self.summary_frame = ctk.CTkFrame(self, fg_color="#97AEB7")
         self.summary_frame.pack(fill="both", expand="true")
         
-        self.stat_bar = ctk.CTkFrame(self, fg_color="#97AEB7", height=200)
+        self.stat_bar = ctk.CTkFrame(self, fg_color="#97AEB7", height=200, corner_radius=20)
         self.stat_bar.pack(fill="x", pady=(0, 10))
         
         
     def _create_summary_widgets(self):
-        self.summary_frame.grid_columnconfigure(0, weight=1)
         self.summary_frame.grid_columnconfigure(1, weight=1)
         self.summary_frame.grid_columnconfigure(2, weight=1)
         self.summary_frame.grid_rowconfigure(0, weight=1)
@@ -60,25 +59,48 @@ class Dashboard(ctk.CTkFrame):
     
     
     def _create_statistics_widget(self):
+        self.plot_frame = ctk.CTkFrame(self.stat_bar, corner_radius=20, fg_color="#111111")
+        self.plot_frame.pack(fill="both", expand=True, padx=10, pady=0)
          
-        fig = Figure(figsize=(6, 4), dpi=100, edgecolor="#111111")
+        # Matplotlib-Figur
+        fig = Figure(figsize=(6, 4), dpi=100, facecolor="#111111")
+
         ax = fig.add_subplot(111)
 
-        x = np.linspace(0, 50, 100, 150)
-        ax.plot(x, np.sin(x))
-        ax.spines['top'].set_visible(True)
-        ax.spines['right'].set_visible(False)
-        canvas = FigureCanvasTkAgg(fig, master=self.stat_bar)
+        x = np.linspace(0, 50, 150)
+        ax.plot(x, np.sin(x), color="#3B8ED0", linewidth=2)
+
+        # Hintergrund des Diagramms
+        ax.set_facecolor("#111111")
+
+        # Achsen anpassen
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_color("#AAAAAA")
+        ax.spines["bottom"].set_color("#AAAAAA")
+
+        ax.tick_params(colors="#FFFFFF")
+        ax.grid(axis="y", color="#333333", alpha=0.5)
+
+        fig.tight_layout()
+
+        # Canvas in den abgerundeten Frame einsetzen
+        canvas = FigureCanvasTkAgg(fig, master=self.plot_frame)
         canvas.draw()
-        canvas.get_tk_widget().pack(fill="both", expand=True, padx=20)
+
+        canvas_widget = canvas.get_tk_widget()
+        canvas_widget.configure(bg="#111111", highlightthickness=0, bd=0)
+
+        canvas_widget.pack(fill="both", expand=True, padx=10, pady=10)
         
-        
+                
+            
     def _create_inspiration_widget(self):
         try:
             self._orig_inspiration_img = Image.open('./image/winston.jpg').convert("RGBA")
         except Exception:
             # fallback: create empty placeholder
-            self._orig_inspiration_img = Image.new("RGBA", (100, 100), "#C7C7C7")
+            self._orig_inspiration_img = Image.new("RGBA", (100, 100), self.summary_frame.cget("fg_color"))
 
         # label that will hold the dynamically resized image
         self.inspiration_image = ctk.CTkLabel(self.inspiration_frame, text="")
@@ -121,10 +143,10 @@ class Dashboard(ctk.CTkFrame):
         mask = Image.new("L", (width, height), 0)
         draw = ImageDraw.Draw(mask)
         radius = 25
-        draw.rounded_rectangle((0, 0, width, height), radius=radius, fill=255)
+        draw.rounded_rectangle((0, 0, width, height), radius=radius, fill=255, corners=[True, True, None, None ])
 
         # paste onto background (frame color) to avoid transparency issues
-        bg = Image.new("RGBA", (width, height), "#C7C7C7")
+        bg = Image.new("RGBA", (width, height), self.summary_frame.cget("fg_color"))
         bg.paste(img, (0, 0), mask)
 
         # keep reference to avoid GC

@@ -1,22 +1,15 @@
-
 import customtkinter as ctk
+from tkinter import PhotoImage, Canvas
+from tkinter.messagebox import showerror, showwarning, showinfo
+from PIL import Image, ImageTk, ImageDraw 
+import matplotlib.pyplot as plt # maybe i will use something diff to show the logs data
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import hashlib, os, json
+import time
 from login import create_login_frame
 from register import create_register_frame
 from reset import create_reset_frame 
-from tkinter import PhotoImage, Canvas
-from PIL import Image, ImageTk, ImageDraw
-from tkinter.messagebox import showerror, showwarning, showinfo
-import random as rd
-import webbrowser as web
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import numpy as np
-import tkinter as tk
-import time
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from daschboard import Daschbord
 from courses import Courses
 from main_app import App
@@ -39,8 +32,7 @@ def save_passwort(pfad, passwort):
     with open(pfad, "w") as datei:
         json.dump(passwort, datei, indent=4)
 
-user = None
-count = 0
+
 
 class Main:
     def __init__(self):

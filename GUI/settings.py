@@ -1,17 +1,10 @@
 import customtkinter as ctk
-import hashlib, os, json
-from tkinter import PhotoImage, Canvas, simpledialog
-from PIL import Image, ImageTk, ImageDraw
-from tkinter import messagebox
-from tkinter.messagebox import showerror, showwarning, showinfo
-import webbrowser as web
-import matplotlib.pyplot as plt
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import numpy as np
+from tkinter import PhotoImage, Canvas, simpledialog
+from tkinter import messagebox
+from tkinter.messagebox import showinfo, showerror, showwarning
+from PIL import Image, ImageTk, ImageDraw
+from ImageRounder import rounded_image
 
 
 class Settings(ctk.CTkFrame):
@@ -58,15 +51,9 @@ class Settings(ctk.CTkFrame):
         frame1 = ctk.CTkFrame(self.my_profile_frame, fg_color="#D0D0D0", border_width=1, border_color="#5A5A5A")
         frame1.grid(row=0, column=0, sticky="nsew")
         
-        img = Image.open('image/third.gif').resize((80,80))
-        new_img = Image.new("RGBA", img.size, frame1.cget("fg_color"))
-        mask = Image.new("L", (80,80), 0)
-        draw = ImageDraw.Draw(mask)
-        draw.ellipse((0, 0, 80, 80), fill=255, outline=True)
-        new_img.paste(img, (0,0), mask)
-        self.tk_img = ImageTk.PhotoImage(new_img)
+        self.avatar_img = rounded_image('image/third.gif', frame1.cget("fg_color"), (80, 80))
         
-        self.profil_img = tk.Label(frame1, image=self.tk_img, border=0, highlightthickness=0)
+        self.profil_img = tk.Label(frame1, image=self.avatar_img, border=0, highlightthickness=0)
         self.profil_img.pack(padx=15, pady=15, side="left")
         
         self.btn_chg_img = ctk.CTkButton(frame1, text="Change Avatar", text_color="black",font=("Inter", 16), fg_color=frame1.cget("fg_color"), corner_radius=10, hover_color="green", hover=True, command=lambda: showinfo(title="Info", message="action noch nich verfügbar"), border_color="#535353", border_width=1, )
@@ -170,7 +157,7 @@ class Settings(ctk.CTkFrame):
         self.chg_pass = ctk.CTkButton(frame2, text="Change passwort", text_color="red", fg_color=frame2.cget("fg_color"), hover_color="#C2B196", border_color="red", border_width=1, command=self.ask_chg)
         self.chg_pass.pack(side="right", padx=20, pady=(0, 25), ipadx=5, ipady=5)
         
-        ctk.CTkButton(frame2, text="Forgot passwort ?", text_color="#4F4F4F", font=("Inter", 15, "underline"), fg_color=frame2.cget("fg_color"), hover_color=self.chg_pass.cget("hover_color"), command=lambda: showinfo("Was?", "Und wie hast du dich den angemeldet ? ", icon='question')).pack(side="right", padx=0, pady=(0, 25))
+        ctk.CTkButton(frame2, text="Forgot passwort ?", text_color="#4F4F4F", font=("Inter", 15, "underline"), fg_color=frame2.cget("fg_color"), hover_color=self.chg_pass.cget("hover_color"), command=lambda: showinfo("Was?", "Und wie hast du dich denn angemeldet ? ", icon='question')).pack(side="right", padx=0, pady=(0, 25))
 
         frame3 = ctk.CTkFrame(self.privacy, fg_color="#E7C7C7", border_width=1, border_color="#C92525")
         frame3.grid(row=2, column=0, sticky="nsew", pady=(0,1), padx=1)
