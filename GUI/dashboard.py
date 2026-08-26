@@ -30,7 +30,7 @@ class Dashboard(ctk.CTkFrame):
         ctk.CTkLabel(self.title_frame, text="Here is what's happening in your workspace today.", text_color="#5B5B5B", font=("Inter", 20, "bold")).pack(anchor="w", padx=30, pady=(5, 25) )
         
         self.summary_frame = ctk.CTkFrame(self, fg_color="#97AEB7")
-        self.summary_frame.pack(fill="both", expand="true")
+        self.summary_frame.pack(fill="both", expand="true", padx=10)
         
         self.stat_bar = ctk.CTkFrame(self, fg_color="#97AEB7", height=200, corner_radius=20)
         self.stat_bar.pack(fill="x", pady=(0, 10))
@@ -43,7 +43,7 @@ class Dashboard(ctk.CTkFrame):
         self.summary_frame.grid_rowconfigure(1, weight=1)
         
         self.inspiration_frame = ctk.CTkFrame(self.summary_frame, fg_color="#C7C7C7", corner_radius=20)
-        self.inspiration_frame.grid(row=0, column=0, rowspan=2, padx=10, pady=30, sticky="nsew")
+        self.inspiration_frame.grid(row=0, column=0, rowspan=2, padx=10, pady=20, sticky="nsew")
           
         self.ranking_frame = ctk.CTkScrollableFrame(self.summary_frame, fg_color="#C7C7C7", corner_radius=10)
         self.ranking_frame.grid(row=0, column=1, sticky="nsew", pady=(20, 10), padx=10)
@@ -51,8 +51,8 @@ class Dashboard(ctk.CTkFrame):
         self.messages_frame = ctk.CTkScrollableFrame(self.summary_frame, fg_color="#C7C7C7", corner_radius=10)
         self.messages_frame.grid(row=1, column=1, sticky="nsew", pady=(10, 20), padx=10)
         
-        self.last_course_frame = ctk.CTkFrame(self.summary_frame, fg_color="#C7C7C7", corner_radius=20)
-        self.last_course_frame.grid(row=0, column=2, rowspan=2, padx=10, pady=30, sticky="nsew")
+        self.last_course_frame = ctk.CTkScrollableFrame(self.summary_frame, fg_color="#C7C7C7", corner_radius=20)
+        self.last_course_frame.grid(row=0, column=2, rowspan=2, padx=10, pady=20, sticky="nsew")
         
         
         
@@ -60,38 +60,41 @@ class Dashboard(ctk.CTkFrame):
     
     def _create_statistics_widget(self):
         self.plot_frame = ctk.CTkFrame(self.stat_bar, corner_radius=20, fg_color="#111111")
-        self.plot_frame.pack(fill="both", expand=True, padx=10, pady=0)
-         
+        self.plot_frame.pack(fill="both", expand=True, padx=20, pady=0)
+        ctk.CTkLabel(self.plot_frame, text="Weekly Learrning Activity", font=("verdana", 20), ).pack(padx=40, anchor="w", pady=10)
+
         # Matplotlib-Figur
         fig = Figure(figsize=(6, 4), dpi=100, facecolor="#111111")
 
-        ax = fig.add_subplot(111)
+        ax = fig.add_axes([0.05, 0.12, 0.90, 0.80])
 
-        x = np.linspace(0, 50, 150)
-        ax.plot(x, np.sin(x), color="#3B8ED0", linewidth=2)
+        x = np.linspace(0, 75, 150)
+        ax.plot(x, np.sin(x), color="#97AEB7", linewidth=2)
 
         # Hintergrund des Diagramms
         ax.set_facecolor("#111111")
+        
+        ax.set_xlim(0, 50)
+        ax.set_ylim(-1, 1)
 
         # Achsen anpassen
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-        ax.spines["left"].set_color("#AAAAAA")
+        ax.spines["left"].set_visible(False)
         ax.spines["bottom"].set_color("#AAAAAA")
 
         ax.tick_params(colors="#FFFFFF")
         ax.grid(axis="y", color="#333333", alpha=0.5)
 
-        fig.tight_layout()
 
         # Canvas in den abgerundeten Frame einsetzen
         canvas = FigureCanvasTkAgg(fig, master=self.plot_frame)
         canvas.draw()
 
         canvas_widget = canvas.get_tk_widget()
-        canvas_widget.configure(bg="#111111", highlightthickness=0, bd=0)
+        canvas_widget.configure(bg="#000000", highlightthickness=0, bd=0)
 
-        canvas_widget.pack(fill="both", expand=True, padx=10, pady=10)
+        canvas_widget.pack(fill="x", expand=True, padx=(0, 10), pady=10, anchor="w")
         
                 
             

@@ -54,7 +54,11 @@ class App(ctk.CTkFrame):
         
         self.d = Dashboard(self.right_frame, corner_radius=0, border_color="black", fg_color=self.right_frame.cget("fg_color"))
         self.d.place(relwidth=1, relheight=1)
-        self.rowconfigure(0, weight=1)     
+        self.rowconfigure(0, weight=1)
+        
+        
+        
+           
         
         
         
@@ -73,6 +77,8 @@ class App(ctk.CTkFrame):
         self.button_frame = ctk.CTkFrame(self.nav_frame, fg_color=self.nav_frame.cget("fg_color"))
         self.button_frame.grid(row=2, column=0, pady=(0, 250), padx=(10, 30), sticky="w")
         
+    
+        
         
 
     def create_image(self, parent,  agrs):
@@ -80,7 +86,7 @@ class App(ctk.CTkFrame):
         list(map(lambda a : ctk.CTkLabel(parent, image=a[1], text="").grid(row=a[0], column=0, padx=(0, 20), pady=20), enumerate(m)))
         
     def _create_button(self, parent, liste):
-        list(map(lambda a : ctk.CTkButton(parent, text=a[1], text_color="white",font= ("Inter", 17), hover_color="#1687d8", command=lambda: showinfo(title='Info',message='Dieses fenster ist noch nicht bereit.') if a[0] == 4 else self.choice_frame(self.d) ).grid(row=a[0], column=1, pady=20), enumerate(liste)))
+        list(map(lambda a : ctk.CTkButton(parent, text=a[1], text_color="white",font= ("Inter", 17), hover_color="#1687d8", command=lambda: showinfo(title='Info',message='Dieses fenster ist noch nicht bereit.') if a[0] == 4 else self.choice_frame(self.c) ).grid(row=a[0], column=1, pady=20), enumerate(liste)))
 
         self.test = ctk.CTkFrame(self.left_frame, fg_color=self.left_frame.cget("fg_color"))
         self.test.pack(side="bottom", pady=20, padx=20, anchor="w")
