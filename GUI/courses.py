@@ -72,5 +72,6 @@ class Courses(ctk.CTkFrame):
         self.my_list = ["proggra", "Mathhe", "rechner", "alodat", "forza"]
         self.mn = [i for i in range(5)]
         self.my_courses_frame.columnconfigure(0, weight=1)
+        
         list(map(lambda a : self.my_courses_frame.rowconfigure(a, weight=1), self.mn))
         list(map(lambda frame: ctk.CTkLabel(self.my_courses_frame, height=200, border_color="yellow", border_width=1, text=frame, corner_radius=20).grid(row=self.my_list.index(frame), column=0, sticky="ew", padx=20, ipadx=20, pady=10), self.my_list))
