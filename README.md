@@ -1,59 +1,59 @@
 # Lernportal – Version 1 (Branch: master)
 
-Lokale Desktop-Lernplattform mit **Python, CustomTkinter, HTML und CGI**.
+Local desktop learning platform with **Python, CustomTkinter, HTML and CGI**.
 
-> **Hinweis:** Dies ist die **erste Version**. Die neue Version mit moderner Oberfläche und PDF-Anzeige liegt im Branch **`lerntrack.2.0`**.
+> **Note:** This is the **first version**. The new version with a modern interface and PDF viewer is in the **`lerntrack.2.0`** branch.
 
 ---
 
-## Wichtig: Python-Version
+## Important: Python Version
 
-Diese Version nutzt **CGI** (das Python-Modul `cgi`). Seit **Python 3.13** ist dieses Modul **deprecated**
-(Entfernung geplant in Python 3.15). Dadurch läuft die App nur mit **Python 3.11/3.12** –
-in der Regel benötigst du dafür **pyenv** (siehe `GUI/.python-version`).
+This version uses **CGI** (the Python `cgi` module). Since **Python 3.13** this module is **deprecated**
+(removal planned for Python 3.15). As a result, the app only runs with **Python 3.11/3.12** –
+you will usually need **pyenv** for that (see `GUI/.python-version`).
 
 ---
 
 ## Features
 
-- Login / Registrierung / Passwort-Reset (lokal, JSON, Passwörter gehasht)
-- GUI mit CustomTkinter
-- Lernlektionen als lokale HTML-Seiten (HTML-, Python-, Tkinter-, Linux-, CGI-Module)
-- CGI-basierte Fragebögen
-- Lokaler HTTP-Server
-- Fortschritts-Tracking über JSON
+- Login / Registration / Password reset (local, JSON, passwords hashed)
+- GUI with CustomTkinter
+- Learning lessons as local HTML pages (HTML, Python, Tkinter, Linux, CGI modules)
+- CGI-based questionnaires
+- Local HTTP server
+- Progress tracking via JSON
 
 ---
 
-## Projektstruktur
+## Project Structure
 
 ```
 lernportal/
 │
-├── GUI/                      # CustomTkinter-Anwendung
-│   ├── test_dash.py          # Einstiegspunkt (Hauptfenster)
-│   ├── login.py              # Login-Ansicht
-│   ├── register.py           # Registrierung
-│   ├── reset.py              # Passwort-Reset
-│   ├── html_class.py         # HTML-Lektionen
-│   ├── python_lesson_class.py# Python-Lektionen
-│   ├── CGI_class.py          # CGI-Lektionen
-│   ├── LINUX_class.py        # Linux-Lektionen
-│   ├── Tkinter_class.py      # Tkinter-Lektionen
-│   ├── image/                # Icons und Bilder
+├── GUI/                      # CustomTkinter application
+│   ├── test_dash.py          # Entry point (main window)
+│   ├── login.py              # Login view
+│   ├── register.py           # Registration
+│   ├── reset.py              # Password reset
+│   ├── html_class.py         # HTML lessons
+│   ├── python_lesson_class.py# Python lessons
+│   ├── CGI_class.py          # CGI lessons
+│   ├── LINUX_class.py        # Linux lessons
+│   ├── Tkinter_class.py      # Tkinter lessons
+│   ├── image/                # Icons and images
 │   └── index.json / tasks.json
 │
-├── webseite/html/            # HTML-Lernseiten der Module
+├── webseite/html/            # HTML learning pages of the modules
 │   ├── Lektion1.html – Lektion11.html
 │   ├── cgi/ / linux/ / py_l/ / tkinter/
 │   └── index.html
 │
-├── cgi-bin/                  # CGI-Skripte für Fragebögen
+├── cgi-bin/                  # CGI scripts for questionnaires
 │   ├── gear_cgi.py
 │   └── redirect.py
 │
-├── daten/                    # lokale Nutzerdaten
-│   └── Passlib.json          # (gitignored, nur lokal)
+├── daten/                    # local user data
+│   └── Passlib.json          # (gitignored, local only)
 │
 ├── index.html
 └── README.md
@@ -61,15 +61,15 @@ lernportal/
 
 ---
 
-## Ausführen
+## Running
 
-1. **Lokalen HTTP-Server mit CGI starten** (Python 3.11/3.12):
+1. **Start a local HTTP server with CGI** (Python 3.11/3.12):
 
    ```bash
    python3 -m http.server --cgi
    ```
 
-2. **GUI starten:**
+2. **Start the GUI:**
 
    ```bash
    python GUI/test_dash.py
@@ -77,10 +77,10 @@ lernportal/
 
 ---
 
-## Technologien
+## Technologies
 
 - Python 3.11 / 3.12
 - CustomTkinter
 - HTML / CSS
 - CGI (Common Gateway Interface)
-- JSON (Datenhaltung)
+- JSON (data storage)
