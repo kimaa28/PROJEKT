@@ -1,72 +1,72 @@
 # Lerntrack 2.0 – Version 2 (Branch: lerntrack.2.0)
 
-Komplett neu gestaltete Lern-App mit **Python, CustomTkinter und PyMuPDF**.
+Completely redesigned learning app with **Python, CustomTkinter and PyMuPDF**.
 
-> **Hinweis:** Dies ist die **zweite Version** mit neuem Design und PDF-Anzeige.
-> Die ältere, CGI/HTML-basierte Version liegt im Branch **`master`**.
+> **Note:** This is the **second version** with a new design and PDF viewing.
+> The older, CGI/HTML-based version is in the **`master`** branch.
 
 ---
 
-## Warum Version 2?
+## Why Version 2?
 
-Version 1 nutzte **CGI + HTML**. Seit **Python 3.13** ist das `cgi`-Modul **deprecated**,
-wodurch die alte Version nur noch mit pyenv (Python ≤ 3.12) läuft. Version 2:
+Version 1 used **CGI + HTML**. Since **Python 3.13** the `cgi` module is **deprecated**,
+which means the old version only runs with pyenv (Python ≤ 3.12). Version 2:
 
-- verzichtet auf CGI → läuft direkt mit **Python 3.13** (siehe `GUI/.python-version`)
-- bietet eine modernere Oberfläche mit Sidebar-Navigation
-- zeigt Lernmaterial **direkt als PDF in der App** an – Datei hochladen und jederzeit wieder ansehen
+- drops CGI → runs directly with **Python 3.13** (see `GUI/.python-version`)
+- offers a more modern interface with sidebar navigation
+- displays learning material **directly as PDF in the app** – upload a file and view it again at any time
 
 ---
 
 ## Features
 
-- Neue GUI mit Sidebar-Navigation (Dashboard, Courses, Progress, Settings, Support)
-- **PDF-Viewer** direkt in der App (PyMuPDF): Datei hochladen, Seiten blättern, zoomen
-- **ZIP-Tools** (Dateien packen / entpacken)
-- **Wissens-Datenbank** (Persönlichkeiten der Wissenschaft)
-- Dashboard und Statistiken mit **matplotlib**
-- Login / Registrierung / Passwort-Reset (lokal, JSON, Passwörter gehasht)
-- Fortschritts-Tracking über JSON
+- New GUI with sidebar navigation (Dashboard, Courses, Progress, Settings, Support)
+- **PDF viewer** directly in the app (PyMuPDF): upload files, flip through pages, zoom
+- **ZIP tools** (compress / extract files)
+- **Knowledge database** (personalities of science)
+- Dashboard and statistics with **matplotlib**
+- Login / Registration / Password reset (local, JSON, passwords hashed)
+- Progress tracking via JSON
 
 ---
 
-## Projektstruktur
+## Project Structure
 
 ```
 lernportal/
 │
-├── GUI/                      # CustomTkinter-Anwendung
-│   ├── main.py               # Einstiegspunkt
-│   ├── main_app.py           # App-Gerüst mit Sidebar-Navigation
-│   ├── daschboard.py         # Dashboard (Statistik, Zitat)
-│   ├── dashboard.py          # Neues Dashboard
-│   ├── courses.py            # Kurse
-│   ├── settings.py           # Einstellungen (Design fertig, Variablen noch offen)
-│   ├── statistik.py          # Statistiken (matplotlib)
-│   ├── fitzpdf.py            # PDF-Viewer
-│   ├── show_pdf.py           # PDF-Viewer (Variante)
-│   ├── wissen_dict.py        # Wissens-Datenbank
-│   ├── zipfile.py            # ZIP-Tools
-│   ├── login.py              # Login-Ansicht
-│   ├── register.py           # Registrierung
-│   ├── reset.py              # Passwort-Reset
+├── GUI/                      # CustomTkinter application
+│   ├── main.py               # Entry point
+│   ├── main_app.py           # App framework with sidebar navigation
+│   ├── daschboard.py         # Dashboard (statistics, quote)
+│   ├── dashboard.py          # New dashboard
+│   ├── courses.py            # Courses
+│   ├── settings.py           # Settings (design done, variables still open)
+│   ├── statistik.py          # Statistics (matplotlib)
+│   ├── fitzpdf.py            # PDF viewer
+│   ├── show_pdf.py           # PDF viewer (variant)
+│   ├── wissen_dict.py        # Knowledge database
+│   ├── zipfile.py            # ZIP tools
+│   ├── login.py              # Login view
+│   ├── register.py           # Registration
+│   ├── reset.py              # Password reset
 │   ├── html_class.py / python_lesson_class.py
 │   ├── CGI_class.py / LINUX_class.py / Tkinter_class.py
-│   ├── image/                # Icons und Bilder
+│   ├── image/                # Icons and images
 │   └── index.json / tasks.json
 │
-├── webseite/html/            # (noch vorhanden) HTML-Lernseiten
-├── cgi-bin/                  # (noch vorhanden) CGI-Skripte
+├── webseite/html/            # (still present) HTML learning pages
+├── cgi-bin/                  # (still present) CGI scripts
 │
-├── daten/                    # lokale Nutzerdaten
-│   └── Passlib.json          # (gitignored, nur lokal)
+├── daten/                    # local user data
+│   └── Passlib.json          # (gitignored, local only)
 │
 └── README.md
 ```
 
 ---
 
-## Ausführen
+## Running
 
 ```bash
 pip install customtkinter pymupdf matplotlib pillow
@@ -75,22 +75,22 @@ python GUI/main.py
 
 ---
 
-## Technologien
+## Technologies
 
 - Python 3.13
 - CustomTkinter
 - PyMuPDF (fitz)
 - matplotlib
 - Pillow / PIL
-- JSON (Datenhaltung)
+- JSON (data storage)
 
 ---
 
 ## Status
 
-Version 2 ist **noch in Arbeit**:
+Version 2 is **still in progress**:
 
-- ✅ App-Gerüst mit Sidebar-Navigation
-- ✅ Dashboard, Courses, Statistik (Design + Layout)
-- ✅ PDF-Viewer und Datei-Tools
-- 🔧 Settings: Layout fertig, Variablen noch nicht angebunden
+- ✅ App framework with sidebar navigation
+- ✅ Dashboard, Courses, Statistics (design + layout)
+- ✅ PDF viewer and file tools
+- 🔧 Settings: layout done, variables not yet connected
